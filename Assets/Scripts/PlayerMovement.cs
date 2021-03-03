@@ -7,12 +7,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Setting Player")]
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
-
+    [SerializeField] float jumpWallForce;
+    [SerializeField] float forceXJumping;
     [Header("Wall Settings")]
-    [SerializeField] Vector2 wallForce;
-    [SerializeField] float wallJumpTime;
+    [SerializeField] float wallSlideTime;
     [SerializeField] float wallSlidingSpeed;
-    float jumpTime;
     bool isFacingRight;
 
     [Header("Checks")]
@@ -23,13 +22,16 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isTouchingFront;
     bool wallSliding;
-    bool wallJumping;
+    bool isJumpSliding;
+    float counterJumpWall = 0;
 
     //Componentes
     Rigidbody2D rb2d;
+
     //Vectores
     Vector2 axis;
     Vector2 movement;
+    Vector2 posBeforeJumping;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -38,6 +40,17 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         CheckFlip();
+
+        // Contador para el wallJump
+        if (isJumpSliding)
+        {
+            counterJumpWall += Time.deltaTime;
+            if (counterJumpWall >= 1)
+            {
+                isJumpSliding = false;
+                counterJumpWall = 0;
+            }       
+        }  
     }
 
     private void FixedUpdate()
@@ -48,43 +61,64 @@ public class PlayerMovement : MonoBehaviour
         isTouchingFront= Physics2D.OverlapCircle(frontCheckPos.position, checkRadius, layerMaskGround);
 
         WallSlide();
-
-        if (wallJumping)
-        {
-            rb2d.velocity = new Vector2(wallForce.x * -axis.x, wallForce.y);
-        }
     }
-    
+
     private void Movement()
     {
         movement = new Vector2(axis.x * speed * 100, rb2d.velocity.y);
-        rb2d.velocity = movement;
+
+        //Si esta saltando entre columnas, se aplican fuerzas opuestas
+        if (isJumpSliding && !isGrounded) {
+            Vector2 force;
+            
+            if(transform.position.x > posBeforeJumping.x) //Derecha
+            {
+                force = Vector2.left * forceXJumping * 100;
+            }
+            else //Izquierda
+            {
+                force = Vector2.right * forceXJumping * 100;
+            }
+            rb2d.velocity = movement + force;
+        }
+        else
+        {
+            rb2d.velocity = movement;
+        }
     }
     private void WallSlide()
     {
-        if (isTouchingFront && !isGrounded && axis.x != 0)
+        if (isTouchingFront && !isGrounded && axis != Vector2.zero)
         {
             wallSliding = true;
-            jumpTime += Time.time + wallJumpTime;
-        }else if(jumpTime <= Time.time)
-        {
-            wallSliding = false;
-            jumpTime = 0;
-        }else if (!isTouchingFront)
-        {
-            wallSliding = false;
+            isJumpSliding = false;
+            counterJumpWall = 0;
         }
-
+        else 
+        {    
+            Invoke("SetWallSlidingFalse", wallSlideTime);
+        }
+        
         if (wallSliding)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Clamp(rb2d.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
     }
+    void SetWallSlidingFalse()
+    {
+        wallSliding = false;
+    }
     public void Jump()
     {
-        if (isGrounded || wallSliding)
+        if (isGrounded)
         {
              rb2d.velocity = (Vector2.up * jumpForce * 100);
+        }
+        if (wallSliding)
+        {
+            rb2d.velocity = (Vector2.up * jumpWallForce * 100);
+            posBeforeJumping = transform.position;
+            isJumpSliding = true;
         }
     }
     private void CheckFlip()

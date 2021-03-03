@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.action.triggered)
+        if (ctx.started)
         {
             player.Jump();
         }
