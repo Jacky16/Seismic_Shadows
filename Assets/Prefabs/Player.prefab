@@ -130,9 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   jumpForce: 6
-  wallForce: {x: 150, y: 300}
-  wallJumpTime: 0.2
-  wallSlidingSpeed: 1
+  jumpWallForce: 7
+  forceXJumping: 0.55
+  wallSlideTime: 0.2
+  wallSlidingSpeed: 50
   checkRadius: 0.5
   feetCheckPos: {fileID: 1523045867}
   frontCheckPos: {fileID: 7376446132052679932}
