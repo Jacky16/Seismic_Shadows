@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Componentes
     Rigidbody2D rb2d;
-
+    WaveSpawner waveSpawner;
     //Vectores
     Vector2 axis;
     Vector2 movement;
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        waveSpawner = GetComponent<WaveSpawner>();
     }
 
     private void Update()
@@ -66,7 +67,10 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         movement = new Vector2(axis.x * speed * 100, rb2d.velocity.y);
-
+        if(axis.x != 0)
+        {
+           waveSpawner.Spawn();
+        }
         //Si esta saltando entre columnas, se aplican fuerzas opuestas
         if (isJumpSliding && !isGrounded) {
             Vector2 force;

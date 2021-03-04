@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    [Header("Referencias")]
     [SerializeField] PlayerMovement player;
     Vector2 axis;
     public void OnMovement(InputAction.CallbackContext ctx)
     {
+
         if (ctx.performed)
         {
             axis = ctx.ReadValue<Vector2>();
