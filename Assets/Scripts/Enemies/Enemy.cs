@@ -5,32 +5,35 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("General Settings")]
-
     [SerializeField] protected float radius;
-    [SerializeField] protected float stopDistance;
     [SerializeField] protected float speed;
-    [SerializeField] protected float damage;
     protected float currentSpeed;
     protected bool targetInRange;
-    protected bool targetInStopDistance;
     protected bool isInitPos;
     protected Transform target;
     protected Vector2 initPosition;
+    protected Vector2 dirEnemy;
+
+    [Header("Attack Settings")]
+    [SerializeField] protected float timeToAttack;
+    [SerializeField] protected int damage;
+    [SerializeField] protected float stopDistance; 
+    protected bool targetInStopDistance;
+    float countAttack = 0;
 
     [Header("WayPoint Settings")]
     [SerializeField] protected bool followPath;
     [SerializeField] protected float timeBetweenWaypoints;
     [SerializeField] protected Transform[] wayPoints;
-    protected int sizeWayPoints;
-    protected int nextPoint = 0;
+    int sizeWayPoints;
+    int nextPoint = 0;
     protected float distanceToTarget;
+    float countWaypoints = 0;
 
-
-    //enum EnemyStates { IDLE,CHASE,FOLLOW_PATH,ATTACK,DEAD};
-    //EnemyStates enemyStates;
 
     //Componentes
     Rigidbody2D rb2d;
+    protected HealthPlayer healthPlayer;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
         currentSpeed = speed;
         initPosition = transform.position;
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        healthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
     }
 
     protected void Update()
@@ -55,18 +59,33 @@ public class Enemy : MonoBehaviour
 
         //Si el Enemigo esta en su posicion inicial
         isInitPos = Vector2.Distance(transform.position, initPosition) <= 0;
+
+        
     }
     protected void FixedUpdate()
     {
         Vector2 dirEnemy = Vector2.zero;
 
+        dirEnemy = Chase(dirEnemy);
+
+        //Seguir el Path si no esta el player en el rango
+        dirEnemy = Path(dirEnemy);
+
+        Flip();
+
+        rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed * 100, rb2d.velocity.y);
+
+    }
+
+    private Vector2 Chase(Vector2 dirEnemy)
+    {
         //Perseguir al player
         if (targetInRange && !targetInStopDistance)
-        {         
-             dirEnemy = target.position - transform.position;
+        {
+            dirEnemy = target.position - transform.position;
         }
         //Enemigo al lado del player
-        else if(targetInRange && targetInStopDistance)
+        else if (targetInRange && targetInStopDistance)
         {
             dirEnemy = Vector2.zero;
         }
@@ -79,28 +98,38 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed * 100, rb2d.velocity.y);
-        
-        //Seguir el Path si no esta el player en el rango
+        return dirEnemy;
+    }
+
+    private Vector2 Path(Vector2 dirEnemy)
+    {
         if (followPath && !targetInRange)
         {
             Transform currentWaypoint = wayPoints[nextPoint];
 
-            float distanteToNextWaypoint = Vector2.Distance(transform.position ,currentWaypoint.position);
+            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
 
-            Vector2 dirWayPoint = currentWaypoint.position - transform.position;
+            dirEnemy = currentWaypoint.position - transform.position;
 
-            rb2d.velocity = (dirWayPoint.normalized * currentSpeed * 100);
-     
-            if (distanteToNextWaypoint  <= 20)
+            rb2d.velocity = (dirEnemy.normalized * currentSpeed * 100);
+
+            if (distanteToNextWaypoint <= 20)
             {
                 //Pasar al siguiente Waypoint
-                StartCoroutine(NextWaypoint(timeBetweenWaypoints));                   
-            }                       
+                countWaypoints += Time.fixedDeltaTime;
+                if (countWaypoints >= timeBetweenWaypoints)
+                {
+                    NextWaypoint();
+                    countWaypoints = 0;
+                }
+            }
         }
+
+        return dirEnemy;
     }
 
-    IEnumerator NextWaypoint(float time)
+    public virtual void Attack() {;}
+    private void NextWaypoint()
     {
         currentSpeed = 0;
         nextPoint++;
@@ -108,10 +137,33 @@ public class Enemy : MonoBehaviour
         {
             nextPoint = 0;
         }
-        yield return new WaitForSecondsRealtime(time);
         currentSpeed = speed;
     }
+    private void Flip()
+    {
+        if (rb2d.velocity.normalized.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }     
+        else if(rb2d.velocity.normalized.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
 
+        }
+    }
+   
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            countAttack += Time.fixedDeltaTime;
+            if(countAttack >= timeToAttack)
+            {
+                Attack();
+                countAttack = 0;
+            }              
+        }
+    }
     private void OnDrawGizmos()
     {
         if (targetInRange)
