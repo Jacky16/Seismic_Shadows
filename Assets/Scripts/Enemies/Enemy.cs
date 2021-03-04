@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int damage;
     [SerializeField] protected float stopDistance; 
     protected bool targetInStopDistance;
-    float countAttack = 0;
+    float countAttack = float.MaxValue;
 
     [Header("WayPoint Settings")]
     [SerializeField] protected bool followPath;
@@ -32,13 +32,13 @@ public class Enemy : MonoBehaviour
 
 
     //Componentes
-    Rigidbody2D rb2d;
+    protected Rigidbody2D rb2d;
     protected HealthPlayer healthPlayer;
-    private void Awake()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-    protected void Start()
+    void Start()
     {
         sizeWayPoints = wayPoints.Length;
         currentSpeed = speed;
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         healthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
     }
 
-    protected void Update()
+    void Update()
     {
         distanceToTarget = Vector2.Distance(transform.position, target.position);
         
@@ -62,11 +62,11 @@ public class Enemy : MonoBehaviour
 
         
     }
-    protected void FixedUpdate()
+    void FixedUpdate()
     {
-        Vector2 dirEnemy = Vector2.zero;
+        //Vector2 dirEnemy = Vector2.zero;
 
-        dirEnemy = Chase(dirEnemy);
+        StatesEnemy();
 
         //Seguir el Path si no esta el player en el rango
         dirEnemy = Path(dirEnemy);
@@ -74,31 +74,6 @@ public class Enemy : MonoBehaviour
         Flip();
 
         rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed * 100, rb2d.velocity.y);
-
-    }
-
-    private Vector2 Chase(Vector2 dirEnemy)
-    {
-        //Perseguir al player
-        if (targetInRange && !targetInStopDistance)
-        {
-            dirEnemy = target.position - transform.position;
-        }
-        //Enemigo al lado del player
-        else if (targetInRange && targetInStopDistance)
-        {
-            dirEnemy = Vector2.zero;
-        }
-        //Volver a la posicion inicial si no sigue la ruta
-        else
-        {
-            if (!followPath)
-            {
-                dirEnemy = (Vector3)initPosition - transform.position;
-            }
-        }
-
-        return dirEnemy;
     }
 
     private Vector2 Path(Vector2 dirEnemy)
@@ -128,6 +103,13 @@ public class Enemy : MonoBehaviour
         return dirEnemy;
     }
 
+    public virtual void StatesEnemy()
+    {
+       
+    }
+    public virtual void OnCollEnter(Collision2D col) {;}
+    public virtual void OnTrigEnter(Collider2D col) {;}
+    public virtual void OnTrigStay(Collider2D col) {;}
     public virtual void Attack() {;}
     private void NextWaypoint()
     {
@@ -151,7 +133,7 @@ public class Enemy : MonoBehaviour
 
         }
     }
-   
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -163,8 +145,19 @@ public class Enemy : MonoBehaviour
                 countAttack = 0;
             }              
         }
+        OnTrigStay(collision);
+        
     }
-    private void OnDrawGizmos()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnTrigEnter(collision);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnCollEnter(collision);
+    }
+
+private void OnDrawGizmos()
     {
         if (targetInRange)
         {
