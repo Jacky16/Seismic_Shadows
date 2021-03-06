@@ -157,7 +157,7 @@ public class Enemy : MonoBehaviour
         OnCollEnter(collision);
     }
 
-private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (targetInRange)
         {

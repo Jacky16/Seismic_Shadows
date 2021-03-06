@@ -14,13 +14,7 @@ public class InputManager : MonoBehaviour
     {
         inputs = new Game_Inputs();
     }
-    private void Update()
-    {
-        inputs.Player.Jump.started += ctx =>
-        {
-        };
-
-    }
+   
 
     //Funciones que se ejecutan en el inspector
     #region Player

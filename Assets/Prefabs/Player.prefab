@@ -433,8 +433,9 @@ MonoBehaviour:
   interactiveWave: {fileID: 6797552869381069275, guid: 73d786b165ce0674597087e8d0e56931,
     type: 3}
   timeInteractiveWave: 2
-  pushWave: {fileID: 0}
-  timePushWave: 0
+  pushWave: {fileID: 6797552869381069275, guid: 331ec54ed80e7ec448c55bd3e7e350bf,
+    type: 3}
+  timePushWave: 2
 --- !u!114 &562313004
 MonoBehaviour:
   m_ObjectHideFlags: 0

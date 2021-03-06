@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ObjectInteractive
+  - InteractiveWave
   layers:
   - Default
   - TransparentFX
@@ -43,4 +45,10 @@ TagManager:
     locked: 0
   - name: Environment
     uniqueID: 2432370103
+    locked: 0
+  - name: Wave
+    uniqueID: 4284382941
+    locked: 0
+  - name: Interactive
+    uniqueID: 4140949361
     locked: 0

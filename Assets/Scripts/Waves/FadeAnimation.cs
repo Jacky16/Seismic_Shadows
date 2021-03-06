@@ -6,8 +6,8 @@ using DG.Tweening;
 
 public class FadeAnimation : MonoBehaviour
 {
-    float fadeDuration;
-    SpriteRenderer spriteRenderer;
+    protected float fadeDuration;
+    protected SpriteRenderer spriteRenderer;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,10 +27,13 @@ public class FadeAnimation : MonoBehaviour
         sequence.Append(spriteRenderer.DOColor(color, .1f));
         sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
     }
+    public virtual void PlayObjectInteractive() {; }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         Color color = Color.white;
 
+        //Obtener el sprite contra lo que colisiona
         if (collision.TryGetComponent(out WaveAnimation wa))
         {
             color = wa.GetSprite().color;

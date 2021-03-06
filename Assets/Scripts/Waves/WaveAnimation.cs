@@ -11,7 +11,8 @@ public class WaveAnimation : MonoBehaviour
     [SerializeField] float durationFadeCollisions;
     [SerializeField] SpriteRenderer sprite;
     float counter;
-
+     enum Wavetype {INTERACTIVE, PUSH,NONE };
+    [SerializeField] Wavetype wavetype = Wavetype.NONE;
     private void Start()
     {
         DoWaveAnimation();
@@ -40,7 +41,30 @@ public class WaveAnimation : MonoBehaviour
     {
         if (collision.TryGetComponent<FadeAnimation>(out FadeAnimation fa))
         {
-            fa.SetDurationFade(counter);
+            if (!collision.CompareTag("ObjectInteractive"))
+            {
+                fa.SetDurationFade(counter);
+            }
+        }       
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<FadeAnimation>(out FadeAnimation fa))
+        {
+            switch (wavetype)
+            {
+                case Wavetype.INTERACTIVE:
+                    fa.PlayObjectInteractive();
+                    break;
+
+                case Wavetype.PUSH:
+                    break;
+
+                default:
+                    
+                    break;
+
+            }
         }
     }
 }
