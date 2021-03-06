@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 44cf3053fe7973a4b863c91144b7798e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0e4f4b1ef381f64a90e8fd4045e4ac0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6797552869381069274}
   - component: {fileID: 1148502882966367823}
   m_Layer: 0
-  m_Name: Wave_1
+  m_Name: Slow Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a04757b9d0d1f0488cd93ba34cd62a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleTo: 4
-  duration: 1
+  scaleTo: 8
+  duration: 4
   durationFadeCollisions: 3
   sprite: {fileID: 6797552867905533432}

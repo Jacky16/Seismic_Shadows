@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c97693f1-bfcf-4ee1-8959-77a44acfcbd3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "NormalizeVector2",
                     "interactions": ""
                 },
@@ -17,6 +17,38 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "9b223099-cddf-4f3c-9408-f2a7fcf8e592",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
+                },
+                {
+                    "name": "Slow Wave",
+                    "type": "Button",
+                    "id": "f9edfc8a-fb16-4829-b7ba-5d3cc3e27078",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
+                },
+                {
+                    "name": "Quick Wave",
+                    "type": "Button",
+                    "id": "114bf85d-b0f3-425c-8d8e-7c2e1fdaf01c",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interactive Wave",
+                    "type": "Button",
+                    "id": "58f219fa-74a3-4876-b92c-6cce71816fc4",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
+                },
+                {
+                    "name": "Push Wave",
+                    "type": "Button",
+                    "id": "d560878c-40f5-406f-905d-aa7c1a0b28e9",
                     "expectedControlType": "Button",
                     "processors": "NormalizeVector2",
                     "interactions": ""
@@ -174,6 +206,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "092b8029-966b-4609-bb41-50ea27385a8c",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slow Wave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb278941-26f0-4bf6-8bf1-e5af017aebb8",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quick Wave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3720cad5-d93a-43fa-9bea-8bc31cb01697",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interactive Wave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8eef6282-feba-4227-9f51-c960c45cf5a7",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Push Wave",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

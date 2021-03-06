@@ -51,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
                 isJumpSliding = false;
                 counterJumpWall = 0;
             }       
-        }  
+        }
+       
     }
 
     private void FixedUpdate()
@@ -60,17 +61,17 @@ public class PlayerMovement : MonoBehaviour
         
         isGrounded = Physics2D.OverlapCircle(feetCheckPos.position, checkRadius,layerMaskGround);
         isTouchingFront= Physics2D.OverlapCircle(frontCheckPos.position, checkRadius, layerMaskGround);
-
+        if (axis.x != 0 && !isTouchingFront)
+        {
+            waveSpawner.SetWaveToInstantiate(0,true);
+        }
         WallSlide();
     }
 
     private void Movement()
     {
         movement = new Vector2(axis.x * speed * 100, rb2d.velocity.y);
-        if(axis.x != 0)
-        {
-           waveSpawner.Spawn();
-        }
+        
         //Si esta saltando entre columnas, se aplican fuerzas opuestas
         if (isJumpSliding && !isGrounded) {
             Vector2 force;
@@ -146,6 +147,14 @@ public class PlayerMovement : MonoBehaviour
     public void SetAxis(Vector2 _axis)
     {
         axis = _axis;
+    }
+    public bool TouchingFront()
+    {
+        return isTouchingFront;
+    }
+    public bool IsMoving()
+    {
+        return axis.x != 0;
     }
     private void OnDrawGizmos()
     {

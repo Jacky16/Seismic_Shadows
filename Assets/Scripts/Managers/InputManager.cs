@@ -7,15 +7,30 @@ public class InputManager : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] PlayerMovement player;
+    [SerializeField] WaveSpawner waveSpawner;
+    Game_Inputs inputs;
     Vector2 axis;
+    private void Awake()
+    {
+        inputs = new Game_Inputs();
+    }
+    private void Update()
+    {
+        inputs.Player.Jump.started += ctx =>
+        {
+        };
+
+    }
+
+    //Funciones que se ejecutan en el inspector
+    #region Player
     public void OnMovement(InputAction.CallbackContext ctx)
     {
-
         if (ctx.performed)
         {
             axis = ctx.ReadValue<Vector2>();
         }
-        else if (ctx.canceled)
+        if (ctx.canceled)
         {
             axis = Vector2.zero;
         }
@@ -27,5 +42,57 @@ public class InputManager : MonoBehaviour
         {
             player.Jump();
         }
+    }
+    #endregion
+
+    #region Waves
+    public void OnSlowWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.SetWaveToInstantiate(1,true);
+        }
+        if (ctx.canceled)
+        {
+            waveSpawner.SetWaveToInstantiate(1, false);
+        }
+    }
+    public void OnQuickWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.SetWaveToInstantiate(2, true);
+        }
+        if (ctx.canceled)
+        {
+            waveSpawner.SetWaveToInstantiate(2, false);
+        }
+    }
+    public void OnInteractiveWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.SetWaveToInstantiate(3, true);
+        }
+        if (ctx.canceled)
+        {
+            waveSpawner.SetWaveToInstantiate(3, false);
+        }
+    }
+    public void OnPushWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.SetWaveToInstantiate(4, true);
+        }
+        if (ctx.canceled)
+        {
+            waveSpawner.SetWaveToInstantiate(4, false);
+        }
+    }
+    #endregion
+    private void OnEnable()
+    {
+        inputs.Enable();
     }
 }

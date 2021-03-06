@@ -32,6 +32,10 @@ public class WaveAnimation : MonoBehaviour
     {
         return sprite;
     }
+    public float GetDuration()
+    {
+        return duration;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<FadeAnimation>(out FadeAnimation fa))
