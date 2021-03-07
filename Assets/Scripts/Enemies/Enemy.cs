@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-    void Start()
+    protected virtual void Start()
     {
         sizeWayPoints = wayPoints.Length;
         currentSpeed = speed;
@@ -111,6 +111,10 @@ public class Enemy : MonoBehaviour
     public virtual void OnTrigEnter(Collider2D col) {;}
     public virtual void OnTrigStay(Collider2D col) {;}
     public virtual void Attack() {;}
+    public int Damage()
+    {
+        return damage;
+    }
     private void NextWaypoint()
     {
         currentSpeed = 0;
@@ -156,7 +160,6 @@ public class Enemy : MonoBehaviour
     {
         OnCollEnter(collision);
     }
-
     private void OnDrawGizmos()
     {
         if (targetInRange)

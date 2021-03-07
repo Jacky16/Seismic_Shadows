@@ -5,25 +5,46 @@ using UnityEngine;
 public class WizardBlindur : Enemy
 {
     [Header("Settings Blindur Berserker")]
-    [SerializeField] float timeToAttackAgain;
-    [SerializeField] GameObject wavePrefab;
-    [SerializeField] Transform waveSpawn;
+    [SerializeField] ParticleSystem ps;
     float count = float.MaxValue;
+    int pos = 0;
+    bool canMove;
+    protected override void Start()
+    {
+       
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
+    }
 
     public override void StatesEnemy()
     {
         if (targetInRange)
         {
-            count += Time.deltaTime;
-            if(count >= timeToAttackAgain)
+            count += Time.fixedDeltaTime;
+            if(count >= timeToAttack)
             {
-                Attack();
+                ps.Play();
                 count = 0;
+                canMove = true;
+            }
+            if(count >=  timeToAttack - 0.8f && canMove)
+            {
+                SwitchPosition();
+                canMove = false;
             }
         }
     }
+    void SwitchPosition()
+    {
+        pos++;
+        if(pos >= wayPoints.Length)
+        {
+            pos = 0;
+        }
+        transform.position = wayPoints[pos].position;
+    }
     public override void Attack()
     {
-        
+        ps.Play();
     }
 }

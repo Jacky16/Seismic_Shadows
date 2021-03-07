@@ -14,9 +14,9 @@ public class BehaivourWave : MonoBehaviour
 
     }
 
-    protected virtual void ActionWave(Collider2D col) {; }
+    protected virtual void ActionOnWave(Collider2D col) {; }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ActionWave(collision);      
+        ActionOnWave(collision);      
     }
 }
