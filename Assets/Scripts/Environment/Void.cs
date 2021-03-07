@@ -10,9 +10,9 @@ public class Void : MonoBehaviour
         tpPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<TPlayerManager>();
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         tpPlayer.Teleport();
     }
 }
