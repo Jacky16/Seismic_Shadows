@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 2008729277}
   m_Layer: 0
   m_Name: Interactive Wave
-  m_TagString: Untagged
+  m_TagString: InteractiveWave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +212,6 @@ MonoBehaviour:
   duration: 2
   durationFadeCollisions: 3
   sprite: {fileID: 6797552867905533432}
-  wavetype: 0
 --- !u!50 &4645380462986638382
 Rigidbody2D:
   serializedVersion: 4

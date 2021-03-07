@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-
 public class FadeAnimation : MonoBehaviour
 {
-    protected float fadeDuration;
-    protected SpriteRenderer spriteRenderer;
+    float fadeDuration;
+    SpriteRenderer spriteRenderer;
+    Color color = Color.white;
+    enum Wavetype { INTERACTIVE, PUSH, NONE };
+    [SerializeField] Wavetype wavetype = Wavetype.NONE;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -16,7 +18,9 @@ public class FadeAnimation : MonoBehaviour
     {
         fadeDuration = num;
     }
-    public void PlayFadeAnimation(Color color)
+
+    //Anima todo lo que no sea interactuable o empujable
+    void PlayFadeAnimation(Color color)
     {
         spriteRenderer.color = color;
         Sequence sequence = DOTween.Sequence();
@@ -27,17 +31,34 @@ public class FadeAnimation : MonoBehaviour
         sequence.Append(spriteRenderer.DOColor(color, .1f));
         sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
     }
-    public virtual void PlayObjectInteractive() {; }
+
+    void PlayInteractiveAnimation()
+    {
+        spriteRenderer.DOFade(1, 2);       
+    }
+    public void PlayAnimation()
+    {
+        switch (wavetype)
+        {
+            case Wavetype.INTERACTIVE:
+                PlayInteractiveAnimation();
+                break;
+
+            case Wavetype.PUSH:
+                break;
+
+            default:
+            PlayFadeAnimation(color);
+                break;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        Color color = Color.white;
-
         //Obtener el sprite contra lo que colisiona
         if (collision.TryGetComponent(out WaveAnimation wa))
         {
             color = wa.GetSprite().color;
         }
-        PlayFadeAnimation(color);
+        PlayAnimation();
     }
 }

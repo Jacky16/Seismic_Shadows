@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         }
        
     }
-
     private void FixedUpdate()
     {
         Movement();
@@ -155,6 +154,10 @@ public class PlayerMovement : MonoBehaviour
     public bool IsMoving()
     {
         return axis.x != 0;
+    }
+    public void SetPosition(Vector3 _pos)
+    {
+        rb2d.position = _pos;
     }
     private void OnDrawGizmos()
     {
