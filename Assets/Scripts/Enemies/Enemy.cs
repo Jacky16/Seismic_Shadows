@@ -25,10 +25,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected bool followPath;
     [SerializeField] protected float timeBetweenWaypoints;
     [SerializeField] protected Transform[] wayPoints;
-    int sizeWayPoints;
-    int nextPoint = 0;
+    protected int sizeWayPoints;
+    protected int nextPoint = 0;
     protected float distanceToTarget;
-    float countWaypoints = 0;
+    protected float countWaypoints = 0;
 
 
     //Componentes
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
         rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed * 100, rb2d.velocity.y);
     }
 
-    private Vector2 Path(Vector2 dirEnemy)
+    public virtual Vector2 Path(Vector2 dirEnemy)
     {
         if (followPath && !targetInRange)
         {
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
     {
         return damage;
     }
-    private void NextWaypoint()
+    protected void NextWaypoint()
     {
         currentSpeed = 0;
         nextPoint++;
