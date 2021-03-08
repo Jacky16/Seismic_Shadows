@@ -31,9 +31,17 @@ public class BehaivourStalactites : BehaivourWave
                 this.gameObject.SetActive(false);
             }
         }
-        else if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-
+            this.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if(collision.gameObject.TryGetComponent(out HealthEnemies h))
+            {
+                h.Damage(3);
+            }
+            this.gameObject.SetActive(false);
         }
     }
 
