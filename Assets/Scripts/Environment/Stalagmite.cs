@@ -7,6 +7,7 @@ public class Stalagmite : MonoBehaviour
     private HealthPlayer health;
     private float count;
     [SerializeField] float timeToDamagePlayer;
+
     // Start is called before the first frame update
     void Start()
     {
