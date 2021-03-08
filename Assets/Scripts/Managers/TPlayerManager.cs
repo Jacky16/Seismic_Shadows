@@ -11,13 +11,13 @@ public class TPlayerManager : MonoBehaviour
     {
         hp = GetComponent<HealthPlayer>();
     }
-    public void Teleport()
+    public void Teleport(int damage)
     {
         //EXPLICACION
         //Se llama desde Void.cs, cuando caes al vacio recibes 1 de daño
         //y te teletransportas a la posicion guardada al pasar por el checkpoint.
 
-        hp.Damage(1);
+        hp.Damage(damage);
         transform.position = pos;
     }
 
