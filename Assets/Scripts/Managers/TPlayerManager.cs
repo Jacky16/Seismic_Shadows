@@ -13,6 +13,10 @@ public class TPlayerManager : MonoBehaviour
     }
     public void Teleport()
     {
+        //EXPLICACION
+        //Se llama desde Void.cs, cuando caes al vacio recibes 1 de daño
+        //y te teletransportas a la posicion guardada al pasar por el checkpoint.
+
         hp.Damage(1);
         transform.position = pos;
     }
@@ -21,6 +25,10 @@ public class TPlayerManager : MonoBehaviour
     {
         if (collision.CompareTag("TP"))
         {
+            //EXPLICACION
+            //Cuando el player pasa por un checkpoint invisible justo
+            //antes de un hoyo, se guarda la posicion en la variable pos.
+
             pos = collision.transform.position;
         }
     }

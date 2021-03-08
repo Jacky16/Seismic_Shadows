@@ -10,28 +10,25 @@ public class Stalagmite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        count = timeToDamagePlayer;
         health = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
-           health.Damage(1);
-        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
+            //VARIABLES
+            //Count: Contador de segundos 
+            //timeToDamagePlayer: Se le da el valor desde el inspector,
+            //indica cada cuanto tiempo se le hará daño al player.
+
+            //EXPLICACIÓN
+            //Lo que se pretende es que cada 'X' segundos de estar encima
+            //de una estalagmita, el jugador reciba 1 de daño.
+            //De esta forma evitamos que el player se mantenga mucho tiempo encima.
+
             count += Time.deltaTime;
-            if (count >= 1)
+            if (count >= timeToDamagePlayer)
             {
                 health.Damage(1);
                 count = 0;

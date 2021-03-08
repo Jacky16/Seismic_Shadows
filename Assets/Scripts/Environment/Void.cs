@@ -12,6 +12,13 @@ public class Void : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //VARIABLES
+        //tpPlayer: instancia del script 'TPlayerManager'.
+
+        //EXPLICACION
+        //Cuando el player colisiona con el objeto invisible 'Void',
+        //se llama a la función para que se teletransporte al checkpoint y 
+        //reciba daño.
 
         tpPlayer.Teleport();
     }
