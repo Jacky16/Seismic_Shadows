@@ -65,6 +65,14 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Stealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""266e5fba-f460-463c-b5fe-233805994388"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -202,8 +210,30 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""63b5c88f-71ba-481d-8bc7-e1d57cae8f4e"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slow Wave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cb278941-26f0-4bf6-8bf1-e5af017aebb8"",
                     ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quick Wave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86723dd3-f5b1-488e-a624-92591c23c2a8"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -224,12 +254,56 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""432ee265-c657-4671-b5cf-2a13cbf62ffb"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interactive Wave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8eef6282-feba-4227-9f51-c960c45cf5a7"",
                     ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Push Wave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e7e7e30-c089-4efc-9273-648eb49b3e86"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Push Wave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b42e258e-aa33-4153-b099-3dd873d4b4dd"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""826fad07-2fa0-49a0-920b-daccc4151b3a"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stealth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -813,6 +887,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         m_Player_QuickWave = m_Player.FindAction("Quick Wave", throwIfNotFound: true);
         m_Player_InteractiveWave = m_Player.FindAction("Interactive Wave", throwIfNotFound: true);
         m_Player_PushWave = m_Player.FindAction("Push Wave", throwIfNotFound: true);
+        m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -880,6 +955,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_QuickWave;
     private readonly InputAction m_Player_InteractiveWave;
     private readonly InputAction m_Player_PushWave;
+    private readonly InputAction m_Player_Stealth;
     public struct PlayerActions
     {
         private @Game_Inputs m_Wrapper;
@@ -890,6 +966,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         public InputAction @QuickWave => m_Wrapper.m_Player_QuickWave;
         public InputAction @InteractiveWave => m_Wrapper.m_Player_InteractiveWave;
         public InputAction @PushWave => m_Wrapper.m_Player_PushWave;
+        public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -917,6 +994,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @PushWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPushWave;
                 @PushWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPushWave;
                 @PushWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPushWave;
+                @Stealth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
+                @Stealth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
+                @Stealth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -939,6 +1019,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @PushWave.started += instance.OnPushWave;
                 @PushWave.performed += instance.OnPushWave;
                 @PushWave.canceled += instance.OnPushWave;
+                @Stealth.started += instance.OnStealth;
+                @Stealth.performed += instance.OnStealth;
+                @Stealth.canceled += instance.OnStealth;
             }
         }
     }
@@ -1101,6 +1184,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         void OnQuickWave(InputAction.CallbackContext context);
         void OnInteractiveWave(InputAction.CallbackContext context);
         void OnPushWave(InputAction.CallbackContext context);
+        void OnStealth(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
