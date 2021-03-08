@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakablePlatform : MonoBehaviour
+public class BreakablePlatform : BehaivourWave
 {
     GameObject player;
     private float count;
@@ -13,7 +13,7 @@ public class BreakablePlatform : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void ActionOnWave(Collider2D col)
     {
         //EXPLICACION
         //Si se destruye una plataforma agrietada con la onda de interaccion
@@ -21,7 +21,7 @@ public class BreakablePlatform : MonoBehaviour
         //Está hecho asi por si en un futuro queremos hacer que pasados X segundos
         //vuelva a aparecer la plataforma.
 
-        if (collision.tag == "InteractiveWave")
+        if (col.tag == "InteractiveWave")
         {
             this.gameObject.SetActive(false);
         }

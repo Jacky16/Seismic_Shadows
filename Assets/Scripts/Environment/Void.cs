@@ -22,6 +22,17 @@ public class Void : MonoBehaviour
 
         //PARAMETROS
         //Se indica los puntos de vida que inflinge ese void
-        tpPlayer.Teleport(1);
+
+        if(collision.collider.tag == "Player")
+        {
+            tpPlayer.Teleport(1);
+        }
+        if (collision.collider.tag == "Enemy")
+        {
+            if(collision.gameObject.TryGetComponent(out HealthEnemies h))
+            {
+                h.Damage(3);
+            }
+        }
     }
 }

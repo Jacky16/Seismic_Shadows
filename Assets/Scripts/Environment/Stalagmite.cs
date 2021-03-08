@@ -7,6 +7,7 @@ public class Stalagmite : MonoBehaviour
     private HealthPlayer health;
     private float count;
     [SerializeField] float timeToDamagePlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,16 @@ public class Stalagmite : MonoBehaviour
             {
                 health.Damage(1);
                 count = 0;
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            if(collision.gameObject.TryGetComponent(out HealthEnemies h))
+            {
+                h.Damage(3);
             }
         }
     }
