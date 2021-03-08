@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Void : MonoBehaviour
+public class LavaPit : MonoBehaviour
 {
     TPlayerManager tpPlayer;
     private void Awake()
