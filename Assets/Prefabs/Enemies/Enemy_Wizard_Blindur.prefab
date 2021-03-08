@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 131055479302021195}
   - component: {fileID: 1139602182}
   - component: {fileID: 1139602183}
+  - component: {fileID: -2598225064738675310}
   m_Layer: 0
   m_Name: Enemy_Wizard_Blindur
   m_TagString: Enemy
@@ -146,6 +147,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-2598225064738675310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352668552817858253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44eca4bdb05a0064b8c62d7bec48caa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 0
+  lifeText: {fileID: 0}
 --- !u!1 &8737490784648093915
 GameObject:
   m_ObjectHideFlags: 0

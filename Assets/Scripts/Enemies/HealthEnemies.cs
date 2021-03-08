@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class HealthEnemies : Health
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Dead()
     {
-        
+        GetComponent<SpriteRenderer>().color = Color.red;
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

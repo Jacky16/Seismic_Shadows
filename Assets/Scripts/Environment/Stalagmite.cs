@@ -36,4 +36,14 @@ public class Stalagmite : MonoBehaviour
             }
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            if(collision.gameObject.TryGetComponent(out HealthEnemies h))
+            {
+                h.Damage(3);
+            }
+        }
+    }
 }   

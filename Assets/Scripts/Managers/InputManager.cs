@@ -8,12 +8,8 @@ public class InputManager : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] PlayerMovement player;
     [SerializeField] WaveSpawner waveSpawner;
-    Game_Inputs inputs;
     Vector2 axis;
-    private void Awake()
-    {
-        inputs = new Game_Inputs();
-    }
+    
    
 
     //Funciones que se ejecutan en el inspector
@@ -96,8 +92,5 @@ public class InputManager : MonoBehaviour
         }
     }
     #endregion
-    private void OnEnable()
-    {
-        inputs.Enable();
-    }
+
 }
