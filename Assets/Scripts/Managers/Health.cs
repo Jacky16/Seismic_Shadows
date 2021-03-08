@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
     }
     public void AddMaxLife(int _maxLife)
     {
-        maxLife = +_maxLife;
+        maxLife += _maxLife;
     }
     public void Damage(int _damage)
     {

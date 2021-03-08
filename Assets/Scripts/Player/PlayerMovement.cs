@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         
         isGrounded = Physics2D.OverlapCircle(feetCheckPos.position, checkRadius,layerMaskGround);
         isTouchingFront= Physics2D.OverlapCircle(frontCheckPos.position, checkRadius, layerMaskGround);
+
         if (axis.x != 0 && !isTouchingFront)
         {
             waveSpawner.SetWaveToInstantiate(0,true);

@@ -27,6 +27,33 @@ public class BlindurBerserker : Enemy
             dirEnemy = Vector2.zero;
         }
     }
+    public override Vector2 Path(Vector2 dirEnemy)
+    {
+        if (followPath && !targetInRange && !carger)
+        {
+            Transform currentWaypoint = wayPoints[nextPoint];
+
+            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
+
+            dirEnemy = currentWaypoint.position - transform.position;
+
+            rb2d.velocity = (dirEnemy.normalized * currentSpeed * 100);
+
+            if (distanteToNextWaypoint <= 20)
+            {
+                //Pasar al siguiente Waypoint
+                countWaypoints += Time.fixedDeltaTime;
+                if (countWaypoints >= timeBetweenWaypoints)
+                {
+                    NextWaypoint();
+                    countWaypoints = 0;
+                }
+            }
+        }
+
+        return dirEnemy;
+    }
+
     public override void Attack()
     {
         Debug.Log("Ataque Blindur");
@@ -34,6 +61,10 @@ public class BlindurBerserker : Enemy
     }
 
     public override void OnCollEnter(Collision2D col)
+    {
+        Invoke("SetCargerFalse", 1);
+    }
+    void SetCargerFalse()
     {
         carger = false;
     }
