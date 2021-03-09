@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Setting Player")]
     [SerializeField] float speed;
+    [SerializeField] float speedStealth;
     [SerializeField] float jumpForce;
     [SerializeField] float jumpWallForce;
     [SerializeField] float forceXJumping;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     bool isTouchingFront;
     bool wallSliding;
     bool isJumpSliding;
+    bool isStealthMode;
     float counterJumpWall = 0;
 
     //Componentes
@@ -70,8 +72,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        movement = new Vector2(axis.x * speed * 100, rb2d.velocity.y);
-        
+        if (isStealthMode && isGrounded)
+        {
+            movement = new Vector2(axis.x * speedStealth * 100, rb2d.velocity.y);
+        }
+        else
+        {
+            movement = new Vector2(axis.x * speed * 100, rb2d.velocity.y);
+        }
+
         //Si esta saltando entre columnas, se aplican fuerzas opuestas
         if (isJumpSliding && !isGrounded) {
             Vector2 force;
@@ -156,9 +165,17 @@ public class PlayerMovement : MonoBehaviour
     {
         return axis.x != 0;
     }
+    public bool IsStealth()
+    {
+        return isStealthMode;
+    }
     public void SetPosition(Vector3 _pos)
     {
         rb2d.position = _pos;
+    }
+    public void SetStealth(bool _b)
+    {
+        isStealthMode = _b;
     }
     IEnumerator ExecuteWaveGround()
     {
