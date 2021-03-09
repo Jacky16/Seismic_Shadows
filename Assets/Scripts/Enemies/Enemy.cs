@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [Header("General Settings")]
     [SerializeField] protected float radius;
     [SerializeField] protected float speed;
+    [SerializeField] protected float angle;
     protected float currentSpeed;
     protected bool targetInRange;
     protected bool isInitPos;
@@ -27,9 +28,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Transform[] wayPoints;
     protected int sizeWayPoints;
     protected int nextPoint = 0;
-    protected float distanceToTarget;
     protected float countWaypoints = 0;
 
+    protected float distanceToTarget;
+    protected bool isInAngle;
 
     //Componentes
     protected Rigidbody2D rb2d;
@@ -173,5 +175,8 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
         Gizmos.DrawWireSphere(transform.position, stopDistance);
 
+        //Draw angle
+        Gizmos.color = Color.blue;
+        
     }
 }

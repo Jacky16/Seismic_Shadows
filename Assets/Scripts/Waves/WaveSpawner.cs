@@ -7,8 +7,14 @@ public class WaveSpawner : MonoBehaviour
     
     [SerializeField] Transform spawnPos;
     PlayerMovement player;
-     //Settings Waves
 
+    [Header("Point Wave")]
+    [SerializeField] GameObject pointWave;
+    [SerializeField] float timePointWave;
+    bool canSpawnPointWave;
+    float countPointW = float.MaxValue;
+
+    //Settings Waves
     [Header("Generic Wave")]
     [SerializeField] GameObject genericWave;
     [SerializeField] float timeGenericWave;
@@ -108,8 +114,22 @@ public class WaveSpawner : MonoBehaviour
         {
             countPW += Time.deltaTime;
         }
-    }
 
+        if(countPointW >= timePointWave && canSpawnPointWave)
+        {
+            InstantiateWave(pointWave);
+            countPointW = 0;
+        }
+        else
+        {
+            countPointW += Time.deltaTime;
+        }
+    }
+    public void SpawnGroundWave()
+    {
+        GameObject go = Instantiate(genericWave);
+        go.transform.position = transform.position;
+    }
     public void SetWaveToInstantiate(int _selectWave,bool _can)
     {
         switch (_selectWave)
@@ -128,6 +148,9 @@ public class WaveSpawner : MonoBehaviour
                 break;
             case 4:
                 canSpawnPW = _can;
+                break;
+            case 5:
+                canSpawnPointWave = _can;
                 break;
             default:
                 Debug.LogError("Error Select Wave");

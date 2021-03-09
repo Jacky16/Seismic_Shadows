@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-
 public class WaveAnimation : MonoBehaviour
 {
     [SerializeField] float scaleTo;
     [SerializeField] float duration;
-    [SerializeField] float durationFadeCollisions;
     [SerializeField] SpriteRenderer sprite;
     float counter;
     

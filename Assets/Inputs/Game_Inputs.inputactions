@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "NormalizeVector2",
                     "interactions": ""
+                },
+                {
+                    "name": "DropCheck",
+                    "type": "Button",
+                    "id": "b0318a11-7ca1-4c42-b0be-34b4fdf6531f",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -291,6 +299,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Stealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "191a078e-6c73-423e-91ac-84cf03027fb2",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DropCheck",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

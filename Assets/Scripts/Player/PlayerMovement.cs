@@ -160,6 +160,21 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2d.position = _pos;
     }
+    IEnumerator ExecuteWaveGround()
+    {
+        yield return new WaitForSeconds(.04f);
+        if (isGrounded)
+        {
+            waveSpawner.SpawnGroundWave();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            StartCoroutine(ExecuteWaveGround());
+        }
+    }
     private void OnDrawGizmos()
     {
         if (isGrounded)
