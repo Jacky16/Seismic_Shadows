@@ -31,11 +31,5 @@ public class BlindurGuardian : Enemy
         healthPlayer.Damage(damage);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("InvisibleWall"))
-        {
-            dirEnemy = (Vector3)initPosition - transform.position;
-        }
-    }
+
 }

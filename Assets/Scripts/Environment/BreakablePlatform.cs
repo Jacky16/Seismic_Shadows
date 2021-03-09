@@ -9,9 +9,11 @@ public class BreakablePlatform : BehaivourWave
     [Header("Tiempo para romperse")]
     [SerializeField] int maxTime;
     [SerializeField] int respawnTime;
+    bool isBroken;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        isBroken = false;
         
     }
 
@@ -25,24 +27,50 @@ public class BreakablePlatform : BehaivourWave
 
         if (col.tag == "InteractiveWave")
         {
-            this.gameObject.SetActive(false);
+            StartCoroutine(SpawnPlatformAgain(0));
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(SpawnPlatformAgain());
+            count += Time.deltaTime;
+            if(count >= maxTime)
+            {
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<BoxCollider2D>().enabled = false;
+                count = 0;
+                isBroken = true;
+            }
 
         }
     }
-
-    IEnumerator SpawnPlatformAgain()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        yield return new WaitForSecondsRealtime(maxTime);
+        if (isBroken)
+        {
+            count += Time.deltaTime;
+
+            if (count >= respawnTime)
+            {
+                GetComponent<SpriteRenderer>().enabled = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+                isBroken = false;
+
+            }
+        }
+    }
+
+    IEnumerator SpawnPlatformAgain(int num)
+    {
+        if (num == 1)
+        {
+            yield return new WaitForSecondsRealtime(maxTime);
+        }
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
+
 
         yield return new WaitForSecondsRealtime(respawnTime);
 
