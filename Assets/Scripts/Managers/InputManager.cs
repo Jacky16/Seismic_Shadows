@@ -80,6 +80,17 @@ public class InputManager : MonoBehaviour
             waveSpawner.SetWaveToInstantiate(4, false);
         }
     }
+    public void OnStealth(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+
+        }
+        if (ctx.canceled)
+        {
+
+        }
+    }
     #endregion
 
 }
