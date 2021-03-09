@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6797552869381069274}
   - component: {fileID: 1148502882966367823}
   m_Layer: 0
-  m_Name: Generic_Wave
+  m_Name: StealhWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a04757b9d0d1f0488cd93ba34cd62a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleTo: 4
-  duration: 1
-  durationFadeCollisions: 3
+  scaleTo: 1.3
+  duration: 0.5
   sprite: {fileID: 6797552867905533432}

@@ -21,6 +21,12 @@ public class WaveSpawner : MonoBehaviour
     bool canSpawnGW;
     float countGW = float.MaxValue;
 
+    [Header("Stealth Wave")]
+    [SerializeField] GameObject stealthWave;
+    [SerializeField] float timeStealthWave;
+    bool canSpawnStealthW;
+    float countStealthW = float.MaxValue;
+
     [Header("Onda Lenta")]
     [SerializeField] GameObject slowWave;
     [SerializeField] float timeSlowWave;
@@ -56,7 +62,7 @@ public class WaveSpawner : MonoBehaviour
     private void WavesManager()
     {
         //General wave
-        if (player.IsMoving() && !player.TouchingFront())
+        if (player.IsMoving() && !player.TouchingFront() && !player.IsStealth())
         {
             countGW += Time.deltaTime;
             if (countGW >= timeGenericWave)
@@ -69,6 +75,22 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             countGW = float.MaxValue;
+        }
+        //Stealth wave
+        if (player.IsMoving() && !player.TouchingFront() && player.IsStealth())
+        {
+            //Stealth Wave
+            countStealthW += Time.deltaTime;
+            print(countStealthW);
+            if (countStealthW >= timeStealthWave && canSpawnStealthW)
+            {
+                InstantiateWave(stealthWave);
+                countStealthW = 0;
+            }       
+        }
+        else
+        {
+            countStealthW = float.MaxValue;
         }
 
         //Slow wave
@@ -115,6 +137,7 @@ public class WaveSpawner : MonoBehaviour
             countPW += Time.deltaTime;
         }
 
+        //Point Wave
         if(countPointW >= timePointWave && canSpawnPointWave)
         {
             InstantiateWave(pointWave);
@@ -123,7 +146,7 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             countPointW += Time.deltaTime;
-        }
+        }    
     }
     public void SpawnGroundWave()
     {
@@ -136,6 +159,7 @@ public class WaveSpawner : MonoBehaviour
         {
             case 0:
                 canSpawnGW = _can;
+                canSpawnStealthW = _can;
                 break;
             case 1:
                 canSpawnSW = _can;
@@ -152,6 +176,7 @@ public class WaveSpawner : MonoBehaviour
             case 5:
                 canSpawnPointWave = _can;
                 break;
+            
             default:
                 Debug.LogError("Error Select Wave");
                 break;

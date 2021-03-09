@@ -18,4 +18,9 @@ public class PointWaveAnimation : MonoBehaviour
         sequence.Join(sprite.DOFade(0, duration));
         sequence.SetLoops(-1);
     }  
+
+    public void SetScale(int _scale)
+    {
+        scaleTo = _scale;
+    }
 }

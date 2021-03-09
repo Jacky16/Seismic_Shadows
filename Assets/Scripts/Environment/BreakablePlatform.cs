@@ -8,6 +8,7 @@ public class BreakablePlatform : BehaivourWave
     private float count;
     [Header("Tiempo para romperse")]
     [SerializeField] int maxTime;
+    bool playerInPlattform;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -26,6 +27,19 @@ public class BreakablePlatform : BehaivourWave
             this.gameObject.SetActive(false);
         }
     }
+    private void Update()
+    {
+        if (playerInPlattform)
+        {
+            count += Time.deltaTime;
+            print(count);
+            if (count >= maxTime)
+            {
+                this.gameObject.SetActive(false);              
+            }
+            
+        }
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         //VARIABLES
@@ -36,15 +50,10 @@ public class BreakablePlatform : BehaivourWave
         //EXPLICACION
         //Si el player está más de maxTime encima de la plataforma,
         //esta se romperá.
-      
-        if (collision.collider.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            count += Time.deltaTime;
-            if (count >= maxTime)
-            {
-                this.gameObject.SetActive(false);
-                count = 0;
-            }
+            playerInPlattform = true;
         }
+
     }
 }

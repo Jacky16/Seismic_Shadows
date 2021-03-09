@@ -95,11 +95,11 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-
+            player.SetStealth(true);
         }
         if (ctx.canceled)
         {
-
+            player.SetStealth(false);
         }
     }
     #endregion
