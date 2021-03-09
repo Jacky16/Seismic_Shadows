@@ -7,6 +7,7 @@ public class FadeAnimation : MonoBehaviour
 {
     float fadeDuration;
     SpriteRenderer spriteRenderer;
+    bool isAnim;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -17,14 +18,19 @@ public class FadeAnimation : MonoBehaviour
     }
     public void PlayFadeAnimation(Color color)
     {
-        spriteRenderer.color = color;
-        Sequence sequence = DOTween.Sequence();
-        if (sequence.IsPlaying())
+        if (isAnim)
         {
-            sequence.Restart();
+            spriteRenderer.color = color;
+            Sequence sequence = DOTween.Sequence();
+            if (sequence.IsPlaying())
+            {
+                sequence.Restart();
+            }
+            sequence.Append(spriteRenderer.DOColor(color, .1f));
+            sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
+            sequence.OnComplete(() => isAnim = false);
+
         }
-        sequence.Append(spriteRenderer.DOColor(color, .1f));
-        sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,6 +39,7 @@ public class FadeAnimation : MonoBehaviour
         if (collision.TryGetComponent(out WaveAnimation sa))
         {
             color = sa.GetSprite().color;
+            isAnim = true;
         }
         PlayFadeAnimation(color);
     }
