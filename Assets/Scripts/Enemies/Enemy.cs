@@ -139,6 +139,10 @@ public class Enemy : MonoBehaviour
 
         }
     }
+    public bool IsMoving()
+    {
+        return rb2d.velocity.x != 0;
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {

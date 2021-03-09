@@ -23,4 +23,5 @@ public class PointWaveAnimation : MonoBehaviour
     {
         scaleTo = _scale;
     }
+
 }
