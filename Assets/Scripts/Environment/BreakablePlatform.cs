@@ -8,10 +8,11 @@ public class BreakablePlatform : BehaivourWave
     private float count;
     [Header("Tiempo para romperse")]
     [SerializeField] int maxTime;
-    bool playerInPlattform;
+    [SerializeField] int respawnTime;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     protected override void ActionOnWave(Collider2D col)
@@ -27,33 +28,25 @@ public class BreakablePlatform : BehaivourWave
             this.gameObject.SetActive(false);
         }
     }
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerInPlattform)
-        {
-            count += Time.deltaTime;
-            print(count);
-            if (count >= maxTime)
-            {
-                this.gameObject.SetActive(false);              
-            }
-            
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        //VARIABLES
-        //count: contador de cuanto lleva encima de la plataforma.
-        //maxTime: se le asigna valor desde el inspector, maximo tiempo
-        //que el jugador puede estar encima de la plataforma sin que se rompa.
-
-        //EXPLICACION
-        //Si el player está más de maxTime encima de la plataforma,
-        //esta se romperá.
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInPlattform = true;
-        }
+            StartCoroutine(SpawnPlatformAgain());
 
+        }
+    }
+
+    IEnumerator SpawnPlatformAgain()
+    {
+        yield return new WaitForSecondsRealtime(maxTime);
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        yield return new WaitForSecondsRealtime(respawnTime);
+
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 }
