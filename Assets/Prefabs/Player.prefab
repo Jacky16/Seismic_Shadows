@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  speedStealth: 1
   jumpForce: 6
   jumpWallForce: 7
   forceXJumping: 0.55
@@ -428,6 +429,9 @@ MonoBehaviour:
   genericWave: {fileID: 6797552869381069275, guid: 761981cff1d9af54091dd0c2dd3db653,
     type: 3}
   timeGenericWave: 0.7
+  stealthWave: {fileID: 6797552869381069275, guid: 74c31fffd4e481e40bf46b667ded4800,
+    type: 3}
+  timeStealthWave: 0.7
   slowWave: {fileID: 6797552869381069275, guid: 72d1574edc2712746b9670ea58ea9231,
     type: 3}
   timeSlowWave: 4

@@ -192,6 +192,5 @@ public class WaveSpawner : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(spawnPos.position, 5);
-
     }
 }
