@@ -171,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6797552869381069274}
   - component: {fileID: 1148502882966367823}
+  - component: {fileID: 6273136831865792101}
   m_Layer: 0
   m_Name: StealhWave
   m_TagString: Untagged
@@ -209,3 +210,19 @@ MonoBehaviour:
   scaleTo: 1.3
   duration: 0.5
   sprite: {fileID: 6797552867905533432}
+--- !u!58 &6273136831865792101
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797552869381069275}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50

@@ -193,7 +193,7 @@ RectTransform:
   m_GameObject: {fileID: 1477685681}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009478571, y: 0.009478571, z: 0.009478571}
+  m_LocalScale: {x: 0.004324703, y: 0.0034140737, z: 0.0045524626}
   m_Children:
   - {fileID: 545800009}
   m_Father: {fileID: 6526475825805812190}
@@ -201,7 +201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.072}
+  m_AnchoredPosition: {x: 0, y: 0.69}
   m_SizeDelta: {x: 106.7865, y: 127.566956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1477685685
@@ -290,8 +290,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6526475825773217132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.653, y: 0.023, z: 0}
-  m_LocalScale: {x: 0.0494851, y: 0.11793525, z: 0.37880954}
+  m_LocalPosition: {x: -0.653, y: 0.0211, z: 0}
+  m_LocalScale: {x: 0.0494851, y: 0.27758542, z: 0.37880954}
   m_Children: []
   m_Father: {fileID: 6526475825805812190}
   m_RootOrder: 0
@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 6526475825805812188}
   - component: {fileID: 2082993213506515402}
   - component: {fileID: 807385935}
+  - component: {fileID: 1583038858}
   m_Layer: 0
   m_Name: Enemy Blindur Berserker
   m_TagString: Enemy
@@ -403,7 +404,7 @@ Transform:
   m_GameObject: {fileID: 6526475825805812178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 657.04736, y: -54, z: 0}
-  m_LocalScale: {x: 35.1667, y: 35.1667, z: 35.1667}
+  m_LocalScale: {x: 114.1609, y: 148.25826, z: 136.32942}
   m_Children:
   - {fileID: 6526475825773217133}
   - {fileID: 542282695}
@@ -510,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba99e4c1d1328c247a969ac972e5e8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 242.68
+  radius: 500
   speed: 2.5
   angle: 0
   timeToAttack: 1
@@ -552,3 +553,15 @@ MonoBehaviour:
     type: 3}
   timeEnWave: 0.7
   spawnWave: {fileID: 542282695}
+--- !u!114 &1583038858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526475825805812178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bcf4ba8b314ad4e9d5ab6289864bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

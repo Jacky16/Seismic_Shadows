@@ -41,5 +41,12 @@ public class WaveAnimation : MonoBehaviour
             fa.SetDurationFade(counter);
         }       
     }
-   
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<FadeAnimation>(out FadeAnimation fa))
+        {
+            fa.SetDurationFade(counter);
+        }
+    }
+
 }
