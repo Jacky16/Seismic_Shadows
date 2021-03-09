@@ -1310,7 +1310,7 @@ GameObject:
   - component: {fileID: 1597802915}
   m_Layer: 8
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1323,7 +1323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597802911}
   m_LocalRotation: {x: -0, y: -0, z: 0.00000086426724, w: 1}
-  m_LocalPosition: {x: 28, y: 66, z: 251.29228}
+  m_LocalPosition: {x: 28, y: -26, z: 251.29228}
   m_LocalScale: {x: 187.10754, y: 30.178637, z: 30.178637}
   m_Children: []
   m_Father: {fileID: 1971047198}
@@ -1527,7 +1527,7 @@ GameObject:
   - component: {fileID: 2017786099}
   m_Layer: 8
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1683,17 +1683,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 250654947}
-    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
-        type: 3}
-      propertyPath: pointWave
-      value: 
-      objectReference: {fileID: 3297485749067490982, guid: 8df3d0e7a2a736a489e320dececf4a38,
-        type: 3}
-    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
-        type: 3}
-      propertyPath: timePointWave
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_RootOrder

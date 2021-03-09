@@ -125,7 +125,11 @@ public class WaveSpawner : MonoBehaviour
             countPointW += Time.deltaTime;
         }
     }
-
+    public void SpawnGroundWave()
+    {
+        GameObject go = Instantiate(genericWave);
+        go.transform.position = transform.position;
+    }
     public void SetWaveToInstantiate(int _selectWave,bool _can)
     {
         switch (_selectWave)
