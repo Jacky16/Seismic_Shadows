@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
         {
             life = maxLife;
         }
+        lifeText.text = life.ToString();
     }
     public void AddMaxLife(int _maxLife)
     {
