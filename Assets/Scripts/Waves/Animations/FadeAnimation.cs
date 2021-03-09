@@ -7,9 +7,6 @@ public class FadeAnimation : MonoBehaviour
 {
     float fadeDuration;
     SpriteRenderer spriteRenderer;
-    Color color = Color.white;
-    enum Wavetype { INTERACTIVE, PUSH, NONE };
-    [SerializeField] Wavetype wavetype = Wavetype.NONE;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,9 +15,7 @@ public class FadeAnimation : MonoBehaviour
     {
         fadeDuration = num;
     }
-
-    //Anima todo lo que no sea interactuable o empujable
-    void PlayFadeAnimation(Color color)
+    public void PlayFadeAnimation(Color color)
     {
         spriteRenderer.color = color;
         Sequence sequence = DOTween.Sequence();
@@ -31,34 +26,24 @@ public class FadeAnimation : MonoBehaviour
         sequence.Append(spriteRenderer.DOColor(color, .1f));
         sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
     }
-
-    void PlayInteractiveAnimation()
-    {
-        spriteRenderer.DOFade(1, 2);       
-    }
-    public void PlayAnimation()
-    {
-        switch (wavetype)
-        {
-            case Wavetype.INTERACTIVE:
-                PlayInteractiveAnimation();
-                break;
-
-            case Wavetype.PUSH:
-                break;
-
-            default:
-            PlayFadeAnimation(color);
-                break;
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Obtener el sprite contra lo que colisiona
-        if (collision.TryGetComponent(out WaveAnimation wa))
+        Color color = Color.white;
+
+        if (collision.TryGetComponent(out WaveAnimation sa))
         {
-            color = wa.GetSprite().color;
+            color = sa.GetSprite().color;
         }
-        PlayAnimation();
+        PlayFadeAnimation(color);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Color color = Color.white;
+
+        if (collision.gameObject.TryGetComponent(out WaveAnimation sa))
+        {
+            color = sa.GetSprite().color;
+        }
+        PlayFadeAnimation(color);
     }
 }

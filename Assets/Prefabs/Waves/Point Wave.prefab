@@ -171,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3297485749067490983}
   - component: {fileID: 8329063916229594765}
+  - component: {fileID: 5260685883621298322}
   m_Layer: 0
   m_Name: Point Wave
   m_TagString: Untagged
@@ -209,3 +210,19 @@ MonoBehaviour:
   scaleTo: 3.5
   duration: 0.8
   sprite: {fileID: 3297485748395281029}
+--- !u!58 &5260685883621298322
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297485749067490982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
