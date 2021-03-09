@@ -9,11 +9,7 @@ public class BehaivourWave : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-    protected virtual void Update()
-    {
-
-    }
-
+ 
     protected virtual void ActionOnWave(Collider2D col) {; }
     private void OnTriggerEnter2D(Collider2D collision)
     {
