@@ -36,6 +36,17 @@ public class InputManager : MonoBehaviour
     #endregion
 
     #region Waves
+    public void OnCheckWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.SetWaveToInstantiate(5,true);
+        }
+        if (ctx.canceled)
+        {
+            waveSpawner.SetWaveToInstantiate(5, false);
+        }
+    }
     public void OnSlowWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)

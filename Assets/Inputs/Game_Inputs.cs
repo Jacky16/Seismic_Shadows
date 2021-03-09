@@ -73,6 +73,14 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DropCheck"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0318a11-7ca1-4c42-b0be-34b4fdf6531f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -304,6 +312,17 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Stealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""191a078e-6c73-423e-91ac-84cf03027fb2"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropCheck"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -888,6 +907,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         m_Player_InteractiveWave = m_Player.FindAction("Interactive Wave", throwIfNotFound: true);
         m_Player_PushWave = m_Player.FindAction("Push Wave", throwIfNotFound: true);
         m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
+        m_Player_DropCheck = m_Player.FindAction("DropCheck", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -956,6 +976,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_InteractiveWave;
     private readonly InputAction m_Player_PushWave;
     private readonly InputAction m_Player_Stealth;
+    private readonly InputAction m_Player_DropCheck;
     public struct PlayerActions
     {
         private @Game_Inputs m_Wrapper;
@@ -967,6 +988,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         public InputAction @InteractiveWave => m_Wrapper.m_Player_InteractiveWave;
         public InputAction @PushWave => m_Wrapper.m_Player_PushWave;
         public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
+        public InputAction @DropCheck => m_Wrapper.m_Player_DropCheck;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -997,6 +1019,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @Stealth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
                 @Stealth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
                 @Stealth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
+                @DropCheck.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropCheck;
+                @DropCheck.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropCheck;
+                @DropCheck.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropCheck;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1022,6 +1047,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @Stealth.started += instance.OnStealth;
                 @Stealth.performed += instance.OnStealth;
                 @Stealth.canceled += instance.OnStealth;
+                @DropCheck.started += instance.OnDropCheck;
+                @DropCheck.performed += instance.OnDropCheck;
+                @DropCheck.canceled += instance.OnDropCheck;
             }
         }
     }
@@ -1185,6 +1213,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         void OnInteractiveWave(InputAction.CallbackContext context);
         void OnPushWave(InputAction.CallbackContext context);
         void OnStealth(InputAction.CallbackContext context);
+        void OnDropCheck(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
