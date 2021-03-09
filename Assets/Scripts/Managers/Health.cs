@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
     }
     public void Damage(int _damage)
     {
+        StartCoroutine(AnimationRed());
         life -= _damage;
         if(life <= 0)
         {
@@ -53,5 +54,13 @@ public class Health : MonoBehaviour
     public int GetMaxLife()
     {
         return maxLife;
+    }
+
+    IEnumerator AnimationRed()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSecondsRealtime(0.2f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+
     }
 }
