@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class BreakablePlatform : BehaivourWave
 {
-    GameObject player;
-    private float count;
-    [Header("Tiempo para romperse")]
-    [SerializeField] int maxTime;
-    [SerializeField] int respawnTime;
-    bool isBroken;
-    void Start()
+
+    PlatformBreakeableManager platformBreakeableManager;
+    bool playerInPlatform;
+    private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        isBroken = false;
-        
+        platformBreakeableManager = GetComponentInParent<PlatformBreakeableManager>();
     }
+
+
 
     protected override void ActionOnWave(Collider2D col)
     {
@@ -27,54 +24,22 @@ public class BreakablePlatform : BehaivourWave
 
         if (col.tag == "InteractiveWave")
         {
-            StartCoroutine(SpawnPlatformAgain(0));
+            platformBreakeableManager.WaveInteractive();
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            count += Time.deltaTime;
-            if(count >= maxTime)
-            {
-                GetComponent<SpriteRenderer>().enabled = false;
-                GetComponent<BoxCollider2D>().enabled = false;
-                count = 0;
-                isBroken = true;
-            }
-
+            platformBreakeableManager.ActivePlattform();
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (isBroken)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            count += Time.deltaTime;
-
-            if (count >= respawnTime)
-            {
-                GetComponent<SpriteRenderer>().enabled = true;
-                GetComponent<BoxCollider2D>().enabled = true;
-                isBroken = false;
-
-            }
+            playerInPlatform = false;
         }
-    }
-
-    IEnumerator SpawnPlatformAgain(int num)
-    {
-        if (num == 1)
-        {
-            yield return new WaitForSecondsRealtime(maxTime);
-        }
-
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-
-
-        yield return new WaitForSecondsRealtime(respawnTime);
-
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<BoxCollider2D>().enabled = true;
     }
 }
