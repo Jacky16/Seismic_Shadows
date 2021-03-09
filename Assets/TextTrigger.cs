@@ -9,7 +9,7 @@ public class TextTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tecla = GameObject.FindGameObjectWithTag("T-Tecla").GetComponent<TextMeshProUGUI>();
+        tecla = GameObject.FindGameObjectWithTag("TextTutorial").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
