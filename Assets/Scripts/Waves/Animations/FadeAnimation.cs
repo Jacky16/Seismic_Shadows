@@ -8,6 +8,7 @@ public class FadeAnimation : MonoBehaviour
     float fadeDuration;
     SpriteRenderer spriteRenderer;
     bool isAnim;
+    [SerializeField]bool isInteractice;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,15 +21,31 @@ public class FadeAnimation : MonoBehaviour
     {
         if (isAnim)
         {
-            spriteRenderer.color = color;
-            Sequence sequence = DOTween.Sequence();
-            if (sequence.IsPlaying())
+            if (!isInteractice)
             {
-                sequence.Restart();
+                spriteRenderer.color = color;
+                Sequence sequence = DOTween.Sequence();
+                if (sequence.IsPlaying())
+                {
+                    sequence.Restart();
+                }
+                sequence.Append(spriteRenderer.DOColor(color, .1f));
+                sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
+                sequence.OnComplete(() => isAnim = false);
+
             }
-            sequence.Append(spriteRenderer.DOColor(color, .1f));
-            sequence.Append(spriteRenderer.DOFade(0, fadeDuration));
-            sequence.OnComplete(() => isAnim = false);
+            else
+            {
+                spriteRenderer.color = color;
+                Sequence sequence = DOTween.Sequence();
+                if (sequence.IsPlaying())
+                {
+                    sequence.Restart();
+                }
+                sequence.Append(spriteRenderer.DOColor(color, .1f));
+                sequence.Append(spriteRenderer.DOFade(1, fadeDuration));
+                sequence.OnComplete(() => isAnim = false);
+            }
 
         }
     }
