@@ -42,6 +42,7 @@ public class AscendentPillar : BehaivourWave
             {
                 canMove = false;
                 rb2d2.bodyType = RigidbodyType2D.Static;
+                GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
             }
         }
         if (canMove)

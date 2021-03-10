@@ -44,10 +44,14 @@ public class FadeAnimation : MonoBehaviour
                 }
                 sequence.Append(spriteRenderer.DOColor(color, .1f));
                 sequence.Append(spriteRenderer.DOFade(1, fadeDuration));
-                sequence.OnComplete(() => isAnim = false);
+                sequence.OnComplete(() => EndAnimationInteractive());
             }
 
         }
+    }
+    void EndAnimationInteractive()
+    {
+        isAnim = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
