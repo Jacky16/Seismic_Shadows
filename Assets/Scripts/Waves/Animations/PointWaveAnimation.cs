@@ -23,5 +23,19 @@ public class PointWaveAnimation : MonoBehaviour
     {
         scaleTo = _scale;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<FadeAnimation>(out FadeAnimation fa))
+        {
+            fa.SetDurationFade(counter);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<FadeAnimation>(out FadeAnimation fa))
+        {
+            fa.SetDurationFade(counter);
+        }
+    }
 
 }
