@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523045866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.0728, z: 0}
+  m_LocalPosition: {x: 0, y: -2.135, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7612130501902412777}
@@ -397,19 +397,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c6c6f7d90a104b8a92dd14c2ba4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  speedStealth: 1
-  jumpForce: 7.2
-  jumpWallForce: 7
-  forceXJumping: 0.55
-  wallSlideTime: 0.2
-  wallSlidingSpeed: 50
-  checkRadius: 0.5
-  feetCheckPos: {fileID: 1523045867}
-  frontCheckPos: {fileID: 7376446132052679932}
-  layerMaskGround:
+  moveSpeed: 100
+  airMoveSpeed: 5000
+  jumpForce: 500
+  groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  groundCheckPoint: {fileID: 1523045867}
+  groundCheckSize: {x: 31.64, y: 2}
+  wallSlideSpeed: 150
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  wallCheckPoint: {fileID: 7376446132052679932}
+  wallCheckSize: {x: 1.81, y: 31.89}
+  walljumpforce: 5000
+  walljumpAngle: {x: 1, y: 3}
+  walljumpDirection: -1
 --- !u!114 &7612130501482178734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +492,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7612130501902412779}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2e0a9f1220ce4604db23a3bae2d988ea, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -541,7 +545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8647533675574800453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.073, y: 0, z: 0}
+  m_LocalPosition: {x: 2.137, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7612130501902412777}

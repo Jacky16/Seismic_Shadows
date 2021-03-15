@@ -1,217 +1,173 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Setting Player")]
-    [SerializeField] float speed;
-    [SerializeField] float speedStealth;
-    [SerializeField] float jumpForce;
-    [SerializeField] float jumpWallForce;
-    [SerializeField] float forceXJumping;
-    [Header("Wall Settings")]
-    [SerializeField] float wallSlideTime;
-    [SerializeField] float wallSlidingSpeed;
-    bool isFacingRight;
-
-    [Header("Checks")]
-    [SerializeField] float checkRadius;
-    [SerializeField] Transform feetCheckPos;
-    [SerializeField] Transform frontCheckPos;
-    [SerializeField] LayerMask layerMaskGround;
-    bool isGrounded;
-    bool isTouchingFront;
-    bool wallSliding;
-    bool isJumpSliding;
-    bool isStealthMode;
-    float counterJumpWall = 0;
-
-    //Componentes
-    Rigidbody2D rb2d;
-    WaveSpawner waveSpawner;
-    //Vectores
+    [Header("Settings Movement")]
+    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float airMoveSpeed = 10f;
     Vector2 axis;
-    Vector2 movement;
-    Vector2 posBeforeJumping;
+    bool facingRight = true;
+    bool isMoving;
+    bool isStealthMode;
+
+    [Header("Settings Jumping")]
+    [SerializeField] float jumpForce = 16f;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] Transform groundCheckPoint;
+    [SerializeField] Vector2 groundCheckSize;
+    bool grounded;
+    bool canJump;
+
+    [Header("Settings WallSliding")]
+    [SerializeField] float wallSlideSpeed;
+    [SerializeField] LayerMask wallLayer;
+    [SerializeField] Transform wallCheckPoint;
+    [SerializeField] Vector2 wallCheckSize;
+    bool isTouchingWall;
+    bool isWallSliding;
+
+    [Header("Settings WallJumping")]
+    [SerializeField] float walljumpforce;
+    [SerializeField] Vector2 walljumpAngle;
+    float walljumpDirection = -1;
+   
+    Rigidbody2D rb;
+
     private void Awake()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-        waveSpawner = GetComponent<WaveSpawner>();
+        rb = GetComponent<Rigidbody2D>();
     }
-
-    private void Update()
+    private void Start()
     {
-        CheckFlip();
-
-        // Contador para el wallJump
-        if (isJumpSliding)
-        {
-            counterJumpWall += Time.deltaTime;
-            if (counterJumpWall >= 1)
-            {
-                isJumpSliding = false;
-                counterJumpWall = 0;
-            }       
-        }
-       
+        walljumpAngle.Normalize();
+    }
+    private void Update()
+    {     
+        CheckWorld();
     }
     private void FixedUpdate()
     {
-        Movement();
+        Movement();    
+        WallSlide();      
+    }
+
+    #region Movements
+    void Movement()
+    {
         
-        isGrounded = Physics2D.OverlapCircle(feetCheckPos.position, checkRadius,layerMaskGround);
-        isTouchingFront= Physics2D.OverlapCircle(frontCheckPos.position, checkRadius, layerMaskGround);
-
-        if (axis.x != 0 && !isTouchingFront)
+        if (axis.x != 0)
         {
-            waveSpawner.SetWaveToInstantiate(0,true);
-        }
-        WallSlide();
-    }
-
-    private void Movement()
-    {
-        if (isStealthMode && isGrounded)
-        {
-            movement = new Vector2(axis.x * speedStealth * 100, rb2d.velocity.y);
+            isMoving = true;
         }
         else
         {
-            movement = new Vector2(axis.x * speed * 100, rb2d.velocity.y);
+            isMoving = false;
         }
 
-        //Si esta saltando entre columnas, se aplican fuerzas opuestas
-        if (isJumpSliding && !isGrounded) {
-            Vector2 force;
-            
-            if(transform.position.x > posBeforeJumping.x) //Derecha
-            {
-                force = Vector2.left * forceXJumping * 100;
-            }
-            else //Izquierda
-            {
-                force = Vector2.right * forceXJumping * 100;
-            }
-            rb2d.velocity = movement + force;
-        }
-        else
+       
+        if (grounded)
         {
-            rb2d.velocity = movement;
-        }
-    }
-    private void WallSlide()
-    {
-        if (isTouchingFront && !isGrounded && axis != Vector2.zero)
-        {
-            wallSliding = true;
-            isJumpSliding = false;
-            counterJumpWall = 0;
+            rb.velocity = new Vector2(axis.x * moveSpeed, rb.velocity.y);
         }
         else 
-        {    
-            Invoke("SetWallSlidingFalse", wallSlideTime);
-        }
-        
-        if (wallSliding)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Clamp(rb2d.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            rb.velocity = new Vector2(airMoveSpeed * axis.x, rb.velocity.y);
+        }
+
+
+        if (axis.x < 0 && facingRight)
+        {
+            Flip();
+        }
+        else if (axis.x > 0 && !facingRight)
+        {
+            Flip();
         }
     }
-    void SetWallSlidingFalse()
+    void WallSlide()
     {
-        wallSliding = false;
+        if (isTouchingWall && !grounded && rb.velocity.y < 0)
+        {
+            isWallSliding = true;
+        }
+        else
+        {
+            isWallSliding = false;
+        }
+        if (isWallSliding)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+        }
+    }
+    void WallJump()
+    {
+        if ((isWallSliding) && canJump)
+        {
+            rb.AddForce(new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection, walljumpforce * walljumpAngle.y), ForceMode2D.Impulse);
+            Flip();
+            canJump = false;
+
+        }
     }
     public void Jump()
     {
-        if (isGrounded)
+        canJump = true;
+
+        if (canJump && grounded)
         {
-             rb2d.velocity = (Vector2.up * jumpForce * 100);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            canJump = false;
         }
-        if (wallSliding)
-        {
-            rb2d.velocity = (Vector2.up * jumpWallForce * 100);
-            posBeforeJumping = transform.position;
-            isJumpSliding = true;
-        }
+        WallJump();
     }
-    private void CheckFlip()
+    #endregion
+    void CheckWorld()
     {
-        if (isFacingRight && axis.x > 0)
-        {
-            Flip();
-        }
-        else if (!isFacingRight && axis.x < 0)
-        {
-            Flip();
-        }
+        grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+        isTouchingWall = Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
     }
     void Flip()
     {
-        isFacingRight =! isFacingRight;
-        Vector3 currentScale = transform.localScale;
-        currentScale.x *= -1;
-        transform.localScale = currentScale;
+        if (!isWallSliding)
+        {
+            walljumpDirection *= -1;
+            facingRight = !facingRight;
+            transform.Rotate(0, 180, 0);
+        }
+
     }
+
+    #region Setters
     public void SetAxis(Vector2 _axis)
     {
         axis = _axis;
-    }
-    public bool TouchingFront()
-    {
-        return isTouchingFront;
-    }
-    public bool IsMoving()
-    {
-        return axis.x != 0;
-    }
-    public bool IsStealth()
-    {
-        return isStealthMode;
-    }
-    public void SetPosition(Vector3 _pos)
-    {
-        rb2d.position = _pos;
     }
     public void SetStealth(bool _b)
     {
         isStealthMode = _b;
     }
-    IEnumerator ExecuteWaveGround()
+    #endregion
+
+    #region Getters
+    public bool IsMoving()
     {
-        yield return new WaitForSeconds(.04f);
-        if (isGrounded)
-        {
-            waveSpawner.SpawnGroundWave();
-        }
+        return isMoving;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public bool IsStealth()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            StartCoroutine(ExecuteWaveGround());
-        }
+        return isStealthMode;
     }
-    private void OnDrawGizmos()
+    public bool TouchingFront()
     {
-        if (isGrounded)
-        {
-            Gizmos.color = Color.green;
-        }
-        else
-        {
-            Gizmos.color = Color.red;
-        }
-        Gizmos.DrawWireSphere(feetCheckPos.position,checkRadius);
-        if (isTouchingFront)
-        {
-            Gizmos.color = Color.green;
-        }
-        else
-        {
-            Gizmos.color = Color.red;
-        }
-        Gizmos.DrawWireSphere(frontCheckPos.position, checkRadius);
+        return isTouchingWall;
+    }
+    #endregion
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(groundCheckPoint.position, groundCheckSize);
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
 
     }
 }
