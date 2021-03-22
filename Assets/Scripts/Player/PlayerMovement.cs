@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(axis.x * moveSpeed, rb.velocity.y);
         }
-        else 
+        else
         {
             rb.velocity = new Vector2(airMoveSpeed * axis.x, rb.velocity.y);
         }
