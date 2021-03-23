@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Settings Movement")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float airMoveSpeed = 10f;
+    [SerializeField] float stealthSpeed;
     Vector2 axis;
     bool facingRight = true;
     bool isMoving;
@@ -31,11 +32,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 walljumpAngle;
     float walljumpDirection = -1;
    
+    //Other components
     Rigidbody2D rb;
+    WaveSpawner waveSpawner;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        waveSpawner = GetComponent<WaveSpawner>();
     }
     private void Start()
     {
@@ -65,9 +69,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
        
-        if (grounded)
+        if (grounded && !isStealthMode)
         {
             rb.velocity = new Vector2(axis.x * moveSpeed, rb.velocity.y);
+
+        }else if(grounded && isStealthMode)
+        {         
+            rb.velocity = new Vector2(axis.x * stealthSpeed, rb.velocity.y);
         }
         else
         {
@@ -137,6 +145,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    IEnumerator WaveGround()
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (grounded)
+        {
+            waveSpawner.DoGroundWave();
+        }
+    }
+
     #region Setters
     public void SetAxis(Vector2 _axis)
     {
@@ -162,6 +179,14 @@ public class PlayerMovement : MonoBehaviour
         return isTouchingWall;
     }
     #endregion
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            StartCoroutine(WaveGround());
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;

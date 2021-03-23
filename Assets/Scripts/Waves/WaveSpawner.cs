@@ -5,11 +5,8 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
 
-
     PlayerMovement player;
-    //[Header("Point Wave")]
-
-
+    
     //Settings Waves
     [Header("Step Wave")]
     [SerializeField] Animator animStepWave;
@@ -22,15 +19,18 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] Animator animLongWave;
 
 
-    //[Header("Onda Rapida")]
-
-
     [Header("Interactive Wave")]
     [SerializeField] Animator animInteractiveWave;
 
 
     [Header("Push Wave")]
     [SerializeField] Animator animPushWave;
+
+    [Header("Ground Wave")]
+    [SerializeField] GameObject groundWavePrefab;
+
+    [Header("Beacon Wave")]
+    [SerializeField] GameObject beaconWavePrefab;
 
 
     private void Awake()
@@ -55,10 +55,20 @@ public class WaveSpawner : MonoBehaviour
     {
         animLongWave.SetTrigger("DoWave");
     }
-
-    private void OnDrawGizmos()
+    public void DoGroundWave()
     {
-        Gizmos.color = Color.blue;
-        //Gizmos.DrawWireSphere(spawnPos.position, .3f);
+        GameObject go = Instantiate(groundWavePrefab, player.transform.position, Quaternion.identity, null);
+        Destroy(go, 1);
     }
+    public void DoBeaconWave()
+    {
+        GameObject go = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
+        Destroy(go, 30);
+    }
+    public void DoFlashWave()
+    {
+
+    }
+
+
 }
