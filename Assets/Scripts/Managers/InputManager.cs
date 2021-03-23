@@ -83,7 +83,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            waveSpawner.DoBeaconWave();
+            waveSpawner.DoFlashWave();
         }
 
     }

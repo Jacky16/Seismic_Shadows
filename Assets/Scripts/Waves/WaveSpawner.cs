@@ -14,14 +14,11 @@ public class WaveSpawner : MonoBehaviour
     [Header("Stealth Wave")]
     [SerializeField] Animator animStealthWave;
 
-
     [Header("Long Wave")]
     [SerializeField] Animator animLongWave;
 
-
     [Header("Interactive Wave")]
     [SerializeField] Animator animInteractiveWave;
-
 
     [Header("Push Wave")]
     [SerializeField] Animator animPushWave;
@@ -31,6 +28,9 @@ public class WaveSpawner : MonoBehaviour
 
     [Header("Beacon Wave")]
     [SerializeField] GameObject beaconWavePrefab;
+
+    [Header("Flash Wave")]
+    [SerializeField] Animator animFlashWave;
 
 
     private void Awake()
@@ -63,11 +63,11 @@ public class WaveSpawner : MonoBehaviour
     public void DoBeaconWave()
     {
         GameObject go = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
-        Destroy(go, 30);
+        Destroy(go,30);
     }
     public void DoFlashWave()
     {
-
+        animFlashWave.SetTrigger("DoWave");
     }
 
 
