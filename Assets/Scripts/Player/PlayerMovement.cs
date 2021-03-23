@@ -111,7 +111,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((isWallSliding) && canJump)
         {
-            rb.AddForce(new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection, walljumpforce * walljumpAngle.y), ForceMode2D.Impulse);
+            //rb.AddForce(new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection, walljumpforce * walljumpAngle.y), ForceMode2D.Impulse);
+            rb.velocity = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection, walljumpforce * walljumpAngle.y);
             Flip();
             canJump = false;
 
@@ -121,12 +122,12 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = true;
 
-        if (canJump && grounded)
+        WallJump();
+        if (canJump && grounded && !isWallSliding)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             canJump = false;
         }
-        WallJump();
     }
     #endregion
     void CheckWorld()

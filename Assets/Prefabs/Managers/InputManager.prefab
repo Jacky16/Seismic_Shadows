@@ -160,7 +160,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8815789986211943336}
-        m_MethodName: OnQuickWave
+        m_MethodName: OnFlashWave
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8815789986211943336}
-        m_MethodName: OnCheckWave
+        m_MethodName: OnBeaconWave
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
