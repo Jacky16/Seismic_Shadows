@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         life = maxLife;
+        if (lifeText != null)
         lifeText.text = maxLife.ToString();
     }
 
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
         {
             life = maxLife;
         }
+        if(lifeText != null)
         lifeText.text = life.ToString();
     }
     public void AddMaxLife(int _maxLife)
@@ -38,6 +40,7 @@ public class Health : MonoBehaviour
             life = 0;
             Dead();
         }
+        if (lifeText != null)
         lifeText.text = life.ToString();
     }
     public virtual void Dead()
