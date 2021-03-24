@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6251085749447319218}
   - component: {fileID: 4338700253515692673}
   - component: {fileID: 517502900352923378}
-  - component: {fileID: 8682979423293957676}
   m_Layer: 0
   m_Name: LavaPit
   m_TagString: Untagged
@@ -100,7 +99,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,7 +129,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &517502900352923378
 MonoBehaviour:
@@ -142,17 +141,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d76d5b84e31152b4bae8bac9d3a4af51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8682979423293957676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5882422660972733794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53bcf4ba8b314ad4e9d5ab6289864bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AscendentPillar : BehaivourWave
 {
     Rigidbody2D rb2d2;
     float count;
-    [SerializeField] float ascTime;
-    [SerializeField] float speed;
-    bool canMove;
+    [SerializeField] Transform moveTo;
+    [SerializeField] float duration;
+    [SerializeField] Ease ease;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,27 +36,13 @@ public class AscendentPillar : BehaivourWave
         //speed: se le asigna el valor desde el inspector, velocidad
         //a la que ascenderá el pilar.
 
-        if(canMove == true)
-        {
-            count += Time.fixedDeltaTime;
-           
-            if(count >= ascTime)
-            {
-                canMove = false;
-                rb2d2.bodyType = RigidbodyType2D.Static;
-                GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-            }
-        }
-        if (canMove)
-        {
-            rb2d2.velocity = Vector2.up * speed;
-        }     
+        
     }
     protected override void ActionOnWave(Collider2D col)
     {
         if(col.tag == "InteractiveWave")
         {
-            canMove = true;
+            transform.DOMove(moveTo.position, duration).SetEase(ease);
         }
     }
 }

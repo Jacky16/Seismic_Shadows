@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
 
         Flip();
 
-        rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed * 100, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed, rb2d.velocity.y);
     }
 
     public virtual Vector2 Path(Vector2 dirEnemy)
@@ -88,9 +88,9 @@ public class Enemy : MonoBehaviour
 
             dirEnemy = currentWaypoint.position - transform.position;
 
-            rb2d.velocity = (dirEnemy.normalized * currentSpeed * 100);
+            rb2d.velocity = new Vector2(dirEnemy.normalized.x * speed, rb2d.velocity.y);
 
-            if (distanteToNextWaypoint <= 20)
+            if (distanteToNextWaypoint <= 1)
             {
                 //Pasar al siguiente Waypoint
                 countWaypoints += Time.fixedDeltaTime;

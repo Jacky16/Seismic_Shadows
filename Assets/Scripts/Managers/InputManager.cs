@@ -36,60 +36,29 @@ public class InputManager : MonoBehaviour
     #endregion
 
     #region Waves
-    public void OnCheckWave(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
-        {
-            waveSpawner.SetWaveToInstantiate(5,true);
-        }
-        if (ctx.canceled)
-        {
-            waveSpawner.SetWaveToInstantiate(5, false);
-        }
-    }
+   
     public void OnSlowWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            waveSpawner.SetWaveToInstantiate(1,true);
+            waveSpawner.DoLongWave();
         }
-        if (ctx.canceled)
-        {
-            waveSpawner.SetWaveToInstantiate(1, false);
-        }
-    }
-    public void OnQuickWave(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
-        {
-            waveSpawner.SetWaveToInstantiate(2, true);
-        }
-        if (ctx.canceled)
-        {
-            waveSpawner.SetWaveToInstantiate(2, false);
-        }
+       
     }
     public void OnInteractiveWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            waveSpawner.SetWaveToInstantiate(3, true);
+            waveSpawner.DoInteractiveWave();
         }
-        if (ctx.canceled)
-        {
-            waveSpawner.SetWaveToInstantiate(3, false);
-        }
+      
     }
     public void OnPushWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            waveSpawner.SetWaveToInstantiate(4, true);
-        }
-        if (ctx.canceled)
-        {
-            waveSpawner.SetWaveToInstantiate(4, false);
-        }
+            waveSpawner.DoPushWave();
+        }    
     }
     public void OnStealth(InputAction.CallbackContext ctx)
     {
@@ -101,6 +70,22 @@ public class InputManager : MonoBehaviour
         {
             player.SetStealth(false);
         }
+    }
+    public void OnBeaconWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.DoBeaconWave();
+        }
+
+    }
+    public void OnFlashWave(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            waveSpawner.DoFlashWave();
+        }
+
     }
     #endregion
 

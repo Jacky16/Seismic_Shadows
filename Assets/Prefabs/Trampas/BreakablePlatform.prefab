@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7241699587068801983}
   - component: {fileID: 1714484299485230137}
   - component: {fileID: 7084374178043383545}
-  - component: {fileID: 384563694}
   m_Layer: 8
   m_Name: BreakablePlatform
   m_TagString: Ground
@@ -53,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,19 +141,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bc8091a2c7bf0b4185244f0bb2f6e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTime: 2
-  respawnTime: 4
---- !u!114 &384563694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8440567592287812570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53bcf4ba8b314ad4e9d5ab6289864bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

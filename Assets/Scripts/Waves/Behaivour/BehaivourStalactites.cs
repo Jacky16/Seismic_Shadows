@@ -5,7 +5,7 @@ using UnityEngine;
 public class BehaivourStalactites : BehaivourWave
 {
     protected HealthPlayer playerHealth;
-    public bool activated;
+    bool activated;
 
     private void Start()
     {
@@ -17,8 +17,9 @@ public class BehaivourStalactites : BehaivourWave
         if (col.gameObject.CompareTag("InteractiveWave"))
         {
             //Esto se ejecuta cuando una onda interactiva choca con este objeto
-            rb2d.gravityScale = 30;
+            rb2d.gravityScale = 3;
             activated = true;
+            GetComponent<SpriteRenderer>().sortingLayerName = "AlwaysVisible";
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,5 +45,4 @@ public class BehaivourStalactites : BehaivourWave
             this.gameObject.SetActive(false);
         }
     }
-
 }
