@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 groundCheckSize;
     [SerializeField] float wallCheckDistance;
     bool grounded;
-    bool canJump;
 
     [Header("Settings WallSliding")]
     [SerializeField] float wallSlideSpeed;
@@ -90,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void WallSlide()
     {
-        if (isTouchingWall && !grounded && rb2d.velocity.y < 0)
+        if (isTouchingWall && !grounded && rb2d.velocity.y < 0 && axis.x != 0)
         {
             isWallSliding = true;
         }
@@ -112,17 +111,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            print("Jump");
         }
         //WallJump
-        
         if (isWallSliding)
         {
-            print("WallJump");
             rb2d.velocity = Vector2.zero;
             Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
             rb2d.velocity = moveTo;
-            Debug.Log(rb2d.velocity);
             StartCoroutine(StopMovement());
         }
 
