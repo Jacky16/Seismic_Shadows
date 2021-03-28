@@ -7,21 +7,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float airMoveSpeed = 10f;
     [SerializeField] float stealthSpeed;
     Vector2 axis;
+    Vector2 movementPlayer;
     bool facingRight = true;
     bool isMoving;
     bool isStealthMode;
+    bool canMove = true;
 
     [Header("Settings Jumping")]
     [SerializeField] float jumpForce = 16f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Vector2 groundCheckSize;
+    [SerializeField] float wallCheckDistance;
     bool grounded;
     bool canJump;
 
     [Header("Settings WallSliding")]
     [SerializeField] float wallSlideSpeed;
-    [SerializeField] LayerMask wallLayer;
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] Vector2 wallCheckSize;
     bool isTouchingWall;
@@ -31,14 +33,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float walljumpforce;
     [SerializeField] Vector2 walljumpAngle;
     float walljumpDirection = -1;
-   
+
     //Other components
-    Rigidbody2D rb;
+    Rigidbody2D rb2d;
     WaveSpawner waveSpawner;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         waveSpawner = GetComponent<WaveSpawner>();
     }
     private void Start()
@@ -46,19 +48,20 @@ public class PlayerMovement : MonoBehaviour
         walljumpAngle.Normalize();
     }
     private void Update()
-    {     
+    {
         CheckWorld();
+
     }
     private void FixedUpdate()
     {
-        Movement();    
-        WallSlide();      
+        Movement();
+        WallSlide();
     }
 
     #region Movements
     void Movement()
     {
-        
+        //Comprobar si esta moviendo
         if (axis.x != 0)
         {
             isMoving = true;
@@ -68,21 +71,14 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-       
-        if (grounded && !isStealthMode)
+        movementPlayer = new Vector2(axis.x * moveSpeed, rb2d.velocity.y);
+        //Si se puede mover aplicas la velocidad al player
+        if (canMove)
         {
-            rb.velocity = new Vector2(axis.x * moveSpeed, rb.velocity.y);
-
-        }else if(grounded && isStealthMode)
-        {         
-            rb.velocity = new Vector2(axis.x * stealthSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(airMoveSpeed * axis.x, rb.velocity.y);
+            rb2d.velocity = movementPlayer;
         }
 
-
+        //Voltearse izquierda o derecha
         if (axis.x < 0 && facingRight)
         {
             Flip();
@@ -94,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void WallSlide()
     {
-        if (isTouchingWall && !grounded && rb.velocity.y < 0)
+        if (isTouchingWall && !grounded && rb2d.velocity.y < 0)
         {
             isWallSliding = true;
         }
@@ -102,38 +98,40 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallSliding = false;
         }
+        //Si te estas deslizando por el muro,aplicas la fuerza de deslize
         if (isWallSliding)
         {
-            rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
-        }
-    }
-    void WallJump()
-    {
-        if ((isWallSliding) && canJump)
-        {
-            //rb.AddForce(new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection, walljumpforce * walljumpAngle.y), ForceMode2D.Impulse);
-            rb.velocity = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection, walljumpforce * walljumpAngle.y);
-            Flip();
-            canJump = false;
-
+            if (rb2d.velocity.y < -wallSlideSpeed)
+                rb2d.velocity = new Vector2(rb2d.velocity.x, -wallSlideSpeed);
         }
     }
     public void Jump()
     {
-        canJump = true;
-
-        WallJump();
-        if (canJump && grounded && !isWallSliding)
+        //Normal Jump
+        if (grounded && !isWallSliding)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            canJump = false;
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            print("Jump");
         }
+        //WallJump
+        
+        if (isWallSliding)
+        {
+            print("WallJump");
+            rb2d.velocity = Vector2.zero;
+            Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
+            rb2d.velocity = moveTo;
+            Debug.Log(rb2d.velocity);
+            StartCoroutine(StopMovement());
+        }
+
     }
     #endregion
     void CheckWorld()
     {
         grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
-        isTouchingWall = Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
+        isTouchingWall = Physics2D.Raycast(transform.position, transform.right, wallCheckDistance, groundLayer);
     }
     void Flip()
     {
@@ -146,6 +144,24 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    IEnumerator StopMovement()
+    {
+        canMove = false;
+
+        if (transform.localScale.x == 1)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            transform.localScale = Vector2.one;
+        }
+
+        yield return new WaitForSeconds(.3f);
+
+        transform.localScale = Vector2.one;
+        canMove = true;
+    }
     IEnumerator WaveGround()
     {
         yield return new WaitForSeconds(0.01f);
@@ -193,7 +209,16 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(groundCheckPoint.position, groundCheckSize);
         Gizmos.color = Color.green;
-        Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
+        //Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
+
+        if (facingRight)
+        {
+            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + wallCheckDistance, transform.position.y, 0));
+        }
+        else
+        {
+            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - wallCheckDistance, transform.position.y, 0));
+        }
 
     }
 }
