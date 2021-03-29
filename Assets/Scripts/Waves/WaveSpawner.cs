@@ -6,6 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
 
     PlayerMovement player;
+    public Animator animPlayer;
     
     //Settings Waves
     [Header("Step Wave")]
@@ -36,6 +37,8 @@ public class WaveSpawner : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<PlayerMovement>();
+        animPlayer = GetComponent<Animator>();
+
     }
     private void Update()
     {

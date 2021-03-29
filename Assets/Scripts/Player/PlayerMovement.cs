@@ -216,11 +216,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawCube(groundCheckPoint.position, groundCheckSize);
-        Gizmos.color = Color.green;
         //Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 60, 0));
 
+        Gizmos.color = Color.green;
         if (facingRight)
         {
             Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x + wallCheckDistance, wallCheckPoint.position.y, 0));
