@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Settings WallSliding")]
     [SerializeField] float wallSlideSpeed;
     [SerializeField] Transform wallCheckPoint;
-    [SerializeField] Vector2 wallCheckSize;
     bool isTouchingWall;
     bool isWallSliding;
 
@@ -126,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
     void CheckWorld()
     {
         grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
-        isTouchingWall = Physics2D.Raycast(transform.position, transform.right, wallCheckDistance, groundLayer);
+        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.right, wallCheckDistance, groundLayer);
     }
     void Flip()
     {
@@ -208,11 +207,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (facingRight)
         {
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + wallCheckDistance, transform.position.y, 0));
+            Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x + wallCheckDistance, wallCheckPoint.position.y, 0));
         }
         else
         {
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - wallCheckDistance, transform.position.y, 0));
+            Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x - wallCheckDistance, wallCheckPoint.position.y, 0));
         }
 
     }
