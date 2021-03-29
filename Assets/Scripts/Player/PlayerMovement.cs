@@ -36,14 +36,24 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb2d;
     WaveSpawner waveSpawner;
 
+    //Animator variables
+    Animator anim;
+    int IDSpeedParam;
+    int IDIsGroundesParam;
+    int IDJumpParam;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         waveSpawner = GetComponent<WaveSpawner>();
+        anim = GetComponent<Animator>();
     }
     private void Start()
     {
         walljumpAngle.Normalize();
+        IDSpeedParam = Animator.StringToHash("IsMoving");
+        IDIsGroundesParam = Animator.StringToHash("IsGrounded");
+        IDJumpParam = Animator.StringToHash("Jump");
     }
     private void Update()
     {
@@ -75,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb2d.velocity = movementPlayer;
         }
+        anim.SetFloat("VelocityX", Mathf.Abs(rb2d.velocity.x));
+        anim.SetFloat("VelocityY", rb2d.velocity.y);
+
 
         //Voltearse izquierda o derecha
         if (axis.x < 0 && facingRight)
@@ -105,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
+        anim.SetTrigger(IDJumpParam);
         //Normal Jump
         if (grounded && !isWallSliding)
         {
@@ -124,8 +138,9 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     void CheckWorld()
     {
-        grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+        grounded = Physics2D.Raycast(transform.position, Vector2.down,60, groundLayer);
         isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.right, wallCheckDistance, groundLayer);
+        anim.SetBool(IDIsGroundesParam, grounded);
     }
     void Flip()
     {
@@ -204,6 +219,7 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawCube(groundCheckPoint.position, groundCheckSize);
         Gizmos.color = Color.green;
         //Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 60, 0));
 
         if (facingRight)
         {
