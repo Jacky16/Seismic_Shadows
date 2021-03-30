@@ -90,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Voltearse izquierda o derecha
+        if (!canMove) return;
         if (axis.x < 0 && facingRight)
         {
             Flip();
@@ -188,6 +189,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetStealth(bool _b)
     {
         isStealthMode = _b;
+    }
+    public void SetCanMove(bool _b)
+    {
+        canMove = _b;
     }
     #endregion
 
