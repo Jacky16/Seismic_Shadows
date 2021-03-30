@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
@@ -139,8 +139,8 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     void CheckWorld()
     {
-        grounded = Physics2D.Raycast(transform.position, Vector2.down,60, groundLayer);
-        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.right, wallCheckDistance, groundLayer);
+        grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, groundLayer);
         anim.SetBool(IDIsGroundesParam, grounded);
     }
     void Flip()
@@ -220,19 +220,15 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
+        //Line ground check
         Gizmos.color = Color.blue;
-        //Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 60, 0));
+
+        Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);
 
         Gizmos.color = Color.green;
-        if (facingRight)
-        {
-            Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x + wallCheckDistance, wallCheckPoint.position.y, 0));
-        }
-        else
-        {
-            Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x - wallCheckDistance, wallCheckPoint.position.y, 0));
-        }
+
+        Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x, wallCheckPoint.position.y + wallCheckDistance, 0));
+
 
     }
 }
