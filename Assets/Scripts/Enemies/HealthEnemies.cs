@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthEnemies : Health
 {
-    public override void Dead()
+    public override void OnDead()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         gameObject.SetActive(false);

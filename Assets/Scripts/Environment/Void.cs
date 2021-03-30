@@ -25,7 +25,7 @@ public class Void : MonoBehaviour
 
         if(collision.collider.tag == "Player")
         {
-            tpPlayer.Teleport(1);
+            tpPlayer.TeleportToTPVoid(1);
         }
         if (collision.collider.tag == "Enemy")
         {

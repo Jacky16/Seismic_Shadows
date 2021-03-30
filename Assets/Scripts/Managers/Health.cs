@@ -6,15 +6,17 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField]protected int life;
     [SerializeField] int maxLife;
-    [SerializeField] TextMeshProUGUI lifeText;
     bool isDead;
-    protected int life;
+    protected Animator anim;
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     private void Start()
     {
-        life = maxLife;
-        if (lifeText != null)
-        lifeText.text = maxLife.ToString();
+        life = maxLife;    
     }
 
     public void AddLife(int _life)
@@ -24,8 +26,7 @@ public class Health : MonoBehaviour
         {
             life = maxLife;
         }
-        if(lifeText != null)
-        lifeText.text = life.ToString();
+       
     }
     public void AddMaxLife(int _maxLife)
     {
@@ -33,17 +34,22 @@ public class Health : MonoBehaviour
     }
     public void Damage(int _damage)
     {
-        StartCoroutine(AnimationRed());
         life -= _damage;
-        if(life <= 0)
+        if(life <= 0 && !isDead)
         {
             life = 0;
-            Dead();
+            isDead = true;
+            OnDead();
         }
-        if (lifeText != null)
-        lifeText.text = life.ToString();
+        if (!isDead)
+        {
+            StartCoroutine(AnimationRed());
+            OnDamage();
+        }
+     
     }
-    public virtual void Dead()
+    protected virtual void OnDamage() {}
+    public virtual void OnDead()
     {
         Debug.Log("Dead");
     }
@@ -58,6 +64,11 @@ public class Health : MonoBehaviour
     public int GetMaxLife()
     {
         return maxLife;
+    }
+    protected void ResetLife()
+    {
+        life = maxLife;
+        isDead = false;
     }
 
     IEnumerator AnimationRed()

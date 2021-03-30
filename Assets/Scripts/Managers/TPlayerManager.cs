@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class TPlayerManager : MonoBehaviour
 {
-    Vector3 pos;
+    Vector3 posTpVoid;
+    Vector3 posCheckPoint;
     HealthPlayer hp;
 
     private void Awake()
     {
         hp = GetComponent<HealthPlayer>();
     }
-    public void Teleport(int damage)
+    private void Start()
+    {
+        posCheckPoint = transform.position;
+        posTpVoid = transform.position;
+    }
+    public void TeleportToTPVoid(int damage)
     {
         //EXPLICACION
         //Se llama desde Void.cs, cuando caes al vacio recibes 1 de daño
         //y te teletransportas a la posicion guardada al pasar por el checkpoint.
 
         hp.Damage(damage);
-        transform.position = pos;
+        transform.position = posTpVoid;
+    }
+    public void TeleportToCheckpoint()
+    {
+        transform.position = posCheckPoint;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,7 +39,12 @@ public class TPlayerManager : MonoBehaviour
             //Cuando el player pasa por un checkpoint invisible justo
             //antes de un hoyo, se guarda la posicion en la variable pos.
 
-            pos = collision.transform.position;
+            posTpVoid = collision.transform.position;
         }
+        else if (collision.CompareTag("Checkpoint"))
+        {
+            posCheckPoint = collision.transform.position;
+        }
+
     }
 }
