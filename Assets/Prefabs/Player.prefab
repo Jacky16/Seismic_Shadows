@@ -324,8 +324,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3368b38dea476438cef1d2f7e31e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 0
   maxLife: 3
-  lifeText: {fileID: 0}
+  imageTransition: {fileID: 0}
+  transitionDuration: 2
+  betweenTimeTransition: 3
+  tpPlayer: {fileID: -873550298017272004}
+  player: {fileID: 7612130501902412776}
 --- !u!50 &7850823710126684258
 Rigidbody2D:
   serializedVersion: 4
