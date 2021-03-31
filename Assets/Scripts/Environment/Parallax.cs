@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    Rigidbody2D player;
     [SerializeField] float speed;
-    [SerializeField] GameObject cc;
     Rigidbody2D prb2d;
     Rigidbody2D backrb2d;
     Transform cpos;
@@ -14,8 +13,8 @@ public class Parallax : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cpos = cc.GetComponent<Transform>();
-        prb2d = player.GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        cpos = GameObject.FindGameObjectWithTag("MainCamera").transform;
         backrb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -28,16 +27,16 @@ public class Parallax : MonoBehaviour
     {
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, cpos.position.y, gameObject.transform.position.z);
 
-        if (prb2d.velocity.x > 0)
+        if (player.velocity.x > 0)
         {
             backrb2d.velocity = new Vector3(-speed, 0,0);
         }
-        else if (prb2d.velocity.x < 0)
+        else if (player.velocity.x < 0)
         {
             backrb2d.velocity = new Vector3(speed, 0, 0);
         }
 
-        if (prb2d.velocity.x == 0)
+        if (player.velocity.x == 0)
         {
             backrb2d.velocity = Vector3.zero;
         }
