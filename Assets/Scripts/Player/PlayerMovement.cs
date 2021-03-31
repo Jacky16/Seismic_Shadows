@@ -90,14 +90,16 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Voltearse izquierda o derecha
-        if (!canMove) return;
-        if (axis.x < 0 && facingRight)
+        if (canMove)
         {
-            Flip();
-        }
-        else if (axis.x > 0 && !facingRight)
-        {
-            Flip();
+            if (axis.x < 0 && facingRight)
+            {
+                Flip();
+            }
+            else if (axis.x > 0 && !facingRight)
+            {
+                Flip();
+            }
         }
     }
     void WallSlide()
@@ -142,14 +144,15 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
         isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, groundLayer);
         anim.SetBool(IDIsGroundesParam, grounded);
+        anim.SetBool("IsSliding", isTouchingWall);
     }
     void Flip()
     {
-        if (!isWallSliding)
-        {
             walljumpDirection *= -1;
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
+        if (!isWallSliding)
+        {
         }
 
     }
@@ -158,18 +161,19 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = false;
 
-        if (transform.localScale.x == 1)
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
-        else
-        {
-            transform.localScale = Vector2.one;
-        }
+        //if (transform.localScale.x == 1)
+        //{
+        //    transform.localScale = new Vector2(-1, 1);
+        //}
+        //else
+        //{
+        //    transform.localScale = Vector2.one;
+        //}
+        //Flip();
 
         yield return new WaitForSeconds(.3f);
 
-        transform.localScale = Vector2.one;
+        //transform.localScale = Vector2.one;
         canMove = true;
     }
     IEnumerator WaveGround()
