@@ -81,6 +81,14 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""f115dbd3-3664-4a60-8b86-109370cc6a1d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -323,6 +331,17 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Beacon Wave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f0ec460-d0ce-45dd-8ece-c8c693e2901f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -908,6 +927,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         m_Player_PushWave = m_Player.FindAction("Push Wave", throwIfNotFound: true);
         m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
         m_Player_BeaconWave = m_Player.FindAction("Beacon Wave", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -977,6 +997,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_PushWave;
     private readonly InputAction m_Player_Stealth;
     private readonly InputAction m_Player_BeaconWave;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Game_Inputs m_Wrapper;
@@ -989,6 +1010,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         public InputAction @PushWave => m_Wrapper.m_Player_PushWave;
         public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
         public InputAction @BeaconWave => m_Wrapper.m_Player_BeaconWave;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1022,6 +1044,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @BeaconWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBeaconWave;
                 @BeaconWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBeaconWave;
                 @BeaconWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBeaconWave;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1050,6 +1075,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @BeaconWave.started += instance.OnBeaconWave;
                 @BeaconWave.performed += instance.OnBeaconWave;
                 @BeaconWave.canceled += instance.OnBeaconWave;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1214,6 +1242,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         void OnPushWave(InputAction.CallbackContext context);
         void OnStealth(InputAction.CallbackContext context);
         void OnBeaconWave(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

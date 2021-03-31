@@ -10,7 +10,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject firstButtonSelected;
     [SerializeField] GameObject canvasMainMenu;
     [SerializeField] GameObject canvasOptions;
-    [SerializeField]EventSystem eventSystem;
+    EventSystem eventSystem;
+    private void Awake()
+    {
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+    }
     private void OnEnable()
     {
         canvasOptions.SetActive(false);

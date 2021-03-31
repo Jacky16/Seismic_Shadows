@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] PlayerMovement player;
     [SerializeField] WaveSpawner waveSpawner;
+    [SerializeField] PauseManager pauseManager;
     Vector2 axis;
     
    
@@ -89,5 +90,14 @@ public class InputManager : MonoBehaviour
 
     }
     #endregion
+
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            pauseManager.Pause();
+        }
+
+    }
 
 }

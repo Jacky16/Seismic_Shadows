@@ -9,8 +9,15 @@ public class OptionsManager : MonoBehaviour
 {
     [SerializeField] GameObject canvasBeforeOptions;
     [SerializeField] GameObject firstButtonSelected;
-    [SerializeField] EventSystem eventSystem;
-
+    EventSystem eventSystem;
+    private void Awake()
+    {
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+    }
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     private void OnEnable()
     {
         eventSystem.SetSelectedGameObject(firstButtonSelected);
