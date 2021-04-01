@@ -7,20 +7,25 @@ public class Enemy : MonoBehaviour
     [Header("General Settings")]
     [SerializeField] protected float radius;
     [SerializeField] protected float speed;
-    [SerializeField] protected float angle;
     protected float currentSpeed;
     protected bool targetInRange;
     protected bool isInitPos;
     protected Transform target;
     protected Vector2 initPosition;
     protected Vector2 dirEnemy;
+    bool isFlipped;
 
     [Header("Attack Settings")]
     [SerializeField] protected float timeToAttack;
     [SerializeField] protected int damage;
-    [SerializeField] protected float stopDistance; 
+    [SerializeField] protected float stopDistance;
+    [SerializeField] protected LayerMask raycastLayerMask;
     protected bool targetInStopDistance;
     float countAttack = float.MaxValue;
+    protected bool playerInRaycast;
+    [Header("Hit box Attack")]
+    [SerializeField] protected Vector2 sizeHitBoxAttack;
+    [SerializeField] protected Transform hitAttackPos;
 
     [Header("WayPoint Settings")]
     [SerializeField] protected bool followPath;
@@ -29,13 +34,12 @@ public class Enemy : MonoBehaviour
     protected int sizeWayPoints;
     protected int nextPoint = 0;
     protected float countWaypoints = 0;
-
     protected float distanceToTarget;
-    protected bool isInAngle;
 
     //Componentes
     protected Rigidbody2D rb2d;
     protected HealthPlayer healthPlayer;
+    [SerializeField] protected FOV fov;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -53,21 +57,18 @@ public class Enemy : MonoBehaviour
     {
         distanceToTarget = Vector2.Distance(transform.position, target.position);
         
-        //Si el player esta en el rango
-        targetInRange = radius >= distanceToTarget;
+        //Si el player esta en el rango, en el Raycast y en el FOV
+        targetInRange = radius >= distanceToTarget && PlayerInRaycast() && fov.IsInFov();
 
         //Si el player esta en la stopDistance
         targetInStopDistance = stopDistance >= distanceToTarget;
 
         //Si el Enemigo esta en su posicion inicial
-        isInitPos = Vector2.Distance(transform.position, initPosition) <= 0;
-
-        
+        isInitPos = Vector2.Distance(transform.position, initPosition) <= 0;     
     }
     void FixedUpdate()
     {
-        //Vector2 dirEnemy = Vector2.zero;
-
+        //Comportamiento del enemigo
         StatesEnemy();
 
         //Seguir el Path si no esta el player en el rango
@@ -88,9 +89,8 @@ public class Enemy : MonoBehaviour
 
             dirEnemy = currentWaypoint.position - transform.position;
 
-            rb2d.velocity = new Vector2(dirEnemy.normalized.x * speed, rb2d.velocity.y);
 
-            if (distanteToNextWaypoint <= 1)
+            if (distanteToNextWaypoint <= stopDistance)
             {
                 //Pasar al siguiente Waypoint
                 countWaypoints += Time.fixedDeltaTime;
@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour
                     countWaypoints = 0;
                 }
             }
+           rb2d.velocity = new Vector2(dirEnemy.normalized.x * speed, rb2d.velocity.y);
         }
 
         return dirEnemy;
@@ -132,18 +133,39 @@ public class Enemy : MonoBehaviour
         if (rb2d.velocity.normalized.x < 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            isFlipped = true;
         }     
         else if(rb2d.velocity.normalized.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            isFlipped = false;
 
         }
     }
+   
     public bool IsMoving()
     {
         return rb2d.velocity.x != 0;
     }
 
+    protected bool PlayerInRaycast()
+    {        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position,radius, raycastLayerMask);
+        
+        Debug.DrawRay(transform.position, target.position - transform.position);
+
+        if(hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                playerInRaycast = true;
+                return playerInRaycast;
+            }
+        }
+        playerInRaycast =  false;
+        return playerInRaycast;
+
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -155,8 +177,7 @@ public class Enemy : MonoBehaviour
                 countAttack = 0;
             }              
         }
-        OnTrigStay(collision);
-        
+        OnTrigStay(collision); 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -179,8 +200,9 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
         Gizmos.DrawWireSphere(transform.position, stopDistance);
 
-        //Draw angle
         Gizmos.color = Color.blue;
-        
+        if(hitAttackPos!= null)
+        Gizmos.DrawWireCube(hitAttackPos.position, sizeHitBoxAttack);
+
     }
 }

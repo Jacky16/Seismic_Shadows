@@ -27,8 +27,17 @@ public class BlindurGuardian : Enemy
     }
     public override void Attack()
     {
-        Debug.Log("Ataque Blindur");
-        healthPlayer.Damage(damage);
+         
+        Collider2D  col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack,0);
+        if(col.gameObject != null)
+        {
+            if (col.gameObject.CompareTag("Player"))
+            {
+                healthPlayer.Damage(damage);
+                Debug.Log("Ataque Blindur");
+
+            }
+        }
     }
 
 
