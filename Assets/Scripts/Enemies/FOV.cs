@@ -25,7 +25,6 @@ public class FOV : MonoBehaviour
     }
     public bool IsInFov()
     {
-        print("IsInFov");
         return inFov;
     }
 

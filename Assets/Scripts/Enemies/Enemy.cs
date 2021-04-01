@@ -39,10 +39,12 @@ public class Enemy : MonoBehaviour
     //Componentes
     protected Rigidbody2D rb2d;
     protected HealthPlayer healthPlayer;
+    protected Animator anim;
     [SerializeField] protected FOV fov;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     protected virtual void Start()
     {
@@ -58,13 +60,15 @@ public class Enemy : MonoBehaviour
         distanceToTarget = Vector2.Distance(transform.position, target.position);
         
         //Si el player esta en el rango, en el Raycast y en el FOV
-        targetInRange = radius >= distanceToTarget && PlayerInRaycast() && fov.IsInFov();
+        targetInRange = radius >= distanceToTarget && PlayerInRaycast();
 
         //Si el player esta en la stopDistance
         targetInStopDistance = stopDistance >= distanceToTarget;
 
         //Si el Enemigo esta en su posicion inicial
-        isInitPos = Vector2.Distance(transform.position, initPosition) <= 0;     
+        isInitPos = Vector2.Distance(transform.position, initPosition) <= 0;
+
+        anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.x));
     }
     void FixedUpdate()
     {
@@ -81,6 +85,7 @@ public class Enemy : MonoBehaviour
 
     public virtual Vector2 Path(Vector2 dirEnemy)
     {
+        
         if (followPath && !targetInRange)
         {
             Transform currentWaypoint = wayPoints[nextPoint];
@@ -88,7 +93,6 @@ public class Enemy : MonoBehaviour
             float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
 
             dirEnemy = currentWaypoint.position - transform.position;
-
 
             if (distanteToNextWaypoint <= stopDistance)
             {
@@ -100,7 +104,6 @@ public class Enemy : MonoBehaviour
                     countWaypoints = 0;
                 }
             }
-           rb2d.velocity = new Vector2(dirEnemy.normalized.x * speed, rb2d.velocity.y);
         }
 
         return dirEnemy;
