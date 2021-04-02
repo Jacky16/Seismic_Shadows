@@ -6,7 +6,7 @@ public class BehaivourStalactites : BehaivourWave
 {
     protected HealthPlayer playerHealth;
     bool activated;
-
+    [SerializeField] int gravityScale;
     private void Start()
     {
         activated = false;
@@ -17,7 +17,7 @@ public class BehaivourStalactites : BehaivourWave
         if (col.gameObject.CompareTag("InteractiveWave"))
         {
             //Esto se ejecuta cuando una onda interactiva choca con este objeto
-            rb2d.gravityScale = 3;
+            rb2d.gravityScale = gravityScale;
             activated = true;
             GetComponent<SpriteRenderer>().sortingLayerName = "AlwaysVisible";
         }

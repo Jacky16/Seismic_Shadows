@@ -312,7 +312,7 @@ MonoBehaviour:
   jumpForce: 650
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 21760
   groundCheckPoint: {fileID: 280158486}
   groundCheckSize: {x: 30, y: 2}
   wallCheckDistance: 85.18
@@ -447,6 +447,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 843828329205571029}
     m_Modifications:
+    - target: {fileID: 1714744053, guid: 8813676273d5f024b84ef19447908833, type: 3}
+      propertyPath: m_Radius
+      value: 206
+      objectReference: {fileID: 0}
     - target: {fileID: 79816244371794191, guid: 8813676273d5f024b84ef19447908833,
         type: 3}
       propertyPath: m_RootOrder
