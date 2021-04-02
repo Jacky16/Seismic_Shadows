@@ -10,6 +10,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject firstButtonSelected;
     [SerializeField] GameObject canvasMainMenu;
     [SerializeField] GameObject canvasOptions;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClipButtonClick;
     EventSystem eventSystem;
     private void Awake()
     {
@@ -32,6 +36,7 @@ public class MenuManager : MonoBehaviour
     }
     public void Options()
     {
+        //audioSource.PlayOneShot(audioClipButtonClick);
         canvasOptions.SetActive(true);
         canvasMainMenu.SetActive(false);
     }

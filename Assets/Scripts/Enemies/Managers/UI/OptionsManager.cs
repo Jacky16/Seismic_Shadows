@@ -9,8 +9,8 @@ public class OptionsManager : MonoBehaviour
 {
     [Header("Canvas GameObjects")]
     [SerializeField] GameObject canvasBeforeOptions;
+    [SerializeField] GameObject canvasOptions;
     [SerializeField] GameObject firstButtonSelected;
-    EventSystem eventSystem;
     [Header("Audio")]
     [SerializeField] AudioMixer audiomixer;
     [SerializeField] Slider sliderMusic;
@@ -22,18 +22,14 @@ public class OptionsManager : MonoBehaviour
     bool isFullScreen;
     private void Awake()
     {
-        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         InitVolumeSettings();
        
     }
-    private void OnEnable()
-    {
-        eventSystem.SetSelectedGameObject(firstButtonSelected);
-    }
+  
     public void Return()
     {
         canvasBeforeOptions.SetActive(true);
-        gameObject.SetActive(false);
+        canvasOptions.SetActive(false);
     }
 
     public void OnChangeMusicVolume()
