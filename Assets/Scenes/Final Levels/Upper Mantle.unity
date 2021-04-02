@@ -1652,7 +1652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364595594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2242, y: -781, z: -10}
+  m_LocalPosition: {x: 2242, y: -781, z: -29.722385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1419223928}
@@ -70439,6 +70439,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1848765951}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1611246094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7880189505350471751, guid: 5e585fdcffde189408d27db74f063b89,
+    type: 3}
+  m_PrefabInstance: {fileID: 3156083447558626493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1617325013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71988,7 +72000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877799550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2242, y: -781, z: -10}
+  m_LocalPosition: {x: 2242, y: -781, z: -29.722385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 141694472}
@@ -73382,6 +73394,11 @@ PrefabInstance:
       propertyPath: energyBar
       value: 
       objectReference: {fileID: 1076880623056442689}
+    - target: {fileID: 6450266473087148199, guid: ef7c83e96bd878647b3f2757f9907216,
+        type: 3}
+      propertyPath: textBeacon
+      value: 
+      objectReference: {fileID: 1611246094}
     - target: {fileID: 6450266473087148199, guid: ef7c83e96bd878647b3f2757f9907216,
         type: 3}
       propertyPath: circleImageLife
