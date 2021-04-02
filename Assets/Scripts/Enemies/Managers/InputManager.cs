@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -10,9 +11,27 @@ public class InputManager : MonoBehaviour
     [SerializeField] WaveSpawner waveSpawner;
     [SerializeField] PauseManager pauseManager;
     Vector2 axis;
-    
-   
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene(4);
+        }
+    }
     //Funciones que se ejecutan en el inspector
     #region Player
     public void OnMovement(InputAction.CallbackContext ctx)
