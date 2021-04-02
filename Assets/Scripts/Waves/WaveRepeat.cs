@@ -46,8 +46,8 @@ public class WaveRepeat : MonoBehaviour
     }
     void InstantiateWave(GameObject g)
     {
-        GameObject go = Instantiate(g, transform.position, transform.rotation, null);
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), go.GetComponent<Collider2D>());
+        GameObject go = Instantiate(g, transform.position, transform.rotation);
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), go.GetComponentInChildren<Collider2D>());
         Destroy(go, 2);
     }
 }
