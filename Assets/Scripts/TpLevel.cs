@@ -5,9 +5,9 @@ using UnityEngine;
 public class TpLevel : MonoBehaviour
 {
 
-    [SerializeField] Transform player;
-    public int posX;
-    public int posY;
+    Transform player;
+    [SerializeField] int posX;
+    [SerializeField] int posY;
 
     // Start is called before the first frame update
     void Start()
