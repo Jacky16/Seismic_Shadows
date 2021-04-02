@@ -19,7 +19,7 @@ public class BehaivourPushWave : BehaivourWave
         if (hit)
         {
             counter += Time.deltaTime;
-            if (counter >= 1)
+            if (counter >= 1 && rb2d.velocity.y == 0)
             {
                 rb2d.isKinematic = true;
                 hit = false;

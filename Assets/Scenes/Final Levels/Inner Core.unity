@@ -489,7 +489,8 @@ Transform:
   m_Children:
   - {fileID: 2093718898}
   - {fileID: 435535826}
-  - {fileID: 804875163}
+  - {fileID: 1317402997}
+  - {fileID: 1053451791}
   - {fileID: 245219277}
   m_Father: {fileID: 1626261840}
   m_RootOrder: 8
@@ -695,9 +696,8 @@ Transform:
   m_Children:
   - {fileID: 51548463}
   - {fileID: 2060078994}
-  - {fileID: 805587949}
   m_Father: {fileID: 138050073}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &276213759 stripped
 Transform:
@@ -716,7 +716,7 @@ PrefabInstance:
         type: 3}
       propertyPath: moveTo
       value: 
-      objectReference: {fileID: 805587949}
+      objectReference: {fileID: 0}
     - target: {fileID: 2941961686234216421, guid: 53929e571db7c194195293607a0e83ad,
         type: 3}
       propertyPath: duration
@@ -31595,7 +31595,7 @@ PrefabInstance:
     - target: {fileID: 1074868669839279210, guid: 2e72db8f0351aae4e9d56f73c567986d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1074868669839279210, guid: 2e72db8f0351aae4e9d56f73c567986d,
         type: 3}
@@ -31758,6 +31758,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ce804ee12e1e44c8dfa99e3202e56a, type: 3}
+--- !u!4 &1053451791 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9205690770018720539, guid: 53929e571db7c194195293607a0e83ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1412752478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1096745596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8410059854034597328, guid: 8ddfa60f459be634ea83fbb1f8f6a83b,
@@ -32488,6 +32494,12 @@ Transform:
   m_Father: {fileID: 1626261840}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1317402997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9205690770018720539, guid: 53929e571db7c194195293607a0e83ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 314920061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1344428927
 GameObject:
   m_ObjectHideFlags: 0
@@ -32536,7 +32548,7 @@ Transform:
   - {fileID: 1974905103}
   - {fileID: 945045414}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1361553329
 PrefabInstance:
@@ -32765,7 +32777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1412752478
 PrefabInstance:
@@ -32988,7 +33000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436856877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 470, y: -517, z: -10}
+  m_LocalPosition: {x: 4482, y: -1404, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1675449336}
@@ -33490,12 +33502,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 470
+      value: 4482
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -517
+      value: -1404
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -34593,7 +34605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837719488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 470, y: -517, z: -10}
+  m_LocalPosition: {x: 4482, y: -1404, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1462141921}
@@ -34784,7 +34796,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1904766578 stripped
 Transform:
