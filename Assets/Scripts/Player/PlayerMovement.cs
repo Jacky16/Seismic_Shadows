@@ -131,9 +131,10 @@ public class PlayerMovement : MonoBehaviour
         //WallJump
         if (isWallSliding)
         {
+            canMove = false;
             rb2d.velocity = Vector2.zero;
             Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
-            rb2d.velocity = moveTo;
+            rb2d.AddForce(moveTo,ForceMode2D.Impulse);
             StartCoroutine(StopMovement());
         }
 
@@ -189,10 +190,6 @@ public class PlayerMovement : MonoBehaviour
     public void SetAxis(Vector2 _axis)
     {
         axis = _axis;
-        if (axis.x == 0)
-        {
-            rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
-        }
     }
     public void SetStealth(bool _b)
     {
