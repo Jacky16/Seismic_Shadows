@@ -5,6 +5,7 @@ using UnityEngine;
 public class RubyHeart : MonoBehaviour
 {
     HealthPlayer hp;
+
     void Start()
     {
         hp = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
@@ -14,8 +15,7 @@ public class RubyHeart : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            hp.AddMaxLife(1);
-            hp.AddLife(999);
+            hp.AddLife(1);
             Destroy(gameObject);
         }
     }
