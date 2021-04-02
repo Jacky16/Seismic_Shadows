@@ -6,8 +6,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField]protected int life;
-    [SerializeField] int maxLife;
+    [SerializeField]protected float life;
+    [SerializeField] protected float maxLife;
     bool isDead;
     protected Animator anim;
     private void Awake()
@@ -46,7 +46,6 @@ public class Health : MonoBehaviour
             StartCoroutine(AnimationRed());
             OnDamage();
         }
-     
     }
     protected virtual void OnDamage() {}
     public virtual void OnDead()
@@ -57,11 +56,11 @@ public class Health : MonoBehaviour
     {
         return isDead;
     }
-    public int GetLife()
+    public float GetLife()
     {
         return life;
     }
-    public int GetMaxLife()
+    public float GetMaxLife()
     {
         return maxLife;
     }
@@ -69,6 +68,7 @@ public class Health : MonoBehaviour
     {
         life = maxLife;
         isDead = false;
+        HUDManager.singletone.UpdateLife(maxLife, maxLife);
     }
 
     IEnumerator AnimationRed()
@@ -76,6 +76,5 @@ public class Health : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSecondsRealtime(0.2f);
         GetComponent<SpriteRenderer>().color = Color.white;
-
     }
 }

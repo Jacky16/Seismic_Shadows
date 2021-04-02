@@ -22,34 +22,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.81
-        inSlope: 0
-        outSlope: -0.31499988
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.33333334
-        value: 0.70500004
-        inSlope: -0.31499988
-        outSlope: 0
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_FalloffIntensity
-    path: Light_Background
-    classID: 114
-    script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 1
         inSlope: 0
         outSlope: -0.021750033
@@ -117,15 +89,15 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 127.56
+        outSlope: 208.2
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 42.52
-        inSlope: 127.56
+        value: 69.4
+        inSlope: 208.2
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -136,34 +108,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_PointLightOuterRadius
     path: Light_Background
-    classID: 114
-    script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.81
-        inSlope: 0
-        outSlope: -0.29999998
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.6666667
-        value: 0.61
-        inSlope: -0.29999998
-        outSlope: 0.39999998
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_FalloffIntensity
-    path: Light_Environment
     classID: 114
     script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   - curve:
@@ -238,16 +182,16 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 127.56
+        outSlope: 208.2
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 42.52
-        inSlope: 127.56
-        outSlope: -110.490005
+        value: 69.4
+        inSlope: 208.2
+        outSlope: -191.13
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
@@ -255,7 +199,7 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.6666667
         value: 5.69
-        inSlope: -110.490005
+        inSlope: -191.13
         outSlope: -8.4
         tangentMode: 69
         weightedMode: 0
@@ -278,13 +222,6 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 821976238
-      attribute: 4172385972
-      script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 821976238
       attribute: 898800009
       script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
       typeID: 114
@@ -300,13 +237,6 @@ AnimationClip:
     - serializedVersion: 2
       path: 821976238
       attribute: 1358747199
-      script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 481269713
-      attribute: 4172385972
       script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
       typeID: 114
       customType: 0
@@ -359,34 +289,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.81
-        inSlope: 0
-        outSlope: -0.31499988
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.33333334
-        value: 0.70500004
-        inSlope: -0.31499988
-        outSlope: 0
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_FalloffIntensity
-    path: Light_Background
-    classID: 114
-    script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 1
         inSlope: 0
         outSlope: -0.021750033
@@ -454,15 +356,15 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 127.56
+        outSlope: 208.2
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 42.52
-        inSlope: 127.56
+        value: 69.4
+        inSlope: 208.2
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -473,34 +375,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_PointLightOuterRadius
     path: Light_Background
-    classID: 114
-    script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.81
-        inSlope: 0
-        outSlope: -0.29999998
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.6666667
-        value: 0.61
-        inSlope: -0.29999998
-        outSlope: 0.39999998
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_FalloffIntensity
-    path: Light_Environment
     classID: 114
     script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   - curve:
@@ -575,16 +449,16 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 127.56
+        outSlope: 208.2
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 42.52
-        inSlope: 127.56
-        outSlope: -110.490005
+        value: 69.4
+        inSlope: 208.2
+        outSlope: -191.13
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
@@ -592,7 +466,7 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.6666667
         value: 5.69
-        inSlope: -110.490005
+        inSlope: -191.13
         outSlope: -8.4
         tangentMode: 69
         weightedMode: 0

@@ -6,8 +6,12 @@ public class WaveSpawner : MonoBehaviour
 {
 
     PlayerMovement player;
-    public Animator animPlayer;
-    
+    [HideInInspector]public Animator animPlayer;
+    [Header("Flash Wave Settings")]
+    [SerializeField] int sizeFlashWave = 3;
+    [SerializeField] int maxSizeFlashWave = 3;
+    [SerializeField] float energyBar = 0;
+
     //Settings Waves
     [Header("Step Wave")]
     [SerializeField] Animator animStepWave;
@@ -70,7 +74,40 @@ public class WaveSpawner : MonoBehaviour
     }
     public void DoFlashWave()
     {
-        animFlashWave.SetTrigger("DoWave");
+        if(sizeFlashWave <= 3 && sizeFlashWave > 0)
+        {
+            animFlashWave.SetTrigger("DoWave");
+            sizeFlashWave--;
+            HUDManager.singletone.UpdateFlashWave(sizeFlashWave, maxSizeFlashWave);
+        }
+    }
+
+    public void AddSizeFlash(int _i)
+    {
+        int sum = sizeFlashWave + _i;
+        if(sum >= maxSizeFlashWave)
+        {
+            sizeFlashWave = maxSizeFlashWave;
+        }
+        else
+        {
+            sizeFlashWave = sum;
+        }
+    }
+    public void AddEnergyBar(float _f)
+    {
+        float sum = energyBar + _f;
+        if (sum >= 100)
+        {
+            energyBar = 0;
+            sizeFlashWave++;
+            HUDManager.singletone.UpdateFlashWave(sizeFlashWave,maxSizeFlashWave);
+        }
+        else
+        {
+            energyBar = sum;
+        }
+        HUDManager.singletone.UpdateEnergyBar(energyBar);
     }
 
 
