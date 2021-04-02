@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     protected Transform target;
     protected Vector2 initPosition;
     protected Vector2 dirEnemy;
-    bool isFlipped;
+    bool canMove = true;
 
     [Header("Attack Settings")]
     [SerializeField] protected float timeToAttack;
@@ -79,14 +79,14 @@ public class Enemy : MonoBehaviour
         dirEnemy = Path(dirEnemy);
 
         Flip();
-
+        if(canMove)
         rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed, rb2d.velocity.y);
     }
 
     public virtual Vector2 Path(Vector2 dirEnemy)
     {
         
-        if (followPath && !targetInRange)
+        if (followPath && !targetInRange && !fov.IsInFov())
         {
             Transform currentWaypoint = wayPoints[nextPoint];
 
@@ -94,14 +94,16 @@ public class Enemy : MonoBehaviour
 
             dirEnemy = currentWaypoint.position - transform.position;
 
-            if (distanteToNextWaypoint <= stopDistance)
+            if (distanteToNextWaypoint <= 40)
             {
                 //Pasar al siguiente Waypoint
-                countWaypoints += Time.fixedDeltaTime;
+                countWaypoints += Time.deltaTime;
+                canMove = false;
                 if (countWaypoints >= timeBetweenWaypoints)
                 {
                     NextWaypoint();
                     countWaypoints = 0;
+                    canMove = true;
                 }
             }
         }
@@ -136,13 +138,10 @@ public class Enemy : MonoBehaviour
         if (rb2d.velocity.normalized.x < 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            isFlipped = true;
         }     
         else if(rb2d.velocity.normalized.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            isFlipped = false;
-
         }
     }
    
@@ -171,14 +170,14 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             countAttack += Time.fixedDeltaTime;
-            if(countAttack >= timeToAttack)
+            if (countAttack >= timeToAttack)
             {
                 Attack();
                 countAttack = 0;
-            }              
+            }
         }
         OnTrigStay(collision); 
     }

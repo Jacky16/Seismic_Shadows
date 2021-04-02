@@ -7,7 +7,7 @@ public class BlindurGuardian : Enemy
     public override void StatesEnemy()
     {
         //Perseguir al player
-        if (targetInRange && !targetInStopDistance || fov.IsInFov() && !targetInStopDistance)
+        if (targetInRange && !targetInStopDistance && fov.IsInFov() || fov.IsInFov() && !targetInStopDistance)
         {
             dirEnemy = target.position - transform.position;
         }
@@ -28,10 +28,10 @@ public class BlindurGuardian : Enemy
     public override void Attack()
     {
          
-        Collider2D  col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack,0);
-        if(col.gameObject != null)
+        Collider2D  col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack,0,raycastLayerMask);
+        if(col != null)
         {
-            if (col.gameObject.CompareTag("Player"))
+            if (col.gameObject.CompareTag("Player") && fov.IsInFov())
             {
                 healthPlayer.Damage(damage);
                 anim.SetTrigger("Attack");

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6949132633380187101}
   - component: {fileID: 6949132633380187088}
   - component: {fileID: 6949132633380187100}
+  - component: {fileID: 7169989976206597325}
   m_Layer: 12
   m_Name: Enemy_Guardia_Blindur
   m_TagString: Enemy
@@ -142,7 +143,7 @@ MonoBehaviour:
   sizeHitBoxAttack: {x: 46.83, y: 59.76}
   hitAttackPos: {fileID: 6949132632600915496}
   followPath: 1
-  timeBetweenWaypoints: 0
+  timeBetweenWaypoints: 2
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -198,6 +199,25 @@ CircleCollider2D:
   m_Offset: {x: 3.09, y: -5.8}
   serializedVersion: 2
   m_Radius: 8.78
+--- !u!95 &7169989976206597325
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949132633380187095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b75940a59b6e9d4bbf22eb8178bb23c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5546806398383550707
 PrefabInstance:
   m_ObjectHideFlags: 0
