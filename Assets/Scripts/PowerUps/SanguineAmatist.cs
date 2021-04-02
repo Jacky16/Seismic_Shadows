@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SanguineAmethyst : MonoBehaviour
+public class SanguineAmatist : MonoBehaviour
 {
     HealthPlayer hp;
-
     void Start()
     {
         hp = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
@@ -15,7 +14,8 @@ public class SanguineAmethyst : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            hp.AddLife(1);
+            hp.AddMaxLife(1);
+            hp.AddLife(999);
             Destroy(gameObject);
         }
     }
