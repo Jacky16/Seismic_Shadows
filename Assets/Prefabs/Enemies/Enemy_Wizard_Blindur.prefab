@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1139602182}
   - component: {fileID: 1139602183}
   - component: {fileID: -2598225064738675310}
-  - component: {fileID: 5901155819961315890}
-  m_Layer: 0
+  - component: {fileID: 2731712984445601465}
+  m_Layer: 12
   m_Name: Enemy_Wizard_Blindur
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -78,7 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: -10584355
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4335e6c39ca0ac94f989b5112de2612c, type: 3}
+  m_Sprite: {fileID: 7192525797267806642, guid: e3f80a67939c41d418b959acaafb5e09,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,18 +102,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8ac142659f98148bc79a151696f93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 21.92
-  speed: 1
-  angle: 0
+  radius: 526.7
+  speed: 100
   timeToAttack: 3
   damage: 1
-  stopDistance: 1
-  followPath: 1
-  timeBetweenWaypoints: 0
+  stopDistance: 39.83
+  raycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 18176
+  sizeHitBoxAttack: {x: 0, y: 0}
+  hitAttackPos: {fileID: 0}
+  followPath: 0
+  timeBetweenWaypoints: 1
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  fov: {fileID: 0}
   ps: {fileID: 1972407882216597772}
 --- !u!50 &1139602182
 Rigidbody2D:
@@ -134,7 +139,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1139602183
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +155,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 32
 --- !u!114 &-2598225064738675310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,21 +168,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44eca4bdb05a0064b8c62d7bec48caa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 0
-  lifeText: {fileID: 1466585287597879848}
---- !u!114 &5901155819961315890
-MonoBehaviour:
+  life: 1
+  maxLife: 1
+--- !u!95 &2731712984445601465
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2352668552817858253}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53bcf4ba8b314ad4e9d5ab6289864bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractice: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a330af9c9638701419b24541332f961a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4811421574281781359
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8737490784648093915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0.01, z: 0}
+  m_LocalPosition: {x: -29.7, y: -15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2316391343312490939}
@@ -580,7 +591,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 88
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -696,7 +707,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 22.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1441,7 +1452,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1452,21 +1463,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: -1
-          outSlope: -1
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
           value: 0
-          inSlope: -1
-          outSlope: -1
+          inSlope: 34.65283
+          outSlope: 34.65283
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.028857674
+          value: 1
+          inSlope: 34.65283
+          outSlope: 34.65283
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -5198,9 +5209,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingLayerID: -154017935
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
