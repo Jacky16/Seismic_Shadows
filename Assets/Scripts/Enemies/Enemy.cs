@@ -135,14 +135,14 @@ public class Enemy : MonoBehaviour
     }
     protected void Flip()
     {
-        //if (rb2d.velocity.normalized.x < 0)
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 0, 0);
-        //}     
-        //else if(rb2d.velocity.normalized.x > 0)
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 180, 0);
-        //}
+        if (rb2d.velocity.normalized.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }     
+        else if(rb2d.velocity.normalized.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
    
     public bool IsMoving()
