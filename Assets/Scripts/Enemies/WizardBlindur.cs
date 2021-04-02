@@ -9,21 +9,18 @@ public class WizardBlindur : Enemy
     float count = float.MaxValue;
     int pos = 0;
     bool canMove;
-    protected override void Start()
-    {
-       
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-
-    }
+  
 
     public override void StatesEnemy()
     {
-        if (targetInRange)
+        if (targetInRange && PlayerInRaycast())
         {
             count += Time.fixedDeltaTime;
-            if(count >= timeToAttack)
+            Vector2 dir = (target.position - transform.position).normalized;
+           
+            if (count >= timeToAttack)
             {
-                ps.Play();
+                Attack();
                 count = 0;
                 canMove = true;
             }
@@ -33,6 +30,32 @@ public class WizardBlindur : Enemy
                 canMove = false;
             }
         }
+    }
+    public override Vector2 Path(Vector2 dirEnemy)
+    {
+        if (followPath && !targetInRange)
+        {
+            Transform currentWaypoint = wayPoints[nextPoint];
+
+            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
+
+            dirEnemy = currentWaypoint.position - transform.position;
+
+            if (distanteToNextWaypoint <= 40)
+            {
+                //Pasar al siguiente Waypoint
+                countWaypoints += Time.deltaTime;
+                canMove = false;
+                if (countWaypoints >= timeBetweenWaypoints)
+                {
+                    NextWaypoint();
+                    countWaypoints = 0;
+                    canMove = true;
+                }
+            }
+        }
+
+        return dirEnemy;
     }
     void SwitchPosition()
     {
@@ -45,6 +68,8 @@ public class WizardBlindur : Enemy
     }
     public override void Attack()
     {
+       
         ps.Play();
+        anim.SetTrigger("Attack"); 
     }
 }
