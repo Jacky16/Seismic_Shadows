@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("BlindurLevel");
+        Invoke("LoadFirstLevel", 3);
     }
     public void Options()
     {
@@ -38,5 +38,9 @@ public class MenuManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    void LoadFirstLevel()
+    {
+        SceneManager.LoadScene("Upper Mantle");
     }
 }
