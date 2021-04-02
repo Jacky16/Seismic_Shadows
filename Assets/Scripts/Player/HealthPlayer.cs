@@ -11,18 +11,20 @@ public class HealthPlayer : Health
     [SerializeField] float transitionDuration;
     [SerializeField] float betweenTimeTransition;
 
-    [SerializeField]TPlayerManager tpPlayer;
+    [SerializeField] TPlayerManager tpPlayer;
     [SerializeField] PlayerMovement player;
 
 
     public override void OnDead()
     {
         anim.SetTrigger("Dead");
+        HUDManager.singletone.UpdateLife(life, maxLife);
         StartCoroutine(DeadAnimation());
     }
     protected override void OnDamage()
     {
         anim.SetTrigger("Hit");
+        HUDManager.singletone.UpdateLife(life, maxLife);
     }
 
     IEnumerator DeadAnimation()
@@ -35,6 +37,7 @@ public class HealthPlayer : Health
         player.SetCanMove(true);
         ResetLife();
         imageTransition.DOFade(0, transitionDuration);
+
     }
     private void OnParticleCollision(GameObject other)
     {
