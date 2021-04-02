@@ -12,6 +12,8 @@ public class HUDManager : MonoBehaviour
     [Header("Flash UI")]
     [SerializeField] GameObject[] flashes;
     [SerializeField] Image energyBar;
+    [Header("Beacon UI")]
+    [SerializeField] TextMeshProUGUI textBeacon;
     public static HUDManager singletone;
 
     private void Awake()
@@ -45,6 +47,11 @@ public class HUDManager : MonoBehaviour
                 flashes[i].SetActive(false);
             }
         }
+    }
+
+    public void UpdateBeacon(int _nbeacons)
+    {
+        textBeacon.text = "x" + _nbeacons.ToString();
     }
 
 }

@@ -12,6 +12,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] int maxSizeFlashWave = 3;
     [SerializeField] float energyBar = 0;
 
+    [Header("Beacon Wave Settings")]
+    [SerializeField] int nBeacons = 3;
+
     //Settings Waves
     [Header("Step Wave")]
     [SerializeField] Animator animStepWave;
@@ -69,8 +72,13 @@ public class WaveSpawner : MonoBehaviour
     }
     public void DoBeaconWave()
     {
-        GameObject go = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
-        Destroy(go,30);
+        if (nBeacons > 0)
+        {
+            nBeacons--;
+            HUDManager.singletone.UpdateBeacon(nBeacons);
+            GameObject go = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
+            Destroy(go, 30);
+        }
     }
     public void DoFlashWave()
     {
@@ -109,6 +117,4 @@ public class WaveSpawner : MonoBehaviour
         }
         HUDManager.singletone.UpdateEnergyBar(energyBar);
     }
-
-
 }

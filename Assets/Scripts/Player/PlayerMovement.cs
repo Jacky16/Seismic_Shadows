@@ -189,6 +189,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetAxis(Vector2 _axis)
     {
         axis = _axis;
+        if (axis.x == 0)
+        {
+            rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
+        }
     }
     public void SetStealth(bool _b)
     {
