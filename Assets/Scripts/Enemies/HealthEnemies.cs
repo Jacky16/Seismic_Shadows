@@ -8,7 +8,10 @@ public class HealthEnemies : Health
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         gameObject.SetActive(false);
+        anim.SetTrigger("Death");
     }
-
-
+    protected override void OnDamage()
+    {
+        anim.SetTrigger("Hit");
+    }
 }

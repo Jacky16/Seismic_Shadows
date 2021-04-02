@@ -6,13 +6,14 @@ public class BlindurBerserker : Enemy
 {
     [Header("Settings Blindur Berserker")]
     [SerializeField] float timeToCargerAgain;
+    [SerializeField] float wallCheckDistance;
     bool carger;
     Vector3 toGo;
     float count = float.MaxValue;
 
     public override void StatesEnemy()
     {
-        if (!carger && targetInRange && !targetInStopDistance)
+        if (!carger && targetInRange && !targetInStopDistance && fov.IsInFov() && PlayerInRaycast())
         {
             count += Time.fixedDeltaTime;
             if (timeToCargerAgain <= count)
@@ -21,11 +22,15 @@ public class BlindurBerserker : Enemy
                 dirEnemy = toGo - transform.position;
                 count = 0;
                 carger = true;
+                anim.SetBool("Carger", carger);
             }
-        }else if (targetInStopDistance)
+        }
+        else if (targetInStopDistance && !fov.IsInFov() && !PlayerInRaycast())
         {
             dirEnemy = Vector2.zero;
         }
+        CheckWall();
+
     }
     public override Vector2 Path(Vector2 dirEnemy)
     {
@@ -56,16 +61,32 @@ public class BlindurBerserker : Enemy
 
     public override void Attack()
     {
-        Debug.Log("Ataque Blindur");
-        healthPlayer.Damage(damage);
+        Collider2D col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, raycastLayerMask);
+        if (col != null)
+        {
+            if (col.gameObject.CompareTag("Player") && fov.IsInFov())
+            {
+                healthPlayer.Damage(damage);
+                anim.SetTrigger("Attack");
+                Debug.Log("Ataque Berserker");
+
+
+            }
+        }
     }
 
-    public override void OnCollEnter(Collision2D col)
+    void CheckWall()
     {
-        Invoke("SetCargerFalse", 1);
+        Collider2D col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, raycastLayerMask);
+        if (col != null)
+        {
+            SetCargerFalse();
+        }
     }
     void SetCargerFalse()
     {
         carger = false;
+        anim.SetBool("Carger", carger);
+        transform.Rotate(0, 180, 0);
     }
 }

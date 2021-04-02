@@ -133,7 +133,7 @@ public class Enemy : MonoBehaviour
         }
         currentSpeed = speed;
     }
-    private void Flip()
+    protected void Flip()
     {
         if (rb2d.velocity.normalized.x < 0)
         {
