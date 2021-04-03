@@ -52,7 +52,6 @@ public class HUDManager : MonoBehaviour
             }
         }
     }
-
     public void UpdateBeacon(int _nbeacons)
     {
         textBeacon.text = "x" + _nbeacons.ToString();

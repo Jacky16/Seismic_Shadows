@@ -11,9 +11,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] int sizeFlashWave = 3;
     [SerializeField] int maxSizeFlashWave = 3;
     [SerializeField] float energyBar = 0;
-
+        
     [Header("Beacon Wave Settings")]
-    [SerializeField] int nBeacons = 3;
+    [SerializeField] int nBeacons = 0;
 
     //Settings Waves
     [Header("Step Wave")]
@@ -93,6 +93,14 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    public void SetNBeacons(int _nBeacons)
+    {
+        nBeacons += _nBeacons;
+    }
+    public int GetNBeacons()
+    {
+        return nBeacons;
+    }
     public void AddSizeFlash(int _i)
     {
         int sum = sizeFlashWave + _i;
