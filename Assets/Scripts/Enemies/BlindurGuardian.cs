@@ -6,6 +6,8 @@ public class BlindurGuardian : Enemy
 {
     bool followPlayer;
     bool flipOnce = true;
+    [Header("Force Push")]
+    [SerializeField] float forcePush;
     protected override void StatesEnemy()
     {
         //Comenzar a perseguir al player
@@ -86,6 +88,23 @@ public class BlindurGuardian : Enemy
                     countAttack = 0;
                 }
             }
+        }
+    }
+  
+    void ActiveMovement()
+    {
+        canMove = true;
+    }
+    protected override void OnTrigEnter(Collider2D col)
+    {
+        if (col.CompareTag("PushWave"))
+        {
+            Vector2 dirForce = col.transform.position - target.position;
+
+            canMove = false;
+            rb2d.velocity = Vector2.zero;
+            rb2d.velocity = dirForce.normalized * forcePush;
+            Invoke("ActiveMovement", 1);
         }
     }
 }

@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     protected Transform target;
     protected bool facingRight;
     protected Vector3 initPos;
+    protected bool canMove = true;
    
     [Header("Attack Settings")]
     [SerializeField] protected float radius;
@@ -83,17 +84,18 @@ public class Enemy : MonoBehaviour
         Path();
 
         anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.normalized.x));
+        if(canMove)
         rb2d.velocity = new Vector2(dir.normalized.x * speed, rb2d.velocity.y);
 
     }
 
     protected void FlipManager(float velocityX)
     {
-        if (velocityX > 0 && !facingRight)
+        if (velocityX < 0 && !facingRight)
         {
             Flip();
         }
-        else if (velocityX < 0 && facingRight)
+        else if (velocityX > 0 && facingRight)
         {
             Flip();
         }
