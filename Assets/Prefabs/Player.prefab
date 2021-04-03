@@ -318,7 +318,7 @@ MonoBehaviour:
     m_Bits: 21760
   groundCheckPoint: {fileID: 280158486}
   groundCheckSize: {x: 30, y: 2}
-  wallCheckDistance: 85.18
+  wallCheckDistance: 75
   wallSlideSpeed: 5
   wallCheckPoint: {fileID: 7228642098496884102}
   walljumpforce: 800
@@ -349,6 +349,7 @@ MonoBehaviour:
     type: 3}
   beaconWavePrefab: {fileID: 4112075287897545597, guid: 1155fc61a8996184582cf4bd9c1d5aca,
     type: 3}
+  beacon: {fileID: 5792325966252891389, guid: 639000a7634733f4b96085172d83993f, type: 3}
   animFlashWave: {fileID: 0}
 --- !u!114 &562313004
 MonoBehaviour:

@@ -14,13 +14,13 @@ public class Enemy : MonoBehaviour
     protected bool facingRight;
     protected Vector3 initPos;
    
-
     [Header("Attack Settings")]
     [SerializeField] protected float radius;
     [SerializeField] protected float stopDistance;
     [SerializeField] protected int damage;
     [SerializeField] protected float timeToAttack;
     protected float countAttack = 0;
+
     [Header("Hit box Attack")]
     [SerializeField] protected Vector2 sizeHitBoxAttack;
     [SerializeField] protected Transform hitAttackPos;
@@ -42,7 +42,6 @@ public class Enemy : MonoBehaviour
     protected float distanceToTarget;
 
     [Header("Other components")]
-    //Componentes
     protected Rigidbody2D rb2d;
     protected HealthPlayer healthPlayer;
     protected Animator anim;
