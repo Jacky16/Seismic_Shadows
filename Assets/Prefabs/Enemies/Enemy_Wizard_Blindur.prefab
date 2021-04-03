@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 2352668552817858253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8, y: -15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 2856132347907343314}
   - {fileID: 8491655649210219748}
@@ -232,21 +232,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8ac142659f98148bc79a151696f93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 526.7
   speed: 100
-  timeToAttack: 3
-  damage: 1
-  stopDistance: 39.83
-  raycastLayerMask:
+  layerMaskEnvironent:
     serializedVersion: 2
-    m_Bits: 18176
+    m_Bits: 18177
+  timeToStartFollow: 0
+  radius: 526.7
+  stopDistance: 39.83
+  damage: 1
+  timeToAttack: 3
   sizeHitBoxAttack: {x: 0, y: 0}
   hitAttackPos: {fileID: 0}
   followPath: 0
-  timeBetweenWaypoints: 1
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
+  timeInWayPoint: 0
   fov: {fileID: 0}
   ps: {fileID: 1972407882216597772}
 --- !u!50 &1139602182

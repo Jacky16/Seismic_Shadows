@@ -57,6 +57,15 @@ public class Enemy : MonoBehaviour
     {
         if (wayPoints.Length == 0) followPath = false;
         initPos = transform.position; 
+
+        if(transform.localRotation.y == 180)
+        {
+            facingRight = false;
+        }
+        else
+        {
+            facingRight = true;
+        }
     }
     private void Update()
     {
@@ -120,6 +129,7 @@ public class Enemy : MonoBehaviour
     {
         targetInRadius = Vector2.Distance(transform.position, target.position) < radius;
         targetInStopDistance = Vector2.Distance(transform.position, target.position) < stopDistance;
+        if(fov!= null)
         targetInFov = fov.IsInFov();
     }
     protected void NextWayPoint()
