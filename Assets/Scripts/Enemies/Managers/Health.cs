@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField]protected float life;
+    [SerializeField] protected float life;
     [SerializeField] protected float maxLife;
     bool isDead;
     protected Animator anim;
