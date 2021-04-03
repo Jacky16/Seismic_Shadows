@@ -4,26 +4,57 @@ using UnityEngine;
 
 public class BlindurGuardian : Enemy
 {
+    bool followPlayer;
     public override void StatesEnemy()
     {
         //Perseguir al player
-        if (targetInRange && !targetInStopDistance && fov.IsInFov() || fov.IsInFov() && !targetInStopDistance)
-        {
+        if (fov.IsInFov() && playerInRaycast || followPlayer)
+        {        
             dirEnemy = target.position - transform.position;
+            followPlayer = true;
         }
+
         //Enemigo al lado del player
-        else if (targetInRange && targetInStopDistance)
+        if (targetInRange && targetInStopDistance)
         {
             dirEnemy = Vector2.zero;
         }
-        else
+
+        //Si se sale del rango ya no persigue al player
+        if(!targetInRange)
         {
             //Volver a la posicion inicial si no sigue la ruta
+            followPlayer = false;
             if (!followPath)
             {
                 dirEnemy = (Vector3)initPosition - transform.position;
             }
         }
+    }
+    public override Vector2 Path(Vector2 dirEnemy)
+    {
+       
+        if (followPath && !followPlayer)
+        {
+            Transform currentWaypoint = wayPoints[nextPoint];
+
+            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
+
+            dirEnemy = currentWaypoint.position - transform.position;
+
+            if (distanteToNextWaypoint <= 40)
+            {
+                //Pasar al siguiente Waypoint
+                countWaypoints += Time.deltaTime;
+                if (countWaypoints >= timeBetweenWaypoints)
+                {
+                    NextWaypoint();
+                    countWaypoints = 0;
+                }
+            }
+        }
+
+        return dirEnemy;
     }
     public override void Attack()
     {

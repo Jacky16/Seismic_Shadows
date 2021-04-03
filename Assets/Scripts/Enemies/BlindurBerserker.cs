@@ -13,7 +13,7 @@ public class BlindurBerserker : Enemy
 
     public override void StatesEnemy()
     {
-        if (!carger && targetInRange && !targetInStopDistance && fov.IsInFov() && PlayerInRaycast())
+        if (!carger && targetInRange && !targetInStopDistance && fov.IsInFov() && playerInRaycast)
         {
             count += Time.fixedDeltaTime;
             if (timeToCargerAgain <= count)
@@ -25,7 +25,7 @@ public class BlindurBerserker : Enemy
                 anim.SetBool("Carger", carger);
             }
         }
-        else if (targetInStopDistance && !fov.IsInFov() && !PlayerInRaycast())
+        else if (targetInStopDistance && !fov.IsInFov() && playerInRaycast)
         {
             dirEnemy = Vector2.zero;
         }

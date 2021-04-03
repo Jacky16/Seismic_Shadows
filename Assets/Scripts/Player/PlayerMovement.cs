@@ -149,13 +149,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void Flip()
     {
-            walljumpDirection *= -1;
-            facingRight = !facingRight;
-            transform.Rotate(0, 180, 0);
-        if (!isWallSliding)
-        {
-        }
-
+        walljumpDirection *= -1;
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0); 
     }
 
     IEnumerator StopMovement()
