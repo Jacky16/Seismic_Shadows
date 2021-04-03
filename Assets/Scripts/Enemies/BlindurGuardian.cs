@@ -5,72 +5,78 @@ using UnityEngine;
 public class BlindurGuardian : Enemy
 {
     bool followPlayer;
-    public override void StatesEnemy()
+    protected override void StatesEnemy()
     {
-        //Perseguir al player
-        if (fov.IsInFov() && playerInRaycast || followPlayer)
-        {        
-            dirEnemy = target.position - transform.position;
-            followPlayer = true;
+        //Comenzar a perseguir al player
+        if (targetInRaycast && targetInFov || followPlayer)
+        {
+            countStartFollow += Time.fixedDeltaTime;
+            if(countStartFollow >= timeToStartFollow)
+            {
+                dir = target.position - transform.position;
+                followPlayer = true;
+            }
+            
+        }
+        if(targetInStopDistance && targetInFov)
+        {
+            Attack();
+            dir = Vector2.zero;
         }
 
-        //Enemigo al lado del player
-        if (targetInRange && targetInStopDistance)
+        //Cuando el enemigo deja de perseguir al player
+        if (!targetInRaycast && followPlayer)
         {
-            dirEnemy = Vector2.zero;
-        }
-
-        //Si se sale del rango ya no persigue al player
-        if(!targetInRange)
-        {
-            //Volver a la posicion inicial si no sigue la ruta
             followPlayer = false;
+            countStartFollow = 0;
             if (!followPath)
             {
-                dirEnemy = (Vector3)initPosition - transform.position;
+                //Comprobar si ha llegado a su posicion inicial para parar el movimiento
+                if(Vector2.Distance(transform.position,initPos) > 10)
+                {
+                    dir = initPos - transform.position;
+                }
+                else
+                {
+                    dir = Vector2.zero;
+                }
             }
+                 
         }
     }
-    public override Vector2 Path(Vector2 dirEnemy)
+    protected override void Path()
     {
-       
         if (followPath && !followPlayer)
         {
-            Transform currentWaypoint = wayPoints[nextPoint];
-
-            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
-
-            dirEnemy = currentWaypoint.position - transform.position;
-
-            if (distanteToNextWaypoint <= 40)
+            if (Vector2.Distance(transform.position, wayPoints[nextPoint].position) < 10)
             {
-                //Pasar al siguiente Waypoint
-                countWaypoints += Time.deltaTime;
-                if (countWaypoints >= timeBetweenWaypoints)
+                countWaypoint += Time.fixedDeltaTime;
+                dir = Vector2.zero;
+                if (countWaypoint >= timeInWayPoint)
                 {
-                    NextWaypoint();
-                    countWaypoints = 0;
+                    NextWayPoint();
+                    countWaypoint = 0;
+                }
+            }
+            dir = wayPoints[nextPoint].position - transform.position; 
+        }
+    }
+
+    protected override void Attack()
+    {
+        Collider2D col2D = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, layerMaskEnvironent);
+        if(col2D != null)
+        {
+            if (col2D.CompareTag("Player"))
+            {
+                countAttack += Time.fixedDeltaTime;
+                if(countAttack >= timeToAttack)
+                {
+                    anim.SetTrigger("Attack");
+                    col2D.GetComponent<HealthPlayer>().Damage(damage);
+                    countAttack = 0;
                 }
             }
         }
-
-        return dirEnemy;
     }
-    public override void Attack()
-    {
-         
-        Collider2D  col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack,0,raycastLayerMask);
-        if(col != null)
-        {
-            if (col.gameObject.CompareTag("Player") && fov.IsInFov())
-            {
-                healthPlayer.Damage(damage);
-                anim.SetTrigger("Attack");
-                Debug.Log("Ataque Blindur");
-
-            }
-        }
-    }
-
-
 }

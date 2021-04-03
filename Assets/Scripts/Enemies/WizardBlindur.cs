@@ -11,52 +11,52 @@ public class WizardBlindur : Enemy
     bool canMove;
   
 
-    public override void StatesEnemy()
-    {
-        if (targetInRange && playerInRaycast)
-        {
-            count += Time.fixedDeltaTime;
-            Vector2 dir = (target.position - transform.position).normalized;
+    //public override void StatesEnemy()
+    //{
+    //    if (targetInRange && playerInRaycast)
+    //    {
+    //        count += Time.fixedDeltaTime;
+    //        Vector2 dir = (target.position - transform.position).normalized;
            
-            if (count >= timeToAttack)
-            {
-                Attack();
-                count = 0;
-                canMove = true;
-            }
-            if(count >=  timeToAttack - 0.8f && canMove)
-            {
-                SwitchPosition();
-                canMove = false;
-            }
-        }
-    }
-    public override Vector2 Path(Vector2 dirEnemy)
-    {
-        if (followPath && !targetInRange)
-        {
-            Transform currentWaypoint = wayPoints[nextPoint];
+    //        if (count >= timeToAttack)
+    //        {
+    //            Attack();
+    //            count = 0;
+    //            canMove = true;
+    //        }
+    //        if(count >=  timeToAttack - 0.8f && canMove)
+    //        {
+    //            SwitchPosition();
+    //            canMove = false;
+    //        }
+    //    }
+    //}
+    //public override Vector2 Path(Vector2 dirEnemy)
+    //{
+    //    if (followPath && !targetInRange)
+    //    {
+    //        Transform currentWaypoint = wayPoints[nextPoint];
 
-            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
+    //        float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
 
-            dirEnemy = currentWaypoint.position - transform.position;
+    //        dirEnemy = currentWaypoint.position - transform.position;
 
-            if (distanteToNextWaypoint <= 40)
-            {
-                //Pasar al siguiente Waypoint
-                countWaypoints += Time.deltaTime;
-                canMove = false;
-                if (countWaypoints >= timeBetweenWaypoints)
-                {
-                    NextWaypoint();
-                    countWaypoints = 0;
-                    canMove = true;
-                }
-            }
-        }
+    //        if (distanteToNextWaypoint <= 40)
+    //        {
+    //            //Pasar al siguiente Waypoint
+    //            countWaypoints += Time.deltaTime;
+    //            canMove = false;
+    //            if (countWaypoints >= timeBetweenWaypoints)
+    //            {
+    //                NextWaypoint();
+    //                countWaypoints = 0;
+    //                canMove = true;
+    //            }
+    //        }
+    //    }
 
-        return dirEnemy;
-    }
+    //    return dirEnemy;
+    //}
     void SwitchPosition()
     {
         pos++;
@@ -66,9 +66,8 @@ public class WizardBlindur : Enemy
         }
         transform.position = wayPoints[pos].position;
     }
-    public override void Attack()
+    protected override void Attack()
     {
-       
         ps.Play();
         anim.SetTrigger("Attack"); 
     }
