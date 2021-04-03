@@ -8,14 +8,18 @@ public class AscendentPillar : BehaivourWave
     Rigidbody2D rb2d2;
     float count;
     [SerializeField] Transform moveTo;
+    Vector3 initialPos;
     [SerializeField] float duration;
     [SerializeField] Ease ease;
+    bool isGrown;
     
     // Start is called before the first frame update
     void Start()
     {
         
         rb2d2 = gameObject.GetComponent<Rigidbody2D>();
+        initialPos = transform.position;
+        isGrown = false;
     }
 
     // Update is called once per frame
@@ -41,8 +45,17 @@ public class AscendentPillar : BehaivourWave
     protected override void ActionOnWave(Collider2D col)
     {
         if(col.tag == "InteractiveWave")
-        {        
-           transform.DOMove(moveTo.position, duration).SetEase(ease);
+        {
+            if (!isGrown)
+            {
+                transform.DOMove(moveTo.position, duration).SetEase(ease).OnComplete(() => isGrown = true);
+            }
+            else
+            {
+                transform.DOMove(initialPos, duration).SetEase(ease).OnComplete(() => isGrown = false);
+
+            }
+
         }
     }
 }
