@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlindurGuardian : Enemy
 {
     bool followPlayer;
+    bool flipOnce = true;
     protected override void StatesEnemy()
     {
         //Comenzar a perseguir al player
@@ -29,20 +30,28 @@ public class BlindurGuardian : Enemy
         {
             followPlayer = false;
             countStartFollow = 0;
-            if (!followPath)
-            {
-                //Comprobar si ha llegado a su posicion inicial para parar el movimiento
-                if(Vector2.Distance(transform.position,initPos) > 10)
-                {
-                    dir = initPos - transform.position;
-                }
-                else
-                {
-                    dir = Vector2.zero;
-                }
-            }
+            
                  
         }
+        if (!followPath && !followPlayer)
+        {
+            //Comprobar si ha llegado a su posicion inicial para parar el movimiento
+            if (Vector2.Distance(transform.position, initPos) > 10)
+            {
+                dir = initPos - transform.position;
+                flipOnce = false;
+            }
+            else
+            {
+                dir = Vector2.zero;
+                if (spawnFlipped && !flipOnce)
+                {
+                    Flip();
+                    flipOnce = true;
+                }
+            }
+        }
+        FlipManager(dir.normalized.x);
     }
     protected override void Path()
     {
