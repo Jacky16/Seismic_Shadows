@@ -30,12 +30,16 @@ public class HUDManager : MonoBehaviour
         circleImageLife.DOFillAmount(_life / _maxLife, .5f);
     }
     public void UpdateEnergyBar(float _energy)
-    {     
-        energyBar.fillAmount = _energy / 100;
+    {
+        energyBar.DOFillAmount(_energy / 100, 0.5f);
+        if(energyBar.fillAmount >= 1)
+        {
+            energyBar.fillAmount = 0;
+            UpdateFlashWave(flashes.Length+1, 3);
+        }
     }
     public void UpdateFlashWave(int _size,int _maxSize)
     {
-        
         for(int i = 0; i < _maxSize; i++)
         {
             if(i < _size)
