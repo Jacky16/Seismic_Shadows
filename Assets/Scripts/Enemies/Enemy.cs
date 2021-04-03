@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] protected LayerMask layerMaskEnvironent;
     [SerializeField] protected float timeToStartFollow;
+    [SerializeField] protected bool spawnFlipped = false;
     protected float countStartFollow = 0;
     protected Vector2 dir;
     protected Transform target;
@@ -56,16 +57,9 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         if (wayPoints.Length == 0) followPath = false;
-        initPos = transform.position; 
-
-        if(transform.localRotation.y == 180)
-        {
-            facingRight = false;
-        }
-        else
-        {
-            facingRight = true;
-        }
+        initPos = transform.position;
+        if(spawnFlipped)
+        Flip();
     }
     private void Update()
     {
@@ -91,12 +85,15 @@ public class Enemy : MonoBehaviour
         anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.normalized.x));
         rb2d.velocity = new Vector2(dir.normalized.x * speed, rb2d.velocity.y);
 
-        float velocityX = rb2d.velocity.x;
-        if(velocityX > 0 && !facingRight)
+    }
+
+    protected void FlipManager(float velocityX)
+    {
+        if (velocityX > 0 && !facingRight)
         {
             Flip();
         }
-        else if(velocityX < 0 && facingRight)
+        else if (velocityX < 0 && facingRight)
         {
             Flip();
         }

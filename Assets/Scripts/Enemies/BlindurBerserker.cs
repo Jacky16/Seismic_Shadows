@@ -29,6 +29,7 @@ public class BlindurBerserker : Enemy
         {
             dir = Vector2.zero;
         }
+        FlipManager(-dir.normalized.x);
         
     }
 
@@ -46,11 +47,17 @@ public class BlindurBerserker : Enemy
         yield return new WaitForSeconds(3);
         transform.position = initPos;
         dir = Vector2.zero;
+        if (spawnFlipped)
+        {
+            Flip();
+        }
     }
     void SetCargerFalse(Collider2D col)
     {
         countStartFollow = 0;
         carger = false;
+        dir = Vector2.zero;
+        toGo = Vector2.zero;
         anim.SetBool("Carger", carger);
         if (col.CompareTag("Player"))
         {
@@ -59,7 +66,7 @@ public class BlindurBerserker : Enemy
         }
         else
         {
-            transform.Rotate(0, 180, 0);
         }
+            Flip();
     }
 }
