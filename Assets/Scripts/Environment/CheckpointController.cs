@@ -10,7 +10,7 @@ public class CheckpointController : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        saved = transform;
+        //saved = ;
     }
 
     void SetPos(Collider2D _col)

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -45409,40 +45409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Coraz\xF3n Rub\xED"
       objectReference: {fileID: 0}
-    - target: {fileID: 3918044661300020827, guid: 63691c7e985b86747b90d90eebcb6688,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 19.06128
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918044661300020827, guid: 63691c7e985b86747b90d90eebcb6688,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 26.843628
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918044661300020827, guid: 63691c7e985b86747b90d90eebcb6688,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.14202881
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918044661300020827, guid: 63691c7e985b86747b90d90eebcb6688,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.40924072
-      objectReference: {fileID: 0}
     - target: {fileID: 3918044661300020828, guid: 63691c7e985b86747b90d90eebcb6688,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918044661300020828, guid: 63691c7e985b86747b90d90eebcb6688,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918044661300020828, guid: 63691c7e985b86747b90d90eebcb6688,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3918044661300020828, guid: 63691c7e985b86747b90d90eebcb6688,
         type: 3}
