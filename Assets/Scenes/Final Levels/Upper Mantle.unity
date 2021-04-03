@@ -161,6 +161,140 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6490562525347045616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &52953381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 52953382}
+  - component: {fileID: 52953384}
+  - component: {fileID: 52953383}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: TextTutorial
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &52953382
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52953381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1483, y: 1.1483, z: 1.1483}
+  m_Children: []
+  m_Father: {fileID: 1419223928}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -83, y: 422}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &52953383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52953381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 3d9d0195fcd2b354f96b49359b8de862, type: 2}
+  m_sharedMaterial: {fileID: -8850086039463343535, guid: 3d9d0195fcd2b354f96b49359b8de862,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -140.18774, w: -334.0706}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &52953384
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52953381}
+  m_CullTransparentMesh: 0
 --- !u!4 &74867383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8049467447689982440, guid: 97873b55ac0b31843b4be85c993317e8,
@@ -933,6 +1067,441 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1067981668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &230998570
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1393572383233485536, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: "Press '\u2190' and '\u2192' to move."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393572383233485539, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 228.83632
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 131.97653
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5468
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -379
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589169, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: Be careful with void holes, nobody wants you to get hurt. (Unless...)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589170, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Void
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589183, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 156.35727
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589183, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 117.56559
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589183, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3779
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589183, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3689
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354378457422589183, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -895
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383320, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: CanvasTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695536, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: Press 'Space' to jump.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695539, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 172.96408
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 133.89629
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 606
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051400406589695550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -379.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374627700038275, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 192.29134
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374627700038275, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21747
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374627700038275, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5073
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374627700038285, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: This cute, little, squishy monster will punch you in the face if you
+        get too close to it, he doesn't like to be petted.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374627700038286, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Guardia Blindur
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628099441319, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628099441319, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -276
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628099441321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: Press 'Q' to see your environment.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628099441322, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Q
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628524115137, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Final
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628524115138, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: You did it! Now go ahead, the lower mantle awaits you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628524115148, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 301.85056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628524115148, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 248.30696
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628524115148, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23087
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628524115148, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628611779908, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: EndChallenge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628611779911, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: YOU DID IT! It isn't like I didn't trust in you or something... Anyway,
+        you're close to the end, go ahead!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628611779913, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 246.23038
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628611779913, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 249.51653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628611779913, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20544
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628611779913, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4787
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628736656032, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 259.58554
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628736656032, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 200.51593
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628736656032, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12315
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628736656032, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2191
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628736656045, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Final tuto
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628736656046, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: Now, let's begin with the real talk.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727892, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 165.85513
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727892, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 124.70706
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727892, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4616
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727892, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2109
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727892, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -831
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727897, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Wall-Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629174727898, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: "You can wall jump by pressing '\u2190' '\u2192' on the wall and then
+        jumping with 'Space'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629224255232, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: 'Here comes the first challenge, I''m gonna leave you for a bit, remember:
+        void = no good. See you on the other side!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629224255235, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: FirstChallenge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629224255246, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 218.35895
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629224255246, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 256.16315
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629224255246, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16763
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629224255246, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3767.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629262360596, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: Stalagmites are something you don't want to get close to, you better
+        not touch them.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629262360599, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: Stalagmite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629262360602, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 212.35052
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629262360602, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 179.16829
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629262360602, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13170
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629262360602, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629693075972, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 179.31334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629693075972, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15958.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629693075972, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3026.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629693075977, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: m_Name
+      value: BreakPlat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374629693075978, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
+        type: 3}
+      propertyPath: t_tecla
+      value: The platform in front of you will break 2s after you step on it, you
+        better think fast!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99, type: 3}
 --- !u!1001 &278652930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1813,7 +2382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364595594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18931, y: -3956, z: -29.722385}
+  m_LocalPosition: {x: 21760, y: -5073, z: -29.722385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1419223928}
@@ -3389,6 +3958,12 @@ PrefabInstance:
       objectReference: {fileID: 425760666}
     - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
+      propertyPath: beacon
+      value: 
+      objectReference: {fileID: 5792325966252891389, guid: 639000a7634733f4b96085172d83993f,
+        type: 3}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
       propertyPath: animFlashWave
       value: 
       objectReference: {fileID: 467807810}
@@ -3400,12 +3975,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18931
+      value: 21760
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3956
+      value: -5073
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -3895,22 +4470,22 @@ PrefabInstance:
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
@@ -3920,7 +4495,7 @@ PrefabInstance:
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6949132633380187091, guid: 0a1a6989574ff424d807e5a61e167ff9,
         type: 3}
@@ -70793,7 +71368,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 52953382}
   m_Father: {fileID: 364595599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70859,7 +71435,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -154017935
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1486729094
@@ -73016,7 +73592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877799550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18931, y: -3956, z: -29.722385}
+  m_LocalPosition: {x: 21760, y: -5073, z: -29.722385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 141694472}

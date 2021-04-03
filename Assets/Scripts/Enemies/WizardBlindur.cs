@@ -13,7 +13,7 @@ public class WizardBlindur : Enemy
 
     public override void StatesEnemy()
     {
-        if (targetInRange && PlayerInRaycast())
+        if (targetInRange && playerInRaycast)
         {
             count += Time.fixedDeltaTime;
             Vector2 dir = (target.position - transform.position).normalized;

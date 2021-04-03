@@ -51,6 +51,19 @@ MonoBehaviour:
   sliderMusic: {fileID: 8106565130989549054}
   sliderSounds: {fileID: 6703848230303748549}
   fullScreenToogle: {fileID: 738586742081050802}
+--- !u!114 &1481936993564226299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106565130832512941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fb1ad550a073b4c931f50e2f3c1a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstGameObjectSelected: {fileID: 8106565130989549048}
 --- !u!114 &8106565130423442458
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,11 @@ public class InputManager : MonoBehaviour
     [SerializeField] PauseManager pauseManager;
     Vector2 axis;
 
-
+    private void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

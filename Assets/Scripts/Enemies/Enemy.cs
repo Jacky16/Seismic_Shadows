@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     protected Vector2 initPosition;
     protected Vector2 dirEnemy;
     bool canMove = true;
+    bool facingRight = true;
 
     [Header("Attack Settings")]
     [SerializeField] protected float timeToAttack;
@@ -60,7 +61,7 @@ public class Enemy : MonoBehaviour
         distanceToTarget = Vector2.Distance(transform.position, target.position);
         
         //Si el player esta en el rango, en el Raycast y en el FOV
-        targetInRange = radius >= distanceToTarget && PlayerInRaycast();
+        targetInRange = radius >= distanceToTarget;
 
         //Si el player esta en la stopDistance
         targetInStopDistance = stopDistance >= distanceToTarget;
@@ -72,15 +73,28 @@ public class Enemy : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //Comprobar si hay algo enmedio del enemigo y el player cuando esta en el rango
+        if(targetInRange)
+        PlayerInRaycast();
+
         //Comportamiento del enemigo
         StatesEnemy();
 
         //Seguir el Path si no esta el player en el rango
         dirEnemy = Path(dirEnemy);
 
-        Flip();
+        
         if(canMove)
         rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed, rb2d.velocity.y);
+
+        if(dirEnemy.normalized.x < 0 && facingRight)
+        {
+            Flip();
+        }
+        else if(dirEnemy.normalized.x >0 && !facingRight)
+        {
+            Flip();
+        }
     }
 
     public virtual Vector2 Path(Vector2 dirEnemy)
@@ -101,7 +115,7 @@ public class Enemy : MonoBehaviour
                 canMove = false;
                 if (countWaypoints >= timeBetweenWaypoints)
                 {
-                    NextWaypoint();
+                    NextWaypoint();                  
                     countWaypoints = 0;
                     canMove = true;
                 }
@@ -135,14 +149,8 @@ public class Enemy : MonoBehaviour
     }
     protected void Flip()
     {
-        if (rb2d.velocity.normalized.x < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }     
-        else if(rb2d.velocity.normalized.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
    
     public bool IsMoving()
@@ -150,7 +158,7 @@ public class Enemy : MonoBehaviour
         return rb2d.velocity.x != 0;
     }
 
-    protected bool PlayerInRaycast()
+    protected void PlayerInRaycast()
     {        
         RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position,radius, raycastLayerMask);
         
@@ -161,12 +169,12 @@ public class Enemy : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 playerInRaycast = true;
-                return playerInRaycast;
+            }
+            else
+            {
+                playerInRaycast =  false;
             }
         }
-        playerInRaycast =  false;
-        return playerInRaycast;
-
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
