@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6949132632600915501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13, y: -1.9, z: 0}
+  m_LocalPosition: {x: 22.3, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6949132633380187091}
@@ -172,9 +172,9 @@ GameObject:
   - component: {fileID: 6949132633380187101}
   - component: {fileID: 6949132633380187088}
   - component: {fileID: 6949132633380187100}
-  - component: {fileID: 7169989976206597325}
   - component: {fileID: 7886820328143434446}
   - component: {fileID: 2282379688241154003}
+  - component: {fileID: 1165490861}
   m_Layer: 12
   m_Name: Enemy_Guardia_Blindur
   m_TagString: Enemy
@@ -263,19 +263,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8eb0232d6ee864cb1a7ba7a1c0a053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 70
   layerMaskEnvironent:
     serializedVersion: 2
     m_Bits: 18177
+  timeToStartFollow: 0
   radius: 295.5
-  stopDistance: 56.54
+  stopDistance: 50
   damage: 1
+  timeToAttack: 1
   sizeHitBoxAttack: {x: 33.25, y: 59.76}
   hitAttackPos: {fileID: 6949132632600915496}
   followPath: 1
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
+  timeInWayPoint: 0
   fov: {fileID: 44500747}
 --- !u!114 &6949132633380187101
 MonoBehaviour:
@@ -328,25 +331,6 @@ CircleCollider2D:
   m_Offset: {x: -5.2418823, y: -2.0990295}
   serializedVersion: 2
   m_Radius: 13.978912
---- !u!95 &7169989976206597325
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6949132633380187095}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b75940a59b6e9d4bbf22eb8178bb23c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &7886820328143434446
 AudioSource:
   m_ObjectHideFlags: 0
@@ -459,6 +443,25 @@ MonoBehaviour:
   audiosWalk: []
   audiosHit: []
   audiosDeath: []
+--- !u!95 &1165490861
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949132633380187095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b75940a59b6e9d4bbf22eb8178bb23c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5546806398383550707
 PrefabInstance:
   m_ObjectHideFlags: 0
