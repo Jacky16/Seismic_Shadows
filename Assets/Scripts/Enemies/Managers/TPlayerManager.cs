@@ -45,6 +45,5 @@ public class TPlayerManager : MonoBehaviour
         {
             posCheckPoint = collision.transform.position;
         }
-
     }
 }
