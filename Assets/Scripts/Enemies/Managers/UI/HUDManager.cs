@@ -15,6 +15,7 @@ public class HUDManager : MonoBehaviour
     [Header("Beacon UI")]
     [SerializeField] TextMeshProUGUI textBeacon;
     public static HUDManager singletone;
+    WaveSpawner waveSpawner;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class HUDManager : MonoBehaviour
         {
             singletone = this;
         }
+        waveSpawner = GameObject.FindGameObjectWithTag("Player").GetComponent<WaveSpawner>();
     }
 
     public void UpdateLife(float _life,float _maxLife)
@@ -30,13 +32,8 @@ public class HUDManager : MonoBehaviour
         circleImageLife.DOFillAmount(_life / _maxLife, .5f);
     }
     public void UpdateEnergyBar(float _energy)
-    {
-        energyBar.DOFillAmount(_energy / 100, 0.5f);
-        if(energyBar.fillAmount >= 1)
-        {
-            energyBar.fillAmount = 0;
-            UpdateFlashWave(flashes.Length+1, 3);
-        }
+    {  
+        energyBar.DOFillAmount(waveSpawner.GetEnergy()/ 100, 1f);   
     }
     public void UpdateFlashWave(int _size,int _maxSize)
     {
