@@ -43,6 +43,7 @@ public class TPlayerManager : MonoBehaviour
         }
         else if (collision.CompareTag("Checkpoint"))
         {
+            collision.GetComponent<Animator>().SetTrigger("Passed");
             posCheckPoint = collision.transform.position;
         }
     }
