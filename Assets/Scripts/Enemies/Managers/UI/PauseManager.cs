@@ -34,6 +34,10 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 0;
             canvasPause.SetActive(true);
             canvasDeadPlayer.SetActive(false);
+
+            //Aparece el raton y se desbloquea
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
@@ -50,8 +54,11 @@ public class PauseManager : MonoBehaviour
         canvasPause.SetActive(false);
         canvasDeadPlayer.SetActive(true);
         canvasOptions.SetActive(false);
-
         Time.timeScale = 1;
+        
+        //Desaparece el raton y se bloquea
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void Exit()
     {
