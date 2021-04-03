@@ -53,6 +53,7 @@ public class WaveSpawner : MonoBehaviour
         animStepWave.SetBool("IsMoving", player.IsMoving() && !player.TouchingFront() && !player.IsStealth());
         animStealthWave.SetBool("IsStealthMode", player.IsMoving() && !player.TouchingFront() && player.IsStealth());
     }
+    #region DoWaves
 
     public void DoPushWave()
     {
@@ -92,19 +93,7 @@ public class WaveSpawner : MonoBehaviour
             HUDManager.singletone.UpdateFlashWave(sizeFlashWave, maxSizeFlashWave);
         }
     }
-
-    public void AddSizeFlash(int _i)
-    {
-        int sum = sizeFlashWave + _i;
-        if(sum >= maxSizeFlashWave)
-        {
-            sizeFlashWave = maxSizeFlashWave;
-        }
-        else
-        {
-            sizeFlashWave = sum;
-        }
-    }
+    #endregion
     public void AddEnergyBar(float _f)
     {
         float sum = energyBar + _f;
@@ -119,5 +108,17 @@ public class WaveSpawner : MonoBehaviour
             energyBar = sum;
         }
         HUDManager.singletone.UpdateEnergyBar(energyBar);
+    }
+    public int GetFlashWaveCount()
+    {
+        return sizeFlashWave;
+    }
+    public int GetMaxFlashesWaves()
+    {
+        return maxSizeFlashWave;
+    }
+    public float GetEnergy()
+    {
+        return energyBar;
     }
 }

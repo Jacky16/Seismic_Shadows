@@ -5,11 +5,16 @@ using UnityEngine;
 public class Autinite : MonoBehaviour
 {
     [SerializeField] int valor;
+    WaveSpawner waveSpawner;
+    private void Awake()
+    {
+        waveSpawner = GameObject.FindGameObjectWithTag("Player").GetComponent<WaveSpawner>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            HUDManager.singletone.UpdateEnergyBar(valor);
+            waveSpawner.AddEnergyBar(valor);
             Destroy(gameObject);
         }
     }
