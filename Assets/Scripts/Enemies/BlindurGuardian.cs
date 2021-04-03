@@ -53,7 +53,7 @@ public class BlindurGuardian : Enemy
                 }
             }
         }
-        FlipManager(dir.normalized.x);
+        FlipManager(-dir.normalized.x);
     }
     protected override void Path()
     {
