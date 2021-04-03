@@ -2789,6 +2789,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas-HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7880189505350471751, guid: 5e585fdcffde189408d27db74f063b89,
+        type: 3}
+      propertyPath: m_text
+      value: x0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e585fdcffde189408d27db74f063b89, type: 3}
 --- !u!114 &495308263 stripped
@@ -47378,6 +47383,11 @@ PrefabInstance:
       propertyPath: imageTransition
       value: 
       objectReference: {fileID: 796969584}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: nBeacons
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: animFlashWave
