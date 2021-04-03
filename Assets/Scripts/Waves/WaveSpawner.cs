@@ -94,6 +94,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    #endregion
     public void SetNBeacons(int _nBeacons)
     {
         nBeacons += _nBeacons;
