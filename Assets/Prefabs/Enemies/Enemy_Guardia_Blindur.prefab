@@ -267,19 +267,21 @@ MonoBehaviour:
   layerMaskEnvironent:
     serializedVersion: 2
     m_Bits: 18177
-  timeToStartFollow: 0
+  timeToStartFollow: 1
+  spawnFlipped: 1
   radius: 295.5
   stopDistance: 50
   damage: 1
   timeToAttack: 1
   sizeHitBoxAttack: {x: 33.25, y: 59.76}
   hitAttackPos: {fileID: 6949132632600915496}
-  followPath: 1
+  followPath: 0
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
   timeInWayPoint: 0
   fov: {fileID: 44500747}
+  forcePush: 200
 --- !u!114 &6949132633380187101
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,8 +29,8 @@ public class BlindurBerserker : Enemy
         {
             dir = Vector2.zero;
         }
-        FlipManager(-dir.normalized.x);
-        
+        FlipManager(dir.normalized.x);
+        anim.SetBool("Carger", carger);
     }
 
     void CheckWall()
