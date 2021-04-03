@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 1884454217811816073}
   - component: {fileID: 2069239617}
   - component: {fileID: 2069239616}
+  - component: {fileID: 113042522242011124}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -427,7 +428,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612130501902412779}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -574,6 +575,41 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 32bcc47bffb69a04b98157bff9b634c4, type: 3}
   audiosStick:
   - {fileID: 8300000, guid: 8fcc15d57e2a0774b973b648fca42af7, type: 3}
+--- !u!60 &113042522242011124
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612130501902412779}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.53, y: 0.3}
+    oldSize: {x: 231, y: 190}
+    newSize: {x: 231, y: 190}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 15.707214, y: -51.30945}
+      - {x: 12.016785, y: 25.490112}
+      - {x: -17.617981, y: 25.833496}
+      - {x: -22.65332, y: -53.63855}
+      - {x: -19.846497, y: -56.937256}
+      - {x: 13.430847, y: -56.948486}
+    - - {x: 6.6862183, y: -40.855957}
+      - {x: -12.916809, y: -40.728516}
+    - - {x: -16.24054, y: -11.864746}
+      - {x: 10.192078, y: -11.781494}
 --- !u!1001 &947293219446867885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -883,15 +919,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b90b309e97baa604e9914a98e1fea80c, type: 3}
---- !u!4 &1017731384 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3199034572164636757, guid: b90b309e97baa604e9914a98e1fea80c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3199034573182237037}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1017731385 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3199034572164636756, guid: b90b309e97baa604e9914a98e1fea80c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3199034573182237037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1017731384 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3199034572164636757, guid: b90b309e97baa604e9914a98e1fea80c,
     type: 3}
   m_PrefabInstance: {fileID: 3199034573182237037}
   m_PrefabAsset: {fileID: 0}
@@ -1142,15 +1178,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e845c72699d745d4eba2449506d5adab, type: 3}
---- !u!95 &103844823459090490 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8032180473053856664, guid: e845c72699d745d4eba2449506d5adab,
-    type: 3}
-  m_PrefabInstance: {fileID: 7928841974767850402}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &176525589237634309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7817055789632718503, guid: e845c72699d745d4eba2449506d5adab,
+    type: 3}
+  m_PrefabInstance: {fileID: 7928841974767850402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &103844823459090490 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8032180473053856664, guid: e845c72699d745d4eba2449506d5adab,
     type: 3}
   m_PrefabInstance: {fileID: 7928841974767850402}
   m_PrefabAsset: {fileID: 0}
