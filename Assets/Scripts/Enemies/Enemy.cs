@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
         anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.normalized.x));
         rb2d.velocity = new Vector2(dir.normalized.x * speed, rb2d.velocity.y);
 
-        float velocityX = rb2d.velocity.x;
+        float velocityX = dir.normalized.x;
         if(velocityX > 0 && !facingRight)
         {
             Flip();
