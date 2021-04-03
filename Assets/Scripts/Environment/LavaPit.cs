@@ -22,6 +22,6 @@ public class LavaPit : MonoBehaviour
 
         //PARAMETROS
         //Se indica los puntos de vida que inflinge ese void
-        tpPlayer.TeleportToTPVoid(1);
+        tpPlayer.TeleportToTPVoid(3);
     }
 }
