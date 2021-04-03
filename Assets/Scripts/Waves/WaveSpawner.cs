@@ -36,6 +36,7 @@ public class WaveSpawner : MonoBehaviour
 
     [Header("Beacon Wave")]
     [SerializeField] GameObject beaconWavePrefab;
+    [SerializeField] GameObject beacon;
 
     [Header("Flash Wave")]
     [SerializeField] Animator animFlashWave;
@@ -76,8 +77,10 @@ public class WaveSpawner : MonoBehaviour
         {
             nBeacons--;
             HUDManager.singletone.UpdateBeacon(nBeacons);
-            GameObject go = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
+            GameObject go = Instantiate(beacon, new Vector3(player.transform.position.x, player.transform.position.y - 40, player.transform.position.z), Quaternion.identity, null);
+            GameObject go2 = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
             Destroy(go, 30);
+            Destroy(go2, 30);
         }
     }
     public void DoFlashWave()
