@@ -5,13 +5,37 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     [SerializeField] float timeToActive;
+    Vector3 initialPos;
+    bool isBroken;
+    float count;
+
+    private void Start()
+    {
+        count = 0;
+        initialPos = transform.position;
+        isBroken = false;
+    }
+
+    private void Update()
+    {
+        if (isBroken)
+        {
+            count += Time.deltaTime;
+            if (count >= timeToActive)
+            {
+                transform.position = initialPos;
+                EnableComponents();
+                isBroken = false;
+            }
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Stalagmite")
         {
             DisableComponents();
-            Invoke("ActiveComponents", timeToActive);
+            isBroken = true;
         }
     }
 
@@ -19,5 +43,11 @@ public class Box : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    void EnableComponents()
+    {
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 }
