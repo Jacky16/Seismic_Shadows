@@ -23,6 +23,7 @@ public class OptionsManager : MonoBehaviour
     private void Start()
     {
         LoadValuesAudio();
+        LoadSliders();
     }
 
     public void Return()
@@ -42,7 +43,7 @@ public class OptionsManager : MonoBehaviour
         volumeSounds = PlayerPrefs.GetFloat("audioSoundValue", 0.75f);
 
         audiomixer.SetFloat("musicVolume", volumeMusic);
-        audiomixer.SetFloat("soundVolume", volumeMusic);
+        audiomixer.SetFloat("soundVolume", volumeSounds);
     }
 
     public void LoadSliders()
