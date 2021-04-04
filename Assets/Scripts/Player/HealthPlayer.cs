@@ -14,7 +14,13 @@ public class HealthPlayer : Health
     [SerializeField] TPlayerManager tpPlayer;
     [SerializeField] PlayerMovement player;
 
-   
+    private void Start()
+    {
+        life = GameManager.singletone.GetLifePlayer();
+        maxLife = GameManager.singletone.GetMazLifePlayer();
+        GameManager.singletone.UpdateHUDLife();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))

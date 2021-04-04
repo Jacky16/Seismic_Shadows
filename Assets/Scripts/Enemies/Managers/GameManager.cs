@@ -14,28 +14,29 @@ public class GameManager : MonoBehaviour
     [SerializeField] int nBeacons = 0;
 
     
-    float lifePlayerSaved;
-    float maxLifePlayerSaved;
+    float lifePlayerSaved = 3;
+    float maxLifePlayerSaved = 3;
     private void Awake()
     {
         if(singletone == null)
         {
             singletone = this;
             DontDestroyOnLoad(this);
-        }
-        UpdateHUDLife();
-        
+        }        
+    }
+    public void UpdateHUDLife()
+    {
+        HUDManager.singletone.UpdateLife(lifePlayerSaved, maxLifePlayerSaved);
+    }
+    public void SetLifePlayerHUD(float _life,float _maxLife)
+    {
+        lifePlayerSaved = _life;
+        maxLifePlayerSaved = _maxLife;
+        HUDManager.singletone.UpdateLife(lifePlayerSaved, maxLifePlayerSaved);
+
     }
  
    
-    public void UpdateHUDLife()
-    {
-        HealthPlayer healthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
-
-        lifePlayerSaved = healthPlayer.GetLife();
-        maxLifePlayerSaved = healthPlayer.GetMaxLife();
-        HUDManager.singletone.UpdateLife(lifePlayerSaved, maxLifePlayerSaved);
-    }
     public void AddEnergyBar(float _f)
     {
         float sum = energyBar + _f;
@@ -69,13 +70,6 @@ public class GameManager : MonoBehaviour
     {
         nBeacons = _nBeacons;
         HUDManager.singletone.UpdateBeacon(nBeacons);
-    }
-    public void SetLifePlayerHUD(float _life,float _maxLife)
-    {
-        lifePlayerSaved = _life;
-        maxLifePlayerSaved = _maxLife;
-        HUDManager.singletone.UpdateLife(lifePlayerSaved, maxLifePlayerSaved);
-
     }
     public float GetLifePlayer()
     {

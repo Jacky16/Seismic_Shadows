@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         movementPlayer = new Vector2(axis.x * moveSpeed, rb2d.velocity.y);
         //Si se puede mover aplicas la velocidad al player
-        if (canMove || !healthPlayer.IsDead())
+        if (canMove)
         {
             rb2d.velocity = movementPlayer;
         }
@@ -123,7 +123,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
-        if(healthPlayer.IsDead()) return;
         anim.SetTrigger(IDJumpParam);
         //Normal Jump
         if (grounded && !isWallSliding)
