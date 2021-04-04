@@ -20,38 +20,48 @@ public class OptionsManager : MonoBehaviour
 
     [SerializeField] Toggle fullScreenToogle;
     bool isFullScreen;
-    private void Awake()
+    private void Start()
     {
-        InitVolumeSettings();
-       
+        LoadValuesAudio();
     }
-  
+
     public void Return()
     {
         canvasBeforeOptions.SetActive(true);
         canvasOptions.SetActive(false);
+        SaveValuesAudio();
+    }
+    public void SaveValuesAudio()
+    {
+        PlayerPrefs.SetFloat("audioMusicValue", volumeMusic);
+        PlayerPrefs.SetFloat("audioSoundValue", volumeSounds);
+    }
+    public void LoadValuesAudio()
+    {
+        volumeMusic = PlayerPrefs.GetFloat("audioMusicValue",0.75f);
+        volumeSounds = PlayerPrefs.GetFloat("audioSoundValue", 0.75f);
+
+        audiomixer.SetFloat("musicVolume", volumeMusic);
+        audiomixer.SetFloat("soundVolume", volumeMusic);
     }
 
-    public void OnChangeMusicVolume()
+    public void LoadSliders()
     {
-        audiomixer.SetFloat("musicVolume", sliderMusic.value);
-        PlayerPrefs.SetFloat("musicVolume", sliderMusic.value);
-    }
-    public void OnChangeSoundVolume()
-    {
-        audiomixer.SetFloat("soundVolume", sliderSounds.value);
-        PlayerPrefs.SetFloat("soundVolume", sliderSounds.value);
-    }
-    void InitVolumeSettings()
-    {
-        //Music
-        volumeMusic = PlayerPrefs.GetFloat("musicVolume", 0);
         sliderMusic.value = volumeMusic;
-        //Sounds
-        volumeSounds = PlayerPrefs.GetFloat("soundVolume", 0);
         sliderSounds.value = volumeSounds;
-
     }
+
+    public void OnChangeMusicVolume(float _sliderValue)
+    {
+        audiomixer.SetFloat("musicVolume", Mathf.Log10(_sliderValue) * 20);
+        volumeMusic = _sliderValue;
+    }
+    public void OnChangeSoundVolume(float _sliderValue)
+    {
+        audiomixer.SetFloat("soundVolume", Mathf.Log10(_sliderValue) * 20);
+        volumeSounds = _sliderValue;
+    }
+   
     public void FullScreen(bool _b)
     {
         Screen.fullScreen = _b;

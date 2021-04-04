@@ -46,6 +46,6 @@ public class MenuManager : MonoBehaviour
     }
     void LoadFirstLevel()
     {
-        SceneManager.LoadScene("Upper Mantle");
+        SceneManager.LoadScene("1_UpperMantle");
     }
 }
