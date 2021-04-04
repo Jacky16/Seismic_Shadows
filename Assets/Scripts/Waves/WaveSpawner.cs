@@ -7,7 +7,14 @@ public class WaveSpawner : MonoBehaviour
 
     PlayerMovement player;
     [HideInInspector]public Animator animPlayer;
-   
+
+    [Header("Enabled Waves")]
+    [SerializeField] bool spawnLongWave;
+    [SerializeField] bool spawnInteracticeWave;
+    [SerializeField] bool spawnPushWave;
+    [SerializeField] bool spawnBeaconWave;
+    [SerializeField] bool spawnFlashWave;
+
 
     //Settings Waves
     [Header("Step Wave")]
@@ -51,14 +58,17 @@ public class WaveSpawner : MonoBehaviour
 
     public void DoPushWave()
     {
+        if(spawnPushWave)
         animPushWave.SetTrigger("DoWave");
     }
     public void DoInteractiveWave()
     {
+        if(spawnInteracticeWave)
         animInteractiveWave.SetTrigger("DoWave");
     }
     public void DoLongWave()
     {
+        if(spawnLongWave)
         animLongWave.SetTrigger("DoWave");
     }
     public void DoGroundWave()
@@ -68,6 +78,7 @@ public class WaveSpawner : MonoBehaviour
     }
     public void DoBeaconWave()
     {
+        if (!spawnBeaconWave) return;
         int sizeNBeacons = GameManager.singletone.GetNBeacons();
         if (sizeNBeacons > 0)
         {
@@ -82,6 +93,7 @@ public class WaveSpawner : MonoBehaviour
     }
     public void DoFlashWave()
     {
+        if (!spawnFlashWave) return;
         int sizeFlashVe = GameManager.singletone.GetFlashWaveCount();
         int maxSizeFlashWave = GameManager.singletone.GetMaxFlashesWaves();
         if (sizeFlashVe <= maxSizeFlashWave && sizeFlashVe > 0)

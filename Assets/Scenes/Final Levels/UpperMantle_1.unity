@@ -5996,6 +5996,36 @@ PrefabInstance:
       propertyPath: animFlashWave
       value: 
       objectReference: {fileID: 467807810}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: spawnLongWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: spawnPushWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: canSpawnLongWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: canSpawnPushWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: spawnInteracticeWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612130501482178734, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
+        type: 3}
+      propertyPath: canSpawnInteracticeWave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_RootOrder
