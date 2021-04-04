@@ -22,6 +22,9 @@ public class LavaPit : MonoBehaviour
 
         //PARAMETROS
         //Se indica los puntos de vida que inflinge ese void
-        tpPlayer.TeleportToTPVoid(3);
+        if (collision.gameObject.tag == "Player")
+        {
+            tpPlayer.TeleportToTPVoid(3);
+        }
     }
 }
