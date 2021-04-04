@@ -37,6 +37,20 @@ public class Box : MonoBehaviour
             DisableComponents();
             isBroken = true;
         }
+        if (collision.gameObject.tag == "Lava")
+        {
+            DisableComponents();
+            isBroken = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Lava")
+        {
+            DisableComponents();
+            isBroken = true;
+        }
     }
 
     void DisableComponents()

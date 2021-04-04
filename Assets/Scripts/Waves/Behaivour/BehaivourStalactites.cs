@@ -27,10 +27,7 @@ public class BehaivourStalactites : BehaivourWave
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth.Damage(1);
-            if (activated)
-            {
-                this.gameObject.SetActive(false);
-            }
+            this.gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Ground"))
         {

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -213,6 +213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555016201342241502, guid: daeca1a8ee1d2f64c825818ee53aa3f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stalagmite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeca1a8ee1d2f64c825818ee53aa3f6, type: 3}
@@ -2338,7 +2343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405163395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13600, y: -2846, z: -10}
+  m_LocalPosition: {x: 5844, y: -1310, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1898326331}
@@ -3270,6 +3275,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Push Box
       objectReference: {fileID: 0}
+    - target: {fileID: 650771392931191415, guid: 0908857e40ce0464db7dd057cd8bee9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: BoxPusheable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0908857e40ce0464db7dd057cd8bee9a, type: 3}
 --- !u!1001 &541768947
@@ -3805,6 +3815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555016201342241502, guid: daeca1a8ee1d2f64c825818ee53aa3f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stalagmite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeca1a8ee1d2f64c825818ee53aa3f6, type: 3}
@@ -5929,7 +5944,7 @@ PrefabInstance:
     - target: {fileID: 1232281426284131926, guid: 53929e571db7c194195293607a0e83ad,
         type: 3}
       propertyPath: m_Constraints
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2941961686234216421, guid: 53929e571db7c194195293607a0e83ad,
         type: 3}
@@ -27777,8 +27792,8 @@ Tilemap:
   - first: {x: 130, y: -22, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 42
-      m_TileSpriteIndex: 42
+      m_TileIndex: 39
+      m_TileSpriteIndex: 39
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -27786,8 +27801,8 @@ Tilemap:
   - first: {x: 131, y: -22, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 35
-      m_TileSpriteIndex: 35
+      m_TileIndex: 41
+      m_TileSpriteIndex: 41
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -28783,15 +28798,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
   - first: {x: 130, y: -21, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 40
-      m_TileSpriteIndex: 40
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: 131, y: -21, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 41
@@ -45054,7 +45060,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: c714e3c9ad989734482030ed55056dd1, type: 2}
   - m_RefCount: 96
     m_Data: {fileID: 11400000, guid: 74042c7ad8f055a47bbb60d915604f8f, type: 2}
-  - m_RefCount: 110
+  - m_RefCount: 109
     m_Data: {fileID: 11400000, guid: cd81a49fca12e104490adfa0ffc94193, type: 2}
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 86e756f24a9d36c4594710df9b98e6f9, type: 2}
@@ -45062,13 +45068,13 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4cebc78dcf7864447a6d147d47e78165, type: 2}
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 55fb5bc7d76e4e041994f0bdac7909ed, type: 2}
-  - m_RefCount: 28
+  - m_RefCount: 29
     m_Data: {fileID: 11400000, guid: 8c593b898e7607840aa9f79ca472bb9e, type: 2}
-  - m_RefCount: 221
+  - m_RefCount: 220
     m_Data: {fileID: 11400000, guid: 56ced557a2ae1bb43b6a32419d740385, type: 2}
-  - m_RefCount: 31
+  - m_RefCount: 32
     m_Data: {fileID: 11400000, guid: 463b6481da6dddb49b68f151cb29af64, type: 2}
-  - m_RefCount: 3158
+  - m_RefCount: 3157
     m_Data: {fileID: 11400000, guid: 05eccb54b3d5f224cbc4028700d5055e, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -45154,7 +45160,7 @@ Tilemap:
   - m_RefCount: 96
     m_Data: {fileID: 7769453424612927293, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
-  - m_RefCount: 110
+  - m_RefCount: 109
     m_Data: {fileID: 4938342473259674171, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
   - m_RefCount: 20
@@ -45166,20 +45172,20 @@ Tilemap:
   - m_RefCount: 20
     m_Data: {fileID: 2403724249865808194, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
-  - m_RefCount: 28
+  - m_RefCount: 29
     m_Data: {fileID: -1010255394613501995, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
-  - m_RefCount: 221
+  - m_RefCount: 220
     m_Data: {fileID: -3309781605116015348, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
-  - m_RefCount: 31
+  - m_RefCount: 32
     m_Data: {fileID: -6108889420429456849, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
-  - m_RefCount: 3158
+  - m_RefCount: 3157
     m_Data: {fileID: -8025435653959805260, guid: 40262ee0350be404cac55d17df2c896f,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 4278
+  - m_RefCount: 4277
     m_Data:
       e00: 1
       e01: 0
@@ -45198,7 +45204,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 4278
+  - m_RefCount: 4277
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -45999,7 +46005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380003251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13600, y: -2846, z: -10}
+  m_LocalPosition: {x: 5844, y: -1310, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1468634325}
@@ -46420,7 +46426,7 @@ PrefabInstance:
     - target: {fileID: 650771392931191415, guid: 0908857e40ce0464db7dd057cd8bee9a,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: BoxPusheable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0908857e40ce0464db7dd057cd8bee9a, type: 3}
@@ -47405,12 +47411,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13600
+      value: 5844
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2846
+      value: -1310
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -48293,6 +48299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555016201342241502, guid: daeca1a8ee1d2f64c825818ee53aa3f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stalagmite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeca1a8ee1d2f64c825818ee53aa3f6, type: 3}
@@ -49454,6 +49465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555016201342241502, guid: daeca1a8ee1d2f64c825818ee53aa3f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stalagmite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeca1a8ee1d2f64c825818ee53aa3f6, type: 3}
