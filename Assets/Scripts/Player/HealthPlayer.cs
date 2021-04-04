@@ -34,7 +34,10 @@ public class HealthPlayer : Health
     {
         anim.SetTrigger("Hit");
         GameManager.singletone.SetLifePlayerHUD(life, maxLife);
+        StartCoroutine(Damage());
     }
+
+
 
     public void SetLife(int _life , int _maxLife)
     {
@@ -45,6 +48,8 @@ public class HealthPlayer : Health
     IEnumerator DeadAnimation()
     {
         player.SetCanMove(false);
+        int currentLayer = gameObject.layer;
+        gameObject.layer = 1;
         imageTransition.DOFade(1, transitionDuration);
         yield return new WaitForSeconds(betweenTimeTransition);
         tpPlayer.TeleportToCheckpoint();
@@ -52,7 +57,15 @@ public class HealthPlayer : Health
         player.SetCanMove(true);
         ResetLife();
         imageTransition.DOFade(0, transitionDuration);
+        gameObject.layer = currentLayer;
 
+    }
+    IEnumerator Damage()
+    {
+        int currentLayer = gameObject.layer;
+        gameObject.layer = 1;
+        yield return new WaitForSeconds(2);
+        gameObject.layer = currentLayer;
     }
     private void OnParticleCollision(GameObject other)
     {

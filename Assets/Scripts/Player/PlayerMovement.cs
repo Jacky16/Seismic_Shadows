@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     //Other components
     Rigidbody2D rb2d;
     WaveSpawner waveSpawner;
+    HealthPlayer healthPlayer;
 
     //Animator variables
     Animator anim;
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         waveSpawner = GetComponent<WaveSpawner>();
         anim = GetComponent<Animator>();
+        healthPlayer = GetComponent<HealthPlayer>();
     }
     private void Start()
     {
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         movementPlayer = new Vector2(axis.x * moveSpeed, rb2d.velocity.y);
         //Si se puede mover aplicas la velocidad al player
-        if (canMove)
+        if (canMove || !healthPlayer.IsDead())
         {
             rb2d.velocity = movementPlayer;
         }
@@ -121,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
+        if(healthPlayer.IsDead()) return;
         anim.SetTrigger(IDJumpParam);
         //Normal Jump
         if (grounded && !isWallSliding)
