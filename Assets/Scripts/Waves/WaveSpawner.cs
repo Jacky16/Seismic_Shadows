@@ -9,11 +9,11 @@ public class WaveSpawner : MonoBehaviour
     Animator animPlayer;
 
     [Header("Enabled Waves")]
-    public bool spawnLongWave;
-    public bool spawnInteracticeWave;
-    public bool spawnPushWave;
-    public bool spawnBeaconWave;
-    public bool spawnFlashWave;
+    [SerializeField] bool spawnLongWave;
+    [SerializeField] bool spawnInteracticeWave;
+    [SerializeField] bool spawnPushWave;
+    [SerializeField] bool spawnBeaconWave;
+    [SerializeField] bool spawnFlashWave;
 
 
     //Settings Waves
