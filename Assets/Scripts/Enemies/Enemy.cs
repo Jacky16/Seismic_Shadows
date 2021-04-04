@@ -47,13 +47,14 @@ public class Enemy : MonoBehaviour
     protected Rigidbody2D rb2d;
     protected HealthPlayer healthPlayer;
     protected Animator anim;
+    protected HealthEnemies ehp;
     [SerializeField] protected FOV fov;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        ehp = GetComponent<HealthEnemies>();
     }
     private void Start()
     {
@@ -65,6 +66,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Checkers();
+        if (targetInRadius && Input.GetKeyDown(KeyCode.Backspace))
+        {
+            ehp.Damage(999);
+        }
     }
 
 

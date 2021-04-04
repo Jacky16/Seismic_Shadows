@@ -15,6 +15,15 @@ public class HealthPlayer : Health
     [SerializeField] PlayerMovement player;
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            AddMaxLife(9999);
+            AddLife(9999);
+            HUDManager.singletone.UpdateLife(life, maxLife);
+        }
+    }
     public override void OnDead()
     {
         anim.SetTrigger("Dead");
