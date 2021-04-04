@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(4);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(1);
         }
     }
     //Funciones que se ejecutan en el inspector
