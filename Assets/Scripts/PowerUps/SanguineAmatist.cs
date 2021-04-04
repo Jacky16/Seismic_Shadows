@@ -16,7 +16,7 @@ public class SanguineAmatist : MonoBehaviour
         {
             hp.AddMaxLife(1);
             hp.AddLife(999);
-            GameManager.singletone.UpdateHUDLife();
+            GameManager.singletone.SetLifePlayerHUD(hp.GetLife(), hp.GetMaxLife());
             Destroy(gameObject);
         }
     }
