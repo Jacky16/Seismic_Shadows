@@ -1960,12 +1960,12 @@ PrefabInstance:
     - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 124
+      value: 351
       objectReference: {fileID: 0}
     - target: {fileID: 1393572383233485550, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -379
+      value: -386
       objectReference: {fileID: 0}
     - target: {fileID: 3354378457422589169, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
@@ -81158,6 +81158,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7915290680535999578, guid: b6928d3c46fedb64bb956d626fd6346f,
+        type: 3}
+      propertyPath: nBeacons
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7915290680535999579, guid: b6928d3c46fedb64bb956d626fd6346f,
         type: 3}
       propertyPath: m_RootOrder
