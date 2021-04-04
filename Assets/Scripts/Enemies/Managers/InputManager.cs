@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            waveSpawner.animPlayer.SetTrigger("VisionWave");
+            waveSpawner.DoLongWave();
         }
        
     }
@@ -73,8 +73,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            waveSpawner.animPlayer.SetTrigger("InteractionWave");
-
+            waveSpawner.DoInteractiveWave();
         }
 
     }
@@ -82,7 +81,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            waveSpawner.animPlayer.SetTrigger("PushWave");
+            waveSpawner.DoPushWave();
         }    
     }
     public void OnStealth(InputAction.CallbackContext ctx)

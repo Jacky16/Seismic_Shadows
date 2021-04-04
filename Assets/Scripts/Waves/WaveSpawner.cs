@@ -6,7 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
 
     PlayerMovement player;
-    [HideInInspector]public Animator animPlayer;
+    Animator animPlayer;
 
     [Header("Enabled Waves")]
     [SerializeField] bool spawnLongWave;
@@ -58,18 +58,27 @@ public class WaveSpawner : MonoBehaviour
 
     public void DoPushWave()
     {
-        if(spawnPushWave)
-        animPushWave.SetTrigger("DoWave");
+        if (spawnPushWave)
+        {
+            animPushWave.SetTrigger("DoWave");
+            animPlayer.SetTrigger("PushWave");
+        }
     }
     public void DoInteractiveWave()
     {
-        if(spawnInteracticeWave)
-        animInteractiveWave.SetTrigger("DoWave");
+        if (spawnInteracticeWave)
+        {
+            animInteractiveWave.SetTrigger("DoWave");
+            animPlayer.SetTrigger("InteractionWave");
+        }
     }
     public void DoLongWave()
     {
-        if(spawnLongWave)
-        animLongWave.SetTrigger("DoWave");
+        if (spawnLongWave)
+        {
+            animLongWave.SetTrigger("DoWave");
+            animPlayer.SetTrigger("VisionWave");
+        }
     }
     public void DoGroundWave()
     {
