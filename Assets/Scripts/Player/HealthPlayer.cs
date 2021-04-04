@@ -14,7 +14,7 @@ public class HealthPlayer : Health
     [SerializeField] TPlayerManager tpPlayer;
     [SerializeField] PlayerMovement player;
 
-
+   
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -27,13 +27,19 @@ public class HealthPlayer : Health
     public override void OnDead()
     {
         anim.SetTrigger("Dead");
-        HUDManager.singletone.UpdateLife(life, maxLife);
+        GameManager.singletone.SetLifePlayerHUD(life, maxLife);
         StartCoroutine(DeadAnimation());
     }
     protected override void OnDamage()
     {
         anim.SetTrigger("Hit");
-        HUDManager.singletone.UpdateLife(life, maxLife);
+        GameManager.singletone.SetLifePlayerHUD(life, maxLife);
+    }
+
+    public void SetLife(int _life , int _maxLife)
+    {
+        life = _life;
+        maxLife = _maxLife;
     }
 
     IEnumerator DeadAnimation()

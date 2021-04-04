@@ -14,7 +14,7 @@ public class Autinite : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            waveSpawner.AddEnergyBar(valor);
+            GameManager.singletone.AddEnergyBar(valor);
             Destroy(gameObject);
         }
     }

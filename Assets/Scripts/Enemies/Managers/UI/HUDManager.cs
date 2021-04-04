@@ -15,7 +15,6 @@ public class HUDManager : MonoBehaviour
     [Header("Beacon UI")]
     [SerializeField] TextMeshProUGUI textBeacon;
     public static HUDManager singletone;
-    WaveSpawner waveSpawner;
 
     private void Awake()
     {
@@ -23,7 +22,11 @@ public class HUDManager : MonoBehaviour
         {
             singletone = this;
         }
-        waveSpawner = GameObject.FindGameObjectWithTag("Player").GetComponent<WaveSpawner>();
+     
+    }
+    private void Start()
+    {
+        InitHUD();
     }
 
     public void UpdateLife(float _life,float _maxLife)
@@ -32,8 +35,9 @@ public class HUDManager : MonoBehaviour
         circleImageLife.DOFillAmount(_life / _maxLife, .5f);
     }
     public void UpdateEnergyBar(float _energy)
-    {  
-        energyBar.DOFillAmount(waveSpawner.GetEnergy()/ 100, 1f);   
+    {
+        float currentEnergy = GameManager.singletone.GetEnergy();
+        energyBar.DOFillAmount(currentEnergy / 100, 1f);   
     }
     public void UpdateFlashWave(int _size,int _maxSize)
     {
@@ -52,6 +56,20 @@ public class HUDManager : MonoBehaviour
     public void UpdateBeacon(int _nbeacons)
     {
         textBeacon.text = "x" + _nbeacons.ToString();
+    }
+
+    void InitHUD()
+    {
+        int sizeNbeacons = GameManager.singletone.GetNBeacons();
+        float sizeEnergyBar = GameManager.singletone.GetEnergy();
+        int sizeFlashWave = GameManager.singletone.GetFlashWaveCount();
+        int maxFlashwaves = GameManager.singletone.GetMaxFlashesWaves();
+        float lifePlayer = GameManager.singletone.GetLifePlayer();
+        float maxLifePlayer = GameManager.singletone.GetMazLifePlayer();
+        UpdateBeacon(sizeNbeacons);
+        UpdateEnergyBar(sizeEnergyBar);
+        UpdateFlashWave(sizeFlashWave, maxFlashwaves);
+        UpdateLife(lifePlayer, maxLifePlayer);
     }
 
 }

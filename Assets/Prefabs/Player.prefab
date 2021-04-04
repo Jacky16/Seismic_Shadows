@@ -336,10 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animPlayer: {fileID: 0}
-  sizeFlashWave: 0
-  maxSizeFlashWave: 3
-  energyBar: 0
-  nBeacons: 3
   animStepWave: {fileID: 641245599}
   animStealthWave: {fileID: 1017731385}
   animLongWave: {fileID: 8740381191190547379}
@@ -363,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3368b38dea476438cef1d2f7e31e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
+  life: 3
   maxLife: 3
   imageTransition: {fileID: 0}
   transitionDuration: 2

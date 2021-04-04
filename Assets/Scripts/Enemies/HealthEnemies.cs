@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class HealthEnemies : Health
 {
-    WaveSpawner beacons;
-
-    private void Start()
-    {
-        beacons = GameObject.FindGameObjectWithTag("Player").GetComponent<WaveSpawner>();    
-    }
-
     public override void OnDead()
     {
-        beacons.SetNBeacons(1);
-        HUDManager.singletone.UpdateBeacon(beacons.GetNBeacons());
+        GameManager.singletone.AddNBeacons(1);
         GetComponent<SpriteRenderer>().color = Color.red;
         gameObject.SetActive(false);
         anim.SetTrigger("Death");
