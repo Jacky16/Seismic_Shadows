@@ -22,7 +22,6 @@ public class HUDManager : MonoBehaviour
         {
             singletone = this;
         }
-     
     }
     private void Start()
     {
