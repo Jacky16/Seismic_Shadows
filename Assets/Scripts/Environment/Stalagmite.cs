@@ -14,9 +14,9 @@ public class Stalagmite : MonoBehaviour
         count = timeToDamagePlayer;
         health = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             //VARIABLES
             //Count: Contador de segundos 
