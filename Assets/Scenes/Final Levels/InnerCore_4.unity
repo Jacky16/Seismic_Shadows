@@ -3276,6 +3276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7915290680535999581, guid: b6928d3c46fedb64bb956d626fd6346f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6928d3c46fedb64bb956d626fd6346f, type: 3}
 --- !u!4 &347155310 stripped
@@ -3412,8 +3417,8 @@ PrefabInstance:
     - target: {fileID: 8254374628994186522, guid: a0ee5154b31f24a498602976fce1c91a,
         type: 3}
       propertyPath: t_tecla
-      value: llenge ahead. Goodbye!but I gotta leave you. We'll meet again at the
-        Beta version! To end the game, complete the final challenge ahead. Goodbye!
+      value: ' I''m sorry but I gotta leave you. We''ll meet again at the Beta version!
+        To end the game, complete the final challenge ahead. Goodbye!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0ee5154b31f24a498602976fce1c91a, type: 3}
@@ -68357,7 +68362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436856877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8626, y: -2413, z: -10}
+  m_LocalPosition: {x: 17782, y: -4838, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1675449336}
@@ -69332,12 +69337,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8626
+      value: 17782
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2413
+      value: -4838
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -71804,7 +71809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837719488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8626, y: -2413, z: -10}
+  m_LocalPosition: {x: 17782, y: -4838, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1323814577}
