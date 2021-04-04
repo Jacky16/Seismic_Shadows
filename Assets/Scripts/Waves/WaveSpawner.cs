@@ -9,11 +9,11 @@ public class WaveSpawner : MonoBehaviour
     Animator animPlayer;
 
     [Header("Enabled Waves")]
-    [SerializeField] bool spawnLongWave;
-    [SerializeField] bool spawnInteracticeWave;
-    [SerializeField] bool spawnPushWave;
-    [SerializeField] bool spawnBeaconWave;
-    [SerializeField] bool spawnFlashWave;
+    public bool spawnLongWave;
+    public bool spawnInteracticeWave;
+    public bool spawnPushWave;
+    public bool spawnBeaconWave;
+    public bool spawnFlashWave;
 
 
     //Settings Waves
@@ -54,32 +54,43 @@ public class WaveSpawner : MonoBehaviour
         animStepWave.SetBool("IsMoving", player.IsMoving() && !player.TouchingFront() && !player.IsStealth());
         animStealthWave.SetBool("IsStealthMode", player.IsMoving() && !player.TouchingFront() && player.IsStealth());
     }
+
+    #region DoPlayerWaves
+    public void DoPlayerLongWave()
+    {
+        if (!spawnLongWave) return;
+        animPlayer.SetTrigger("VisionWave");
+    }
+    public void DoPlayerInteractiveWave()
+    {
+        if (!spawnInteracticeWave) return;
+        animPlayer.SetTrigger("InteractionWave");
+    }
+    public void DoPlayerPushWave()
+    {
+        if (!spawnPushWave) return;
+        animPlayer.SetTrigger("PushWave");
+    }
+    #endregion
+
     #region DoWaves
 
-    public void DoPushWave()
+    //Se ejecuta en la animacion del player
+    void DoPushWave()
     {
-        if (spawnPushWave)
-        {
-            animPushWave.SetTrigger("DoWave");
-            animPlayer.SetTrigger("PushWave");
-        }
+        animPushWave.SetTrigger("DoWave");
     }
-    public void DoInteractiveWave()
+    //Se ejecuta en la animacion del player
+    void DoInteractiveWave()
     {
-        if (spawnInteracticeWave)
-        {
-            animInteractiveWave.SetTrigger("DoWave");
-            animPlayer.SetTrigger("InteractionWave");
-        }
+        animInteractiveWave.SetTrigger("DoWave");
     }
-    public void DoLongWave()
+    //Se ejecuta en la animacion del player
+    void DoLongWave()
     {
-        if (spawnLongWave)
-        {
-            animLongWave.SetTrigger("DoWave");
-            animPlayer.SetTrigger("VisionWave");
-        }
+        animLongWave.SetTrigger("DoWave");  
     }
+
     public void DoGroundWave()
     {
         GameObject go = Instantiate(groundWavePrefab, player.transform.position, Quaternion.identity, null);

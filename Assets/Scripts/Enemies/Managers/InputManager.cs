@@ -10,12 +10,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] PlayerMovement player;
     [SerializeField] WaveSpawner waveSpawner;
     [SerializeField] PauseManager pauseManager;
+    Animator animPlayer;
     Vector2 axis;
 
     private void Awake()
     {
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
+        animPlayer = player.GetComponent<Animator>();
     }
     private void Update()
     {
@@ -65,15 +67,14 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            waveSpawner.DoLongWave();
-        }
-       
+            waveSpawner.DoPlayerLongWave();
+        }      
     }
     public void OnInteractiveWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            waveSpawner.DoInteractiveWave();
+            waveSpawner.DoPlayerInteractiveWave();
         }
 
     }
@@ -81,7 +82,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            waveSpawner.DoPushWave();
+            waveSpawner.DoPlayerPushWave();
         }    
     }
     public void OnStealth(InputAction.CallbackContext ctx)
@@ -119,7 +120,5 @@ public class InputManager : MonoBehaviour
         {
             pauseManager.Pause();
         }
-
     }
-
 }
