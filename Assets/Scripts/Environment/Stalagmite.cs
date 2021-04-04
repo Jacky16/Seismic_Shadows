@@ -36,9 +36,9 @@ public class Stalagmite : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             if(collision.gameObject.TryGetComponent(out HealthEnemies h))
             {

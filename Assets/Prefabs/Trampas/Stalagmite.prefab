@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7032393785405045622}
   - component: {fileID: 498090472515140975}
   - component: {fileID: 8204226498452517134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stalagmite
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8555016201342241502}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

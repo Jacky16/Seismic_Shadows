@@ -335,7 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b065971112aa54c91ee288e95533b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animPlayer: {fileID: 0}
+  spawnLongWave: 0
+  spawnInteracticeWave: 0
+  spawnPushWave: 0
+  spawnBeaconWave: 0
+  spawnFlashWave: 0
   animStepWave: {fileID: 641245599}
   animStealthWave: {fileID: 1017731385}
   animLongWave: {fileID: 8740381191190547379}
