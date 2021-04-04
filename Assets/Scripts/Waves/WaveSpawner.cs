@@ -7,13 +7,7 @@ public class WaveSpawner : MonoBehaviour
 
     PlayerMovement player;
     [HideInInspector]public Animator animPlayer;
-    [Header("Flash Wave Settings")]
-    [SerializeField] int sizeFlashWave = 3;
-    [SerializeField] int maxSizeFlashWave = 3;
-    [SerializeField] float energyBar = 0;
-        
-    [Header("Beacon Wave Settings")]
-    [SerializeField] int nBeacons = 0;
+   
 
     //Settings Waves
     [Header("Step Wave")]
@@ -74,72 +68,28 @@ public class WaveSpawner : MonoBehaviour
     }
     public void DoBeaconWave()
     {
-        if (nBeacons > 0)
+        int sizeNBeacons = GameManager.singletone.GetNBeacons();
+        if (sizeNBeacons > 0)
         {
-            nBeacons--;
-            HUDManager.singletone.UpdateBeacon(nBeacons);
+            sizeNBeacons--;
+            GameManager.singletone.SetNBeacons(sizeNBeacons);
             GameObject go = Instantiate(beacon, new Vector3(player.transform.position.x, player.transform.position.y - 40, player.transform.position.z), Quaternion.identity, null);
             GameObject go2 = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
             Destroy(go, 30);
             Destroy(go2, 30);
+
         }
     }
     public void DoFlashWave()
     {
-        if(sizeFlashWave <= 3 && sizeFlashWave > 0)
+        int sizeFlashVe = GameManager.singletone.GetFlashWaveCount();
+        int maxSizeFlashWave = GameManager.singletone.GetMaxFlashesWaves();
+        if (sizeFlashVe <= maxSizeFlashWave && sizeFlashVe > 0)
         {
             animFlashWave.SetTrigger("DoWave");
-            sizeFlashWave--;
-            HUDManager.singletone.UpdateFlashWave(sizeFlashWave, maxSizeFlashWave);
+            GameManager.singletone.UseFlashWave();
         }
     }
 
     #endregion
-    public void SetNBeacons(int _nBeacons)
-    {
-        nBeacons += _nBeacons;
-    }
-    public int GetNBeacons()
-    {
-        return nBeacons;
-    }
-    public void AddSizeFlash(int _i)
-    {
-        int sum = sizeFlashWave + _i;
-        if(sum >= maxSizeFlashWave)
-        {
-            sizeFlashWave = maxSizeFlashWave;
-        }
-        else
-        {
-            sizeFlashWave = sum;
-        }
-    }
-    public void AddEnergyBar(float _f)
-    {
-        float sum = energyBar + _f;
-        if (sum >= 100)
-        {
-            energyBar = 0;
-            sizeFlashWave++;
-            HUDManager.singletone.UpdateFlashWave(sizeFlashWave,maxSizeFlashWave);
-        }
-        else
-        {
-            energyBar = sum;
-        }
-        HUDManager.singletone.UpdateEnergyBar(energyBar);
-    }
-    public int GetFlashWaveCount()
-    {
-        return sizeFlashWave;
-    }
-    public int GetMaxFlashesWaves()
-    {
-        return maxSizeFlashWave;
-    }
-    public float GetEnergy()
-    {
-        return energyBar;
-    }
 }

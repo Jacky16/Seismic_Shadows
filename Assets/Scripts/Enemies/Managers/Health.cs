@@ -14,10 +14,7 @@ public class Health : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-    private void Start()
-    {
-        life = maxLife;    
-    }
+   
 
     public void AddLife(int _life)
     {
