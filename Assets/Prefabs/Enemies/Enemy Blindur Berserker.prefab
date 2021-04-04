@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6526475825773217132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.7, y: -8.4, z: 0}
+  m_LocalPosition: {x: 27.8, y: -12.7, z: 0}
   m_LocalScale: {x: 0.0494851, y: 0.27758542, z: 0.37880954}
   m_Children: []
   m_Father: {fileID: 6526475825805812190}
@@ -171,10 +171,10 @@ GameObject:
   - component: {fileID: 6526475825805812179}
   - component: {fileID: 6526475825805812188}
   - component: {fileID: 2082993213506515402}
-  - component: {fileID: 519329052}
   - component: {fileID: 519329049}
   - component: {fileID: 1581360628}
   - component: {fileID: 1581360627}
+  - component: {fileID: 2119342868}
   m_Layer: 12
   m_Name: Enemy Blindur Berserker
   m_TagString: Enemy
@@ -287,19 +287,19 @@ MonoBehaviour:
   speed: 200
   layerMaskEnvironent:
     serializedVersion: 2
-    m_Bits: 18177
-  timeToStartFollow: 1
+    m_Bits: 18176
+  timeToStartFollow: 0.5
+  spawnFlipped: 1
   radius: 285.65
   stopDistance: 85
   damage: 3
   timeToAttack: 1
-  sizeHitBoxAttack: {x: 15.69, y: 103.5}
+  sizeHitBoxAttack: {x: 15.69, y: 57.61}
   hitAttackPos: {fileID: 6526475825773217133}
   followPath: 0
   wayPoints: []
   timeInWayPoint: 1
   fov: {fileID: 4664941645031317702}
-  timeToCargerAgain: 2
   wallCheckDistance: 63.68
 --- !u!114 &2082993213506515402
 MonoBehaviour:
@@ -315,32 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   maxLife: 1
---- !u!61 &519329052
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6526475825805812178}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.90361786, y: -11.897339}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 72, y: 72}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 49.110245, y: 48.205322}
-  m_EdgeRadius: 0
 --- !u!95 &519329049
 Animator:
   serializedVersion: 3
@@ -472,6 +446,39 @@ MonoBehaviour:
   audiosWalk: []
   audiosHit: []
   audiosDeath: []
+--- !u!60 &2119342868
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526475825805812178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 72, y: 72}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 31.659668, y: 2.66333}
+      - {x: 20.015137, y: 3.157837}
+      - {x: -14.422363, y: 22.161987}
+      - {x: -30.47998, y: -35.641724}
+      - {x: 14.853027, y: -35.50171}
+      - {x: 28.36914, y: -28.878174}
+    - - {x: 10.097656, y: -12.150757}
+      - {x: -8.46582, y: -22.688477}
 --- !u!1001 &1270060689
 PrefabInstance:
   m_ObjectHideFlags: 0

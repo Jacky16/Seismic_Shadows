@@ -5,11 +5,11 @@ using UnityEngine;
 public class BlindurBerserker : Enemy
 {
     [Header("Settings Blindur Berserker")]
-    [SerializeField] float timeToCargerAgain;
     [SerializeField] float wallCheckDistance;
     bool carger;
     Vector3 toGo;
     float count = float.MaxValue;
+    bool hasFlipped = false;
 
     protected override void StatesEnemy()
     {
@@ -23,6 +23,7 @@ public class BlindurBerserker : Enemy
                 carger = true;
                 toGo = target.position;
                 dir = toGo - transform.position;
+                hasFlipped = false;
             }
         }
         if(targetInStopDistance && targetInFov)
@@ -47,9 +48,9 @@ public class BlindurBerserker : Enemy
         yield return new WaitForSeconds(3);
         transform.position = initPos;
         dir = Vector2.zero;
-        if (spawnFlipped)
+        if ( spawnFlipped)
         {
-            Flip();
+            Flip();     
         }
     }
     void SetCargerFalse(Collider2D col)
@@ -66,7 +67,18 @@ public class BlindurBerserker : Enemy
         }
         else
         {
+            if (!hasFlipped)
+            {
+                Flip();
+                hasFlipped = true;
+            }
         }
-            Flip();
+    }
+    protected override void OnCollEnter(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<HealthPlayer>().Damage(1);
+        }
     }
 }

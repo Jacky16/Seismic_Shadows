@@ -152,6 +152,7 @@ public class Enemy : MonoBehaviour
     protected virtual void OnCollEnter(Collision2D col) {;}
     protected virtual void OnTrigEnter(Collider2D col) {;}
     protected virtual void OnTrigStay(Collider2D col) {;}
+    protected virtual void OnCollStay(Collision2D col) {; }
     protected virtual void Attack() {;}
     protected void Flip()
     {
@@ -170,6 +171,10 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnCollEnter(collision);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        OnCollStay(collision);
     }
     private void OnDrawGizmos()
     {
