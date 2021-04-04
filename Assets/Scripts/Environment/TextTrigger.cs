@@ -5,6 +5,7 @@ using TMPro;
 public class TextTrigger : MonoBehaviour
 {
     TextMeshProUGUI tecla;
+    [TextArea]
     [SerializeField] string t_tecla;
     // Start is called before the first frame update
     void Start()
