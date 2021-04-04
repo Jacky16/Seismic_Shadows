@@ -12,21 +12,11 @@ public class BehaivourPushWave : BehaivourWave
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.isKinematic = true;
+        hit = false;
     }
     private void Update()
     {
-        if (hit)
-        {
-            counter += Time.deltaTime;
-            if (counter >= 1 && rb2d.velocity.y == 0)
-            {
-                rb2d.isKinematic = true;
-                hit = false;
-                rb2d.velocity = Vector2.zero;
-            }
-        }
-        
+        hit = false;
     }
     protected override void ActionOnWave(Collider2D col)
     {
@@ -34,9 +24,33 @@ public class BehaivourPushWave : BehaivourWave
         {
             rb2d.isKinematic = false;
             Vector2 dir = transform.position - col.transform.position;
-            rb2d.AddForce(dir.normalized * forcePush, ForceMode2D.Impulse);
-            counter = 0;
+            rb2d.AddForceAtPosition(dir.normalized * forcePush, transform.position,ForceMode2D.Impulse);
             hit = true;
         }
+
+
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+        if (collision.collider.CompareTag("Player"))
+        {
+            if (!hit)
+            {
+                rb2d.velocity = Vector2.zero;
+                rb2d.isKinematic = true;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+        if (collision.collider.CompareTag("Player"))
+        {
+            rb2d.isKinematic = false;
+        }
+    }
+
 }
