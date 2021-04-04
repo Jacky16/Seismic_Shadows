@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int nBeacons = 0;
 
     
-     float lifePlayerSaved;
-     float maxLifePlayerSaved;
+    float lifePlayerSaved;
+    float maxLifePlayerSaved;
     private void Awake()
     {
         if(singletone == null)
@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour
             singletone = this;
             DontDestroyOnLoad(this);
         }
-        InitHUDLife();
+        UpdateHUDLife();
         
     }
  
    
-    public void InitHUDLife()
+    public void UpdateHUDLife()
     {
         HealthPlayer healthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
 
