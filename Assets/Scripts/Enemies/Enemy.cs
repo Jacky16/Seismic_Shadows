@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float stopDistance;
     [SerializeField] protected int damage;
     [SerializeField] protected float timeToAttack;
-    protected float countAttack = 0;
+    protected float countAttack = float.MaxValue;
 
     [Header("Hit box Attack")]
     [SerializeField] protected Vector2 sizeHitBoxAttack;
