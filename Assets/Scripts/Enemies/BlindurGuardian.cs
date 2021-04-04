@@ -11,7 +11,7 @@ public class BlindurGuardian : Enemy
     protected override void StatesEnemy()
     {
         //Comenzar a perseguir al player
-        if (targetInRaycast && targetInFov || followPlayer)
+        if (targetInRaycast || followPlayer)
         {
             countStartFollow += Time.fixedDeltaTime;
             if(countStartFollow >= timeToStartFollow)
@@ -21,7 +21,7 @@ public class BlindurGuardian : Enemy
             }
             
         }
-        if(targetInStopDistance && targetInFov)
+        if(targetInStopDistance && targetInRaycast)
         {
             Attack();
             dir = Vector2.zero;
@@ -105,6 +105,13 @@ public class BlindurGuardian : Enemy
             rb2d.velocity = Vector2.zero;
             rb2d.velocity = dirForce.normalized * forcePush;
             Invoke("ActiveMovement", 1);
+        }
+    }
+    protected override void OnCollEnter(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<HealthPlayer>().Damage(1);
         }
     }
 }

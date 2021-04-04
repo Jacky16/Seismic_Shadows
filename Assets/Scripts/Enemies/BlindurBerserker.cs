@@ -14,7 +14,7 @@ public class BlindurBerserker : Enemy
     protected override void StatesEnemy()
     {
         CheckWall();
-        if(targetInRadius && targetInFov && !targetInStopDistance && !carger)
+        if(targetInRaycast  && !targetInStopDistance && !carger)
         {
             countStartFollow += Time.fixedDeltaTime;
 
@@ -26,7 +26,7 @@ public class BlindurBerserker : Enemy
                 hasFlipped = false;
             }
         }
-        if(targetInStopDistance && targetInFov)
+        if(targetInStopDistance && targetInRaycast)
         {
             dir = Vector2.zero;
         }
