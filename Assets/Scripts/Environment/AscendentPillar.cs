@@ -45,14 +45,14 @@ public class AscendentPillar : BehaivourWave
     protected override void ActionOnWave(Collider2D col)
     {
         if(col.tag == "InteractiveWave")
-        {
+        {      
             if (!isGrown)
             {
-                transform.DOMove(moveTo.position, duration).SetEase(ease).OnComplete(() => isGrown = true);
+                rb2d.DOMove(moveTo.position, duration).SetEase(ease).OnComplete(() => isGrown = true);
             }
             else
             {
-                transform.DOMove(initialPos, duration).SetEase(ease).OnComplete(() => isGrown = false);
+                rb2d.DOMove(initialPos, duration).SetEase(ease).OnComplete(() => isGrown = false);
 
             }
 

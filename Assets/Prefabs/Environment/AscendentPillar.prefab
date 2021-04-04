@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1232281426284131926}
   - component: {fileID: 2941961686234216421}
   - component: {fileID: 3563931927545836680}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: AscendentPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,10 +47,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.4561768, y: 0.11895752}
+  m_Offset: {x: -106.77237, y: 0.11895752}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.925, y: 0.5}
     oldSize: {x: 262, y: 68}
     newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 214.35376, y: 32.33435}
+  m_Size: {x: 213.61432, y: 32.33435}
   m_EdgeRadius: 0
 --- !u!50 &1232281426284131926
 Rigidbody2D:
@@ -77,10 +77,10 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 2e0a9f1220ce4604db23a3bae2d988ea, type: 2}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!114 &2941961686234216421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ SpriteRenderer:
   m_SortingLayerID: -10584355
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: de1f0d5df24949d49853016d94d69bd7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d1909352874c8549b6e1663f1d2e1cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
