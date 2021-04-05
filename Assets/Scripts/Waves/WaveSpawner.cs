@@ -52,6 +52,7 @@ public class WaveSpawner : MonoBehaviour
     private void Update()
     {
         animStepWave.SetBool("IsMoving", player.IsMoving() && !player.TouchingFront() && !player.IsStealth());
+        animStepWave.SetFloat("Speed", player.CurrentVelocityX());
         animStealthWave.SetBool("IsStealthMode", player.IsMoving() && !player.TouchingFront() && player.IsStealth());
     }
 
