@@ -43,6 +43,7 @@ public class OptionsManager : MonoBehaviour
 
         SaveValuesAudio();
 
+        //Se Llama a las animaciones Init del canvasBefore
         OnReturn.Invoke();
     }
     public void SaveValuesAudio()
