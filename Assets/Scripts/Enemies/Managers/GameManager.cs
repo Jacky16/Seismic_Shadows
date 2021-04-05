@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //Se desactiva el GameManager en todas las escenas excepto en la 1r
-        EnableOnFirstScene(true);
+        EnableOnFirstScene(false);
 
         if(singletone == null)
         {

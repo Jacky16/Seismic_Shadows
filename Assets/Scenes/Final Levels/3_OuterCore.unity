@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1580,6 +1580,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AscendentPillar 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5244615134161780107, guid: 53929e571db7c194195293607a0e83ad,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 37.85334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244615134161780107, guid: 53929e571db7c194195293607a0e83ad,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -2.6405382
+      objectReference: {fileID: 0}
     - target: {fileID: 9205690770018720539, guid: 53929e571db7c194195293607a0e83ad,
         type: 3}
       propertyPath: m_RootOrder
@@ -1588,7 +1598,7 @@ PrefabInstance:
     - target: {fileID: 9205690770018720539, guid: 53929e571db7c194195293607a0e83ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15181
+      value: 15187
       objectReference: {fileID: 0}
     - target: {fileID: 9205690770018720539, guid: 53929e571db7c194195293607a0e83ad,
         type: 3}
@@ -1658,6 +1668,16 @@ PrefabInstance:
     - target: {fileID: 6526475825805812188, guid: 3a6445dee39a52a468fd1c3b2b07fa6e,
         type: 3}
       propertyPath: spawnFlipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6526475825805812188, guid: 3a6445dee39a52a468fd1c3b2b07fa6e,
+        type: 3}
+      propertyPath: timeToCargerAgain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6526475825805812188, guid: 3a6445dee39a52a468fd1c3b2b07fa6e,
+        type: 3}
+      propertyPath: timeToStartFollow
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6526475825805812190, guid: 3a6445dee39a52a468fd1c3b2b07fa6e,
@@ -2083,6 +2103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnFlipped
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6526475825805812188, guid: 3a6445dee39a52a468fd1c3b2b07fa6e,
+        type: 3}
+      propertyPath: timeToCargerAgain
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6526475825805812190, guid: 3a6445dee39a52a468fd1c3b2b07fa6e,
         type: 3}
@@ -3005,7 +3030,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405163395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 15081, y: -2649, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 541149973}
@@ -59117,7 +59142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380003251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 15081, y: -2649, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1468634325}
@@ -61024,12 +61049,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 15081
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2649
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
