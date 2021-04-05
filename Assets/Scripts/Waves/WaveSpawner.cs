@@ -116,7 +116,7 @@ public class WaveSpawner : MonoBehaviour
         if (!spawnFlashWave) return;
         int sizeFlashVe = GameManager.singletone.GetFlashWaveCount();
         int maxSizeFlashWave = GameManager.singletone.GetMaxFlashesWaves();
-        if (sizeFlashVe <= maxSizeFlashWave && sizeFlashVe > 0)
+        if (sizeFlashVe > 0)
         {
             animFlashWave.SetTrigger("DoWave");
             GameManager.singletone.UseFlashWave();
