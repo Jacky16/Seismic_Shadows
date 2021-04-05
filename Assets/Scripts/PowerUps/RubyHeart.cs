@@ -15,9 +15,12 @@ public class RubyHeart : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            hp.AddLife(1);
-            HUDManager.singletone.UpdateLife(hp.GetLife(), hp.GetMaxLife());
-            Destroy(gameObject);
+            if(hp.GetLife() != hp.GetMaxLife())
+            {
+                hp.AddLife(1);
+                HUDManager.singletone.UpdateLife(hp.GetLife(), hp.GetMaxLife());
+                Destroy(gameObject);
+            }
         }
     }
 }
