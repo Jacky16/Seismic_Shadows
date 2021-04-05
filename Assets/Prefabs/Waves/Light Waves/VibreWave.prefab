@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 4961156227155577140}
   - component: {fileID: 9161876269131775340}
   - component: {fileID: 6482243291497096462}
-  - component: {fileID: 3642873533575137357}
   m_Layer: 14
   m_Name: VibreWave
   m_TagString: Untagged
@@ -248,19 +247,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &3642873533575137357
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823954585102463590}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.12
