@@ -99,11 +99,11 @@ public class BlindurGuardian : Enemy
     {
         if (col.CompareTag("PushWave"))
         {
-            Vector2 dirForce = col.transform.position - target.position;
+            Vector2 dirForce = transform.position - col.transform.position;
 
             canMove = false;
             rb2d.velocity = Vector2.zero;
-            rb2d.velocity = dirForce.normalized * forcePush;
+            rb2d.AddForceAtPosition(dirForce.normalized * forcePush, transform.position,ForceMode2D.Impulse);
             Invoke("ActiveMovement", 1);
         }
     }
