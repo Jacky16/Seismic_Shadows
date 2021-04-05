@@ -121,7 +121,7 @@ public class InputManager : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.action.triggered)
         {
             pauseManager.Pause();
         }

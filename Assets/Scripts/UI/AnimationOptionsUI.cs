@@ -11,15 +11,19 @@ public class AnimationOptionsUI : MonoBehaviour
     [SerializeField] float time;
     [SerializeField] Ease easeIn;
     [SerializeField] Ease easeOut;
-
+    [Space]
     [SerializeField] RectTransform recTransfromMarco;
     [SerializeField] Image background;
-    Vector2 initmarcoPos;
+    Vector2 initMarcoPos;
     private void Start()
     {
-        initmarcoPos = recTransfromMarco.anchoredPosition;
+        initMarcoPos = recTransfromMarco.anchoredPosition;
     }
-   
+    private void OnEnable()
+    {
+        //PlayAnimationIn();
+    }
+
     public void PlayAnimationIn()
     {
         background.DOFade(.5f, time);
@@ -27,7 +31,7 @@ public class AnimationOptionsUI : MonoBehaviour
     }
     public void PlayAnimationOut()
     {
-        recTransfromMarco.DOAnchorPosX(initmarcoPos.x, time).SetEase(easeOut).OnComplete(() => canvasOptions.SetActive(false));
+        recTransfromMarco.DOAnchorPosX(initMarcoPos.x, time).SetEase(easeOut).OnComplete(() => canvasOptions.SetActive(false));
         background.DOFade(0, time);
     }
 }

@@ -10,12 +10,15 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject canvasOptions;
     [SerializeField] GameObject canvasPause;
     [SerializeField] GameObject firstButtonSelect;
+    [SerializeField] AnimationOptionsUI animationOptions;
+    AnimationPauseUI animationPause;
     EventSystem eventSystem;
-    bool isPause = true;
+    bool isPause;
 
     private void Awake()
     {
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        animationPause = GetComponent<AnimationPauseUI>();
     }
     private void Start()
     {
@@ -29,12 +32,13 @@ public class PauseManager : MonoBehaviour
     }
     public void Pause()
     {
-        isPause =! isPause;
-        if (!isPause) { 
-            Time.timeScale = 0;
-            canvasPause.SetActive(true);
-            canvasDeadPlayer.SetActive(false);
+        isPause = !isPause;
+        if (isPause) { 
 
+            canvasPause.SetActive(true);
+            Time.timeScale = 0;
+            canvasDeadPlayer.SetActive(false);
+            animationPause.PlayAnimationInit();
             //Aparece el raton y se desbloquea
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -47,18 +51,20 @@ public class PauseManager : MonoBehaviour
     public void Options()
     {
         canvasOptions.SetActive(true);
-        canvasPause.SetActive(false);
+        animationPause.PlayAnimationOut();
+        animationOptions.PlayAnimationIn();
     }
     public void Resume()
     {
-        canvasPause.SetActive(false);
+        Time.timeScale = 1;
         canvasDeadPlayer.SetActive(true);
         canvasOptions.SetActive(false);
-        Time.timeScale = 1;
-        
         //Desaparece el raton y se bloquea
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        animationPause.PlayAnimationOut();
+        animationOptions.PlayAnimationOut();
+        isPause = false;
     }
     public void Exit()
     {
