@@ -5,15 +5,10 @@ using UnityEngine;
 public class BreakablePlatform : BehaivourWave
 {
 
-    PlatformBreakeableManager platformBreakeableManager;
-    bool playerInPlatform;
-    private void Awake()
-    {
-        platformBreakeableManager = GetComponentInParent<PlatformBreakeableManager>();
-    }
-
-
-
+    [SerializeField] float timeToDisable;
+    [SerializeField] float timeToActive;
+    float count;
+   
     protected override void ActionOnWave(Collider2D col)
     {
         //EXPLICACION
@@ -24,22 +19,39 @@ public class BreakablePlatform : BehaivourWave
 
         if (col.tag == "InteractiveWave")
         {
-            platformBreakeableManager.WaveInteractive();
+            DisableComponents();
+            Invoke("ActiveComponents", timeToActive);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void DisableComponents()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            platformBreakeableManager.ActivePlattform();
-        }
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+    void ActiveComponents()
+    {
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInPlatform = false;
+            count = 0;
         }
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            count += Time.deltaTime;
+            if(count >= timeToDisable)
+            {
+                DisableComponents();
+                Invoke("ActiveComponents", timeToActive);
+            }
+        }
+    }
+  
 }

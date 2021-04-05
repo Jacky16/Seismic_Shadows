@@ -5,158 +5,164 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("General Settings")]
-    [SerializeField] protected float radius;
-    [SerializeField] protected float speed;
-    [SerializeField] protected float angle;
-    protected float currentSpeed;
-    protected bool targetInRange;
-    protected bool isInitPos;
+    [SerializeField] float speed;
+    [SerializeField] protected LayerMask layerMaskEnvironent;
+    [SerializeField] protected float timeToStartFollow;
+    [SerializeField] protected bool spawnFlipped = false;
+    protected float countStartFollow = 0;
+    protected Vector2 dir;
     protected Transform target;
-    protected Vector2 initPosition;
-    protected Vector2 dirEnemy;
-
+    protected bool facingRight;
+    protected Vector3 initPos;
+    protected bool canMove = true;
+   
     [Header("Attack Settings")]
-    [SerializeField] protected float timeToAttack;
+    [SerializeField] protected float radius;
+    [SerializeField] protected float stopDistance;
     [SerializeField] protected int damage;
-    [SerializeField] protected float stopDistance; 
-    protected bool targetInStopDistance;
-    float countAttack = float.MaxValue;
+    [SerializeField] protected float timeToAttack;
+    protected float countAttack = float.MaxValue;
+
+    [Header("Hit box Attack")]
+    [SerializeField] protected Vector2 sizeHitBoxAttack;
+    [SerializeField] protected Transform hitAttackPos;
 
     [Header("WayPoint Settings")]
     [SerializeField] protected bool followPath;
-    [SerializeField] protected float timeBetweenWaypoints;
     [SerializeField] protected Transform[] wayPoints;
+    [SerializeField] protected float timeInWayPoint;
+    protected float countWaypoint = 0;
     protected int sizeWayPoints;
     protected int nextPoint = 0;
     protected float countWaypoints = 0;
 
+    //Checkers
+    protected bool targetInRadius;
+    protected bool targetInStopDistance;
+    protected bool targetInFov;
+    protected bool targetInRaycast;
     protected float distanceToTarget;
-    protected bool isInAngle;
 
-    //Componentes
+    [Header("Other components")]
     protected Rigidbody2D rb2d;
     protected HealthPlayer healthPlayer;
+    protected Animator anim;
+    protected HealthEnemies ehp;
+    [SerializeField] protected FOV fov;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-    }
-    protected virtual void Start()
-    {
-        sizeWayPoints = wayPoints.Length;
-        currentSpeed = speed;
-        initPosition = transform.position;
+        anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        healthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
+        ehp = GetComponent<HealthEnemies>();
+    }
+    private void Start()
+    {
+        if (wayPoints.Length == 0) followPath = false;
+        initPos = transform.position;
+        if(spawnFlipped)
+        Flip();
+    }
+    private void Update()
+    {
+        Checkers();
+        if (targetInRadius && Input.GetKeyDown(KeyCode.Backspace))
+        {
+            ehp.Damage(999);
+        }
     }
 
-    void Update()
+
+    private void FixedUpdate()
     {
-        distanceToTarget = Vector2.Distance(transform.position, target.position);
-        
-        //Si el player esta en el rango
-        targetInRange = radius >= distanceToTarget;
-
-        //Si el player esta en la stopDistance
-        targetInStopDistance = stopDistance >= distanceToTarget;
-
-        //Si el Enemigo esta en su posicion inicial
-        isInitPos = Vector2.Distance(transform.position, initPosition) <= 0;
-
-        
-    }
-    void FixedUpdate()
-    {
-        //Vector2 dirEnemy = Vector2.zero;
+        if (targetInRadius)
+        {
+            CheckPlayerInRaycast();
+        }
+        else
+        {
+            targetInRaycast = false;
+        }
 
         StatesEnemy();
 
-        //Seguir el Path si no esta el player en el rango
-        dirEnemy = Path(dirEnemy);
+        Path();
 
-        Flip();
+        anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.normalized.x));
+        if(canMove)
+        rb2d.velocity = new Vector2(dir.normalized.x * speed, rb2d.velocity.y);
 
-        rb2d.velocity = new Vector2(dirEnemy.normalized.x * currentSpeed, rb2d.velocity.y);
     }
 
-    public virtual Vector2 Path(Vector2 dirEnemy)
+    protected void FlipManager(float velocityX)
     {
-        if (followPath && !targetInRange)
+        if (velocityX < 0 && !facingRight)
         {
-            Transform currentWaypoint = wayPoints[nextPoint];
+            Flip();
+        }
+        else if (velocityX > 0 && facingRight)
+        {
+            Flip();
+        }
+    }
 
-            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
+    protected void CheckPlayerInRaycast()
+    {        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position,radius, layerMaskEnvironent);
+        
+        Debug.DrawRay(transform.position, target.position - transform.position);
 
-            dirEnemy = currentWaypoint.position - transform.position;
-
-            rb2d.velocity = new Vector2(dirEnemy.normalized.x * speed, rb2d.velocity.y);
-
-            if (distanteToNextWaypoint <= 1)
+        if(hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Player"))
             {
-                //Pasar al siguiente Waypoint
-                countWaypoints += Time.fixedDeltaTime;
-                if (countWaypoints >= timeBetweenWaypoints)
-                {
-                    NextWaypoint();
-                    countWaypoints = 0;
-                }
+                targetInRaycast = true;
+            }
+            else
+            {
+                targetInRaycast =  false;
             }
         }
-
-        return dirEnemy;
     }
-
-    public virtual void StatesEnemy()
+    protected virtual void Path() {;}
+    protected virtual void StatesEnemy()
     {
        
     }
-    public virtual void OnCollEnter(Collision2D col) {;}
-    public virtual void OnTrigEnter(Collider2D col) {;}
-    public virtual void OnTrigStay(Collider2D col) {;}
-    public virtual void Attack() {;}
+    private void Checkers()
+    {
+        targetInRadius = Vector2.Distance(transform.position, target.position) < radius;
+        targetInStopDistance = Vector2.Distance(transform.position, target.position) < stopDistance;
+        if(fov!= null)
+        targetInFov = fov.IsInFov();
+    }
+    protected void NextWayPoint()
+    {
+        nextPoint++;
+        if(nextPoint >= wayPoints.Length)
+        {
+            nextPoint = 0;
+        }
+       
+    }
     public int Damage()
     {
         return damage;
     }
-    protected void NextWaypoint()
+    protected virtual void OnCollEnter(Collision2D col) {;}
+    protected virtual void OnTrigEnter(Collider2D col) {;}
+    protected virtual void OnTrigStay(Collider2D col) {;}
+    protected virtual void OnCollStay(Collision2D col) {; }
+    protected virtual void Attack() {;}
+    protected void Flip()
     {
-        currentSpeed = 0;
-        nextPoint++;
-        if (nextPoint >= sizeWayPoints)
-        {
-            nextPoint = 0;
-        }
-        currentSpeed = speed;
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
-    private void Flip()
-    {
-        if (rb2d.velocity.normalized.x < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }     
-        else if(rb2d.velocity.normalized.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-
-        }
-    }
-    public bool IsMoving()
-    {
-        return rb2d.velocity.x != 0;
-    }
-
+   
     private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            countAttack += Time.fixedDeltaTime;
-            if(countAttack >= timeToAttack)
-            {
-                Attack();
-                countAttack = 0;
-            }              
-        }
-        OnTrigStay(collision);
-        
+    {     
+        OnTrigStay(collision); 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -166,9 +172,13 @@ public class Enemy : MonoBehaviour
     {
         OnCollEnter(collision);
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        OnCollStay(collision);
+    }
     private void OnDrawGizmos()
     {
-        if (targetInRange)
+        if (targetInRadius && targetInFov && targetInRaycast)
         {
             Gizmos.color = Color.green;
         }
@@ -179,8 +189,9 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
         Gizmos.DrawWireSphere(transform.position, stopDistance);
 
-        //Draw angle
         Gizmos.color = Color.blue;
-        
+        if(hitAttackPos!= null)
+        Gizmos.DrawWireCube(hitAttackPos.position, sizeHitBoxAttack);
+
     }
 }

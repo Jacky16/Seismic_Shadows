@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 650771392931191413}
   - component: {fileID: 650771392931191412}
   - component: {fileID: 650771392931191408}
-  m_Layer: 0
+  - component: {fileID: 4910730393636537067}
+  m_Layer: 14
   m_Name: Push Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 650771392931191415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.38, y: -1.16, z: 0}
-  m_LocalScale: {x: 2.7214, y: 2.7214, z: 2.7214}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 2.7214}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,10 +71,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -154017935
-  m_SortingLayer: 3
+  m_SortingLayerID: -10584355
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e63c6a73c70fc345a0abdee3245a7f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45600c802172b7143a088e4848a08e43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,10 +98,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 250
+  m_Material: {fileID: 6200000, guid: 9ce565f511d30d5488e15b7f39c12d2a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057b59011ef7b8246a38681b1da471fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcePush: 10
+  forcePush: 700
 --- !u!61 &650771392931191408
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 650771392931191415}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9ce565f511d30d5488e15b7f39c12d2a, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -135,12 +136,25 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 165, y: 165}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 165, y: 165}
   m_EdgeRadius: 0
+--- !u!114 &4910730393636537067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650771392931191415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086bd99355b85942a714c34dd11baba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToActive: 2

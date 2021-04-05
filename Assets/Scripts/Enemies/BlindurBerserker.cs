@@ -6,66 +6,97 @@ public class BlindurBerserker : Enemy
 {
     [Header("Settings Blindur Berserker")]
     [SerializeField] float timeToCargerAgain;
+    [SerializeField] float wallCheckDistance;
+    float countCargerAgain = 0;
     bool carger;
     Vector3 toGo;
-    float count = float.MaxValue;
+    bool hasFlipped = false;
+    bool firstTime = true;
 
-    public override void StatesEnemy()
+    protected override void StatesEnemy()
     {
-        if (!carger && targetInRange && !targetInStopDistance)
+        CheckWall();
+        if(targetInRaycast  && !targetInStopDistance && !carger)
         {
-            count += Time.fixedDeltaTime;
-            if (timeToCargerAgain <= count)
+            if (firstTime)
             {
-                toGo = target.position;
-                dirEnemy = toGo - transform.position;
-                count = 0;
+                countStartFollow += Time.fixedDeltaTime;
+            }
+            else
+            {
+                countCargerAgain += Time.fixedDeltaTime;
+            }
+
+            if(countStartFollow >= timeToStartFollow || countCargerAgain >= timeToCargerAgain)
+            {
                 carger = true;
-            }
-        }else if (targetInStopDistance)
-        {
-            dirEnemy = Vector2.zero;
-        }
-    }
-    public override Vector2 Path(Vector2 dirEnemy)
-    {
-        if (followPath && !targetInRange && !carger)
-        {
-            Transform currentWaypoint = wayPoints[nextPoint];
-
-            float distanteToNextWaypoint = Vector2.Distance(transform.position, currentWaypoint.position);
-
-            dirEnemy = currentWaypoint.position - transform.position;
-
-            rb2d.velocity = (dirEnemy.normalized * currentSpeed * 100);
-
-            if (distanteToNextWaypoint <= 20)
-            {
-                //Pasar al siguiente Waypoint
-                countWaypoints += Time.fixedDeltaTime;
-                if (countWaypoints >= timeBetweenWaypoints)
-                {
-                    NextWaypoint();
-                    countWaypoints = 0;
-                }
+                toGo = target.position;
+                dir = toGo - transform.position;
+                hasFlipped = false;
             }
         }
-
-        return dirEnemy;
+        if(targetInStopDistance && targetInRaycast)
+        {
+            dir = Vector2.zero;
+        }
+        FlipManager(dir.normalized.x);
+        anim.SetBool("Carger", carger);
     }
 
-    public override void Attack()
+    void CheckWall()
     {
-        Debug.Log("Ataque Blindur");
-        healthPlayer.Damage(damage);
+        Collider2D col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, layerMaskEnvironent);
+        if (col != null)
+        {
+            
+            SetCargerFalse(col);
+        }
     }
+    IEnumerator ResetPos()
+    {
+        yield return new WaitForSeconds(3);
+        transform.position = initPos;
+        dir = Vector2.zero;
+        if (spawnFlipped && transform.eulerAngles.y != 180)
+        {
+            Flip();     
+        }
+    }
+    void SetCargerFalse(Collider2D col)
+    {
+        countCargerAgain = 0;
+        countStartFollow = 0;
 
-    public override void OnCollEnter(Collision2D col)
-    {
-        Invoke("SetCargerFalse", 1);
-    }
-    void SetCargerFalse()
-    {
         carger = false;
+
+        dir = Vector2.zero;
+        toGo = Vector2.zero;
+
+        anim.SetBool("Carger", carger);
+
+        firstTime = false;
+
+        if (col.CompareTag("Player"))
+        {
+            HealthPlayer healthPlayer = col.GetComponent<HealthPlayer>();
+            healthPlayer.Damage(damage);
+            if(healthPlayer.IsDead())
+            StartCoroutine(ResetPos());
+        }
+        else
+        {
+            if (!hasFlipped )
+            {
+                Flip();
+                hasFlipped = true;
+            }
+        }
+    }
+    protected override void OnCollEnter(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<HealthPlayer>().Damage(1);
+        }
     }
 }

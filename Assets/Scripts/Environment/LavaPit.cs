@@ -10,7 +10,7 @@ public class LavaPit : MonoBehaviour
         tpPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<TPlayerManager>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //VARIABLES
         //tpPlayer: instancia del script 'TPlayerManager'.
@@ -22,6 +22,17 @@ public class LavaPit : MonoBehaviour
 
         //PARAMETROS
         //Se indica los puntos de vida que inflinge ese void
-        tpPlayer.Teleport(1);
+        if (collision.tag == "Player")
+        {
+            tpPlayer.TeleportToTPVoid(20);
+        }
+        if (collision.tag == "Enemy")
+        {
+            if (collision.gameObject.TryGetComponent(out HealthEnemies h))
+            {
+                h.Damage(3);
+            }
+        }
+
     }
 }

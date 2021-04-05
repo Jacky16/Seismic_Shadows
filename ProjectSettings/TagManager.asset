@@ -11,8 +11,16 @@ TagManager:
   - Ground
   - PushWave
   - TextTutorial
-  - TagProvisional
   - InvisibleWall
+  - StepWave
+  - LongWave
+  - StealthWave
+  - Checkpoint
+  - Stalagmite
+  - CrackedPlatform
+  - BoxPusheable
+  - Lava
+  - InputManager
   layers:
   - Default
   - TransparentFX
@@ -25,11 +33,11 @@ TagManager:
   - Ground
   - Player
   - Traps
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Waves
+  - Enemy
+  - FOV
+  - Environment
+  - AscedentePilar
   - 
   - 
   - 
