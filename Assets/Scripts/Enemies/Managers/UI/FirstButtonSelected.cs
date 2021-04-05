@@ -22,11 +22,16 @@ public class FirstButtonSelected : MonoBehaviour
     }
     private void OnEnable()
     {
-        eventSystem.SetSelectedGameObject(firstGameObjectSelected);
+        SetSelectedButton();
         OnEn.Invoke();
     }
     private void OnDisable()
     {
         OnDis.Invoke();
+    }
+
+    public void SetSelectedButton()
+    {
+        eventSystem.SetSelectedGameObject(firstGameObjectSelected);
     }
 }

@@ -14,9 +14,14 @@ public class MenuManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip audioClipButtonClick;
-    EventSystem eventSystem;
+
+    [Header("Animation Components")]
+    [SerializeField] AnimationMainMenuUI AnimationMainMenu;
+    [SerializeField] AnimationOptionsUI animationOptions;
+    [Space]
     [SerializeField] GameObject firstButtonSelected;
     [SerializeField] Animator animFade;
+    EventSystem eventSystem;
     private void Awake()
     {
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -39,9 +44,16 @@ public class MenuManager : MonoBehaviour
     }
     public void Options()
     {
-        //audioSource.PlayOneShot(audioClipButtonClick);
         canvasOptions.SetActive(true);
-        canvasMainMenu.SetActive(false);
+        audioSource.PlayOneShot(audioClipButtonClick);
+
+        //Reproducir Tweens de ambos canvas
+
+        //Desaparece
+        AnimationMainMenu.PlayAnimationOut();
+        //Aparece
+        animationOptions.PlayAnimationIn();
+        
     }
     public void Exit()
     {

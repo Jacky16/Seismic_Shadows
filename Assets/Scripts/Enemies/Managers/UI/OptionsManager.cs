@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -19,7 +20,14 @@ public class OptionsManager : MonoBehaviour
     float volumeSounds;
 
     [SerializeField] Toggle fullScreenToogle;
+    AnimationOptionsUI animationOptions;
+
+    [SerializeField] UnityEvent OnReturn;
     bool isFullScreen;
+    private void Awake()
+    {
+        animationOptions = GetComponent<AnimationOptionsUI>();
+    }
     private void Start()
     {
         LoadValuesAudio();
@@ -29,8 +37,13 @@ public class OptionsManager : MonoBehaviour
     public void Return()
     {
         canvasBeforeOptions.SetActive(true);
-        canvasOptions.SetActive(false);
+
+        //Se desactiva el canvas cuando acaba la animacion
+        animationOptions.PlayAnimationOut();
+
         SaveValuesAudio();
+
+        OnReturn.Invoke();
     }
     public void SaveValuesAudio()
     {
