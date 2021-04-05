@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject firstButtonSelected;
+    [Header("Canvas")]
     [SerializeField] GameObject canvasMainMenu;
     [SerializeField] GameObject canvasOptions;
 
@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip audioClipButtonClick;
     EventSystem eventSystem;
+    [SerializeField] GameObject firstButtonSelected;
+    [SerializeField] Animator animFade;
     private void Awake()
     {
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -32,7 +34,8 @@ public class MenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        Invoke("LoadFirstLevel", 3);
+        Invoke("LoadFirstLevel", 2);
+        animFade.SetTrigger("FadeIn");
     }
     public void Options()
     {

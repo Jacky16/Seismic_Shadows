@@ -6,24 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class TpScene : MonoBehaviour
 {
-    public int sceneID;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int sceneID;
+    Animator animFade;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        animFade = GameObject.Find("Canvas-Fade").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            SceneManager.LoadScene(sceneID);
+            Invoke("SwitchScene", 2);
+            animFade.SetTrigger("FadeIn");
         }
+    }
+    void SwitchScene()
+    {
+        SceneManager.LoadScene(sceneID);
     }
 }
