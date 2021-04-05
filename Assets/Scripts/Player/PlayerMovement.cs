@@ -261,4 +261,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    public bool GetWallPos()
+    {
+        return isTouchingWall;
+    }
 }

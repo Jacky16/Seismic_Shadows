@@ -126,4 +126,8 @@ public class InputManager : MonoBehaviour
             pauseManager.Pause();
         }
     }
+    public Vector2 GetAxis()
+    {
+        return axis;
+    }
 }
