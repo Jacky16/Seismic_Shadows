@@ -18,6 +18,10 @@ public class MenuManager : MonoBehaviour
     [Header("Animation Components")]
     [SerializeField] AnimationMainMenuUI AnimationMainMenu;
     [SerializeField] AnimationOptionsUI animationOptions;
+    [Header("Settings Background")]
+    [SerializeField] Image image;
+    [SerializeField] float speed;
+    Material materialBacground;
     [Space]
     [SerializeField] GameObject firstButtonSelected;
     [SerializeField] Animator animFade;
@@ -25,6 +29,15 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+    }
+    private void Start()
+    {
+        materialBacground = image.material;
+    }
+    private void Update()
+    {
+        Vector2 movement = new Vector2(speed * Time.deltaTime, 0);
+        materialBacground.mainTextureOffset += movement;
     }
     private void OnEnable()
     {
