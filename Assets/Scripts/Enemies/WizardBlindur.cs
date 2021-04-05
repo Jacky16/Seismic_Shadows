@@ -5,29 +5,35 @@ using UnityEngine;
 public class WizardBlindur : Enemy
 {
     [Header("Settings Blindur Berserker")]
+    [SerializeField] float timeToTP;
     [SerializeField]  ParticleSystem ps;
-    float count = float.MaxValue;
+    float countTP = 0;
     int pos = 0;
-    bool canMove;
-
+   
 
     protected override void StatesEnemy()
     {
-        if (targetInRadius && targetInRaycast)
+        if (targetInRaycast)
         {
-            count += Time.fixedDeltaTime;
+            countAttack += Time.fixedDeltaTime;
+            countTP += Time.fixedDeltaTime;
 
-            if (count >= timeToAttack)
+            if (countAttack >= timeToAttack)
             {
                 Attack();
-                count = 0;
-                canMove = true;
+                
+                countAttack = 0;
             }
-            if (count >= timeToAttack - 0.8f && canMove)
+            if (countTP >= timeToTP) 
             {
                 SwitchPosition();
-                canMove = false;
+                countTP = 0;
             }
+        }
+        else
+        {
+            countAttack = 0;
+            countTP = 0;
         }
     }
    
