@@ -27,7 +27,7 @@ public class Parallax : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, ppos.position.y, gameObject.transform.position.z);
+        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, ppos.position.y, this.gameObject.transform.position.z);
 
         if(input.GetAxis().x == 1 && !pmov.GetWallPos())
         {

@@ -2419,6 +2419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8815789986211943350, guid: 7be8926de9370c44e9cfd4a2e5a01dec,
+        type: 3}
+      propertyPath: m_TagString
+      value: InputManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be8926de9370c44e9cfd4a2e5a01dec, type: 3}
 --- !u!1001 &376780184
@@ -60373,7 +60378,7 @@ PrefabInstance:
     - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7051400406356383321, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
@@ -60428,8 +60433,8 @@ PrefabInstance:
     - target: {fileID: 7051400406589695536, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
       propertyPath: t_tecla
-      value: Growing pillars will move when affected by an interaction wave, press
-        'W' and see how interesting they are!
+      value: Growing pillars will grow or contract when hit by an interactive wave,
+        press 'W' and see how interesting they are!
       objectReference: {fileID: 0}
     - target: {fileID: 7051400406589695539, guid: b2ca9c0c651e6d14b8b4ad1a09ef8b99,
         type: 3}
@@ -62520,7 +62525,97 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 377773803}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2013736879
+--- !u!1001 &2000857728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 607872935}
+    m_Modifications:
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 123.47857
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 232.99396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 66.13478
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186516, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186521, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: m_Name
+      value: PushEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254374628994186522, guid: a0ee5154b31f24a498602976fce1c91a,
+        type: 3}
+      propertyPath: t_tecla
+      value: You can also push Guardian Blindurs and get them out of your way!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a0ee5154b31f24a498602976fce1c91a, type: 3}
+--- !u!4 &2010917101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4351296939568610547, guid: 139134fdc1c34d244987e83fc7d31578,
+    type: 3}
+  m_PrefabInstance: {fileID: 2020295330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2011065936
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
