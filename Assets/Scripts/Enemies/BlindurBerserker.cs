@@ -48,7 +48,7 @@ public class BlindurBerserker : Enemy
         yield return new WaitForSeconds(3);
         transform.position = initPos;
         dir = Vector2.zero;
-        if ( spawnFlipped)
+        if (spawnFlipped && transform.eulerAngles.y != 180)
         {
             Flip();     
         }
@@ -62,12 +62,14 @@ public class BlindurBerserker : Enemy
         anim.SetBool("Carger", carger);
         if (col.CompareTag("Player"))
         {
+            HealthPlayer healthPlayer = col.GetComponent<HealthPlayer>();
+            healthPlayer.Damage(damage);
+            if(healthPlayer.IsDead())
             StartCoroutine(ResetPos());
-            col.GetComponent<HealthPlayer>().Damage(damage);
         }
         else
         {
-            if (!hasFlipped)
+            if (!hasFlipped )
             {
                 Flip();
                 hasFlipped = true;

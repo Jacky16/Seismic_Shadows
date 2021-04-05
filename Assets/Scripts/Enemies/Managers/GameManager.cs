@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,11 +19,32 @@ public class GameManager : MonoBehaviour
     float maxLifePlayerSaved = 3;
     private void Awake()
     {
+        //Se desactiva el GameManager en todas las escenas excepto en la 1r
+        EnableOnFirstScene(true);
+
         if(singletone == null)
         {
             singletone = this;
             DontDestroyOnLoad(this);
-        }        
+        }
+
+    }
+    
+    void EnableOnFirstScene(bool _b)
+    {
+        //Se desactiva el GameManager en todas las escenas excepto en la 1r
+        if (_b)
+        {
+            int indexFirstScene = SceneManager.GetActiveScene().buildIndex;
+            if (indexFirstScene != 4)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
     public void UpdateHUDLife()
     {
