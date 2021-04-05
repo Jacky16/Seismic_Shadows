@@ -1443,6 +1443,8 @@ MonoBehaviour:
     type: 3}
   AnimationMainMenu: {fileID: 1167815845}
   animationOptions: {fileID: 1471566}
+  image: {fileID: 1954508218}
+  speed: 0.01
   firstButtonSelected: {fileID: 1733623542}
   animFade: {fileID: 765631160}
 --- !u!4 &969786200
@@ -2643,15 +2645,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+  m_Material: {fileID: 2100000, guid: beb6c897894140e4faa854a736a10630, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e288accf5b326a144bbf4cbed5cd7a99, type: 3}
-  m_Type: 0
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
