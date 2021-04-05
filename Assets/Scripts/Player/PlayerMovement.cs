@@ -235,6 +235,10 @@ public class PlayerMovement : MonoBehaviour
     {
         return isTouchingWall;
     }
+    public float CurrentVelocityX()
+    {
+        return Mathf.Abs(rb2d.velocity.x);
+    }
     #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
