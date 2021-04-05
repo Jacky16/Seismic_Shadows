@@ -16,8 +16,8 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] AudioMixer audiomixer;
     [SerializeField] Slider sliderMusic;
     [SerializeField] Slider sliderSounds;
-    float volumeMusic;
-    float volumeSounds;
+    float volumeMusic = 0.75f;
+    float volumeSounds = 0.75f;
 
     [SerializeField] Toggle fullScreenToogle;
     AnimationOptionsUI animationOptions;

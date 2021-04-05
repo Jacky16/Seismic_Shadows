@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     float maxLifePlayerSaved = 3;
     private void Awake()
     {
-        //Se desactiva el GameManager en todas las escenas excepto en la 1r
+        //Se desactiva el GameManager en todas las escenas excepto en la 1r si esta true
         EnableOnFirstScene(true);
 
         if(singletone == null)
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     
     void EnableOnFirstScene(bool _b)
     {
-        //Se desactiva el GameManager en todas las escenas excepto en la 1r
+        //Se desactiva el GameManager en todas las escenas excepto en la 1r si esta true
         if (_b)
         {
             int indexFirstScene = SceneManager.GetActiveScene().buildIndex;
