@@ -236,20 +236,24 @@ MonoBehaviour:
   layerMaskEnvironent:
     serializedVersion: 2
     m_Bits: 18176
-  timeToStartFollow: 0
+  timeToStartFollow: 2
   spawnFlipped: 0
   radius: 429.1
   stopDistance: 39.83
   damage: 1
-  timeToAttack: 4
+  timeToAttack: 1
   sizeHitBoxAttack: {x: 0, y: 0}
   hitAttackPos: {fileID: 0}
   followPath: 0
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   timeInWayPoint: 0
   fov: {fileID: 0}
+  timeToTP: 1.5
   ps: {fileID: 1972407882216597772}
 --- !u!50 &1139602182
 Rigidbody2D:
@@ -596,7 +600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8737490784648093915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.7, y: -15, z: 0}
+  m_LocalPosition: {x: -21.8, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2316391343312490939}
@@ -4360,7 +4364,7 @@ ParticleSystem:
     radiusScale: 0.5
     collidesWith:
       serializedVersion: 2
-      m_Bits: 768
+      m_Bits: 33536
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
