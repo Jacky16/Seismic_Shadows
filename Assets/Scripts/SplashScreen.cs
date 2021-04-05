@@ -18,7 +18,7 @@ public class SplashScreen : MonoBehaviour
         counter += Time.deltaTime;
         if(counter >= 6)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 }
