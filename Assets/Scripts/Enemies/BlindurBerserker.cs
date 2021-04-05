@@ -5,20 +5,29 @@ using UnityEngine;
 public class BlindurBerserker : Enemy
 {
     [Header("Settings Blindur Berserker")]
+    [SerializeField] float timeToCargerAgain;
     [SerializeField] float wallCheckDistance;
+    float countCargerAgain = 0;
     bool carger;
     Vector3 toGo;
-    float count = float.MaxValue;
     bool hasFlipped = false;
+    bool firstTime = true;
 
     protected override void StatesEnemy()
     {
         CheckWall();
         if(targetInRaycast  && !targetInStopDistance && !carger)
         {
-            countStartFollow += Time.fixedDeltaTime;
+            if (firstTime)
+            {
+                countStartFollow += Time.fixedDeltaTime;
+            }
+            else
+            {
+                countCargerAgain += Time.fixedDeltaTime;
+            }
 
-            if(countStartFollow >= timeToStartFollow)
+            if(countStartFollow >= timeToStartFollow || countCargerAgain >= timeToCargerAgain)
             {
                 carger = true;
                 toGo = target.position;
@@ -55,11 +64,18 @@ public class BlindurBerserker : Enemy
     }
     void SetCargerFalse(Collider2D col)
     {
+        countCargerAgain = 0;
         countStartFollow = 0;
+
         carger = false;
+
         dir = Vector2.zero;
         toGo = Vector2.zero;
+
         anim.SetBool("Carger", carger);
+
+        firstTime = false;
+
         if (col.CompareTag("Player"))
         {
             HealthPlayer healthPlayer = col.GetComponent<HealthPlayer>();
