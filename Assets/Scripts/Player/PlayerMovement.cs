@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     bool isMoving;
     bool isStealthMode;
     bool canMove = true;
+    [SerializeField] bool modeGod;
 
     [Header("Settings Jumping")]
     [SerializeField] float jumpForce = 16f;
@@ -81,7 +82,14 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        movementPlayer = new Vector2(axis.x * moveSpeed, rb2d.velocity.y);
+        if (modeGod)
+        {
+            movementPlayer = axis * moveSpeed;
+        }else
+        {
+           
+            movementPlayer = new Vector2(axis.x * moveSpeed, rb2d.velocity.y);
+        }
         //Si se puede mover aplicas la velocidad al player
         if (canMove)
         {
@@ -103,6 +111,21 @@ public class PlayerMovement : MonoBehaviour
                 Flip();
             }
         }
+    }
+    public void SetModeGod()
+    {
+        modeGod =! modeGod;
+        if (modeGod)
+        {
+            rb2d.isKinematic = true;
+            gameObject.tag = "Untagged";
+        }
+        else
+        {
+            gameObject.tag = "Player";
+            rb2d.isKinematic = false;
+        }
+
     }
     void WallSlide()
     {

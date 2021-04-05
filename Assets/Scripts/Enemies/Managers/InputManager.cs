@@ -37,6 +37,11 @@ public class InputManager : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            player.SetModeGod();
+        }
     }
     //Funciones que se ejecutan en el inspector
     #region Player
