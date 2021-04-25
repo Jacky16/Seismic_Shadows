@@ -197,6 +197,7 @@ MonoBehaviour:
   flashImageBar: {fileID: 8727659431225291558}
   interactiveWaveIconImage: {fileID: 4825383458640161623}
   pushWaveIconImage: {fileID: 3763021569715734267}
+  flashWaveIconImage: {fileID: 746151240458951936}
   image_FlashWave: {fileID: 236003197}
   image_InteractiveWave: {fileID: 1834003874}
   image_PushWave: {fileID: 6315280732747592043}
@@ -226,22 +227,22 @@ PrefabInstance:
     - target: {fileID: 790571963336092013, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 70.44314
+      value: 40.85076
       objectReference: {fileID: 0}
     - target: {fileID: 790571963336092013, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 70.44314
+      value: 46.23118
       objectReference: {fileID: 0}
     - target: {fileID: 790571963336092013, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 310.7002
+      value: 238.8999
       objectReference: {fileID: 0}
     - target: {fileID: 790571963336092013, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -64.6001
+      value: -50.899902
       objectReference: {fileID: 0}
     - target: {fileID: 815637519366591056, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
@@ -572,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 6202963234188681236, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 173.2
+      value: 152.4
       objectReference: {fileID: 0}
     - target: {fileID: 6345545263480035990, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
@@ -737,6 +738,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8236901209891856758}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &746151240458951936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8652970263598808182, guid: 5e585fdcffde189408d27db74f063b89,
+    type: 3}
+  m_PrefabInstance: {fileID: 8236901209891856758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3763021569715734267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5077714211922831245, guid: 5e585fdcffde189408d27db74f063b89,

@@ -14,7 +14,11 @@ public class Autinite : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-           
+            if(GameManager.singletone.GetEnergy() < 100)
+            {
+                GameManager.singletone.AddEnergyBar(valor);
+                Destroy(gameObject);
+            }
         }
     }
 }

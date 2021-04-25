@@ -41,9 +41,11 @@ public class GameManager : MonoBehaviour
             if (energyBar <= 0)
             {
                 energyBar = 0;
+                HUDManager.singletone.SetFlashWaveIcon(0);
                 isSpendingEnergy = false;
             }
         }
+        
     }
 
     void EnableOnFirstScene(bool _b)
@@ -81,9 +83,11 @@ public class GameManager : MonoBehaviour
     public void SetEnergy(float _f)
     {
         energyBar = _f;
-
         //Actualizar la UI de la barra
         HUDManager.singletone.UpdateEnergyBar(energyBar);
+
+        //Poner a color el icono de la FlashWave
+        HUDManager.singletone.SetFlashWaveIcon(1);
     }
     public void AddEnergyBar(float _f)
     {

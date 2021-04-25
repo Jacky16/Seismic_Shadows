@@ -40,6 +40,18 @@ public class WaveSpawner : MonoBehaviour
         player = GetComponent<PlayerMovement>();
         animPlayer = GetComponent<Animator>();
     }
+    private void Start()
+    {
+        //Poner en gris los iconos si no se pueden usar las ondas
+        if (!doingPushWave)
+        {
+            HUDManager.singletone.SetPushWaveIcon(0, 1);
+        }
+        if (!doingInteractiveWave)
+        {
+            HUDManager.singletone.SetInteractiveWaveIcon(0, 1);
+        }
+    }
     private void Update()
     {
         AnimControllers();
@@ -70,8 +82,11 @@ public class WaveSpawner : MonoBehaviour
         }
 
         //Actualizando el valor de los Iconos de las ondas
-        HUDManager.singletone.SetInteractiveWaveIcon(countInteractive, coolDown_InteractiveWave);
-        HUDManager.singletone.SetPushWaveIcon(countPushWave, coolDown_pushWave);
+        if (doingPushWave)
+            HUDManager.singletone.SetPushWaveIcon(countPushWave, coolDown_pushWave);
+
+        if (doingInteractiveWave)
+            HUDManager.singletone.SetInteractiveWaveIcon(countInteractive, coolDown_InteractiveWave);
     }
 
     private void AnimControllers()

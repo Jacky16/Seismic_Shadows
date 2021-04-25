@@ -16,6 +16,7 @@ public class HUDManager : MonoBehaviour
     [Header("Wave icons")]
     [SerializeField] Image interactiveWaveIconImage;
     [SerializeField] Image pushWaveIconImage;
+    [SerializeField] Image flashWaveIconImage;
     
     //Variables para el HUD de las ondas
     [Header("Sprites Controllers")]
@@ -50,6 +51,7 @@ public class HUDManager : MonoBehaviour
     {
         InitHUD();
     }
+    #region Icons Waves
     public void UpdateControlsSprites(string controlScheme)
     {
         switch (controlScheme)
@@ -75,6 +77,7 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    #endregion
     public void UpdateLife(float _life,float _maxLife)
     {
         textLife.text = _life.ToString() + "/" + _maxLife.ToString();
@@ -99,6 +102,10 @@ public class HUDManager : MonoBehaviour
         pushWaveIconImage.fillAmount = _value / _maxValue;
     }
 
+    public void SetFlashWaveIcon(float _value)
+    {
+        flashWaveIconImage.fillAmount = _value;
+    }
     void InitHUD()
     {
         float sizeEnergyBar = GameManager.singletone.GetEnergy();
