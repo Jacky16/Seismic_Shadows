@@ -23,7 +23,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""c97693f1-bfcf-4ee1-8959-77a44acfcbd3"",
                     ""expectedControlType"": """",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": ""NormalizeVector2,StickDeadzone"",
                     ""interactions"": """"
                 },
                 {
@@ -31,7 +31,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""9b223099-cddf-4f3c-9408-f2a7fcf8e592"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -39,7 +39,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""114bf85d-b0f3-425c-8d8e-7c2e1fdaf01c"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -55,7 +55,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""d560878c-40f5-406f-905d-aa7c1a0b28e9"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -63,7 +63,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""f115dbd3-3664-4a60-8b86-109370cc6a1d"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -71,7 +71,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""967f0a5f-f873-4c3b-b2be-f043499ef69d"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 }
             ],
@@ -761,8 +761,8 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
             ""bindingGroup"": ""PS4"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<DualShock4GampadiOS>"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<DualShockGamepad>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -777,8 +777,8 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<XboxOneGampadiOS>"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
