@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
             singletone = this;
             DontDestroyOnLoad(this);
         }
-
     }
     private void Update()
     {

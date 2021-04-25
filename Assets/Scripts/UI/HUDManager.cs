@@ -10,10 +10,12 @@ public class HUDManager : MonoBehaviour
     [SerializeField]Image circleImageLife;
     [SerializeField] TextMeshProUGUI textLife;
 
-    [Header("Flash UI")]
-    //[SerializeField] GameObject[] flashes;
+    [Header("FlashWave UI")]
     [SerializeField] Image flashImageBar;
-   
+
+    [Header("Wave icons")]
+    [SerializeField] Image interactiveWaveIconImage;
+    [SerializeField] Image pushWaveIconImage;
     
     //Variables para el HUD de las ondas
     [Header("Sprites Controllers")]
@@ -64,7 +66,14 @@ public class HUDManager : MonoBehaviour
         flashImageBar.fillAmount = _energy / 100;
     }
    
-   
+    public void SetInteractiveWaveIcon(float _value,float _maxValue)
+    {
+        interactiveWaveIconImage.fillAmount = _value / _maxValue;
+    }
+    public void SetPushWaveIcon(float _value, float _maxValue)
+    {
+        pushWaveIconImage.fillAmount = _value / _maxValue;
+    }
 
     void InitHUD()
     {

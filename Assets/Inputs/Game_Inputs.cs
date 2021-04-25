@@ -47,7 +47,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""58f219fa-74a3-4876-b92c-6cce71816fc4"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
