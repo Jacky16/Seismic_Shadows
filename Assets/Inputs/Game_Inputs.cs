@@ -35,14 +35,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Slow Wave"",
-                    ""type"": ""Button"",
-                    ""id"": ""f9edfc8a-fb16-4829-b7ba-5d3cc3e27078"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""FlashWave"",
                     ""type"": ""Button"",
                     ""id"": ""114bf85d-b0f3-425c-8d8e-7c2e1fdaf01c"",
@@ -62,22 +54,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""name"": ""Push Wave"",
                     ""type"": ""Button"",
                     ""id"": ""d560878c-40f5-406f-905d-aa7c1a0b28e9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Stealth"",
-                    ""type"": ""Button"",
-                    ""id"": ""266e5fba-f460-463c-b5fe-233805994388"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Beacon Wave"",
-                    ""type"": ""Button"",
-                    ""id"": ""b0318a11-7ca1-4c42-b0be-34b4fdf6531f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
@@ -212,39 +188,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""63b5c88f-71ba-481d-8bc7-e1d57cae8f4e"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Slow Wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8e79a4d5-1e44-4cdf-b82e-49b245ba9569"",
-                    ""path"": ""<XInputController>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox"",
-                    ""action"": ""Slow Wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2d434586-5863-4439-a1a2-af90b89b8807"",
-                    ""path"": ""<DualShockGamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PS4"",
-                    ""action"": ""Slow Wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""cb278941-26f0-4bf6-8bf1-e5af017aebb8"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -339,50 +282,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""PS4"",
                     ""action"": ""Push Wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b42e258e-aa33-4153-b099-3dd873d4b4dd"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Stealth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""191a078e-6c73-423e-91ac-84cf03027fb2"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Beacon Wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c96805fd-abae-4d1e-8497-6915cc9a427e"",
-                    ""path"": ""<DualShockGamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PS4"",
-                    ""action"": ""Beacon Wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6db1a277-ee36-4608-b306-7c6ad64b190c"",
-                    ""path"": ""<XInputController>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox"",
-                    ""action"": ""Beacon Wave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -890,12 +789,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_SlowWave = m_Player.FindAction("Slow Wave", throwIfNotFound: true);
         m_Player_FlashWave = m_Player.FindAction("FlashWave", throwIfNotFound: true);
         m_Player_InteractiveWave = m_Player.FindAction("Interactive Wave", throwIfNotFound: true);
         m_Player_PushWave = m_Player.FindAction("Push Wave", throwIfNotFound: true);
-        m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
-        m_Player_BeaconWave = m_Player.FindAction("Beacon Wave", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_AnyKey = m_Player.FindAction("AnyKey", throwIfNotFound: true);
         // UI
@@ -961,12 +857,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_SlowWave;
     private readonly InputAction m_Player_FlashWave;
     private readonly InputAction m_Player_InteractiveWave;
     private readonly InputAction m_Player_PushWave;
-    private readonly InputAction m_Player_Stealth;
-    private readonly InputAction m_Player_BeaconWave;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_AnyKey;
     public struct PlayerActions
@@ -975,12 +868,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
         public PlayerActions(@Game_Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @SlowWave => m_Wrapper.m_Player_SlowWave;
         public InputAction @FlashWave => m_Wrapper.m_Player_FlashWave;
         public InputAction @InteractiveWave => m_Wrapper.m_Player_InteractiveWave;
         public InputAction @PushWave => m_Wrapper.m_Player_PushWave;
-        public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
-        public InputAction @BeaconWave => m_Wrapper.m_Player_BeaconWave;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @AnyKey => m_Wrapper.m_Player_AnyKey;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -998,9 +888,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @SlowWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowWave;
-                @SlowWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowWave;
-                @SlowWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowWave;
                 @FlashWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlashWave;
                 @FlashWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlashWave;
                 @FlashWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlashWave;
@@ -1010,12 +897,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @PushWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPushWave;
                 @PushWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPushWave;
                 @PushWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPushWave;
-                @Stealth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
-                @Stealth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
-                @Stealth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStealth;
-                @BeaconWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBeaconWave;
-                @BeaconWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBeaconWave;
-                @BeaconWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBeaconWave;
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
@@ -1032,9 +913,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @SlowWave.started += instance.OnSlowWave;
-                @SlowWave.performed += instance.OnSlowWave;
-                @SlowWave.canceled += instance.OnSlowWave;
                 @FlashWave.started += instance.OnFlashWave;
                 @FlashWave.performed += instance.OnFlashWave;
                 @FlashWave.canceled += instance.OnFlashWave;
@@ -1044,12 +922,6 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 @PushWave.started += instance.OnPushWave;
                 @PushWave.performed += instance.OnPushWave;
                 @PushWave.canceled += instance.OnPushWave;
-                @Stealth.started += instance.OnStealth;
-                @Stealth.performed += instance.OnStealth;
-                @Stealth.canceled += instance.OnStealth;
-                @BeaconWave.started += instance.OnBeaconWave;
-                @BeaconWave.performed += instance.OnBeaconWave;
-                @BeaconWave.canceled += instance.OnBeaconWave;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -1196,12 +1068,9 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnSlowWave(InputAction.CallbackContext context);
         void OnFlashWave(InputAction.CallbackContext context);
         void OnInteractiveWave(InputAction.CallbackContext context);
         void OnPushWave(InputAction.CallbackContext context);
-        void OnStealth(InputAction.CallbackContext context);
-        void OnBeaconWave(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnAnyKey(InputAction.CallbackContext context);
     }

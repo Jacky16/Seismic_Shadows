@@ -8,23 +8,18 @@ public class WaveSpawner : MonoBehaviour
     PlayerMovement player;
     Animator animPlayer;
 
+
     [Header("Enabled Waves")]
-    [SerializeField] bool spawnLongWave;
     [SerializeField] bool spawnInteracticeWave;
     [SerializeField] bool spawnPushWave;
-    [SerializeField] bool spawnBeaconWave;
     [SerializeField] bool spawnFlashWave;
 
 
-    //Settings Waves
     [Header("Step Wave")]
     [SerializeField] Animator animStepWave;
 
-    [Header("Stealth Wave")]
-    [SerializeField] Animator animStealthWave;
-
-    [Header("Long Wave")]
-    [SerializeField] Animator animLongWave;
+    [Header("Flash Wave")]
+    [SerializeField] Animator animFlashWave;
 
     [Header("Interactive Wave")]
     [SerializeField] Animator animInteractiveWave;
@@ -35,13 +30,6 @@ public class WaveSpawner : MonoBehaviour
     [Header("Ground Wave")]
     [SerializeField] GameObject groundWavePrefab;
 
-    [Header("Beacon Wave")]
-    [SerializeField] GameObject beaconWavePrefab;
-    [SerializeField] GameObject beacon;
-
-    [Header("Flash Wave")]
-    [SerializeField] Animator animFlashWave;
-
 
     private void Awake()
     {
@@ -51,16 +39,25 @@ public class WaveSpawner : MonoBehaviour
     }
     private void Update()
     {
+        AnimControllers();
+    }
+
+    private void AnimControllers()
+    {
         animStepWave.SetBool("IsMoving", player.IsMoving() && !player.TouchingFront() && !player.IsStealth());
         animStepWave.SetFloat("Speed", player.CurrentVelocityX());
-        animStealthWave.SetBool("IsStealthMode", player.IsMoving() && !player.TouchingFront() && player.IsStealth());
+        animFlashWave.SetBool("Spending", GameManager.singletone.IsSpeendingEnergy());
     }
 
     #region DoPlayerWaves
-    public void DoPlayerLongWave()
+    public void DoPlayerFlashWave()
     {
-        if (!spawnLongWave) return;
-        animPlayer.SetTrigger("VisionWave");
+        if (!spawnFlashWave) return;
+        if (GameManager.singletone.GetEnergy() > 0)
+        {
+            animPlayer.SetTrigger("FlashWave");
+            
+        }
     }
     public void DoPlayerInteractiveWave()
     {
@@ -87,41 +84,15 @@ public class WaveSpawner : MonoBehaviour
         animInteractiveWave.SetTrigger("DoWave");
     }
     //Se ejecuta en la animacion del player
-    void DoLongWave()
+    void DoFlashWave()
     {
-        animLongWave.SetTrigger("DoWave");  
+        GameManager.singletone.SetSpending();
     }
 
     public void DoGroundWave()
     {
         GameObject go = Instantiate(groundWavePrefab, player.transform.position, Quaternion.identity, null);
         Destroy(go, 1);
-    }
-    public void DoBeaconWave()
-    {
-        if (!spawnBeaconWave) return;
-        int sizeNBeacons = GameManager.singletone.GetNBeacons();
-        if (sizeNBeacons > 0)
-        {
-            sizeNBeacons--;
-            GameManager.singletone.SetNBeacons(sizeNBeacons);
-            GameObject go = Instantiate(beacon, new Vector3(player.transform.position.x, player.transform.position.y - 40, player.transform.position.z), Quaternion.identity, null);
-            GameObject go2 = Instantiate(beaconWavePrefab, player.transform.position, Quaternion.identity, null);
-            Destroy(go, 30);
-            Destroy(go2, 30);
-
-        }
-    }
-    public void DoFlashWave()
-    {
-        if (!spawnFlashWave) return;
-        int sizeFlashVe = GameManager.singletone.GetFlashWaveCount();
-        int maxSizeFlashWave = GameManager.singletone.GetMaxFlashesWaves();
-        if (sizeFlashVe > 0)
-        {
-            animFlashWave.SetTrigger("DoWave");
-            GameManager.singletone.UseFlashWave();
-        }
     }
 
     #endregion
