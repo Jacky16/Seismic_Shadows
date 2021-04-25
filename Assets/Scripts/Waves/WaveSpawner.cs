@@ -14,12 +14,12 @@ public class WaveSpawner : MonoBehaviour
     
     [Header("Interactive Wave")]
     [SerializeField] Animator animInteractiveWave;
-    [SerializeField] float coolDown_InteractiveWave;
+    [SerializeField] float coolDown_InteractiveWave = 0.5f;
     bool doingInteractiveWave;
 
     [Header("Push Wave")]
     [SerializeField] Animator animPushWave;
-    [SerializeField] float coolDown_pushWave;
+    [SerializeField] float coolDown_pushWave = 0.5f;
     bool doingPushWave;
 
     [Header("Step Wave")]
