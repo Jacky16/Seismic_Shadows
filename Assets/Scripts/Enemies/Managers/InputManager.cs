@@ -10,12 +10,23 @@ public class InputManager : MonoBehaviour
     [SerializeField] PlayerMovement player;
     [SerializeField] WaveSpawner waveSpawner;
     [SerializeField] PauseManager pauseManager;
+    public enum CurrentController { PC,XBOX,PS4};
+    public static CurrentController currentController;
+
+    PlayerInput playerInput;
     Vector2 axis;
 
     private void Awake()
     {
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
+        playerInput = GetComponent<PlayerInput>();
+    }
+
+    public void UpdateCurrentController()
+    {
+        HUDManager.singletone.UpdateControlsSprites(playerInput.currentControlScheme);
+        
     }
     private void Update()
     {
@@ -41,8 +52,7 @@ public class InputManager : MonoBehaviour
             player.SetModeGod();
         }
 
-        PlayerInput pi = GetComponent<PlayerInput>();
-        Debug.Log(pi.currentControlScheme);
+       
     }
     //Funciones que se ejecutan en el inspector
     #region Player

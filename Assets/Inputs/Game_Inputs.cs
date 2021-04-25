@@ -200,7 +200,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""86723dd3-f5b1-488e-a624-92591c23c2a8"",
-                    ""path"": ""<DualShockGamepad>/rightShoulder"",
+                    ""path"": ""<DualShockGamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PS4"",
@@ -211,7 +211,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1a960e0a-51bc-42e0-bf1d-285ffadb9b6d"",
-                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""path"": ""<XInputController>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox"",
@@ -236,7 +236,7 @@ public class @Game_Inputs : IInputActionCollection, IDisposable
                     ""path"": ""<DualShockGamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox"",
+                    ""groups"": ""PS4"",
                     ""action"": ""Interactive Wave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

@@ -50,6 +50,30 @@ public class HUDManager : MonoBehaviour
     {
         InitHUD();
     }
+    public void UpdateControlsSprites(string controlScheme)
+    {
+        switch (controlScheme)
+        {
+            case "Keyboard&Mouse":
+                image_InteractiveWave.sprite = spritePC_InteractiveWave;
+                image_FlashWave.sprite = spritePC_FlashWave;
+                image_PushWave.sprite = spritePC_PushWave;
+                break;
+            case "PS4":
+                image_InteractiveWave.sprite = spritePS4_InteractiveWave;
+                image_FlashWave.sprite = spritePS4_FlashWave;
+                image_PushWave.sprite = spritePS4_PushWave;
+                break;
+            case "Xbox":
+                image_InteractiveWave.sprite = spriteXbox_InteractiveWave;
+                image_FlashWave.sprite = spriteXbox_FlashWave;
+                image_PushWave.sprite = spriteXbox_PushWave;
+                break;
+            default:
+                Debug.LogWarning("Controller desconocido");
+                break;
+        }
+    }
 
     public void UpdateLife(float _life,float _maxLife)
     {
