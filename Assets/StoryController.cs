@@ -73,6 +73,7 @@ public class StoryController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            music.DestroyItem();
             SceneManager.LoadScene("1_UpperMantle");
         }
 
