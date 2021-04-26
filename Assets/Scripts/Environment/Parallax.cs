@@ -5,11 +5,13 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
 
-    [SerializeField] float speed;
+    [SerializeField] float speedx;
     Rigidbody2D backrb2d;
-    Transform ppos;
+    [SerializeField] Transform cpos;
     InputManager input;
     PlayerMovement pmov;
+    float actualSpeedX;
+
     
     // Start is called before the first frame update
     void Start()
@@ -17,29 +19,27 @@ public class Parallax : MonoBehaviour
         pmov = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         input = GameObject.FindGameObjectWithTag("InputManager").GetComponent<InputManager>();
         backrb2d = gameObject.GetComponent<Rigidbody2D>();
-        ppos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void FixedUpdate()
-    {
-        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, ppos.position.y, this.gameObject.transform.position.z);
-
-        if(input.GetAxis().x == 1 && !pmov.GetWallPos())
+        if (input.GetAxis().x == 1 && !pmov.GetWallPos())
         {
-            backrb2d.velocity = new Vector3(-speed, 0, 0);
+            actualSpeedX = -speedx;
         }
         if (input.GetAxis().x == -1 && !pmov.GetWallPos())
         {
-            backrb2d.velocity = new Vector3(speed, 0, 0);
+            actualSpeedX = speedx;
         }
         if (input.GetAxis().x == 0 || pmov.GetWallPos())
         {
-            backrb2d.velocity = new Vector3(0, 0, 0);
+            actualSpeedX = 0;
         }
+    }
+    private void FixedUpdate()
+    {
+        backrb2d.velocity = new Vector2(actualSpeedX, 0);
+        backrb2d.transform.position = new Vector3(backrb2d.transform.position.x, cpos.position.y, backrb2d.transform.position.z);
     }
 }
