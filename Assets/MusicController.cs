@@ -18,7 +18,7 @@ public class MusicController : MonoBehaviour
         
     }
 
-    public void destroyItem()
+    public void DestroyItem()
     {
         Destroy(gameObject);
     }

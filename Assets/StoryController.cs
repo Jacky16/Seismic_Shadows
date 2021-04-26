@@ -55,7 +55,7 @@ public class StoryController : MonoBehaviour
 
                 else
                 {
-                    music.destroyItem();
+                    music.DestroyItem();
                     SceneManager.LoadScene("1_UpperMantle");
                 }
             }
@@ -69,6 +69,11 @@ public class StoryController : MonoBehaviour
                 textToShow.text = completeText;
                 index = textLength;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("1_UpperMantle");
         }
 
         if (index == textLength)
