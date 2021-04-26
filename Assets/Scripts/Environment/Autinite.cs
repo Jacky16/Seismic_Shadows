@@ -14,9 +14,7 @@ public class Autinite : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            int sizeFlashWave = GameManager.singletone.GetFlashWaveCount();
-            int maxSizeFlashWave = GameManager.singletone.GetMaxFlashesWaves();
-            if(sizeFlashWave < maxSizeFlashWave)
+            if(GameManager.singletone.GetEnergy() < 100)
             {
                 GameManager.singletone.AddEnergyBar(valor);
                 Destroy(gameObject);

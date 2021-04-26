@@ -146,21 +146,24 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
-        anim.SetTrigger(IDJumpParam);
-        //Normal Jump
-        if (grounded && !isWallSliding)
+        if (canMove)
         {
-            rb2d.velocity = Vector2.zero;
-            rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-        //WallJump
-        if (isWallSliding)
-        {
-            canMove = false;
-            rb2d.velocity = Vector2.zero;
-            Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
-            rb2d.AddForce(moveTo,ForceMode2D.Impulse);
-            StartCoroutine(StopMovement());
+            anim.SetTrigger(IDJumpParam);
+            //Normal Jump
+            if (grounded && !isWallSliding)
+            {
+                rb2d.velocity = Vector2.zero;
+                rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }
+            //WallJump
+            if (isWallSliding)
+            {
+                canMove = false;
+                rb2d.velocity = Vector2.zero;
+                Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
+                rb2d.AddForce(moveTo,ForceMode2D.Impulse);
+                StartCoroutine(StopMovement());
+            }
         }
 
     }

@@ -17,7 +17,7 @@ public class HealthPlayer : Health
     private void Start()
     {
         life = GameManager.singletone.GetLifePlayer();
-        maxLife = GameManager.singletone.GetMazLifePlayer();
+        maxLife = GameManager.singletone.GetMaxLifePlayer();
         GameManager.singletone.UpdateHUDLife();
     }
 

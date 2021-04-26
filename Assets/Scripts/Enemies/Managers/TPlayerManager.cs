@@ -46,14 +46,7 @@ public class TPlayerManager : MonoBehaviour
             posTpVoid = collision.transform.position;
         }
         else if (collision.CompareTag("Checkpoint"))
-        {
-            int sizeNBeacons = GameManager.singletone.GetNBeacons();
-            if(sizeNBeacons < 1)
-            {
-                currentBeacons = sizeNBeacons;
-                beaconsRest = 1 - currentBeacons;
-                GameManager.singletone.AddNBeacons(beaconsRest);
-            }
+        {         
             collision.GetComponent<Animator>().SetTrigger("Passed");
             posCheckPoint = collision.transform.position;
         }

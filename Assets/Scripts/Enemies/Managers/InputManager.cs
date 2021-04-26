@@ -10,14 +10,23 @@ public class InputManager : MonoBehaviour
     [SerializeField] PlayerMovement player;
     [SerializeField] WaveSpawner waveSpawner;
     [SerializeField] PauseManager pauseManager;
-    Animator animPlayer;
+    public enum CurrentController { PC,XBOX,PS4};
+    public static CurrentController currentController;
+
+    PlayerInput playerInput;
     Vector2 axis;
 
     private void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        animPlayer = player.GetComponent<Animator>();
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        playerInput = GetComponent<PlayerInput>();
+    }
+
+    public void UpdateCurrentController()
+    {
+        HUDManager.singletone.UpdateControlsSprites(playerInput.currentControlScheme);
+        
     }
     private void Update()
     {
@@ -42,6 +51,8 @@ public class InputManager : MonoBehaviour
         {
             player.SetModeGod();
         }
+
+       
     }
     //Funciones que se ejecutan en el inspector
     #region Player
@@ -68,13 +79,6 @@ public class InputManager : MonoBehaviour
 
     #region Waves
    
-    public void OnSlowWave(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
-        {
-            waveSpawner.DoPlayerLongWave();
-        }      
-    }
     public void OnInteractiveWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
@@ -90,30 +94,12 @@ public class InputManager : MonoBehaviour
             waveSpawner.DoPlayerPushWave();
         }    
     }
-    public void OnStealth(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
-        {
-            player.SetStealth(true);
-        }
-        if (ctx.canceled)
-        {
-            player.SetStealth(false);
-        }
-    }
-    public void OnBeaconWave(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
-        {
-            waveSpawner.DoBeaconWave();
-        }
-
-    }
+   
     public void OnFlashWave(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            waveSpawner.DoFlashWave();
+            waveSpawner.DoPlayerFlashWave();
         }
 
     }
