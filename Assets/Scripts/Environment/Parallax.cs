@@ -11,7 +11,7 @@ public class Parallax : MonoBehaviour
     InputManager input;
     PlayerMovement pmov;
     float actualSpeedX;
-    public GameObject cam;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,7 @@ public class Parallax : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(actualSpeedX, 0);
-        transform.position = new Vector3(transform.position.x, cam.transform.position.y, transform.position.z);
+        if(Camera.main != null)
+        transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
     }
 }

@@ -18,8 +18,13 @@ public class HealthEnemies : Health
     }
     void InstantiateDeathParticles()
     {
-        Destroy(gameObject,1);
+        GetComponent<Enemy>().enabled = false;
+        GetComponent<Collider2D>().isTrigger = true;
+        GetComponent<Rigidbody2D>().simulated = false;
+
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 20);
         Instantiate(VFX_destroy, pos, Quaternion.identity, null);
+
+        Destroy(gameObject, 10);
     }
 }

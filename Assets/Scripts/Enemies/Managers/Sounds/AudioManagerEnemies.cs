@@ -7,6 +7,9 @@ public class AudioManagerEnemies : MonoBehaviour
     [SerializeField]AudioSource audioSource;
     [Header("Walk Audios")]
     [SerializeField] AudioClip[] audiosWalk;
+
+    [Header("Attack Audios")] 
+    [SerializeField]AudioClip[] audiosAttacks;
   
     [Header("Hit Audios")]
     [SerializeField] AudioClip[] audiosHit;
@@ -18,6 +21,7 @@ public class AudioManagerEnemies : MonoBehaviour
     {
         int randomAudio = Random.Range(0, audiosWalk.Length);
         audioSource.PlayOneShot(audiosWalk[randomAudio]);
+        print("Hola");
     }
     public void PlayAudioHit()
     {
@@ -29,5 +33,11 @@ public class AudioManagerEnemies : MonoBehaviour
         int randomAudio = Random.Range(0, audiosDeath.Length);
         audioSource.PlayOneShot(audiosDeath[randomAudio]);
     }
-    
+    public void PlayAudiosAttack()
+    {
+        int randomAudio = Random.Range(0, audiosAttacks.Length);
+        audioSource.PlayOneShot(audiosAttacks[randomAudio]);
+
+    }
+
 }
