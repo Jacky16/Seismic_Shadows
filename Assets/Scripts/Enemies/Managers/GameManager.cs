@@ -58,11 +58,7 @@ public class GameManager : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
+        }   
     }
     public void UpdateHUDLife()
     {

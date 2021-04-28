@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class HealthEnemies : Health
 {
+    [SerializeField] GameObject VFX_destroy;
+    [SerializeField] AudioManagerEnemies audioManagerEnemies;
+    
     public override void OnDead()
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
-        gameObject.SetActive(false);
         anim.SetTrigger("Death");
+        audioManagerEnemies.PlayAudioDeath();
     }
     protected override void OnDamage()
     {
         anim.SetTrigger("Hit");
+    }
+    void InstantiateDeathParticles()
+    {
+        Destroy(gameObject,1);
+        Vector2 pos = new Vector2(transform.position.x, transform.position.y - 20);
+        Instantiate(VFX_destroy, pos, Quaternion.identity, null);
     }
 }
