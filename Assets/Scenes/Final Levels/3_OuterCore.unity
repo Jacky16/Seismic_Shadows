@@ -2493,6 +2493,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform 3-1
       objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673650969047482520, guid: f9378dde4bebab947b1204ef419263a2,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9378dde4bebab947b1204ef419263a2, type: 3}
 --- !u!1001 &389020576
@@ -59631,7 +59671,7 @@ PrefabInstance:
     - target: {fileID: 7915290680535999581, guid: b6928d3c46fedb64bb956d626fd6346f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6928d3c46fedb64bb956d626fd6346f, type: 3}
