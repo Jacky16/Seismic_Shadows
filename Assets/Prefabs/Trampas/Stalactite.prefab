@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 70
+  VFX_pinchoFall: {fileID: 1768538440496775287, guid: 57d52c2568512ce4aa6e13ae92e805e5,
+    type: 3}
 --- !u!60 &236729173955051455
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49664313, y: 0.75092304}
     oldSize: {x: 128, y: 128}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -143,6 +145,6 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -10.84375, y: 11.576904}
-      - {x: -0.44628906, y: -40.882324}
-      - {x: 11.120117, y: 12.349121}
+    - - {x: -7.285164, y: -11.400131}
+      - {x: 0.19432831, y: -68.809555}
+      - {x: 7.652336, y: -10.907455}
