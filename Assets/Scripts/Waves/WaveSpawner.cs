@@ -43,11 +43,11 @@ public class WaveSpawner : MonoBehaviour
     private void Start()
     {
         //Poner en gris los iconos si no se pueden usar las ondas
-        if (!doingPushWave)
+        if (!spawnPushWave)
         {
             HUDManager.singletone.SetPushWaveIcon(0, 1);
         }
-        if (!doingInteractiveWave)
+        if (!spawnInteracticeWave)
         {
             HUDManager.singletone.SetInteractiveWaveIcon(0, 1);
         }

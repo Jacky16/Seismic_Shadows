@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         CheckWorld();
-
+        AnimationsManagers();
     }
     private void FixedUpdate()
     {
@@ -173,6 +173,10 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
         isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, wallLayer);
+        
+    }
+    void AnimationsManagers()
+    {
         anim.SetBool(IDIsGroundesParam, grounded);
         anim.SetBool("IsSliding", isTouchingWall);
     }
