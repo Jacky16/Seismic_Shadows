@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Settings WallSliding")]
     [SerializeField] float wallSlideSpeed;
     [SerializeField] Transform wallCheckPoint;
+    [SerializeField] LayerMask wallLayer;
     bool isTouchingWall;
     bool isWallSliding;
 
@@ -171,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
     void CheckWorld()
     {
         grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
-        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, groundLayer);
+        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, wallLayer);
         anim.SetBool(IDIsGroundesParam, grounded);
         anim.SetBool("IsSliding", isTouchingWall);
     }

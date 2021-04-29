@@ -9705,7 +9705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335507151614606756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.46, y: -54.82, z: 0}
+  m_LocalPosition: {x: 19.46, y: -20.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7612130501902412777}
@@ -9828,9 +9828,12 @@ MonoBehaviour:
     m_Bits: 120064
   groundCheckPoint: {fileID: 280158486}
   groundCheckSize: {x: 30, y: 2}
-  wallCheckDistance: 75
+  wallCheckDistance: 45.83
   wallSlideSpeed: 5
   wallCheckPoint: {fileID: 7228642098496884102}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 98560
   walljumpforce: 800
   walljumpAngle: {x: 1, y: 2.5}
 --- !u!114 &7612130501482178734
