@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BehaivourStalactites : BehaivourWave
 {
-    protected HealthPlayer playerHealth;
-    bool activated;
     [SerializeField] int gravityScale;
+    [SerializeField] GameObject VFX_pinchoFall;
+    [SerializeField] GameObject VFX_destroy;
+    HealthPlayer playerHealth;
+    bool activated;
     private void Start()
     {
         activated = false;
@@ -19,19 +21,22 @@ public class BehaivourStalactites : BehaivourWave
             //Esto se ejecuta cuando una onda interactiva choca con este objeto
             rb2d.gravityScale = gravityScale;
             activated = true;
+            Instantiate(VFX_pinchoFall, transform.position, Quaternion.identity, null);
             GetComponent<SpriteRenderer>().sortingLayerName = "AlwaysVisible";
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector2 pos = new Vector2(transform.position.x, transform.position.y - 50);
+        Instantiate(VFX_pinchoFall, pos, Quaternion.identity, null);
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth.Damage(1);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Ground"))
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -39,7 +44,8 @@ public class BehaivourStalactites : BehaivourWave
             {
                 h.Damage(3);
             }
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
+        Destroy(gameObject, 1);
     }
 }

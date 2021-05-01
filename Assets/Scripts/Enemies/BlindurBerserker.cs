@@ -96,6 +96,7 @@ public class BlindurBerserker : Enemy
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            if(!healthEnemie.IsDead())
             col.gameObject.GetComponent<HealthPlayer>().Damage(1);
         }
     }

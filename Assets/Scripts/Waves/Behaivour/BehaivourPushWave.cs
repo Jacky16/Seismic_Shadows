@@ -27,13 +27,10 @@ public class BehaivourPushWave : BehaivourWave
             rb2d.AddForceAtPosition(dir.normalized * forcePush, transform.position,ForceMode2D.Impulse);
             hit = true;
         }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
         if (collision.collider.CompareTag("Player"))
         {
             if (!hit)

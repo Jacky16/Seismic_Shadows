@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class AudioManagerEnemies : MonoBehaviour
 {
-    AudioSource audioSource;
+    [SerializeField]AudioSource audioSource;
     [Header("Walk Audios")]
     [SerializeField] AudioClip[] audiosWalk;
+
+    [Header("Attack Audios")] 
+    [SerializeField]AudioClip[] audiosAttacks;
   
     [Header("Hit Audios")]
     [SerializeField] AudioClip[] audiosHit;
@@ -14,25 +17,27 @@ public class AudioManagerEnemies : MonoBehaviour
     [Header("Death Audios")]
     [SerializeField] AudioClip[] audiosDeath;
   
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
     void PlayAudioWalk()
     {
         int randomAudio = Random.Range(0, audiosWalk.Length);
         audioSource.PlayOneShot(audiosWalk[randomAudio]);
+        print("Hola");
     }
-    void PlayAudioHit()
+    public void PlayAudioHit()
     {
         int randomAudio = Random.Range(0, audiosHit.Length);
         audioSource.PlayOneShot(audiosHit[randomAudio]);
     }
-    void PlayAudioDeath()
+    public void PlayAudioDeath()
     {
         int randomAudio = Random.Range(0, audiosDeath.Length);
         audioSource.PlayOneShot(audiosDeath[randomAudio]);
     }
-    
+    public void PlayAudiosAttack()
+    {
+        int randomAudio = Random.Range(0, audiosAttacks.Length);
+        audioSource.PlayOneShot(audiosAttacks[randomAudio]);
+
+    }
+
 }

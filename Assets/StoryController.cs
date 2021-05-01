@@ -9,6 +9,8 @@ public class StoryController : MonoBehaviour
     [TextArea]
     [SerializeField] string story;
     [SerializeField] TextMeshProUGUI textToShow;
+    [SerializeField] TextMeshProUGUI textEscape;
+    [SerializeField] TextMeshProUGUI textSpace;
     [SerializeField] string numberStory;
     MusicController music;
     int textLength;
@@ -17,9 +19,12 @@ public class StoryController : MonoBehaviour
     float counter;
     int index;
     bool completed;
+    bool escaped;
     // Start is called before the first frame update
     void Start()
     {
+        textEscape.enabled = false;
+        textSpace.enabled = false;
         index = 0;
         textToShow.text = "";
         textLength = story.Length;
@@ -71,16 +76,21 @@ public class StoryController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && escaped)
         {
             music.DestroyItem();
             SceneManager.LoadScene("1_UpperMantle");
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && !escaped)
+        {
+            textEscape.enabled = true;
+            escaped = true;
+        }
 
         if (index == textLength)
         {
+            textSpace.enabled = true;
             completed = true;
         }
-
     }
 }
