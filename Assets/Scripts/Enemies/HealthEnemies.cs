@@ -5,8 +5,11 @@ using UnityEngine;
 public class HealthEnemies : Health
 {
     [SerializeField] GameObject VFX_destroy;
-    [SerializeField] AudioManagerEnemies audioManagerEnemies;
-    
+    AudioManagerEnemies audioManagerEnemies;
+    private void Start()
+    {
+        audioManagerEnemies = GetComponent<AudioManagerEnemies>();
+    }
     public override void OnDead()
     {
         anim.SetTrigger("Death");

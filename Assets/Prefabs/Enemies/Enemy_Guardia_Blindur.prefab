@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 6949132633380187100}
   - component: {fileID: 7886820328143434446}
   - component: {fileID: 1165490861}
+  - component: {fileID: 8875365790674093629}
   m_Layer: 12
   m_Name: Enemy_Guardia_Blindur
   m_TagString: Enemy
@@ -294,8 +295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   maxLife: 3
-  VFX_destroy: {fileID: 0}
-  audioManagerEnemies: {fileID: 0}
+  VFX_destroy: {fileID: 5901212577218122038, guid: f3fbc70766eb1cb47ab0bf9b617ee089,
+    type: 3}
 --- !u!114 &2282379688241154003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,11 +309,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3303619e8e10c8748ac24e111378f241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  audiosWalk: []
-  audiosAttacks: []
+  audioSource: {fileID: 8875365790674093629}
+  audiosWalk:
+  - {fileID: 8300000, guid: 7ebfe460b4c087c42b236893a38e7d1c, type: 3}
+  - {fileID: 8300000, guid: d13b12e68c805fa4b998c72b39d8aadf, type: 3}
+  - {fileID: 8300000, guid: 4317fc4b2f2f9d645a2c186e036ab0ae, type: 3}
+  - {fileID: 8300000, guid: f3b97cab3f5681246a21af920015e891, type: 3}
+  audiosAttacks:
+  - {fileID: 8300000, guid: 0130ea13646f21849ac220d847454d00, type: 3}
   audiosHit: []
-  audiosDeath: []
+  audiosDeath:
+  - {fileID: 8300000, guid: 7bea70dc692aad74c9374c4ab2e893a0, type: 3}
 --- !u!50 &6949132633380187088
 Rigidbody2D:
   serializedVersion: 4
@@ -466,6 +473,103 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &8875365790674093629
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949132633380187095}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5390756880801996016, guid: ebf599d2091e7cc40820ccb8b40e70b8,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &6034197043615583211
 PrefabInstance:
   m_ObjectHideFlags: 0
