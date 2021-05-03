@@ -20,6 +20,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] AnimationOptionsUI animationOptions;
     [Header("Settings Background")]
     [SerializeField] Image image;
+    [SerializeField] Image titleSelected;
+    [SerializeField] Image titleNotSelected;
     [SerializeField] float speed;
     Material materialBacground;
     [Space]
@@ -29,6 +31,7 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        titleSelected.enabled = false;
     }
     private void Start()
     {
@@ -52,6 +55,8 @@ public class MenuManager : MonoBehaviour
 
     public void NewGame()
     {
+        titleNotSelected.enabled = false;
+        titleSelected.enabled = true;
         Invoke("LoadFirstLevel", 2);
         animFade.SetTrigger("FadeIn");
     }
