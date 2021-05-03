@@ -28,7 +28,7 @@ public class BehaivourStalactites : BehaivourWave
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 50);
-        Instantiate(VFX_pinchoFall, pos, Quaternion.identity, null);
+        Instantiate(VFX_destroy, pos, Quaternion.identity, null);
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth.Damage(1);
@@ -36,6 +36,7 @@ public class BehaivourStalactites : BehaivourWave
         }
         if (collision.gameObject.CompareTag("Ground"))
         {
+
             gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Enemy"))

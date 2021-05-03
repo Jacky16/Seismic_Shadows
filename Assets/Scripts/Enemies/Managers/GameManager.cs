@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     bool isSpendingEnergy;
 
 
-    float lifePlayerSaved = 3;
+    float lifePlayerSaved = 2;
     float maxLifePlayerSaved = 3;
     private void Awake()
     {

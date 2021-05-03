@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
     void AnimationsManagers()
     {
         anim.SetBool(IDIsGroundesParam, grounded);
-        anim.SetBool("IsSliding", isTouchingWall);
+        anim.SetBool("IsSliding", isWallSliding);
     }
     void Flip()
     {

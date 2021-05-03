@@ -80,8 +80,11 @@ public class BlindurBerserker : Enemy
         {
             HealthPlayer healthPlayer = col.GetComponent<HealthPlayer>();
             healthPlayer.Damage(damage);
-            if(healthPlayer.IsDead())
-            StartCoroutine(ResetPos());
+            GetComponent<AudioManagerEnemies>().PlayAudiosAttack();
+            carger = false;
+            if (healthPlayer.IsDead()) { 
+                StartCoroutine(ResetPos());
+            }
         }
         else
         {
