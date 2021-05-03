@@ -35,9 +35,10 @@ public class BlindurGuardian : Enemy
             
                  
         }
+
+        //Comprobar si ha llegado a su posicion inicial para parar el movimiento
         if (!followPath && !followPlayer)
         {
-            //Comprobar si ha llegado a su posicion inicial para parar el movimiento
             if (Vector2.Distance(transform.position, initPos) > 10)
             {
                 dir = initPos - transform.position;
@@ -53,7 +54,7 @@ public class BlindurGuardian : Enemy
                 }
             }
         }
-        FlipManager(dir.normalized.x);
+        FlipManager(rb2d.velocity.normalized.x);
     }
     protected override void Path()
     {
