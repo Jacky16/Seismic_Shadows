@@ -25,15 +25,15 @@ public class Parallax : MonoBehaviour
     void Update()
     {
         
-        if (input.GetAxis().x == 1 && !pmov.GetWallPos())
+        if (input.GetAxis().x == 1 && !pmov.IsWallSliding())
         {
             actualSpeedX = -speedx;
         }
-        if (input.GetAxis().x == -1 && !pmov.GetWallPos())
+        if (input.GetAxis().x == -1 && !pmov.IsWallSliding())
         {
             actualSpeedX = speedx;
         }
-        if (input.GetAxis().x == 0 || pmov.GetWallPos())
+        if (input.GetAxis().x == 0 || pmov.IsWallSliding())
         {
             actualSpeedX = 0;
         }

@@ -239,9 +239,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return isStealthMode;
     }
-    public bool TouchingFront()
+    public bool IsWallSliding()
     {
-        return isTouchingWall;
+        return isWallSliding;
     }
     public float CurrentVelocityX()
     {
@@ -266,8 +266,5 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-    public bool GetWallPos()
-    {
-        return isTouchingWall;
-    }
+   
 }
