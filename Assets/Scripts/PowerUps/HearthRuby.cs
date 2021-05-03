@@ -5,6 +5,7 @@ using UnityEngine;
 public class HearthRuby : MonoBehaviour
 {
     HealthPlayer hp;
+    [SerializeField] GameObject VFX_PickUp;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class HearthRuby : MonoBehaviour
             {
                 hp.AddLife(1);
                 HUDManager.singletone.UpdateLife(hp.GetLife(), hp.GetMaxLife());
+                Instantiate(VFX_PickUp, collision.transform.position, Quaternion.identity, collision.transform);
                 Destroy(gameObject);
             }
         }
