@@ -91,7 +91,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void AnimControllers()
     {
-        animStepWave.SetBool("IsMoving", player.IsMoving() && !player.TouchingFront() && !player.IsStealth());
+        animStepWave.SetBool("IsMoving", player.IsMoving() && !player.IsWallSliding() && !player.IsStealth());
         animStepWave.SetFloat("Speed", player.CurrentVelocityX());
         animFlashWave.SetBool("Spending", GameManager.singletone.IsSpeendingEnergy());
     }

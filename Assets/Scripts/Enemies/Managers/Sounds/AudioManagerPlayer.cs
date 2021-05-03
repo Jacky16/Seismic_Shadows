@@ -5,22 +5,42 @@ using UnityEngine;
 public class AudioManagerPlayer : MonoBehaviour
 {
     AudioSource audioSource;
+    PlayerMovement player;
     [Header("Walk Audios")]
     [SerializeField]AudioClip [] audiosWalk;
+
     [Header("Jump Audios")]
     [SerializeField] AudioClip[] audiosJump;
+
+    [Header("Wall Slides")]
+    [SerializeField] AudioClip[] audiosWallSlides;
+
     [Header("Hit Audios")]
     [SerializeField] AudioClip[] audiosHit;
+
     [Header("Push Audios")]
     [SerializeField] AudioClip[] audiosPush;
+
     [Header("Death Audios")]
     [SerializeField] AudioClip[] audiosDeath;
+
     [Header("Stick Audios")]
     [SerializeField] AudioClip[] audiosStick;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        player = GetComponent<PlayerMovement>();
+    }
+    private void Update()
+    {
+        if (player.IsWallSliding())
+        {
+            if (!audioSource.isPlaying)
+            {
+                PlayAudiosSlides();
+            }
+        }
     }
 
     void PlayAudioWalk()
@@ -47,6 +67,11 @@ public class AudioManagerPlayer : MonoBehaviour
     {
         int randomAudio = Random.Range(0, audiosPush.Length);
         audioSource.PlayOneShot(audiosPush[randomAudio]);
+    }
+    void PlayAudiosSlides()
+    {
+        int randomAudio = Random.Range(0, audiosWallSlides.Length);
+        audioSource.PlayOneShot(audiosWallSlides[randomAudio]);
     }
     void AudioStickAgainstGround()
     {
