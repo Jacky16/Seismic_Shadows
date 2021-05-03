@@ -21,7 +21,6 @@ public class AudioManagerEnemies : MonoBehaviour
     {
         int randomAudio = Random.Range(0, audiosWalk.Length);
         audioSource.PlayOneShot(audiosWalk[randomAudio]);
-        print("Hola");
     }
     public void PlayAudioHit()
     {
