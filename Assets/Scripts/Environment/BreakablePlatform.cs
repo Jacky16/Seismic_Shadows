@@ -7,6 +7,9 @@ public class BreakablePlatform : BehaivourWave
     [SerializeField] float timeToDisable;
     [SerializeField] float timeToActive;
     [SerializeField] GameObject VFX_destroy;
+    [Header("Audios")]
+    [SerializeField] AudioClip destroyAudio;
+    [SerializeField] AudioClip destroyingAudio;
     AudioSource audioSource;
     float count;
     private void Awake()
@@ -52,7 +55,7 @@ public class BreakablePlatform : BehaivourWave
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            audioSource.Play();
+            audioSource.PlayOneShot(destroyingAudio);
         }
 
     }
@@ -64,6 +67,7 @@ public class BreakablePlatform : BehaivourWave
             if(count >= timeToDisable)
             {
                 DisableComponents();
+                audioSource.PlayOneShot(destroyAudio);
                 Invoke("ActiveComponents", timeToActive);
             }
         }
