@@ -11,11 +11,13 @@ public class Parallax : MonoBehaviour
     InputManager input;
     PlayerMovement pmov;
     float actualSpeedX;
+    Transform cpos;
    
 
     // Start is called before the first frame update
     void Start()
     {
+        cpos = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rb2d = GetComponent<Rigidbody2D>();
         pmov = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         input = GameObject.FindGameObjectWithTag("InputManager").GetComponent<InputManager>();
@@ -42,7 +44,7 @@ public class Parallax : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(actualSpeedX, 0);
-        if(Camera.main != null)
-        transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
+       //if(Camera.main != null)
+        transform.position = new Vector3(transform.position.x, cpos.position.y, transform.position.z);
     }
 }
