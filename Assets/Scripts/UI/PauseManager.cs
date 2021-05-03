@@ -78,7 +78,7 @@ public class PauseManager : MonoBehaviour
         animationOptions.PlayAnimationOut();
 
         //Player Movement
-        playerMovement.SetCanMove(false);
+        playerMovement.SetCanMove(true);
 
         //Desaparece el raton y se bloquea
         Cursor.visible = false;

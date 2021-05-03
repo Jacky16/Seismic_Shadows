@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     [Header("Flash Wave Settings")]
     [SerializeField] float energyBar = 0;
     [SerializeField] float speedSpendingEnergy;
+    [SerializeField] float speedChargeEnergy;
+    [SerializeField] float timeToCharge;
+    float count = 0;
     bool isSpendingEnergy;
 
 
@@ -37,15 +40,31 @@ public class GameManager : MonoBehaviour
         if (isSpendingEnergy && energyBar > 0)
         {
             energyBar -= speedSpendingEnergy * Time.deltaTime;
-            HUDManager.singletone.SetEnergyBar(energyBar);
             if (energyBar <= 0)
             {
                 energyBar = 0;
                 HUDManager.singletone.SetFlashWaveIcon(0);
                 isSpendingEnergy = false;
             }
+            count = 0;
         }
-        
+        //Cargar la energia
+        else
+        {
+            count += Time.deltaTime;
+            if(count >= timeToCharge)
+            {
+                HUDManager.singletone.SetFlashWaveIcon(1);
+                energyBar += speedChargeEnergy * Time.deltaTime;
+                if (energyBar >= 100)
+                {
+                    energyBar = 100;
+
+                }
+            }
+        }
+        HUDManager.singletone.SetEnergyBar(energyBar);
+
     }
 
     void EnableOnFirstScene(bool _b)
