@@ -311,10 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8875365790674093629}
   audiosWalk:
-  - {fileID: 8300000, guid: 7ebfe460b4c087c42b236893a38e7d1c, type: 3}
-  - {fileID: 8300000, guid: d13b12e68c805fa4b998c72b39d8aadf, type: 3}
-  - {fileID: 8300000, guid: 4317fc4b2f2f9d645a2c186e036ab0ae, type: 3}
-  - {fileID: 8300000, guid: f3b97cab3f5681246a21af920015e891, type: 3}
+  - {fileID: 8300000, guid: b4d0c48dbc4beae4096bafac63380c9b, type: 3}
+  - {fileID: 8300000, guid: 4135045603e50ad4abbcc23fa1fcba13, type: 3}
   audiosAttacks:
   - {fileID: 8300000, guid: 0130ea13646f21849ac220d847454d00, type: 3}
   audiosHit: []
@@ -487,17 +485,17 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.86
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 322.2
+  MaxDistance: 1499.1
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
