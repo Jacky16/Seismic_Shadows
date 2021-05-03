@@ -70,8 +70,8 @@ public class AudioManagerPlayer : MonoBehaviour
     }
     void PlayAudiosSlides()
     {
-        int randomAudio = Random.Range(0, audiosWallSlides.Length);
-        audioSource.PlayOneShot(audiosWallSlides[randomAudio]);
+        //int randomAudio = Random.Range(0, audiosWallSlides.Length);
+        //audioSource.PlayOneShot(audiosWallSlides[randomAudio]);
     }
     void AudioStickAgainstGround()
     {
