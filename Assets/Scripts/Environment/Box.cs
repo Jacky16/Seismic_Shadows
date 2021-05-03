@@ -5,10 +5,14 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     [SerializeField] float timeToActive;
+    AudioSource audioSource;
     Vector3 initialPos;
     bool isBroken;
     float count;
-
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         count = 0;
