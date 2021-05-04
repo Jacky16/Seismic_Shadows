@@ -72,11 +72,19 @@ public class GameManager : MonoBehaviour
         //Se desactiva el GameManager en todas las escenas excepto en la 1r si esta true
         if (_b)
         {
-            int indexFirstScene = SceneManager.GetActiveScene().buildIndex;
-            if (indexFirstScene != 4)
+            string indexFirstScene = SceneManager.GetActiveScene().name;
+            if (indexFirstScene != "1_UpperMantle")
             {
                 gameObject.SetActive(false);
             }
+            else
+            {
+                gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            gameObject.SetActive(true);
         }   
     }
     public void UpdateHUDLife()
