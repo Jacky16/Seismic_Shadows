@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManagerEnemies : MonoBehaviour
 {
-    [SerializeField]AudioSource audioSource;
+    AudioSource audioSource;
     [Header("Walk Audios")]
     [SerializeField] AudioClip[] audiosWalk;
 
@@ -16,7 +16,10 @@ public class AudioManagerEnemies : MonoBehaviour
   
     [Header("Death Audios")]
     [SerializeField] AudioClip[] audiosDeath;
-  
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void PlayAudioWalk()
     {
         int randomAudio = Random.Range(0, audiosWalk.Length);
