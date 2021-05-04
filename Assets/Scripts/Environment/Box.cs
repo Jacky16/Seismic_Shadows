@@ -41,6 +41,11 @@ public class Box : MonoBehaviour
             DisableComponents();
             isBroken = true;
         }
+        if (collision.gameObject.tag == "Void")
+        {
+            DisableComponents();
+            isBroken = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,11 +55,7 @@ public class Box : MonoBehaviour
             DisableComponents();
             isBroken = true;
         }
-        if (collision.tag == "Void")
-        {
-            DisableComponents();
-            isBroken = true;
-        }
+
     }
 
     void DisableComponents()
