@@ -812,6 +812,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsSliding
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: VelocityY
+    m_EventTreshold: -100
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3145803618100432220}
   m_Solo: 0
