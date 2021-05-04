@@ -58,7 +58,7 @@ public class BlindurGuardian : Enemy
     }
     protected override void Path()
     {
-        if (followPath && !followPlayer)
+        if (followPath && !followPlayer && !targetInStopDistance)
         {
             if (Vector2.Distance(transform.position, wayPoints[nextPoint].position) < 10)
             {
@@ -81,7 +81,7 @@ public class BlindurGuardian : Enemy
         {
             if (col2D.CompareTag("Player"))
             {
-                countAttack += Time.fixedDeltaTime;
+                countAttack += Time.deltaTime;
                 if(countAttack >= timeToAttack)
                 {
                     anim.SetTrigger("Attack");

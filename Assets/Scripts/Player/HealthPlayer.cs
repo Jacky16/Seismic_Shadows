@@ -41,6 +41,7 @@ public class HealthPlayer : Health
     {
         anim.SetTrigger("Hit");
         GameManager.singletone.SetLifePlayerHUD(life, maxLife);
+        SimpleCameraShakeInCinemachine.singletone.DoCameraShake();
         StartCoroutine(Damage());
     }
 
