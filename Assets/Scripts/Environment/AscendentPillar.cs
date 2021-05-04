@@ -8,7 +8,7 @@ public class AscendentPillar : BehaivourWave
     [SerializeField] Transform moveTo;
     [SerializeField] float duration;
     [SerializeField] Ease ease;
-    [SerializeField] ParticleSystem ps_Moving;
+    ParticleSystem ps_Moving;
     AudioSource audioSource;
     Rigidbody2D rb2d2;
     Vector3 initialPos;
@@ -18,6 +18,10 @@ public class AscendentPillar : BehaivourWave
     {
         rb2d2 = gameObject.GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        if(transform.GetChild(0).TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+        {
+            ps_Moving = ps;
+        }
     }
     void Start()
     {
@@ -29,13 +33,26 @@ public class AscendentPillar : BehaivourWave
     {
         if(col.tag == "InteractiveWave")
         {      
+            //Pido perdon por esta mierda visual
             if (!isGrown)
             {
-                transform.DOMove(moveTo.position, audioSource.clip.length).SetEase(ease).OnStart(() => { ps_Moving.Play(); audioSource.Play(); }).OnComplete(() => { isGrown = true; ps_Moving.Stop();}).SetUpdate(UpdateType.Fixed,false);
+                transform.DOMove(moveTo.position, audioSource.clip.length).SetEase(ease).OnStart(() => { 
+                    if (ps_Moving != null)
+                        ps_Moving.Play(); 
+                    audioSource.Play(); })
+                    .OnComplete(() => {
+                        isGrown = true; 
+                        if (ps_Moving != null)
+                            ps_Moving.Stop();
+                    }).SetUpdate(UpdateType.Fixed,false);
             }
             else
             {
-                transform.DOMove(initialPos, audioSource.clip.length).SetEase(ease).OnStart(() => { ps_Moving.Play(); audioSource.Play(); }).OnComplete(() => { isGrown = false; ps_Moving.Stop(); });
+                transform.DOMove(initialPos, audioSource.clip.length).SetEase(ease).OnStart(() => { 
+                    if(ps_Moving != null)
+                    ps_Moving.Play(); 
+                    audioSource.Play(); 
+                }).OnComplete(() => { isGrown = false; if (ps_Moving != null) ps_Moving.Stop(); });
 
             }
         }

@@ -19,6 +19,8 @@ public class WaveRepeat : MonoBehaviour
 
     [Header("Push Wave")]
     [SerializeField] GameObject pushWavePrefab;
+    bool canSpawnInteractive = true;
+    float delay = 1;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string waveName = collision.tag;
@@ -35,7 +37,12 @@ public class WaveRepeat : MonoBehaviour
                 InstantiateWave(longWavePrefab);
                 break;
             case "InteractiveWave":
-                InstantiateWave(interactiveWavePrefab);
+                if (canSpawnInteractive)
+                {
+                    InstantiateWave(interactiveWavePrefab);
+                    Invoke("ActiveSpawnInteractive", delay);
+                    canSpawnInteractive = false;
+                }
                 break;
             case "PushWave":
                 InstantiateWave(pushWavePrefab);
@@ -43,6 +50,10 @@ public class WaveRepeat : MonoBehaviour
             default:
                 break;
         }
+    }
+    void ActiveSpawnInteractive()
+    {
+        canSpawnInteractive = true;
     }
     void InstantiateWave(GameObject g)
     {
