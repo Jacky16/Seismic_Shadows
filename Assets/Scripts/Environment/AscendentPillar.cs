@@ -18,10 +18,7 @@ public class AscendentPillar : BehaivourWave
     {
         rb2d2 = gameObject.GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-        if(transform.GetChild(0).TryGetComponent<ParticleSystem>(out ParticleSystem ps))
-        {
-            ps_Moving = ps;
-        }
+        
     }
     void Start()
     {
