@@ -309,6 +309,7 @@ MonoBehaviour:
   VFX_destroy: {fileID: 5901212577218122038, guid: f3fbc70766eb1cb47ab0bf9b617ee089,
     type: 3}
   lightEnemy: {fileID: 6147164908506371421}
+  audioIdle: {fileID: 1845330869}
 --- !u!95 &2731712984445601465
 Animator:
   serializedVersion: 3
@@ -368,10 +369,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 105.7
-  MaxDistance: 971.9
+  MinDistance: 1132.81
+  MaxDistance: 2150
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -379,23 +380,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.8126092
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.113666
+      outSlope: -2.113666
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

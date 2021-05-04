@@ -7,6 +7,7 @@ public class HealthEnemies : Health
     [SerializeField] GameObject VFX_destroy;
     AudioManagerEnemies audioManagerEnemies;
     [SerializeField] GameObject lightEnemy;
+    [SerializeField] AudioSource audioIdle;
     private void Start()
     {
         audioManagerEnemies = GetComponent<AudioManagerEnemies>();
@@ -26,6 +27,7 @@ public class HealthEnemies : Health
         GetComponent<Enemy>().enabled = false;
         GetComponent<Collider2D>().isTrigger = true;
         GetComponent<Rigidbody2D>().simulated = false;
+        audioIdle.enabled = false;
 
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 20);
         Instantiate(VFX_destroy, pos, Quaternion.identity, null);
