@@ -39,7 +39,6 @@ public class Parallax : MonoBehaviour
         {
             actualSpeedX = 0;
         }
-
     }
     private void FixedUpdate()
     {
