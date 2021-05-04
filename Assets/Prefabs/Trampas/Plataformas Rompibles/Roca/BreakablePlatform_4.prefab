@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2203064504019884127}
   - component: {fileID: 1992120154}
   m_Layer: 8
-  m_Name: BreakablePlatform-3
+  m_Name: BreakablePlatform_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDisable: 2
   timeToActive: 2
-  VFX_destroy: {fileID: 2754821910918618019, guid: cbfd7ab5056138b4582f5f5fe1545935,
+  VFX_destroy: {fileID: 8930626145766439061, guid: 04ac98fe482b26949b628d36eaf9456b,
     type: 3}
   destroyAudio: {fileID: 8300000, guid: 87291f6aef4ea164187a72f399572a98, type: 3}
   destroyingAudio: {fileID: 8300000, guid: 1cc7296b133adb34eb1e7c527d5008b1, type: 3}
