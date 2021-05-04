@@ -12,11 +12,13 @@ public class Parallax : MonoBehaviour
     PlayerMovement pmov;
     float actualSpeedX;
     Transform cpos;
+    Rigidbody2D prb2d;
    
 
     // Start is called before the first frame update
     void Start()
     {
+        prb2d = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         cpos = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rb2d = GetComponent<Rigidbody2D>();
         pmov = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -35,7 +37,7 @@ public class Parallax : MonoBehaviour
         {
             actualSpeedX = speedx;
         }
-        if (input.GetAxis().x == 0 || pmov.IsWallSliding())
+        if (input.GetAxis().x == 0 || pmov.IsWallSliding() || prb2d.velocity.x == 0)
         {
             actualSpeedX = 0;
         }
