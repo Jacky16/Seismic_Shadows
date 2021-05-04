@@ -308,7 +308,7 @@ MonoBehaviour:
   maxLife: 1
   VFX_destroy: {fileID: 5901212577218122038, guid: f3fbc70766eb1cb47ab0bf9b617ee089,
     type: 3}
-  audioManagerEnemies: {fileID: 0}
+  lightEnemy: {fileID: 6147164908506371421}
 --- !u!95 &2731712984445601465
 Animator:
   serializedVersion: 3
@@ -5559,6 +5559,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88a3c6b622b4e64ebf554f75b85edb3, type: 3}
+--- !u!1 &6147164908506371421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7457190813866644151, guid: d88a3c6b622b4e64ebf554f75b85edb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3617057231127119850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6147164908506371423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7457190813866644149, guid: d88a3c6b622b4e64ebf554f75b85edb3,

@@ -6,6 +6,7 @@ public class HealthEnemies : Health
 {
     [SerializeField] GameObject VFX_destroy;
     AudioManagerEnemies audioManagerEnemies;
+    [SerializeField] GameObject lightEnemy;
     private void Start()
     {
         audioManagerEnemies = GetComponent<AudioManagerEnemies>();
@@ -13,6 +14,7 @@ public class HealthEnemies : Health
     public override void OnDead()
     {
         anim.SetTrigger("Death");
+        lightEnemy.SetActive(false);
         audioManagerEnemies.PlayAudioDeath();
     }
     protected override void OnDamage()
