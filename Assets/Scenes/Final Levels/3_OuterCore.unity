@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4215,8 +4215,8 @@ AudioReverbZone:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851306918}
   m_Enabled: 1
-  m_MinDistance: 10000
-  m_MaxDistance: 10000
+  m_MinDistance: 100000
+  m_MaxDistance: 100000
   m_ReverbPreset: 9
   m_Room: -1000
   m_RoomHF: 0
