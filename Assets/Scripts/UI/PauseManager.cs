@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
-    [SerializeField] GameObject canvasDeadPlayer;
     [SerializeField] GameObject canvasOptions;
     [SerializeField] GameObject canvasPause;
     [SerializeField] GameObject firstButtonSelect;
@@ -28,7 +27,6 @@ public class PauseManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        canvasDeadPlayer.SetActive(false);
         eventSystem.SetSelectedGameObject(firstButtonSelect);
         firstButtonSelect.GetComponent<Button>().Select();
     }
@@ -40,7 +38,6 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 0;
             //Canvas
             canvasPause.SetActive(true);
-            canvasDeadPlayer.SetActive(false);
 
             //Tweens Animation
             animationPause.PlayAnimationInit();
@@ -70,7 +67,6 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
 
         //Canvas
-        canvasDeadPlayer.SetActive(true);
         canvasOptions.SetActive(false);
 
         //Tweens Animation

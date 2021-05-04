@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class HealthPlayer : Health
 {
+    [SerializeField] Animator animStepWave;
     [Header("UI Settings")]
     [SerializeField] Image imageTransition;
     [SerializeField] float transitionDuration;
@@ -53,6 +54,7 @@ public class HealthPlayer : Health
 
     IEnumerator DeadAnimation()
     {
+        animStepWave.SetTrigger("DoWave");
         player.SetCanMove(false);
         int currentLayer = gameObject.layer;
         gameObject.layer = 1;
