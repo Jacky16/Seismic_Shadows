@@ -14604,10 +14604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b065971112aa54c91ee288e95533b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInteracticeWave: 0
+  spawnInteracticeWave: 1
   spawnPushWave: 0
   spawnFlashWave: 1
-  animFlashWave: {fileID: 641245599}
+  animFlashWave: {fileID: 0}
   animInteractiveWave: {fileID: 2882129435793989886}
   coolDown_InteractiveWave: 0.63
   animPushWave: {fileID: 103844823459090490}
@@ -15257,7 +15257,7 @@ PrefabInstance:
     - target: {fileID: 4112075288801269950, guid: 1219194b1cc2068408bf5cfc060d8e37,
         type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 282.6
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 4112075289689770989, guid: 1219194b1cc2068408bf5cfc060d8e37,
         type: 3}
@@ -15272,7 +15272,7 @@ PrefabInstance:
     - target: {fileID: 4112075289689770989, guid: 1219194b1cc2068408bf5cfc060d8e37,
         type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 282.6
+      value: 240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1219194b1cc2068408bf5cfc060d8e37, type: 3}
