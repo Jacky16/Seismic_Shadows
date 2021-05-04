@@ -21,6 +21,7 @@ public class AudioManagerEnemies : MonoBehaviour
     {
         int randomAudio = Random.Range(0, audiosWalk.Length);
         audioSource.PlayOneShot(audiosWalk[randomAudio]);
+        Debug.Log("Sondifo de cmain");
     }
     public void PlayAudioHit()
     {
