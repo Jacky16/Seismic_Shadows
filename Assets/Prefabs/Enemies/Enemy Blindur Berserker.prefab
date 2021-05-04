@@ -316,7 +316,6 @@ MonoBehaviour:
   maxLife: 1
   VFX_destroy: {fileID: 4187731608095199180, guid: 9b9b0e988324cac4e9f16f372cb59322,
     type: 3}
-  audioManagerEnemies: {fileID: 1581360627}
 --- !u!95 &519329049
 Animator:
   serializedVersion: 3
@@ -350,7 +349,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.3
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0

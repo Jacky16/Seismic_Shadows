@@ -137,16 +137,19 @@ public class WaveSpawner : MonoBehaviour
     void DoPushWave()
     {
         animPushWave.SetTrigger("DoWave");
+        SimpleCameraShakeInCinemachine.singletone.DoCameraShake();
     }
     //Se ejecuta en la animacion del player
     void DoInteractiveWave()
     {
         animInteractiveWave.SetTrigger("DoWave");
+        SimpleCameraShakeInCinemachine.singletone.DoCameraShake();
     }
     //Se ejecuta en la animacion del player
     void DoFlashWave()
     {
         GameManager.singletone.SetSpending();
+        SimpleCameraShakeInCinemachine.singletone.DoCameraShake();
     }
 
     public void DoGroundWave()
