@@ -2039,7 +2039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405163395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25255, y: -4703, z: -10}
+  m_LocalPosition: {x: 20176, y: -2465, z: -203.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 541149973}
@@ -4076,6 +4076,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1380003254}
     m_Modifications:
+    - target: {fileID: 2856012772997157275, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012772997157275, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012772997157275, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012772997157275, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2856012773176639753, guid: a7be037411c337c44ab312fd5ba37b2d,
         type: 3}
       propertyPath: m_RootOrder
@@ -4135,6 +4155,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flash Wave
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012774017778376, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012774017778376, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012774017778376, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856012774017778376, guid: a7be037411c337c44ab312fd5ba37b2d,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7be037411c337c44ab312fd5ba37b2d, type: 3}
@@ -6196,7 +6236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380003251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25255, y: -4703, z: -10}
+  m_LocalPosition: {x: 20176, y: -2465, z: -203.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1468634325}
@@ -8002,17 +8042,17 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25255
+      value: 20176
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4703
+      value: -2465
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -193.5
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -8648,6 +8688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nBeacons
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915290680535999578, guid: b6928d3c46fedb64bb956d626fd6346f,
+        type: 3}
+      propertyPath: energyBar
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7915290680535999579, guid: b6928d3c46fedb64bb956d626fd6346f,
         type: 3}

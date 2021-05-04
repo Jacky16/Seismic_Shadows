@@ -8,7 +8,7 @@ public class AscendentPillar : BehaivourWave
     [SerializeField] Transform moveTo;
     [SerializeField] float duration;
     [SerializeField] Ease ease;
-    ParticleSystem ps_Moving;
+    [SerializeField]ParticleSystem ps_Moving;
     AudioSource audioSource;
     Rigidbody2D rb2d2;
     Vector3 initialPos;
