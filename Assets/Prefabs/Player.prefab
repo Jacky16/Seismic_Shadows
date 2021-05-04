@@ -14607,7 +14607,7 @@ MonoBehaviour:
   spawnInteracticeWave: 0
   spawnPushWave: 0
   spawnFlashWave: 1
-  animFlashWave: {fileID: 0}
+  animFlashWave: {fileID: 641245599}
   animInteractiveWave: {fileID: 2882129435793989886}
   coolDown_InteractiveWave: 0.63
   animPushWave: {fileID: 103844823459090490}
@@ -14629,6 +14629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 3
   maxLife: 3
+  animStepWave: {fileID: 641245599}
   imageTransition: {fileID: 0}
   transitionDuration: 2
   betweenTimeTransition: 3
