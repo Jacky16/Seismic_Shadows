@@ -7,44 +7,85 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager singletone;
     [Header("Flash Wave Settings")]
-    [SerializeField] int sizeFlashWave = 3;
-    [SerializeField] int maxSizeFlashWave = 3;
     [SerializeField] float energyBar = 0;
+    [SerializeField] float speedSpendingEnergy;
+    [SerializeField] float speedChargeEnergy;
+    [SerializeField] float timeToCharge;
+    float count = 0;
+    bool isSpendingEnergy;
 
-    [Header("Beacon Wave Settings")]
-    [SerializeField] int nBeacons = 0;
 
-    
     float lifePlayerSaved = 3;
     float maxLifePlayerSaved = 3;
     private void Awake()
     {
-        //Se desactiva el GameManager en todas las escenas excepto en la 1r si esta true
+
+        //True: Se desactiva en todas las escenas excepto en la 1r
+        //False: Se activa en todas las escenas
         EnableOnFirstScene(true);
 
-        if(singletone == null)
+        if (singletone == null)
         {
             singletone = this;
             DontDestroyOnLoad(this);
         }
+    }
+    private void Update()
+    {
+        SpendingEneryManger();
+    }
+
+    private void SpendingEneryManger()
+    {
+        if (isSpendingEnergy && energyBar > 0)
+        {
+            energyBar -= speedSpendingEnergy * Time.deltaTime;
+            if (energyBar <= 0)
+            {
+                energyBar = 0;
+                HUDManager.singletone.SetFlashWaveIcon(0);
+                isSpendingEnergy = false;
+            }
+            count = 0;
+        }
+        //Cargar la energia
+        else
+        {
+            count += Time.deltaTime;
+            if(count >= timeToCharge)
+            {
+                HUDManager.singletone.SetFlashWaveIcon(1);
+                energyBar += speedChargeEnergy * Time.deltaTime;
+                if (energyBar >= 100)
+                {
+                    energyBar = 100;
+
+                }
+            }
+        }
+        HUDManager.singletone.SetEnergyBar(energyBar);
 
     }
-    
+
     void EnableOnFirstScene(bool _b)
     {
         //Se desactiva el GameManager en todas las escenas excepto en la 1r si esta true
         if (_b)
         {
-            int indexFirstScene = SceneManager.GetActiveScene().buildIndex;
-            if (indexFirstScene != 4)
+            string indexFirstScene = SceneManager.GetActiveScene().name;
+            if (indexFirstScene != "1_UpperMantle")
             {
                 gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(true);
             }
         }
         else
         {
             gameObject.SetActive(true);
-        }
+        }   
     }
     public void UpdateHUDLife()
     {
@@ -58,63 +99,47 @@ public class GameManager : MonoBehaviour
 
     }
  
-   
+   public void SetSpending()
+    {
+        isSpendingEnergy = !isSpendingEnergy;
+    }
+    public void SetEnergy(float _f)
+    {
+        energyBar = _f;
+        //Actualizar la UI de la barra
+        HUDManager.singletone.UpdateEnergyBar(energyBar);
+
+        //Poner a color el icono de la FlashWave
+        HUDManager.singletone.SetFlashWaveIcon(1);
+    }
     public void AddEnergyBar(float _f)
     {
-        float sum = energyBar + _f;
-        if (sum >= 100)
+        energyBar += _f;
+        if(energyBar >= 100)
         {
-            energyBar = 0;
-            sizeFlashWave++;
-            HUDManager.singletone.UpdateFlashWave(sizeFlashWave, maxSizeFlashWave);
+            energyBar = 100;
         }
-        else
-        {
-            energyBar = sum;
-        }
+        //Actualizar la UI de la barra
         HUDManager.singletone.UpdateEnergyBar(energyBar);
     }
-    public void UseFlashWave()
+
+    public bool IsSpeendingEnergy()
     {
-        sizeFlashWave--;
-        if(sizeFlashWave <= 0)
+        return isSpendingEnergy;
+    }
+
+    #region Getters
+        public float GetLifePlayer()
         {
-            sizeFlashWave = 0;
+            return lifePlayerSaved;
         }
-        HUDManager.singletone.UpdateFlashWave(sizeFlashWave, maxSizeFlashWave);
-    }
-    public void AddNBeacons(int _nBeacons)
-    {
-        nBeacons += _nBeacons;
-        HUDManager.singletone.UpdateBeacon(nBeacons);
-    }
-    public void SetNBeacons(int _nBeacons)
-    {
-        nBeacons = _nBeacons;
-        HUDManager.singletone.UpdateBeacon(nBeacons);
-    }
-    public float GetLifePlayer()
-    {
-        return lifePlayerSaved;
-    }
-    public float GetMazLifePlayer()
-    {
-        return maxLifePlayerSaved;
-    }
-    public int GetNBeacons()
-    {
-        return nBeacons;
-    }
-    public int GetFlashWaveCount()
-    {
-        return sizeFlashWave;
-    }
-    public int GetMaxFlashesWaves()
-    {
-        return maxSizeFlashWave;
-    }
-    public float GetEnergy()
-    {
-        return energyBar;
-    }
+        public float GetMaxLifePlayer()
+        {
+            return maxLifePlayerSaved;
+        }
+        public float GetEnergy()
+        {
+            return energyBar;
+        }
+    #endregion
 }

@@ -5,10 +5,14 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     [SerializeField] float timeToActive;
+    AudioSource audioSource;
     Vector3 initialPos;
     bool isBroken;
     float count;
-
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         count = 0;
@@ -37,6 +41,11 @@ public class Box : MonoBehaviour
             DisableComponents();
             isBroken = true;
         }
+        if (collision.gameObject.tag == "Void")
+        {
+            DisableComponents();
+            isBroken = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,11 +55,7 @@ public class Box : MonoBehaviour
             DisableComponents();
             isBroken = true;
         }
-        if (collision.tag == "Void")
-        {
-            DisableComponents();
-            isBroken = true;
-        }
+
     }
 
     void DisableComponents()

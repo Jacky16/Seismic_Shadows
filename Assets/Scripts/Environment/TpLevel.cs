@@ -23,6 +23,9 @@ public class TpLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.position = new Vector3(posX, posY, 0);
+        if (collision.tag == "Player")
+        {
+            player.position = new Vector3(posX, posY, 0);
+        }
     }
 }

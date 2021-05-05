@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Settings WallSliding")]
     [SerializeField] float wallSlideSpeed;
     [SerializeField] Transform wallCheckPoint;
+    [SerializeField] LayerMask wallLayer;
     bool isTouchingWall;
     bool isWallSliding;
 
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         CheckWorld();
-
+        AnimationsManagers();
     }
     private void FixedUpdate()
     {
@@ -146,21 +147,24 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
-        anim.SetTrigger(IDJumpParam);
-        //Normal Jump
-        if (grounded && !isWallSliding)
+        if (canMove)
         {
-            rb2d.velocity = Vector2.zero;
-            rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-        //WallJump
-        if (isWallSliding)
-        {
-            canMove = false;
-            rb2d.velocity = Vector2.zero;
-            Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
-            rb2d.AddForce(moveTo,ForceMode2D.Impulse);
-            StartCoroutine(StopMovement());
+            anim.SetTrigger(IDJumpParam);
+            //Normal Jump
+            if (grounded && !isWallSliding)
+            {
+                rb2d.velocity = Vector2.zero;
+                rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }
+            //WallJump
+            if (isWallSliding)
+            {
+                canMove = false;
+                rb2d.velocity = Vector2.zero;
+                Vector2 moveTo = new Vector2(walljumpforce * walljumpAngle.x * walljumpDirection , walljumpforce * walljumpAngle.y);
+                rb2d.AddForce(moveTo,ForceMode2D.Impulse);
+                StartCoroutine(StopMovement());
+            }
         }
 
     }
@@ -168,9 +172,13 @@ public class PlayerMovement : MonoBehaviour
     void CheckWorld()
     {
         grounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
-        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, groundLayer);
+        isTouchingWall = Physics2D.Raycast(wallCheckPoint.position, wallCheckPoint.up, wallCheckDistance, wallLayer);
+        
+    }
+    void AnimationsManagers()
+    {
         anim.SetBool(IDIsGroundesParam, grounded);
-        anim.SetBool("IsSliding", isTouchingWall);
+        anim.SetBool("IsSliding", isWallSliding);
     }
     void Flip()
     {
@@ -231,9 +239,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return isStealthMode;
     }
-    public bool TouchingFront()
+    public bool IsWallSliding()
     {
-        return isTouchingWall;
+        return isWallSliding;
     }
     public float CurrentVelocityX()
     {
@@ -258,8 +266,5 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-    public bool GetWallPos()
-    {
-        return isTouchingWall;
-    }
+   
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class SanguineAmatist : MonoBehaviour
 {
     HealthPlayer hp;
+    [SerializeField] GameObject [] VFX_PickUps;
+
     void Start()
     {
         hp = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
@@ -17,6 +19,10 @@ public class SanguineAmatist : MonoBehaviour
             hp.AddMaxLife(1);
             hp.AddLife(999);
             GameManager.singletone.SetLifePlayerHUD(hp.GetLife(), hp.GetMaxLife());
+            foreach(GameObject go in VFX_PickUps)
+            {
+                Instantiate(go, collision.transform.position + (Vector3.down * 40), transform.rotation = Quaternion.Euler(-100,0,0) , collision.transform);
+            }
             Destroy(gameObject);
         }
     }

@@ -6,18 +6,19 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
-    [SerializeField] GameObject canvasDeadPlayer;
     [SerializeField] GameObject canvasOptions;
     [SerializeField] GameObject canvasPause;
     [SerializeField] GameObject firstButtonSelect;
     [SerializeField] AnimationOptionsUI animationOptions;
     AnimationPauseUI animationPause;
+    PlayerMovement playerMovement;
     EventSystem eventSystem;
     bool isPause;
 
     private void Awake()
     {
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         animationPause = GetComponent<AnimationPauseUI>();
     }
     private void Start()
@@ -26,7 +27,6 @@ public class PauseManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        canvasDeadPlayer.SetActive(false);
         eventSystem.SetSelectedGameObject(firstButtonSelect);
         firstButtonSelect.GetComponent<Button>().Select();
     }
@@ -35,10 +35,16 @@ public class PauseManager : MonoBehaviour
         isPause = !isPause;
         if (isPause) { 
 
-            canvasPause.SetActive(true);
             Time.timeScale = 0;
-            canvasDeadPlayer.SetActive(false);
+            //Canvas
+            canvasPause.SetActive(true);
+
+            //Tweens Animation
             animationPause.PlayAnimationInit();
+
+            //Player Movement
+            playerMovement.SetCanMove(false);
+
             //Aparece el raton y se desbloquea
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -51,19 +57,29 @@ public class PauseManager : MonoBehaviour
     public void Options()
     {
         canvasOptions.SetActive(true);
+
+        //Tweens Animations
         animationPause.PlayAnimationOut();
         animationOptions.PlayAnimationIn();
     }
     public void Resume()
     {
         Time.timeScale = 1;
-        canvasDeadPlayer.SetActive(true);
+
+        //Canvas
         canvasOptions.SetActive(false);
+
+        //Tweens Animation
+        animationPause.PlayAnimationOut();
+        animationOptions.PlayAnimationOut();
+
+        //Player Movement
+        playerMovement.SetCanMove(true);
+
         //Desaparece el raton y se bloquea
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        animationPause.PlayAnimationOut();
-        animationOptions.PlayAnimationOut();
+
         isPause = false;
     }
     public void Exit()

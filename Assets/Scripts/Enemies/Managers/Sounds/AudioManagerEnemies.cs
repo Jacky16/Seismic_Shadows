@@ -7,14 +7,15 @@ public class AudioManagerEnemies : MonoBehaviour
     AudioSource audioSource;
     [Header("Walk Audios")]
     [SerializeField] AudioClip[] audiosWalk;
+
+    [Header("Attack Audios")] 
+    [SerializeField]AudioClip[] audiosAttacks;
   
     [Header("Hit Audios")]
     [SerializeField] AudioClip[] audiosHit;
   
     [Header("Death Audios")]
     [SerializeField] AudioClip[] audiosDeath;
-  
-
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -23,16 +24,23 @@ public class AudioManagerEnemies : MonoBehaviour
     {
         int randomAudio = Random.Range(0, audiosWalk.Length);
         audioSource.PlayOneShot(audiosWalk[randomAudio]);
+        Debug.Log("Sondifo de cmain");
     }
-    void PlayAudioHit()
+    public void PlayAudioHit()
     {
         int randomAudio = Random.Range(0, audiosHit.Length);
         audioSource.PlayOneShot(audiosHit[randomAudio]);
     }
-    void PlayAudioDeath()
+    public void PlayAudioDeath()
     {
         int randomAudio = Random.Range(0, audiosDeath.Length);
         audioSource.PlayOneShot(audiosDeath[randomAudio]);
     }
-    
+    public void PlayAudiosAttack()
+    {
+        int randomAudio = Random.Range(0, audiosAttacks.Length);
+        audioSource.PlayOneShot(audiosAttacks[randomAudio]);
+
+    }
+
 }

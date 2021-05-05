@@ -39,22 +39,19 @@ public class Enemy : MonoBehaviour
     //Checkers
     protected bool targetInRadius;
     protected bool targetInStopDistance;
-    protected bool targetInFov;
     protected bool targetInRaycast;
     protected float distanceToTarget;
 
     [Header("Other components")]
     protected Rigidbody2D rb2d;
-    protected HealthPlayer healthPlayer;
     protected Animator anim;
-    protected HealthEnemies ehp;
-    [SerializeField] protected FOV fov;
+    protected HealthEnemies healthEnemie;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        ehp = GetComponent<HealthEnemies>();
+        healthEnemie = GetComponent<HealthEnemies>();
     }
     private void Start()
     {
@@ -66,32 +63,40 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Checkers();
+
+        //Para el juego final esto fuera
         if (targetInRadius && Input.GetKeyDown(KeyCode.Backspace))
         {
-            ehp.Damage(999);
+            healthEnemie.Damage(999);
         }
     }
 
-
     private void FixedUpdate()
     {
-        if (targetInRadius)
+        if (!healthEnemie.IsDead())
         {
-            CheckPlayerInRaycast();
+            if (targetInRadius)
+            {
+                CheckPlayerInRaycast();
+            }
+            else
+            {
+                targetInRaycast = false;
+            }
+
+            StatesEnemy();
+
+            Path();
+
+            anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.normalized.x));
+
         }
         else
         {
-            targetInRaycast = false;
+            dir.x = 0;
         }
-
-        StatesEnemy();
-
-        Path();
-
-        anim.SetFloat("SpeedX", Mathf.Abs(rb2d.velocity.normalized.x));
-        if(canMove)
-        rb2d.velocity = new Vector2(dir.normalized.x * speed, rb2d.velocity.y);
-
+        if (canMove)
+            rb2d.velocity = new Vector2(dir.normalized.x * speed, rb2d.velocity.y);
     }
 
     protected void FlipManager(float velocityX)
@@ -133,8 +138,6 @@ public class Enemy : MonoBehaviour
     {
         targetInRadius = Vector2.Distance(transform.position, target.position) < radius;
         targetInStopDistance = Vector2.Distance(transform.position, target.position) < stopDistance;
-        if(fov!= null)
-        targetInFov = fov.IsInFov();
     }
     protected void NextWayPoint()
     {
@@ -178,7 +181,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if (targetInRadius && targetInFov && targetInRaycast)
+        if (targetInRadius && targetInRaycast)
         {
             Gizmos.color = Color.green;
         }

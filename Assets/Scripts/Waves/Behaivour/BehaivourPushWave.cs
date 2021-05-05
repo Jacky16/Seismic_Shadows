@@ -8,10 +8,15 @@ public class BehaivourPushWave : BehaivourWave
     Rigidbody2D rb2d;
     [SerializeField] float forcePush;
     private float counter = 0;
+    AudioSource audioSource;
     bool hit;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+    }
+    private void Start()
+    {
         hit = false;
     }
     private void Update()
@@ -26,14 +31,12 @@ public class BehaivourPushWave : BehaivourWave
             Vector2 dir = transform.position - col.transform.position;
             rb2d.AddForceAtPosition(dir.normalized * forcePush, transform.position,ForceMode2D.Impulse);
             hit = true;
+            audioSource.Play();
         }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
         if (collision.collider.CompareTag("Player"))
         {
             if (!hit)

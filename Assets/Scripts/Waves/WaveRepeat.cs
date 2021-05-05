@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WaveRepeat : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class WaveRepeat : MonoBehaviour
 
     [Header("Push Wave")]
     [SerializeField] GameObject pushWavePrefab;
+    SpriteRenderer spriteRenderer;
+    bool canSpawnInteractive = true;
+    float delay = 1;
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string waveName = collision.tag;
@@ -35,7 +43,12 @@ public class WaveRepeat : MonoBehaviour
                 InstantiateWave(longWavePrefab);
                 break;
             case "InteractiveWave":
-                InstantiateWave(interactiveWavePrefab);
+                if (canSpawnInteractive)
+                {
+                    InstantiateWave(interactiveWavePrefab);
+                    Invoke("ActiveSpawnInteractive", delay);
+                    canSpawnInteractive = false;
+                }
                 break;
             case "PushWave":
                 InstantiateWave(pushWavePrefab);
@@ -44,10 +57,25 @@ public class WaveRepeat : MonoBehaviour
                 break;
         }
     }
+    void FadeIn()
+    {
+        spriteRenderer.DOColor(Color.red, 1);
+    }
+    void FadeOut()
+    {
+        spriteRenderer.DOColor(Color.white, 1);
+    }
+    void ActiveSpawnInteractive()
+    {
+        canSpawnInteractive = true;
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
     void InstantiateWave(GameObject g)
     {
         GameObject go = Instantiate(g, transform.position, transform.rotation);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), go.GetComponentInChildren<Collider2D>());
+        FadeIn();
+        Invoke("FadeOut", 1);
         Destroy(go, 2);
     }
 }

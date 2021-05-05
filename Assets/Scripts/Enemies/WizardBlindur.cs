@@ -8,7 +8,7 @@ public class WizardBlindur : Enemy
     [SerializeField] float timeToTP;
     [SerializeField]  ParticleSystem ps;
     float countTP = 0;
-    int pos = 0;
+    [SerializeField] int pos = 0;
    
 
     protected override void StatesEnemy()

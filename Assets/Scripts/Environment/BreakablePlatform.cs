@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class BreakablePlatform : BehaivourWave
 {
-
     [SerializeField] float timeToDisable;
     [SerializeField] float timeToActive;
+    [SerializeField] GameObject VFX_destroy;
+    [Header("Audios")]
+    [SerializeField] AudioClip destroyAudio;
+    [SerializeField] AudioClip destroyingAudio;
+    AudioSource audioSource;
     float count;
-   
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     protected override void ActionOnWave(Collider2D col)
     {
         //EXPLICACION
@@ -28,6 +35,7 @@ public class BreakablePlatform : BehaivourWave
     {
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
+        Instantiate(VFX_destroy, transform.position, Quaternion.identity, null);
     }
     void ActiveComponents()
     {
@@ -39,7 +47,17 @@ public class BreakablePlatform : BehaivourWave
         if (collision.gameObject.CompareTag("Player"))
         {
             count = 0;
+            audioSource.Stop();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            audioSource.PlayOneShot(destroyingAudio);
+        }
+
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -49,6 +67,7 @@ public class BreakablePlatform : BehaivourWave
             if(count >= timeToDisable)
             {
                 DisableComponents();
+                audioSource.PlayOneShot(destroyAudio);
                 Invoke("ActiveComponents", timeToActive);
             }
         }

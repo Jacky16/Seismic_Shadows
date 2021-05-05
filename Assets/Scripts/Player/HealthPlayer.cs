@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class HealthPlayer : Health
 {
+    [SerializeField] Animator animStepWave;
     [Header("UI Settings")]
     [SerializeField] Image imageTransition;
     [SerializeField] float transitionDuration;
@@ -17,7 +18,7 @@ public class HealthPlayer : Health
     private void Start()
     {
         life = GameManager.singletone.GetLifePlayer();
-        maxLife = GameManager.singletone.GetMazLifePlayer();
+        maxLife = GameManager.singletone.GetMaxLifePlayer();
         GameManager.singletone.UpdateHUDLife();
     }
 
@@ -40,6 +41,7 @@ public class HealthPlayer : Health
     {
         anim.SetTrigger("Hit");
         GameManager.singletone.SetLifePlayerHUD(life, maxLife);
+        SimpleCameraShakeInCinemachine.singletone.DoCameraShake();
         StartCoroutine(Damage());
     }
 
@@ -53,6 +55,7 @@ public class HealthPlayer : Health
 
     IEnumerator DeadAnimation()
     {
+        animStepWave.SetTrigger("DoWave");
         player.SetCanMove(false);
         int currentLayer = gameObject.layer;
         gameObject.layer = 1;
