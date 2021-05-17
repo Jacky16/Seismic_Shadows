@@ -55,17 +55,27 @@ public class HealthPlayer : Health
 
     IEnumerator DeadAnimation()
     {
-        animStepWave.SetTrigger("DoWave");
-        player.SetCanMove(false);
         int currentLayer = gameObject.layer;
         gameObject.layer = 1;
+
+        animStepWave.SetTrigger("DoWave");
+
+        player.SetCanMove(false);
+
         imageTransition.DOFade(1, transitionDuration);
+
         yield return new WaitForSeconds(betweenTimeTransition);
+
         tpPlayer.TeleportToCheckpoint();
+
         yield return new WaitForSeconds(.5f);
+
         player.SetCanMove(true);
+
         ResetLife();
+
         imageTransition.DOFade(0, transitionDuration);
+
         gameObject.layer = currentLayer;
 
     }
