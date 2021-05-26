@@ -350,7 +350,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.749
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -358,7 +358,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 0
+  MinDistance: 1132.81
   MaxDistance: 2150
   Pan2D: 0
   rolloffMode: 2
@@ -369,8 +369,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.99515533
+      time: 0.014765263
+      value: 0.9056015
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -378,13 +378,13 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.2727356
       value: 0
-      inSlope: -1.8982913
-      outSlope: -1.8982913
+      inSlope: -2.113666
+      outSlope: -2.113666
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2680182
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -446,7 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3303619e8e10c8748ac24e111378f241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1581360628}
   audiosWalk:
   - {fileID: 8300000, guid: 320e8180960233d45b6b143d9b8ed876, type: 3}
   - {fileID: 8300000, guid: bc73ee7bb90131e4a9c844b6f9402e72, type: 3}
