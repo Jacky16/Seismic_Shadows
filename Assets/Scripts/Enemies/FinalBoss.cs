@@ -9,6 +9,9 @@ public class FinalBoss : Enemy
     [SerializeField] enum Phases { PHASE_1,PHASE_2,PHASE_3};
     [SerializeField]bool followPlayer;
     [SerializeField] HealthBoss healthBoss;
+    [SerializeField] Transform tpPosBoss;
+    [SerializeField] float timebtwTeleport;
+    [SerializeField] float offsetX_TP = 70;
 
     [Header("Zombie Settings")]
     [SerializeField] GameObject zombiePrefab;
@@ -20,6 +23,8 @@ public class FinalBoss : Enemy
     int currentZombies = 0;
     int zombiesAlive = maxZombies;
     bool hasSpawnedAll;
+    bool teleport;
+    bool canTeleport = true;
     
     protected override void StatesEnemy()
     {
@@ -40,42 +45,26 @@ public class FinalBoss : Enemy
 
         FlipManager(dir.normalized.x);
     }
-
-
     private void Phase3()
     {
-        //Spawn de zombies en la Fase 3
-        if (!hasSpawnedAll)
+        if (targetInStopDistance && canTeleport)
         {
-
+            canTeleport = false;
             dir = Vector2.zero;
-            counter += Time.deltaTime;
-            if (counter >= timeBtwSpawn && currentZombies < maxZombies)
-            {
-                anim.SetTrigger("Invoke");
-                GetComponent<HealthBoss>().SetShield(true);
-                counter = 0;
-            }
-            hasSpawnedAll = currentZombies >= maxZombies;
+            StartCoroutine(TeleportAttack());
         }
+        if (followPlayer)
+        {
+           dir = (target.position - transform.position).normalized;
+
+        }
+        
     }
     private void Phase2()
     {
         //Spawn de zombies en la Fase 2
-        if (!hasSpawnedAll)
-        {
-           
-            dir = Vector2.zero;
-            counter += Time.deltaTime;
-            if (counter >= timeBtwSpawn && currentZombies < maxZombies)
-            {
-                anim.SetTrigger("Invoke");
-                GetComponent<HealthBoss>().SetShield(true);
-                counter = 0;
-            }
-            hasSpawnedAll = currentZombies >= maxZombies;
-        }
-        else if(hasSpawnedAll && !healthBoss.GetShield())
+        SpawnZombie();
+        if (hasSpawnedAll && !healthBoss.GetShield())
         {
             if (targetInStopDistance)
             {
@@ -108,6 +97,22 @@ public class FinalBoss : Enemy
         else
         {
             dir = (target.position - transform.position).normalized;
+        }
+    }
+    private void SpawnZombie()
+    {
+        if (!hasSpawnedAll)
+        {
+
+            dir = Vector2.zero;
+            counter += Time.deltaTime;
+            if (counter >= timeBtwSpawn && currentZombies < maxZombies)
+            {
+                anim.SetTrigger("Invoke");
+                GetComponent<HealthBoss>().SetShield(true);
+                counter = 0;
+            }
+            hasSpawnedAll = currentZombies >= maxZombies;
         }
     }
 
@@ -152,7 +157,36 @@ public class FinalBoss : Enemy
         }
     }
 
-    //Se ejecuta en el evento del "onDamage" del componente "HealthEnemy"
+    IEnumerator TeleportAttack()
+    {
+        Vector2 dir = target.position - transform.position;
+        Vector2 pos;
+        //Derecha
+        if(dir.x > 0)
+        {
+            pos = new Vector2(target.position.x + offsetX_TP, transform.position.y);
+        }
+        //Izquierda
+        else
+        {
+            pos = new Vector2(target.position.x - offsetX_TP, transform.position.y);
+        }
+
+        followPlayer = false;
+        anim.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(timebtwTeleport);
+
+        rb2d.position = pos;
+        Flip();
+        anim.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(1);
+
+        followPlayer = true;
+        canTeleport = true;
+        
+    }
     public void UpdatePhaseManager(float _life,float _maxLife)
     {
         //Fase 2
