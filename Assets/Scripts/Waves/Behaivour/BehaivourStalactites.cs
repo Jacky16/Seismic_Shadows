@@ -8,6 +8,7 @@ public class BehaivourStalactites : BehaivourWave
     [SerializeField] GameObject VFX_pinchoFall;
     [SerializeField] GameObject VFX_destroy;
     HealthPlayer playerHealth;
+
     bool activated;
     private void Start()
     {
@@ -41,9 +42,17 @@ public class BehaivourStalactites : BehaivourWave
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if(collision.gameObject.TryGetComponent(out HealthEnemies h))
+            if(collision.gameObject.TryGetComponent(out Health h))
             {
                 h.Damage(3);
+            }
+            gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("FinalBoss"))
+        {
+            if (collision.gameObject.TryGetComponent(out Health h))
+            {
+                h.Damage(1);
             }
             gameObject.SetActive(false);
         }

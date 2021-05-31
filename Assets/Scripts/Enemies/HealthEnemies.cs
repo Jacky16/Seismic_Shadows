@@ -21,6 +21,7 @@ public class HealthEnemies : Health
     protected override void OnDamage()
     {
         anim.SetTrigger("Hit");
+        onDamage.Invoke();
     }
     void InstantiateDeathParticles()
     {

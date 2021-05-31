@@ -12,6 +12,7 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] GameObject canvasBeforeOptions;
     [SerializeField] GameObject canvasOptions;
     [SerializeField] GameObject firstButtonSelected;
+
     [Header("Audio")]
     [SerializeField] AudioMixer audiomixer;
     [SerializeField] Slider sliderMusic;

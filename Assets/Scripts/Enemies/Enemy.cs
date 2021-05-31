@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] float speed;
-    [SerializeField] protected LayerMask layerMaskEnvironent;
+    [SerializeField] protected LayerMask lasyerMaskEnviroment;
     [SerializeField] protected float timeToStartFollow;
     [SerializeField] protected bool spawnFlipped = false;
     protected float countStartFollow = 0;
@@ -45,13 +45,13 @@ public class Enemy : MonoBehaviour
     [Header("Other components")]
     protected Rigidbody2D rb2d;
     protected Animator anim;
-    protected HealthEnemies healthEnemie;
+    protected Health healthEnemie;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        healthEnemie = GetComponent<HealthEnemies>();
+        healthEnemie = GetComponent<Health>();
     }
     private void Start()
     {
@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
 
     protected void CheckPlayerInRaycast()
     {        
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position,radius, layerMaskEnvironent);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position,radius, lasyerMaskEnviroment);
         
         Debug.DrawRay(transform.position, target.position - transform.position);
 

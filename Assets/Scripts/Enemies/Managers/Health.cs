@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected float life;
     [SerializeField] protected float maxLife;
-    bool isDead;
+    [SerializeField] protected UnityEvent onDamage;
+    protected bool isDead;
     protected Animator anim;
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
-   
 
     public void AddLife(int _life)
     {
@@ -23,13 +24,12 @@ public class Health : MonoBehaviour
         {
             life = maxLife;
         }
-       
     }
     public void AddMaxLife(int _maxLife)
     {
         maxLife += _maxLife;
     }
-    public void Damage(int _damage)
+    public virtual void Damage(int _damage)
     {
         life -= _damage;
         if(life <= 0 && !isDead)
@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
         HUDManager.singletone.UpdateLife(maxLife, maxLife);
     }
 
-    IEnumerator AnimationRed()
+    protected IEnumerator AnimationRed()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSecondsRealtime(0.2f);

@@ -45,7 +45,7 @@ public class BlindurBerserker : Enemy
 
     void CheckWall()
     {
-        Collider2D col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, layerMaskEnvironent);
+        Collider2D col = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, lasyerMaskEnviroment);
         if (col != null)
         {
             

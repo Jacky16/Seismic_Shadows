@@ -6,6 +6,7 @@ public class AudioManagerPlayer : MonoBehaviour
 {
     AudioSource audioSource;
     PlayerMovement player;
+
     [Header("Walk Audios")]
     [SerializeField]AudioClip [] audiosWalk;
 

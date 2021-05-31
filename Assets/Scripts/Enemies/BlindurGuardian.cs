@@ -76,7 +76,7 @@ public class BlindurGuardian : Enemy
 
     protected override void Attack()
     {
-        Collider2D col2D = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, layerMaskEnvironent);
+        Collider2D col2D = Physics2D.OverlapBox(hitAttackPos.position, sizeHitBoxAttack, 0, lasyerMaskEnviroment);
         if(col2D != null)
         {
             if (col2D.CompareTag("Player"))

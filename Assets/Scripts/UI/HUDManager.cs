@@ -91,7 +91,6 @@ public class HUDManager : MonoBehaviour
     public void SetEnergyBar(float _energy)
     {
         flashImageBar.fillAmount = _energy / 100;
-        Debug.Log("Gastando Energia");
     }
    
     public void SetInteractiveWaveIcon(float _value,float _maxValue)
