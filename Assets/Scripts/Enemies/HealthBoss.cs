@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HealthBoss : Health
 {
@@ -31,7 +32,7 @@ public class HealthBoss : Health
     }
     public override void OnDead()
     {
-        anim.SetTrigger("Death");
+        GetComponent<SpriteRenderer>().DOFade(0, 1);
         //lightEnemy.SetActive(false);
         //audioManagerEnemies.PlayAudioDeath();
     }

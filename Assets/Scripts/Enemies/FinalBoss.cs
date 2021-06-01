@@ -161,6 +161,7 @@ public class FinalBoss : Enemy
     {
         Vector2 dir = target.position - transform.position;
         Vector2 pos;
+       
         //Derecha
         if(dir.x > 0)
         {
@@ -170,15 +171,21 @@ public class FinalBoss : Enemy
         else
         {
             pos = new Vector2(target.position.x - offsetX_TP, transform.position.y);
+           
         }
-
+        
         followPlayer = false;
         anim.SetTrigger("Attack");
-
         yield return new WaitForSeconds(timebtwTeleport);
+        if (!CheckCanTeleport())
+        {
+            anim.SetTrigger("Teleport");
+            yield return new WaitForSeconds(0.30f);
 
-        rb2d.position = pos;
-        Flip();
+            rb2d.position = pos;
+        
+            Flip();
+        }
         anim.SetTrigger("Attack");
 
         yield return new WaitForSeconds(1);
@@ -213,6 +220,20 @@ public class FinalBoss : Enemy
     }
     public int GetCurrentZombies() {
         return zombiesAlive;
+    }
+
+    bool CheckCanTeleport()
+    {
+        Debug.Break();
+        if (!facingRight)
+        {
+            
+            return Physics2D.Raycast(transform.position, Vector2.right, 200, lasyerMaskEnviroment);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, Vector2.left, 200, lasyerMaskEnviroment);
+        }
     }
 
 }
