@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SanguineAmatist : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SanguineAmatist : MonoBehaviour
     void Start()
     {
         hp = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
+        Animation();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,5 +27,17 @@ public class SanguineAmatist : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+    void Animation()
+    {
+        float posy = transform.position.y;
+
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(transform.DOMoveY(posy + 20, 2).SetEase(Ease.Linear));
+
+        sequence.Append(transform.DOMoveY(posy,2)).SetEase(Ease.Linear);
+
+        sequence.SetLoops(-1);
     }
 }
