@@ -16,7 +16,10 @@ public class Health : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-
+    private void Start()
+    {
+        
+    }
     public void AddLife(int _life)
     {
         life += _life;
@@ -28,6 +31,7 @@ public class Health : MonoBehaviour
     public void AddMaxLife(int _maxLife)
     {
         maxLife += _maxLife;
+        HUDManager.singletone.UpdateFrameHealth(maxLife);
     }
     public virtual void Damage(int _damage)
     {
