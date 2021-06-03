@@ -19,6 +19,9 @@ public class AudioManagerFinalBoss : MonoBehaviour
 
     [Header("Audios Teleport")]
     [SerializeField] AudioClip[] audiosTeleport;
+    
+    [Header("Audios Invoke")]
+    [SerializeField] AudioClip[] audiosInvoke;
 
 
     private void Awake()
@@ -46,5 +49,15 @@ public class AudioManagerFinalBoss : MonoBehaviour
         int randomAudio = Random.Range(0, audiosAttacks.Length);
         audioSource.PlayOneShot(audiosAttacks[randomAudio]);
 
+    }
+    public void PlayAudiosTeleport()
+    {
+        int randomAudio = Random.Range(0, audiosTeleport.Length);
+        audioSource.PlayOneShot(audiosTeleport[randomAudio]);
+    }
+    public void PlayAudiosInvoke()
+    {
+        int randomAudio = Random.Range(0, audiosInvoke.Length);
+        audioSource.PlayOneShot(audiosInvoke[randomAudio]);
     }
 }
