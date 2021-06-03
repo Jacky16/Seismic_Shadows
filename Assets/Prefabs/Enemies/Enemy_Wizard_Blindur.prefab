@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  layerMaskEnvironent:
+  lasyerMaskEnviroment:
     serializedVersion: 2
-    m_Bits: 18176
+    m_Bits: 116480
   timeToStartFollow: 2
   spawnFlipped: 0
   radius: 429.1
@@ -255,6 +255,7 @@ MonoBehaviour:
   timeInWayPoint: 0
   timeToTP: 1.5
   ps: {fileID: 1972407882216597772}
+  pos: 0
 --- !u!50 &1139602182
 Rigidbody2D:
   serializedVersion: 4
@@ -306,10 +307,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   maxLife: 1
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
   VFX_destroy: {fileID: 5901212577218122038, guid: f3fbc70766eb1cb47ab0bf9b617ee089,
     type: 3}
   lightEnemy: {fileID: 6147164908506371421}
-  audioIdle: {fileID: 1845330869}
 --- !u!95 &2731712984445601465
 Animator:
   serializedVersion: 3

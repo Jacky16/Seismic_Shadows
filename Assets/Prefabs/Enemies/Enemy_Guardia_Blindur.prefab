@@ -265,7 +265,7 @@ MonoBehaviour:
   speed: 70
   lasyerMaskEnviroment:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 116480
   timeToStartFollow: 0
   spawnFlipped: 1
   radius: 295.5
@@ -297,10 +297,12 @@ MonoBehaviour:
   onDamage:
     m_PersistentCalls:
       m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
   VFX_destroy: {fileID: 5901212577218122038, guid: f3fbc70766eb1cb47ab0bf9b617ee089,
     type: 3}
   lightEnemy: {fileID: 3801185096119654748}
-  audioIdle: {fileID: 7187395491332481270}
 --- !u!114 &2282379688241154003
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4760,12 +4760,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13200
+      value: 11860
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4018
+      value: -3895
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -10871,7 +10871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347195037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13200, y: -4018, z: -10}
+  m_LocalPosition: {x: 11860, y: -3895, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2044705880}
@@ -15349,7 +15349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775136777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13200, y: -4018, z: -10}
+  m_LocalPosition: {x: 11860, y: -3895, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1490209832}
@@ -26116,6 +26116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: timeToAttack
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233581994156845735, guid: 8e92a4f96987f7e44ab7861a8e363a7d,
+        type: 3}
+      propertyPath: lasyerMaskEnviroment.m_Bits
+      value: 768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e92a4f96987f7e44ab7861a8e363a7d, type: 3}
