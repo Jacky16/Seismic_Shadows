@@ -65,6 +65,12 @@ public class WaveSpawner : MonoBehaviour
             spawnPushWave = true;
             spawnFlashWave = true;
         }
+        else if (SceneManager.GetActiveScene().name == "BossFight")
+        {
+            spawnInteractiveWave = true;
+            spawnPushWave = true;
+            spawnFlashWave = true;
+        }
     }
     private void Start()
     {
