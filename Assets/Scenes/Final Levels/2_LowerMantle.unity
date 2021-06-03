@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7161,6 +7161,31 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b46b2825bc769e46b3e6153e446474a, type: 3}
+--- !u!1 &947047239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8286424239556484620, guid: 3b46b2825bc769e46b3e6153e446474a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1153981553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &947047241
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947047239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73bcd1797f2f6984ba29836180fceaf2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &953843345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1891817040542720634, guid: 3b46b2825bc769e46b3e6153e446474a,
@@ -8286,7 +8311,7 @@ PrefabInstance:
     - target: {fileID: 1891817040542720634, guid: 3b46b2825bc769e46b3e6153e446474a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 546
+      value: -3965
       objectReference: {fileID: 0}
     - target: {fileID: 1891817040542720634, guid: 3b46b2825bc769e46b3e6153e446474a,
         type: 3}
@@ -22769,25 +22794,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 708756634300695231}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &708756634462416385
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7612848262471614331}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b75940a59b6e9d4bbf22eb8178bb23c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!483693784 &708756634870827472
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -25677,28 +25683,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612848260622989953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -1.9, z: 0}
+  m_LocalPosition: {x: -22.4, y: -31.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7612848262471614335}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7612848262471614320
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7612848262471614331}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -5.2418823, y: -2.0990295}
-  serializedVersion: 2
-  m_Radius: 13.978912
 --- !u!114 &7612848262471614321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25734,11 +25724,11 @@ GameObject:
   - component: {fileID: 7612848262471614321}
   - component: {fileID: 1619789933282382719}
   - component: {fileID: 7612848262471614332}
-  - component: {fileID: 7612848262471614320}
   - component: {fileID: 8285955148797842065}
-  - component: {fileID: 708756634462416385}
+  - component: {fileID: 7612848262471614336}
+  - component: {fileID: 7612848262471614337}
   m_Layer: 12
-  m_Name: Enemy_Guardia_Blindur 1
+  m_Name: MiniBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25783,11 +25773,11 @@ MonoBehaviour:
     m_Bits: 0
   timeToStartFollow: 0
   spawnFlipped: 1
-  radius: 163.09
+  radius: 849
   stopDistance: 48.87
   damage: 1
   timeToAttack: 0.5
-  sizeHitBoxAttack: {x: 33.25, y: 59.76}
+  sizeHitBoxAttack: {x: 39.6, y: 59.76}
   hitAttackPos: {fileID: 7612848260622989956}
   followPath: 1
   wayPoints:
@@ -25834,8 +25824,7 @@ SpriteRenderer:
   m_SortingLayerID: -10584355
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 799d7c66d8492a24b95dacf46654c199,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7d16efc2faa3c64398c04c0f353c966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25854,7 +25843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612848262471614331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2372, y: -351, z: 0}
+  m_LocalPosition: {x: 2320, y: -288.3, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 7612848260622989956}
@@ -25863,6 +25852,51 @@ Transform:
   m_Father: {fileID: 708756632807934635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7612848262471614336
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612848262471614331}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07eff094df9df2c458515db66865f99d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &7612848262471614337
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612848262471614331}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 14.76709, y: -23.226501}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 96, y: 96}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 22.305664, y: 49.546997}
+  m_EdgeRadius: 0
 --- !u!82 &7667589992884958298
 AudioSource:
   m_ObjectHideFlags: 0
