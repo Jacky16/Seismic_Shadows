@@ -14,7 +14,9 @@ public class FinalBoss : Enemy
     [SerializeField] float offsetX_TP = 70;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform rayPoint;
-    bool hasAvoid;
+    bool canAvoid = true;
+    bool canTeleport = true;
+    bool inHole;
 
     [Header("Zombie Settings")]
     [SerializeField] GameObject zombiePrefab;
@@ -26,8 +28,6 @@ public class FinalBoss : Enemy
     int currentZombies = 0;
     int zombiesAlive = maxZombies;
     bool hasSpawnedAll;
-    bool teleport;
-    bool canTeleport = true;
     
     protected override void StatesEnemy()
     {
@@ -50,9 +50,10 @@ public class FinalBoss : Enemy
     }
     private void Phase3()
     {
-        if (CheckCollisionStalacmite() && !hasAvoid)
+        if (inHole) return;
+        if (CheckCollisionStalacmite() && canAvoid)
         {
-            hasAvoid = true;
+            canAvoid = false;
             StartCoroutine(TeleportAvoid());
         }
         if (targetInStopDistance && canTeleport)
@@ -218,9 +219,24 @@ public class FinalBoss : Enemy
             posToTeleport = new Vector2(transform.position.x + 100, transform.position.y);
         }
         yield return new WaitForSeconds(.2f);
+
         rb2d.position = posToTeleport;
         followPlayer = true;
-        hasAvoid = false;
+        canAvoid = true;
+    }
+
+    public IEnumerator Teleport(Vector3 _pos)
+    {
+        followPlayer = false;
+        dir = Vector2.zero;
+        anim.SetTrigger("Teleport");
+        
+        yield return new WaitForSeconds(.3f);
+
+        rb2d.position = _pos;
+        inHole = false;
+        followPlayer = true;
+        canAvoid = true;
     }
 
     public void UpdatePhaseManager(float _life,float _maxLife)
@@ -300,4 +316,12 @@ public class FinalBoss : Enemy
 
     }
 
+    public void StopMovement()
+    {
+        dir = Vector2.zero;
+    }
+    public void SetHole(bool _b)
+    {
+        inHole = _b;
+    }
 }
