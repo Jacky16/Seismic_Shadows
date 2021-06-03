@@ -6,8 +6,7 @@ public class BlindurMiniBoss : Enemy
 {
     bool followPlayer;
     bool flipOnce = true;
-    [Header("Force Push")]
-    [SerializeField] float forcePush;
+   
     protected override void StatesEnemy()
     {
         //Comenzar a perseguir al player
@@ -19,7 +18,6 @@ public class BlindurMiniBoss : Enemy
                 dir = target.position - transform.position;
                 followPlayer = true;
             }
-            
         }
 
         //Atacar al player
@@ -56,23 +54,7 @@ public class BlindurMiniBoss : Enemy
         }
         FlipManager(rb2d.velocity.normalized.x);
     }
-    protected override void Path()
-    {
-        if (followPath && !followPlayer && !targetInStopDistance)
-        {
-            if (Vector2.Distance(transform.position, wayPoints[nextPoint].position) < 10)
-            {
-                countWaypoint += Time.fixedDeltaTime;
-                dir = Vector2.zero;
-                if (countWaypoint >= timeInWayPoint)
-                {
-                    NextWayPoint();
-                    countWaypoint = 0;
-                }
-            }
-            dir = wayPoints[nextPoint].position - transform.position; 
-        }
-    }
+  
 
     protected override void Attack()
     {
@@ -96,18 +78,7 @@ public class BlindurMiniBoss : Enemy
     {
         canMove = true;
     }
-    protected override void OnTrigEnter(Collider2D col)
-    {
-        if (col.CompareTag("PushWave"))
-        {
-            Vector2 dirForce = transform.position - col.transform.position;
-
-            canMove = false;
-            rb2d.velocity = Vector2.zero;
-            rb2d.AddForceAtPosition(dirForce.normalized * forcePush, transform.position,ForceMode2D.Impulse);
-            Invoke("ActiveMovement", 1);
-        }
-    }
+   
     protected override void OnCollEnter(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))

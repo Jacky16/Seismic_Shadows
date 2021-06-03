@@ -6,9 +6,8 @@ public class TpLevel : MonoBehaviour
 {
     Transform player;
     [SerializeField] Transform posToGo;
-    [SerializeField] int posX;
-    [SerializeField] int posY;
-    [SerializeField] Animator anim;
+   
+     Animator anim;
 
     // Start is called before the first frame update
     void Start()

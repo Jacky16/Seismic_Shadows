@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     [SerializeField] protected float life;
     [SerializeField] protected float maxLife;
     [SerializeField] protected UnityEvent onDamage;
+    [SerializeField] protected UnityEvent onDeath;
+
     protected bool isDead;
     protected Animator anim;
     private void Awake()

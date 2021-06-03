@@ -7,7 +7,7 @@ public class HealthEnemies : Health
     [SerializeField] GameObject VFX_destroy;
     AudioManagerEnemies audioManagerEnemies;
     [SerializeField] GameObject lightEnemy;
-    [SerializeField] AudioSource audioIdle;
+   
     private void Start()
     {
         audioManagerEnemies = GetComponent<AudioManagerEnemies>();
@@ -15,7 +15,8 @@ public class HealthEnemies : Health
     public override void OnDead()
     {
         anim.SetTrigger("Death");
-        lightEnemy.SetActive(false);
+        onDeath.Invoke();
+        //lightEnemy.SetActive(false);
         audioManagerEnemies.PlayAudioDeath();
     }
     protected override void OnDamage()
@@ -23,16 +24,17 @@ public class HealthEnemies : Health
         anim.SetTrigger("Hit");
         onDamage.Invoke();
     }
+
+    //Se ejecuta en un evento de la animacion de "Death"
     void InstantiateDeathParticles()
     {
         GetComponent<Enemy>().enabled = false;
         GetComponent<Collider2D>().isTrigger = true;
         GetComponent<Rigidbody2D>().simulated = false;
-        audioIdle.enabled = false;
 
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 20);
         Instantiate(VFX_destroy, pos, Quaternion.identity, null);
 
-        Destroy(gameObject, 10);
+        Destroy(gameObject, 1);
     }
 }

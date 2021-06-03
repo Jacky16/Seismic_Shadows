@@ -36,10 +36,11 @@ public class BehaivourStalactites : BehaivourWave
     {
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 50);
         Instantiate(VFX_destroy, pos, Quaternion.identity, null);
-        stalactiteSpawner.InstantiateStalactite(initPos);
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth.Damage(1);
+            stalactiteSpawner.InstantiateStalactite(initPos);
+
             gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("FinalBoss"))
@@ -48,20 +49,27 @@ public class BehaivourStalactites : BehaivourWave
             {
                 h.Damage(1);
             }
+            stalactiteSpawner.InstantiateStalactite(initPos);
+
             gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Ground"))
         {
 
+            stalactiteSpawner.InstantiateStalactite(initPos);
             gameObject.SetActive(false);
+
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if(collision.gameObject.TryGetComponent(out Health h))
             {
                 h.Damage(1);
+                Destroy(gameObject);
             }
-            gameObject.SetActive(false);
+            //stalactiteSpawner.InstantiateStalactite(initPos);
+
+
         }
 
         Destroy(gameObject);
