@@ -48,9 +48,9 @@ public class MenuManager : MonoBehaviour
         eventSystem.SetSelectedGameObject(firstButtonSelected);
 
     }
-    public void ContinueGame()
+    public void Credits()
     {
-        
+        SceneManager.LoadScene("Final");
     }
 
     public void NewGame()

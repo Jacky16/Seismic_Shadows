@@ -22,22 +22,25 @@ public class AudioManagerEnemies : MonoBehaviour
     }
     void PlayAudioWalk()
     {
+        if (audiosWalk.Length == 0) return;
         int randomAudio = Random.Range(0, audiosWalk.Length);
         audioSource.PlayOneShot(audiosWalk[randomAudio]);
-        Debug.Log("Sondifo de cmain");
     }
     public void PlayAudioHit()
     {
+        if (audiosHit.Length == 0) return;
         int randomAudio = Random.Range(0, audiosHit.Length);
         audioSource.PlayOneShot(audiosHit[randomAudio]);
     }
     public void PlayAudioDeath()
     {
+        if (audiosDeath.Length == 0) return;
         int randomAudio = Random.Range(0, audiosDeath.Length);
         audioSource.PlayOneShot(audiosDeath[randomAudio]);
     }
     public void PlayAudiosAttack()
     {
+        if (audiosAttacks.Length == 0) return;
         int randomAudio = Random.Range(0, audiosAttacks.Length);
         audioSource.PlayOneShot(audiosAttacks[randomAudio]);
 
