@@ -124,28 +124,26 @@ public class HUDManager : MonoBehaviour
     }
     public void UpdateFrameHealth(float _maxLife)
     {
-        if(_maxLife == 3)
+        switch (_maxLife)
         {
-            circleImageLife.sprite = spriteFrameHealth_3;
+            case 3:
+                circleImageLife.sprite = spriteFrameHealth_3;
+                break;
+            case 4:
+                circleImageLife.sprite = spriteFrameHealth_4;
+                break;
+            case 5:
+                circleImageLife.sprite = spriteFrameHealth_5;
+                break;
+            case 6:
+                circleImageLife.sprite = spriteFrameHealth_6;
+                break;
+            case 7:
+                circleImageLife.sprite = spriteFrameHealth_7;
+                break;
+            default: 
+                break;
         }
-        if(_maxLife == 4)
-        {
-            circleImageLife.sprite = spriteFrameHealth_4;
-        }
-        if(_maxLife == 5)
-        {
-            circleImageLife.sprite = spriteFrameHealth_5;
-        }
-        if(_maxLife == 6)
-        {
-            circleImageLife.sprite = spriteFrameHealth_6;
-
-        }
-        if (_maxLife == 7)
-        {
-            circleImageLife.sprite = spriteFrameHealth_7;
-        }
-     
     }
 
 }

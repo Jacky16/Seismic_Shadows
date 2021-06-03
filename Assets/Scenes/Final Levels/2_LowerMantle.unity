@@ -2186,7 +2186,7 @@ PrefabInstance:
     - target: {fileID: 7915290680535999581, guid: b6928d3c46fedb64bb956d626fd6346f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6928d3c46fedb64bb956d626fd6346f, type: 3}
@@ -4412,12 +4412,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1455
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -443
+      value: -188
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -4919,7 +4919,7 @@ PrefabInstance:
     - target: {fileID: 8254374628994186521, guid: a0ee5154b31f24a498602976fce1c91a,
         type: 3}
       propertyPath: m_Name
-      value: InteractiveWaves
+      value: ActiveInteractiveWave
       objectReference: {fileID: 0}
     - target: {fileID: 8254374628994186522, guid: a0ee5154b31f24a498602976fce1c91a,
         type: 3}
@@ -8311,7 +8311,7 @@ PrefabInstance:
     - target: {fileID: 1891817040542720634, guid: 3b46b2825bc769e46b3e6153e446474a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3965
+      value: 546
       objectReference: {fileID: 0}
     - target: {fileID: 1891817040542720634, guid: 3b46b2825bc769e46b3e6153e446474a,
         type: 3}
@@ -9815,7 +9815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347195037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1455, y: -443, z: -4160.403}
+  m_LocalPosition: {x: 47, y: -188, z: -4160.403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2044705880}
@@ -13001,7 +13001,9 @@ PrefabInstance:
     - target: {fileID: 8254374628994186522, guid: a0ee5154b31f24a498602976fce1c91a,
         type: 3}
       propertyPath: t_tecla
-      value: You aren't that bad after all! Go ahead to the outer core level!
+      value: 'You aren''t that bad after all! Go ahead and fight the first mini boss!
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0ee5154b31f24a498602976fce1c91a, type: 3}
@@ -13450,7 +13452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775136777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1455, y: -443, z: -4160.403}
+  m_LocalPosition: {x: 47, y: -188, z: -4160.403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1490209832}
@@ -25774,12 +25776,12 @@ MonoBehaviour:
   timeToStartFollow: 0
   spawnFlipped: 1
   radius: 849
-  stopDistance: 48.87
+  stopDistance: 66.5
   damage: 1
   timeToAttack: 0.5
   sizeHitBoxAttack: {x: 39.6, y: 59.76}
   hitAttackPos: {fileID: 7612848260622989956}
-  followPath: 1
+  followPath: 0
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -25843,7 +25845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612848262471614331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2320, y: -288.3, z: 0}
+  m_LocalPosition: {x: 2320, y: -290, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 7612848260622989956}

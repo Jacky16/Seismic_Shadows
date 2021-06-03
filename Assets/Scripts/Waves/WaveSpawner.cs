@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
     [Header("Enabled Waves")]
-    [SerializeField] bool spawnInteracticeWave;
-    [SerializeField] bool spawnPushWave;
-    [SerializeField] bool spawnFlashWave;
+    bool spawnInteractiveWave;
+    bool spawnPushWave;
+    bool spawnFlashWave;
 
     [Header("Flash Wave")]
     [SerializeField] Animator animFlashWave;
@@ -39,6 +40,31 @@ public class WaveSpawner : MonoBehaviour
     {
         player = GetComponent<PlayerMovement>();
         animPlayer = GetComponent<Animator>();
+        
+        if(SceneManager.GetActiveScene().name == "1_UpperMantle")
+        {
+            spawnInteractiveWave = false;
+            spawnPushWave = false;
+            spawnFlashWave = false;
+        }
+        else if(SceneManager.GetActiveScene().name == "2_LowerMantle")
+        {
+            spawnInteractiveWave = false;
+            spawnPushWave = false;
+            spawnFlashWave = true;
+        }
+        else if(SceneManager.GetActiveScene().name == "3_OuterCore")
+        {
+            spawnInteractiveWave = true;
+            spawnPushWave = false;
+            spawnFlashWave = true;
+        }
+        else if(SceneManager.GetActiveScene().name == "4_InnerCore")
+        {
+            spawnInteractiveWave = true;
+            spawnPushWave = true;
+            spawnFlashWave = true;
+        }
     }
     private void Start()
     {
@@ -47,7 +73,7 @@ public class WaveSpawner : MonoBehaviour
         {
             HUDManager.singletone.SetPushWaveIcon(0, 1);
         }
-        if (!spawnInteracticeWave)
+        if (!spawnInteractiveWave)
         {
             HUDManager.singletone.SetInteractiveWaveIcon(0, 1);
         }
@@ -109,7 +135,7 @@ public class WaveSpawner : MonoBehaviour
     }
     public void DoPlayerInteractiveWave()
     {
-        if (!spawnInteracticeWave) return;
+        if (!spawnInteractiveWave) return;
         
         if (!doingInteractiveWave)
         {
@@ -158,5 +184,19 @@ public class WaveSpawner : MonoBehaviour
         Destroy(go, 1);
     }
 
+    public void setFlashBool(bool mode)
+    {
+        spawnFlashWave = mode;
+    }
+
+    public void setPushBool(bool mode)
+    {
+        spawnPushWave = mode;
+    }
+
+    public void setInteractiveBool(bool mode)
+    {
+        spawnInteractiveWave = mode;
+    }
     #endregion
 }

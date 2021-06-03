@@ -7,9 +7,11 @@ public class TextTrigger : MonoBehaviour
     TextMeshProUGUI tecla;
     [TextArea]
     [SerializeField] string t_tecla;
+    WaveSpawner setBools;
     // Start is called before the first frame update
     void Start()
     {
+        setBools = GameObject.FindGameObjectWithTag("Player").GetComponent<WaveSpawner>();
         tecla = GameObject.FindGameObjectWithTag("TextTutorial").GetComponent<TextMeshProUGUI>();
     }
 
@@ -17,6 +19,23 @@ public class TextTrigger : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player" && gameObject.name == "ActivePushWave")
+        {
+            setBools.setPushBool(true);
+        }
+
+        if (collision.gameObject.tag == "Player" && gameObject.name == "ActiveInteractiveWave")
+        {
+            setBools.setInteractiveBool(true);
+        }
+
+        if (collision.gameObject.tag == "Player" && gameObject.name == "ActiveFlashWave")
+        {
+            setBools.setFlashBool(true);
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
