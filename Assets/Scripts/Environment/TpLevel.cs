@@ -5,6 +5,7 @@ using UnityEngine;
 public class TpLevel : MonoBehaviour
 {
     Transform player;
+    [SerializeField] Transform posToGo;
     [SerializeField] int posX;
     [SerializeField] int posY;
     [SerializeField] Animator anim;
@@ -31,7 +32,7 @@ public class TpLevel : MonoBehaviour
         anim.SetTrigger("FadeIn");
         yield return new WaitForSeconds(0.5f);
 
-        player.position = new Vector3(posX, posY, 0);
+        player.position = posToGo.position;
 
     }
 }
