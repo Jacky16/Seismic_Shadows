@@ -256,16 +256,23 @@ public class FinalBoss : Enemy
         
         yield return new WaitForSeconds(.3f);
 
-        Vector2 dirToPlayer = target.position - transform.position;
-        if(dirToPlayer.x > 0)
+        rb2d.position = _pos;
+        Vector2 dirToPlayer = (target.position - centerPos.position).normalized;
+        if (dirToPlayer.x > 0)
         {
-            Flip();
+            if(transform.eulerAngles.y == 180)
+            {
+                Flip();
+            }            
         }
         else
         {
-            Flip();
+            if (transform.eulerAngles.y == 0)
+            {
+                Flip();
+            }        
         }
-        rb2d.position = _pos;
+
         inHole = false;
         followPlayer = true;
         canAvoid = true;
@@ -282,6 +289,7 @@ public class FinalBoss : Enemy
         {
             hasSpawnedAll = false;
             currentZombies = 0;
+            shieldGO.SetActive(true);
             currentPhase = Phases.PHASE_3;
         }
     }
