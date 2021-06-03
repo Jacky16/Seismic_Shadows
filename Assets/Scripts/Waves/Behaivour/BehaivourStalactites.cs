@@ -59,7 +59,7 @@ public class BehaivourStalactites : BehaivourWave
         {
             if(collision.gameObject.TryGetComponent(out Health h))
             {
-                h.Damage(3);
+                h.Damage(1);
             }
             gameObject.SetActive(false);
         }
