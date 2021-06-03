@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BehaivourStalactites : BehaivourWave
 {
     [SerializeField] int gravityScale;
     [SerializeField] GameObject VFX_pinchoFall;
     [SerializeField] GameObject VFX_destroy;
+    [SerializeField] UnityEvent onDestroy;
     HealthPlayer playerHealth;
 
     bool activated;
@@ -31,6 +33,7 @@ public class BehaivourStalactites : BehaivourWave
     {
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 50);
         Instantiate(VFX_destroy, pos, Quaternion.identity, null);
+        onDestroy.Invoke();
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth.Damage(1);
@@ -57,6 +60,7 @@ public class BehaivourStalactites : BehaivourWave
             }
             gameObject.SetActive(false);
         }
-        Destroy(gameObject, 1);
+
+        Destroy(gameObject, 0);
     }
 }
