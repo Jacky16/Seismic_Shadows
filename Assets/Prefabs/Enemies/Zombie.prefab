@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097309140}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos_HitAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: -8732177021699249983}
   - component: {fileID: -4711619676785465060}
   - component: {fileID: 1480837398}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -198,6 +198,9 @@ MonoBehaviour:
   life: 1
   maxLife: 1
   onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
     m_PersistentCalls:
       m_Calls: []
   VFX_destroy: {fileID: 0}
