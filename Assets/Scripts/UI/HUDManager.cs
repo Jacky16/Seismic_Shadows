@@ -24,6 +24,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Sprite spriteFrameHealth_3;
     [SerializeField] Sprite spriteFrameHealth_4;
     [SerializeField] Sprite spriteFrameHealth_5;
+    [SerializeField] Sprite spriteFrameHealth_6;
+    [SerializeField] Sprite spriteFrameHealth_7;
 
     [Header("Sprites Controllers")]
     [SerializeField] Image image_FlashWave;
@@ -134,6 +136,16 @@ public class HUDManager : MonoBehaviour
         {
             circleImageLife.sprite = spriteFrameHealth_5;
         }
+        if(_maxLife == 6)
+        {
+            circleImageLife.sprite = spriteFrameHealth_6;
+
+        }
+        if (_maxLife == 7)
+        {
+            circleImageLife.sprite = spriteFrameHealth_7;
+        }
+     
     }
 
 }
