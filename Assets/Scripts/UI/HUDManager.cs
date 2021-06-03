@@ -7,7 +7,7 @@ using DG.Tweening;
 public class HUDManager : MonoBehaviour
 {
     [Header("Health UI")]
-    [SerializeField]Image circleImageLife;
+    [SerializeField] Image circleImageLife;
     [SerializeField] TextMeshProUGUI textLife;
 
     [Header("FlashWave UI")]
@@ -17,8 +17,16 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Image interactiveWaveIconImage;
     [SerializeField] Image pushWaveIconImage;
     [SerializeField] Image flashWaveIconImage;
-    
+
     //Variables para el HUD de las ondas
+    [Header("Sprites Health")]
+
+    [SerializeField] Sprite spriteFrameHealth_3;
+    [SerializeField] Sprite spriteFrameHealth_4;
+    [SerializeField] Sprite spriteFrameHealth_5;
+    [SerializeField] Sprite spriteFrameHealth_6;
+    [SerializeField] Sprite spriteFrameHealth_7;
+
     [Header("Sprites Controllers")]
     [SerializeField] Image image_FlashWave;
     [SerializeField] Image image_InteractiveWave;
@@ -114,5 +122,31 @@ public class HUDManager : MonoBehaviour
         UpdateEnergyBar(sizeEnergyBar);
         UpdateLife(lifePlayer, maxLifePlayer);
     }
+    public void UpdateFrameHealth(float _maxLife)
+    {
+        if(_maxLife == 3)
+        {
+            circleImageLife.sprite = spriteFrameHealth_3;
+        }
+        if(_maxLife == 4)
+        {
+            circleImageLife.sprite = spriteFrameHealth_4;
+        }
+        if(_maxLife == 5)
+        {
+            circleImageLife.sprite = spriteFrameHealth_5;
+        }
+        if(_maxLife == 6)
+        {
+            circleImageLife.sprite = spriteFrameHealth_6;
+
+        }
+        if (_maxLife == 7)
+        {
+            circleImageLife.sprite = spriteFrameHealth_7;
+        }
+     
+    }
 
 }
+

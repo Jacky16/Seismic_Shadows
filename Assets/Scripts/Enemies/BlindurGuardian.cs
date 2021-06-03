@@ -21,6 +21,8 @@ public class BlindurGuardian : Enemy
             }
             
         }
+
+        //Atacar al player
         if(targetInStopDistance && targetInRaycast)
         {
             Attack();
@@ -31,9 +33,7 @@ public class BlindurGuardian : Enemy
         if (!targetInRaycast && followPlayer)
         {
             followPlayer = false;
-            countStartFollow = 0;
-            
-                 
+            countStartFollow = 0;   
         }
 
         //Comprobar si ha llegado a su posicion inicial para parar el movimiento

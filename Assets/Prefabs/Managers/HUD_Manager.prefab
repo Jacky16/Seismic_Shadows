@@ -198,6 +198,16 @@ MonoBehaviour:
   interactiveWaveIconImage: {fileID: 4825383458640161623}
   pushWaveIconImage: {fileID: 3763021569715734267}
   flashWaveIconImage: {fileID: 746151240458951936}
+  spriteFrameHealth_3: {fileID: 21300000, guid: 6fd869baec700bc469b1250fc8da6957,
+    type: 3}
+  spriteFrameHealth_4: {fileID: 21300000, guid: bcbf9e5da0ce0fe44a5d453ebcff13b1,
+    type: 3}
+  spriteFrameHealth_5: {fileID: 21300000, guid: 1912f2991c718f7478fd0627baa283a1,
+    type: 3}
+  spriteFrameHealth_6: {fileID: 21300000, guid: ce7330e1a9c76a94fa9b85424d266237,
+    type: 3}
+  spriteFrameHealth_7: {fileID: 21300000, guid: 77011d2ef6c59a94db816bcf97c18882,
+    type: 3}
   image_FlashWave: {fileID: 236003197}
   image_InteractiveWave: {fileID: 1834003874}
   image_PushWave: {fileID: 6315280732747592043}
@@ -249,6 +259,12 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1301178064321731606, guid: 5e585fdcffde189408d27db74f063b89,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 77011d2ef6c59a94db816bcf97c18882,
+        type: 3}
     - target: {fileID: 1301178064321731606, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_FillOrigin
@@ -313,22 +329,22 @@ PrefabInstance:
     - target: {fileID: 3294128310502521065, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 429.38574
+      value: 181.76111
       objectReference: {fileID: 0}
     - target: {fileID: 3294128310502521065, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 408.10443
+      value: 244.82724
       objectReference: {fileID: 0}
     - target: {fileID: 3294128310502521065, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -820
+      value: -823.55
       objectReference: {fileID: 0}
     - target: {fileID: 3294128310502521065, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 407.9999
+      value: 408
       objectReference: {fileID: 0}
     - target: {fileID: 3510677624158161441, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}
@@ -619,6 +635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276035641879592523, guid: 5e585fdcffde189408d27db74f063b89,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7887221188829847783, guid: 5e585fdcffde189408d27db74f063b89,
         type: 3}

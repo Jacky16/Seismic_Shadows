@@ -12,6 +12,9 @@ public class FinalBoss : Enemy
     [SerializeField] Transform tpPosBoss;
     [SerializeField] float timebtwTeleport;
     [SerializeField] float offsetX_TP = 70;
+    [SerializeField] LayerMask layerMask;
+    [SerializeField] Transform rayPoint;
+    bool hasAvoid;
 
     [Header("Zombie Settings")]
     [SerializeField] GameObject zombiePrefab;
@@ -47,18 +50,22 @@ public class FinalBoss : Enemy
     }
     private void Phase3()
     {
+        if (CheckCollisionStalacmite() && !hasAvoid)
+        {
+            hasAvoid = true;
+            StartCoroutine(TeleportAvoid());
+        }
         if (targetInStopDistance && canTeleport)
         {
             canTeleport = false;
             dir = Vector2.zero;
             StartCoroutine(TeleportAttack());
         }
-        if (followPlayer)
+       if (followPlayer)
         {
-           dir = (target.position - transform.position).normalized;
-
+            dir = (target.position - transform.position).normalized;
         }
-        
+
     }
     private void Phase2()
     {
@@ -170,8 +177,7 @@ public class FinalBoss : Enemy
         //Izquierda
         else
         {
-            pos = new Vector2(target.position.x - offsetX_TP, transform.position.y);
-           
+            pos = new Vector2(target.position.x - offsetX_TP, transform.position.y);  
         }
         
         followPlayer = false;
@@ -194,6 +200,29 @@ public class FinalBoss : Enemy
         canTeleport = true;
         
     }
+    IEnumerator TeleportAvoid()
+    {
+        followPlayer = false;
+        dir = Vector2.zero;
+        anim.SetTrigger("Teleport");
+        int random = Random.Range(0, 2);
+        Vector2 posToTeleport;
+        //Izquierda
+        if(random == 0)
+        {
+            posToTeleport = new Vector2(transform.position.x - 100, transform.position.y);
+        }
+        //Derecha
+        else
+        {
+            posToTeleport = new Vector2(transform.position.x + 100, transform.position.y);
+        }
+        yield return new WaitForSeconds(.2f);
+        rb2d.position = posToTeleport;
+        followPlayer = true;
+        hasAvoid = false;
+    }
+
     public void UpdatePhaseManager(float _life,float _maxLife)
     {
         //Fase 2
@@ -223,8 +252,7 @@ public class FinalBoss : Enemy
     }
 
     bool CheckCanTeleport()
-    {
-        Debug.Break();
+    {   
         if (!facingRight)
         {
             
@@ -234,6 +262,42 @@ public class FinalBoss : Enemy
         {
             return Physics2D.Raycast(transform.position, Vector2.left, 200, lasyerMaskEnviroment);
         }
+    }
+
+    bool CheckCollisionStalacmite()
+    {
+        Vector2 startPos = new Vector2(transform.position.x, transform.position.y + 70);
+        Vector2 endPos;
+        RaycastHit2D [] hit;
+
+        if (!facingRight)
+        {
+            hit = Physics2D.RaycastAll(rayPoint.position, transform.right, 100, layerMask);
+
+        }
+        else
+        {
+            hit = Physics2D.RaycastAll(rayPoint.position, -transform.right, 100, layerMask);
+
+        }
+        //hit = Physics2D.RaycastAll(rayPoint.position, transform.right,100,layerMask);
+        //Debug.DrawRay(rayPoint.position, Vector2.right * 100,Color.red);
+
+
+        if (hit != null)
+        {
+            foreach(RaycastHit2D h in hit)
+            {
+                Debug.Log(h.collider.name);
+                if (h.collider.CompareTag("ObjectInteractive"))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 
 }

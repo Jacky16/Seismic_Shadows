@@ -26,6 +26,7 @@ public class BehaivourStalactites : BehaivourWave
             GetComponent<SpriteRenderer>().sortingLayerName = "AlwaysVisible";
         }
     }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 50);
