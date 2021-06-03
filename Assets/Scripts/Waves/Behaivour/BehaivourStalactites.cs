@@ -62,12 +62,12 @@ public class BehaivourStalactites : BehaivourWave
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            stalactiteSpawner.InstantiateStalactite(initPos);
             if(collision.gameObject.TryGetComponent(out Health h))
             {
                 h.Damage(1);
                 Destroy(gameObject);
             }
-            //stalactiteSpawner.InstantiateStalactite(initPos);
 
 
         }

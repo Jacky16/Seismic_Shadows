@@ -14,6 +14,7 @@ public class FinalBoss : Enemy
     [SerializeField] float offsetX_TP = 70;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform rayPoint;
+    [SerializeField] Transform centerPos;
     bool canAvoid = true;
     bool canTeleport = true;
     bool inHole;
@@ -28,6 +29,7 @@ public class FinalBoss : Enemy
     int currentZombies = 0;
     int zombiesAlive = maxZombies;
     bool hasSpawnedAll;
+    bool hasTeleporCenter;
     
     protected override void StatesEnemy()
     {
@@ -70,6 +72,13 @@ public class FinalBoss : Enemy
     }
     private void Phase2()
     {
+        //Hacer TP
+        if (!hasTeleporCenter)
+        {
+            StartCoroutine(Teleport(centerPos.position));
+            hasTeleporCenter = true;
+            dir = Vector2.zero;
+        }
         //Spawn de zombies en la Fase 2
         SpawnZombie();
         if (hasSpawnedAll && !healthBoss.GetShield())
@@ -111,7 +120,6 @@ public class FinalBoss : Enemy
     {
         if (!hasSpawnedAll)
         {
-
             dir = Vector2.zero;
             counter += Time.deltaTime;
             if (counter >= timeBtwSpawn && currentZombies < maxZombies)
@@ -167,23 +175,23 @@ public class FinalBoss : Enemy
 
     IEnumerator TeleportAttack()
     {
+        
+        followPlayer = false;
+        anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(timebtwTeleport);
         Vector2 dir = target.position - transform.position;
         Vector2 pos;
-       
+
         //Derecha
-        if(dir.x > 0)
+        if (dir.x > 0)
         {
             pos = new Vector2(target.position.x + offsetX_TP, transform.position.y);
         }
         //Izquierda
         else
         {
-            pos = new Vector2(target.position.x - offsetX_TP, transform.position.y);  
+            pos = new Vector2(target.position.x - offsetX_TP, transform.position.y);
         }
-        
-        followPlayer = false;
-        anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(timebtwTeleport);
         if (!CheckCanTeleport())
         {
             anim.SetTrigger("Teleport");
@@ -233,6 +241,15 @@ public class FinalBoss : Enemy
         
         yield return new WaitForSeconds(.3f);
 
+        Vector2 dirToPlayer = target.position - transform.position;
+        if(dirToPlayer.x > 0)
+        {
+            Flip();
+        }
+        else
+        {
+            Flip();
+        }
         rb2d.position = _pos;
         inHole = false;
         followPlayer = true;
