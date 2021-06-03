@@ -15,9 +15,11 @@ public class FinalBoss : Enemy
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform rayPoint;
     [SerializeField] Transform centerPos;
+    [SerializeField] GameObject shieldGO;
     bool canAvoid = true;
     bool canTeleport = true;
     bool inHole;
+    int lifeShield = 2;
 
     [Header("Zombie Settings")]
     [SerializeField] GameObject zombiePrefab;
@@ -52,19 +54,31 @@ public class FinalBoss : Enemy
     }
     private void Phase3()
     {
+        if(lifeShield > 0)
+        {
+            healthBoss.SetShield(true);
+            shieldGO.SetActive(true);
+        }
         if (inHole) return;
+       
+        
+        //Esquivar Estalactitas
         if (CheckCollisionStalacmite() && canAvoid)
         {
             canAvoid = false;
             StartCoroutine(TeleportAvoid());
         }
+
+        //Ataque de teleport
         if (targetInStopDistance && canTeleport)
         {
             canTeleport = false;
             dir = Vector2.zero;
             StartCoroutine(TeleportAttack());
         }
-       if (followPlayer)
+
+        //Seguir al player
+        if (followPlayer)
         {
             dir = (target.position - transform.position).normalized;
         }
@@ -79,6 +93,7 @@ public class FinalBoss : Enemy
             hasTeleporCenter = true;
             dir = Vector2.zero;
         }
+
         //Spawn de zombies en la Fase 2
         SpawnZombie();
         if (hasSpawnedAll && !healthBoss.GetShield())
@@ -255,7 +270,6 @@ public class FinalBoss : Enemy
         followPlayer = true;
         canAvoid = true;
     }
-
     public void UpdatePhaseManager(float _life,float _maxLife)
     {
         //Fase 2
@@ -283,7 +297,6 @@ public class FinalBoss : Enemy
     public int GetCurrentZombies() {
         return zombiesAlive;
     }
-
     bool CheckCanTeleport()
     {   
         if (!facingRight)
@@ -296,7 +309,6 @@ public class FinalBoss : Enemy
             return Physics2D.Raycast(transform.position, Vector2.left, 200, lasyerMaskEnviroment);
         }
     }
-
     bool CheckCollisionStalacmite()
     {
         Vector2 startPos = new Vector2(transform.position.x, transform.position.y + 70);
@@ -332,7 +344,6 @@ public class FinalBoss : Enemy
         return false;
 
     }
-
     public void StopMovement()
     {
         dir = Vector2.zero;
@@ -340,5 +351,18 @@ public class FinalBoss : Enemy
     public void SetHole(bool _b)
     {
         inHole = _b;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ObjectInteractive"))
+        {
+            lifeShield--;
+            if(lifeShield <= 0)
+            {
+                lifeShield = 0;
+                shieldGO.SetActive(false);
+                healthBoss.SetShield(false);
+            }         
+        }
     }
 }
