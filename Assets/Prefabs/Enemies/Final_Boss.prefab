@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &57074213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57074214}
+  m_Layer: 0
+  m_Name: RayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57074214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57074213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -52.9, y: 65.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5674444385311264102}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &198152046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198152047}
+  m_Layer: 0
+  m_Name: Spawn_Zombie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &198152047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198152046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 42.200012, y: -19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5674444385311264102}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &689816973
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +105,8 @@ GameObject:
   - component: {fileID: 198936448}
   - component: {fileID: 198936450}
   - component: {fileID: 6668922743590208756}
+  - component: {fileID: 1023712352}
+  - component: {fileID: 1023712353}
   m_Layer: 0
   m_Name: Final_Boss
   m_TagString: FinalBoss
@@ -64,6 +126,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 689816974}
+  - {fileID: 198152047}
+  - {fileID: 57074214}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,8 +234,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -27.008972, y: -18.764389}
-  m_Size: {x: 28.097382, y: 76.52904}
+  m_Offset: {x: -27.008972, y: -29.919239}
+  m_Size: {x: 28.097382, y: 54.219337}
   m_Direction: 0
 --- !u!114 &198936450
 MonoBehaviour:
@@ -188,11 +252,11 @@ MonoBehaviour:
   speed: 70
   lasyerMaskEnviroment:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 82176
   timeToStartFollow: 0
   spawnFlipped: 0
   radius: 0
-  stopDistance: 65
+  stopDistance: 60
   damage: 1
   timeToAttack: 1
   sizeHitBoxAttack: {x: 42.9, y: 65.58}
@@ -200,12 +264,19 @@ MonoBehaviour:
   followPath: 0
   wayPoints: []
   timeInWayPoint: 0
-  currentPhase: 0
+  currentPhase: 2
   followPlayer: 1
   healthBoss: {fileID: 6668922743590208756}
+  tpPosBoss: {fileID: 0}
+  timebtwTeleport: 1
+  offsetX_TP: 70
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  rayPoint: {fileID: 57074214}
   zombiePrefab: {fileID: 1468170708664762283, guid: ba0a9ffe8ac3da64bae8896d92b6e366,
     type: 3}
-  spawnPoint: {fileID: 689816974}
+  spawnPoint: {fileID: 198152047}
   timeBtwSpawn: 2
 --- !u!114 &6668922743590208756
 MonoBehaviour:
@@ -235,3 +306,123 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!82 &1023712352
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908700589143422864}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5390756880801996016, guid: ebf599d2091e7cc40820ccb8b40e70b8,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1000
+  MaxDistance: 2000
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1023712353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908700589143422864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf6441a9090dca4996cec761f79d076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosWalk:
+  - {fileID: 8300000, guid: aaf644a98367cb64da4b33e1196ef1ba, type: 3}
+  - {fileID: 8300000, guid: 4660a4929bda2f742bb73f3382a914bd, type: 3}
+  - {fileID: 8300000, guid: 975d53e7bff65dd42bf0ef3f672b48a9, type: 3}
+  audiosAttacks:
+  - {fileID: 8300000, guid: 2e21617821e60a341a3d3ddae1cc4f8b, type: 3}
+  - {fileID: 8300000, guid: 79061c8691bb6a34694962c8af1db578, type: 3}
+  - {fileID: 8300000, guid: d2c8a75ecb97b504085cda761a6b71ee, type: 3}
+  audiosHit: []
+  audiosDeath: []
+  audiosTeleport: []
