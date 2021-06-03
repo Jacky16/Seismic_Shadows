@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class HealthBoss : Health
 {
+    [SerializeField] Image lifeBar;
     FinalBoss boss;
     AudioManagerEnemies audioManagerEnemies;
     bool haveShield;
@@ -38,6 +40,7 @@ public class HealthBoss : Health
     }
     protected override void OnDamage()
     {
+        lifeBar.DOFillAmount(life / maxLife, .5f);
         anim.SetTrigger("Hit");
         boss.UpdatePhaseManager(life,maxLife);
         onDamage.Invoke();

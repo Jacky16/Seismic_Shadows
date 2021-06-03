@@ -8,13 +8,16 @@ public class BehaivourStalactites : BehaivourWave
     [SerializeField] int gravityScale;
     [SerializeField] GameObject VFX_pinchoFall;
     [SerializeField] GameObject VFX_destroy;
-    [SerializeField] UnityEvent onDestroy;
     HealthPlayer playerHealth;
+    StalactiteSpawner stalactiteSpawner;
+    Vector2 initPos;
 
     bool activated;
     private void Start()
     {
         activated = false;
+        initPos = transform.position;
+        stalactiteSpawner = GameObject.FindObjectOfType<StalactiteSpawner>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
     }
     protected override void ActionOnWave(Collider2D col)
@@ -33,10 +36,18 @@ public class BehaivourStalactites : BehaivourWave
     {
         Vector2 pos = new Vector2(transform.position.x, transform.position.y - 50);
         Instantiate(VFX_destroy, pos, Quaternion.identity, null);
-        onDestroy.Invoke();
+        stalactiteSpawner.InstantiateStalactite(initPos);
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth.Damage(1);
+            gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("FinalBoss"))
+        {
+            if (collision.gameObject.TryGetComponent(out Health h))
+            {
+                h.Damage(1);
+            }
             gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Ground"))
@@ -52,15 +63,7 @@ public class BehaivourStalactites : BehaivourWave
             }
             gameObject.SetActive(false);
         }
-        if (collision.gameObject.CompareTag("FinalBoss"))
-        {
-            if (collision.gameObject.TryGetComponent(out Health h))
-            {
-                h.Damage(1);
-            }
-            gameObject.SetActive(false);
-        }
 
-        Destroy(gameObject, 0);
+        Destroy(gameObject);
     }
 }
