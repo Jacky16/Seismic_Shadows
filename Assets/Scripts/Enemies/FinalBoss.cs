@@ -29,7 +29,7 @@ public class FinalBoss : Enemy
     float counter = 0;
     const int maxZombies = 2;
     int currentZombies = 0;
-    int zombiesAlive = maxZombies;
+    int zombiesAlive = 0;
     bool hasSpawnedAll;
     bool hasTeleporCenter;
     
@@ -295,8 +295,8 @@ public class FinalBoss : Enemy
     }
     public void DeathAZombie()
     {
-        zombiesAlive--;
-        if(zombiesAlive <= 0)
+        zombiesAlive++;
+        if(zombiesAlive >= maxZombies)
         {
             GetComponent<HealthBoss>().SetShield(false);
             zombiesAlive = 0;
@@ -341,7 +341,6 @@ public class FinalBoss : Enemy
         {
             foreach(RaycastHit2D h in hit)
             {
-                Debug.Log(h.collider.name);
                 if (h.collider.CompareTag("ObjectInteractive"))
                 {
                     return true;
@@ -369,7 +368,6 @@ public class FinalBoss : Enemy
         if (collision.gameObject.CompareTag("ObjectInteractive") && currentPhase == Phases.PHASE_3)
         {
             lifeShield--;
-            print(lifeShield);
             if (lifeShield <= 0)
             {
                 lifeShield = 0;

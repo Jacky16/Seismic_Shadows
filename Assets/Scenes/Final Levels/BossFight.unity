@@ -530,6 +530,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 191
       objectReference: {fileID: 0}
+    - target: {fileID: 1297053230278892680, guid: ef7c83e96bd878647b3f2757f9907216,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297053230278892680, guid: ef7c83e96bd878647b3f2757f9907216,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514756372882370367, guid: ef7c83e96bd878647b3f2757f9907216,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1901094809685431515, guid: ef7c83e96bd878647b3f2757f9907216,
         type: 3}
       propertyPath: m_Camera
@@ -615,6 +630,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6936084988525526368, guid: ef7c83e96bd878647b3f2757f9907216,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6fd869baec700bc469b1250fc8da6957,
+        type: 3}
     - target: {fileID: 7956843797531447295, guid: ef7c83e96bd878647b3f2757f9907216,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2147,12 +2168,12 @@ PrefabInstance:
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 605
+      value: 619.6
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -321
+      value: 37.3
       objectReference: {fileID: 0}
     - target: {fileID: 7612130501902412777, guid: d4a84aecba5a7314ca2a4fc05fe70e9a,
         type: 3}
@@ -4235,7 +4256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963244181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 589, y: -273, z: -1605.875}
+  m_LocalPosition: {x: 603.6, y: 85.3, z: -1605.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1458138110}
@@ -7351,7 +7372,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 711415945}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1658112023
+--- !u!43 &1638407690
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7689,8 +7710,8 @@ MonoBehaviour:
   - {x: 26975, y: 26847, z: 0}
   - {x: -197983, y: 26847, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1658112023}
-  m_InstanceId: 21974
+  m_Mesh: {fileID: 1638407690}
+  m_InstanceId: 144880
 --- !u!50 &1783943406
 Rigidbody2D:
   serializedVersion: 4
@@ -18260,7 +18281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091809290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 589, y: -273, z: -1605.875}
+  m_LocalPosition: {x: 603.6, y: 85.3, z: -1605.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 30930615}
@@ -18437,8 +18458,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6668922743590208756, guid: 10541b5d31470a945a801fd885007fb5,
         type: 3}
+      propertyPath: life
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6668922743590208756, guid: 10541b5d31470a945a801fd885007fb5,
+        type: 3}
       propertyPath: lifeBar
       value: 
       objectReference: {fileID: 639042473}
+    - target: {fileID: 6668922743590208756, guid: 10541b5d31470a945a801fd885007fb5,
+        type: 3}
+      propertyPath: maxLife
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6668922743590208756, guid: 10541b5d31470a945a801fd885007fb5,
+        type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 50717840}
+    - target: {fileID: 6668922743590208756, guid: 10541b5d31470a945a801fd885007fb5,
+        type: 3}
+      propertyPath: onDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10541b5d31470a945a801fd885007fb5, type: 3}

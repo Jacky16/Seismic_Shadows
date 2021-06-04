@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using UnityEngine.SceneManagement;
 public class HealthPlayer : Health
 {
     [SerializeField] Animator animStepWave;
@@ -65,8 +65,16 @@ public class HealthPlayer : Health
         imageTransition.DOFade(1, transitionDuration);
 
         yield return new WaitForSeconds(betweenTimeTransition);
+        if(SceneManager.GetActiveScene().name == "BossFight")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            yield return null;
+        }
+        else
+        {
 
-        tpPlayer.TeleportToCheckpoint();
+            tpPlayer.TeleportToCheckpoint();
+        }
 
         yield return new WaitForSeconds(.5f);
 
