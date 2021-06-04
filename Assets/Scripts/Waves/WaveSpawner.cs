@@ -40,12 +40,15 @@ public class WaveSpawner : MonoBehaviour
     {
         player = GetComponent<PlayerMovement>();
         animPlayer = GetComponent<Animator>();
-        
-        if(SceneManager.GetActiveScene().name == "1_UpperMantle")
+        GameManager.singletone.SetSpendEnergy(true);
+
+        if (SceneManager.GetActiveScene().name == "1_UpperMantle")
         {
             spawnInteractiveWave = false;
             spawnPushWave = false;
             spawnFlashWave = false;
+            GameManager.singletone.SetSpendEnergy(spawnFlashWave);
+
         }
         else if(SceneManager.GetActiveScene().name == "2_LowerMantle")
         {
@@ -75,7 +78,6 @@ public class WaveSpawner : MonoBehaviour
     private void Start()
     {
         //Poner en gris los iconos si no se pueden usar las ondas
-        GameManager.singletone.SetSpendEnergy(true);
 
         if (!spawnPushWave)
         {
@@ -88,7 +90,6 @@ public class WaveSpawner : MonoBehaviour
         if (!spawnFlashWave)
         {
             HUDManager.singletone.SetFlashWaveIcon(0);
-            GameManager.singletone.SetSpendEnergy(false);
         }
     }
     private void Update()
@@ -197,17 +198,20 @@ public class WaveSpawner : MonoBehaviour
         Destroy(go, 1);
     }
 
-    public void setFlashBool(bool mode)
+    public void SetFlashBool(bool mode)
     {
         spawnFlashWave = mode;
+        GameManager.singletone.SetSpendEnergy(true);
+        HUDManager.singletone.SetFlashWaveIcon(1);
+
     }
 
-    public void setPushBool(bool mode)
+    public void SetPushBool(bool mode)
     {
         spawnPushWave = mode;
     }
 
-    public void setInteractiveBool(bool mode)
+    public void SetInteractiveBool(bool mode)
     {
         spawnInteractiveWave = mode;
     }

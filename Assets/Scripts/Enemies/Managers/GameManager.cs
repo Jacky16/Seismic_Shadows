@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     {
         //True: Se desactiva en todas las escenas excepto en la 1r
         //False: Se activa en todas las escenas
+        #if UNITY_EDITOR
+        EnableOnFirstScene(false);
+        #endif
+
         EnableOnFirstScene(true);
 
         if (singletone == null)

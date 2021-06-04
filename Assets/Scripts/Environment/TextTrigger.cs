@@ -24,17 +24,17 @@ public class TextTrigger : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && gameObject.name == "ActivePushWave")
         {
-            setBools.setPushBool(true);
+            setBools.SetPushBool(true);
         }
 
         if (collision.gameObject.tag == "Player" && gameObject.name == "ActiveInteractiveWave")
         {
-            setBools.setInteractiveBool(true);
+            setBools.SetInteractiveBool(true);
         }
 
         if (collision.gameObject.tag == "Player" && gameObject.name == "ActiveFlashWave")
         {
-            setBools.setFlashBool(true);
+            setBools.SetFlashBool(true);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
