@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TpScene : MonoBehaviour
 {
-    [SerializeField] int sceneID;
+    [SerializeField] string sceneName;
     Animator animFade;
 
     private void Awake()
@@ -24,6 +24,6 @@ public class TpScene : MonoBehaviour
     }
     void SwitchScene()
     {
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene(sceneName);
     }
 }

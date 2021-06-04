@@ -8190,7 +8190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802e1f34ba0be00499bfc1699a24fdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneID: 4
+  sceneName: 3_OuterCore
 --- !u!61 &964324265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24492,6 +24492,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 341
       objectReference: {fileID: 0}
+    - target: {fileID: 5701388350855077756, guid: ee5925de21d5fb14a8a13ffbbe2deffc,
+        type: 3}
+      propertyPath: speed
+      value: 240
+      objectReference: {fileID: 0}
     - target: {fileID: 7230126609281674793, guid: ee5925de21d5fb14a8a13ffbbe2deffc,
         type: 3}
       propertyPath: m_Size.x
@@ -25119,7 +25124,7 @@ PrefabInstance:
     - target: {fileID: 5405501543197875148, guid: 1945a212957297b4bb2bbf0babda2d96,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1964
+      value: 1772
       objectReference: {fileID: 0}
     - target: {fileID: 5405501543197875148, guid: 1945a212957297b4bb2bbf0babda2d96,
         type: 3}
@@ -25165,6 +25170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405501543197875150, guid: 1945a212957297b4bb2bbf0babda2d96,
+        type: 3}
+      propertyPath: speed
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1945a212957297b4bb2bbf0babda2d96, type: 3}
