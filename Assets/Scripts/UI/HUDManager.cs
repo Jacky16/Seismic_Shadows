@@ -19,13 +19,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Image flashWaveIconImage;
 
     //Variables para el HUD de las ondas
-    [Header("Sprites Health")]
-
-    [SerializeField] Sprite spriteFrameHealth_3;
-    [SerializeField] Sprite spriteFrameHealth_4;
-    [SerializeField] Sprite spriteFrameHealth_5;
-    [SerializeField] Sprite spriteFrameHealth_6;
-    [SerializeField] Sprite spriteFrameHealth_7;
+   
 
     [Header("Sprites Controllers")]
     [SerializeField] Image image_FlashWave;
@@ -120,31 +114,7 @@ public class HUDManager : MonoBehaviour
         float lifePlayer = GameManager.singletone.GetLifePlayer();
         float maxLifePlayer = GameManager.singletone.GetMaxLifePlayer();
         UpdateEnergyBar(sizeEnergyBar);
-        UpdateFrameHealth(maxLifePlayer);
         UpdateLife(lifePlayer, maxLifePlayer);
-    }
-    public void UpdateFrameHealth(float _maxLife)
-    {
-        switch (_maxLife)
-        {
-            case 3:
-                circleImageLife.sprite = spriteFrameHealth_3;
-                break;
-            case 4:
-                circleImageLife.sprite = spriteFrameHealth_4;
-                break;
-            case 5:
-                circleImageLife.sprite = spriteFrameHealth_5;
-                break;
-            case 6:
-                circleImageLife.sprite = spriteFrameHealth_6;
-                break;
-            case 7:
-                circleImageLife.sprite = spriteFrameHealth_7;
-                break;
-            default: 
-                break;
-        }
     }
 }
 
