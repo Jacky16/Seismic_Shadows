@@ -68,6 +68,7 @@ public class HealthPlayer : Health
         if(SceneManager.GetActiveScene().name == "BossFight")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ResetLife();
             yield return null;
         }
         else
