@@ -376,9 +376,10 @@ public class FinalBoss : Enemy
             }
         }
     }
-    
-    protected override void OnCollEnter(Collision2D col)
+
+    private void OnEnable()
     {
-        
+        //Reseteas la vida del player
+        GameManager.singletone.ResetLife();
     }
 }

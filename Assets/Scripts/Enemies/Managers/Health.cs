@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
     }
     protected void ResetLife()
     {
-        life = maxLife;
+        life = GameManager.singletone.GetMaxLifePlayer();
         isDead = false;
         HUDManager.singletone.UpdateLife(maxLife, maxLife);
     }

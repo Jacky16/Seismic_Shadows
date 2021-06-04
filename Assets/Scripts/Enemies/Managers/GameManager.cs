@@ -126,6 +126,11 @@ public class GameManager : MonoBehaviour
         //Actualizar la UI de la barra
         HUDManager.singletone.UpdateEnergyBar(energyBar);
     }
+    public void ResetLife()
+    {
+        lifePlayerSaved = maxLifePlayerSaved;
+        HUDManager.singletone.UpdateLife(lifePlayerSaved, maxLifePlayerSaved);
+    }
 
     public bool IsSpeendingEnergy()
     {
