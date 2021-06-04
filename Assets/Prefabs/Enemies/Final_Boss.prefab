@@ -398,6 +398,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lifeBar: {fileID: 0}
+  fadeImage: {fileID: 0}
 --- !u!82 &1023712352
 AudioSource:
   m_ObjectHideFlags: 0
@@ -515,9 +516,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2e21617821e60a341a3d3ddae1cc4f8b, type: 3}
   - {fileID: 8300000, guid: 79061c8691bb6a34694962c8af1db578, type: 3}
   - {fileID: 8300000, guid: d2c8a75ecb97b504085cda761a6b71ee, type: 3}
-  audiosHit: []
-  audiosDeath: []
-  audiosTeleport: []
+  audiosHit:
+  - {fileID: 8300000, guid: a03caa0082112a2428cf698b1af40442, type: 3}
+  audiosDeath:
+  - {fileID: 8300000, guid: ef9fec2df1ca88e49b412d15c0713349, type: 3}
+  audiosTeleport:
+  - {fileID: 8300000, guid: b96653456c2eff645a0075770b72f9ab, type: 3}
 --- !u!82 &5191805619365275104
 AudioSource:
   m_ObjectHideFlags: 0

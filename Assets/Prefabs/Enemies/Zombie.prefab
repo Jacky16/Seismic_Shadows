@@ -216,10 +216,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3303619e8e10c8748ac24e111378f241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audiosWalk: []
-  audiosAttacks: []
+  audiosWalk:
+  - {fileID: 8300000, guid: 58a6025c9cd005c4e8dfcb0fed4e8a64, type: 3}
+  - {fileID: 8300000, guid: 6d69c8697a8d3ac4793acb88ac980f03, type: 3}
+  audiosAttacks:
+  - {fileID: 8300000, guid: 300c2d3289d4b914bbeb941d8b28a37d, type: 3}
   audiosHit: []
-  audiosDeath: []
+  audiosDeath:
+  - {fileID: 8300000, guid: bf1dcfc1697dc994fa61f942a81497c8, type: 3}
 --- !u!95 &1480837398
 Animator:
   serializedVersion: 3
