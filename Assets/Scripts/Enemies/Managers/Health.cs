@@ -33,7 +33,6 @@ public class Health : MonoBehaviour
     public void AddMaxLife(int _maxLife)
     {
         maxLife += _maxLife;
-        HUDManager.singletone.UpdateFrameHealth(maxLife);
     }
     public virtual void Damage(int _damage)
     {
