@@ -2742,6 +2742,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1743292807292622949, guid: bceb27b855528ff4e9c9f1273b0b62b6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2515
+      objectReference: {fileID: 0}
     - target: {fileID: 1743292807669932846, guid: bceb27b855528ff4e9c9f1273b0b62b6,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2766,6 +2771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -1421
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801919935745496037, guid: bceb27b855528ff4e9c9f1273b0b62b6,
+        type: 3}
+      propertyPath: speed
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 7141241966841652820, guid: bceb27b855528ff4e9c9f1273b0b62b6,
         type: 3}
@@ -3643,6 +3653,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5405501543197875138, guid: 1945a212957297b4bb2bbf0babda2d96,
         type: 3}
+      propertyPath: life
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405501543197875138, guid: 1945a212957297b4bb2bbf0babda2d96,
+        type: 3}
+      propertyPath: maxLife
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405501543197875138, guid: 1945a212957297b4bb2bbf0babda2d96,
+        type: 3}
       propertyPath: lightEnemy
       value: 
       objectReference: {fileID: 0}
@@ -3745,6 +3765,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405501543197875150, guid: 1945a212957297b4bb2bbf0babda2d96,
+        type: 3}
+      propertyPath: speed
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405501543197875150, guid: 1945a212957297b4bb2bbf0babda2d96,
+        type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405501543197875150, guid: 1945a212957297b4bb2bbf0babda2d96,
+        type: 3}
+      propertyPath: wayPoints.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1945a212957297b4bb2bbf0babda2d96, type: 3}
@@ -16210,7 +16245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802e1f34ba0be00499bfc1699a24fdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneID: 2
+  sceneName: 4_InnerCore
 --- !u!61 &1820844434
 BoxCollider2D:
   m_ObjectHideFlags: 0
