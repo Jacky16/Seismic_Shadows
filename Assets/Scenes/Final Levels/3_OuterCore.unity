@@ -2757,6 +2757,11 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 3522546098430215683, guid: bceb27b855528ff4e9c9f1273b0b62b6,
+        type: 3}
+      propertyPath: moveTo
+      value: 
+      objectReference: {fileID: 440063877}
     - target: {fileID: 4634963528049740959, guid: bceb27b855528ff4e9c9f1273b0b62b6,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2797,6 +2802,12 @@ PrefabInstance:
 --- !u!4 &440063876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1743292806984794874, guid: bceb27b855528ff4e9c9f1273b0b62b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 440063875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &440063877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1743292807292622949, guid: bceb27b855528ff4e9c9f1273b0b62b6,
     type: 3}
   m_PrefabInstance: {fileID: 440063875}
   m_PrefabAsset: {fileID: 0}
