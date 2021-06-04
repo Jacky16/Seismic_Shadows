@@ -18,8 +18,14 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        #if UNITY_EDITOR
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        #endif
+
         playerInput = GetComponent<PlayerInput>();
     }
 

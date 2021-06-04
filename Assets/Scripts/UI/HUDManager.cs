@@ -120,6 +120,7 @@ public class HUDManager : MonoBehaviour
         float lifePlayer = GameManager.singletone.GetLifePlayer();
         float maxLifePlayer = GameManager.singletone.GetMaxLifePlayer();
         UpdateEnergyBar(sizeEnergyBar);
+        UpdateFrameHealth(maxLifePlayer);
         UpdateLife(lifePlayer, maxLifePlayer);
     }
     public void UpdateFrameHealth(float _maxLife)

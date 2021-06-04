@@ -42,9 +42,9 @@ public class HealthPlayer : Health
     protected override void OnDamage()
     {
         anim.SetTrigger("Hit");
+        StartCoroutine(Damage());
         GameManager.singletone.SetLifePlayerHUD(life, maxLife);
         SimpleCameraShakeInCinemachine.singletone.DoCameraShake();
-        StartCoroutine(Damage());
     }
 
     public void SetLife(int _life , int _maxLife)
