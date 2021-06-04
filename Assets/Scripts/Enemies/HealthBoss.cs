@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class HealthBoss : Health
 {
     [SerializeField] Image lifeBar;
     FinalBoss boss;
     AudioManagerEnemies audioManagerEnemies;
+    [SerializeField] Image fadeImage;
     bool haveShield;
     private void Start()
     {
@@ -35,8 +37,9 @@ public class HealthBoss : Health
     public override void OnDead()
     {
         GetComponent<SpriteRenderer>().DOFade(0, 1);
+        fadeImage.DOFade(1, 1).OnComplete(() => SceneManager.LoadScene("Final"));
         //lightEnemy.SetActive(false);
-        //audioManagerEnemies.PlayAudioDeath();
+        audioManagerEnemies.PlayAudioDeath();
     }
     protected override void OnDamage()
     {

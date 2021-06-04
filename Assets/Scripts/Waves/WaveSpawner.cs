@@ -75,6 +75,8 @@ public class WaveSpawner : MonoBehaviour
     private void Start()
     {
         //Poner en gris los iconos si no se pueden usar las ondas
+        GameManager.singletone.SetSpendEnergy(true);
+
         if (!spawnPushWave)
         {
             HUDManager.singletone.SetPushWaveIcon(0, 1);
@@ -82,6 +84,11 @@ public class WaveSpawner : MonoBehaviour
         if (!spawnInteractiveWave)
         {
             HUDManager.singletone.SetInteractiveWaveIcon(0, 1);
+        }
+        if (!spawnFlashWave)
+        {
+            HUDManager.singletone.SetFlashWaveIcon(0);
+            GameManager.singletone.SetSpendEnergy(false);
         }
     }
     private void Update()

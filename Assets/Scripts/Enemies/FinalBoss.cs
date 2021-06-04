@@ -19,7 +19,7 @@ public class FinalBoss : Enemy
     bool canAvoid = true;
     bool canTeleport = true;
     bool inHole;
-    int lifeShield = 2;
+    int lifeShield = 3;
 
     [Header("Zombie Settings")]
     [SerializeField] GameObject zombiePrefab;
@@ -29,7 +29,7 @@ public class FinalBoss : Enemy
     float counter = 0;
     const int maxZombies = 2;
     int currentZombies = 0;
-    int zombiesAlive = maxZombies;
+    int zombiesAlive = 0;
     bool hasSpawnedAll;
     bool hasTeleporCenter;
     
@@ -289,14 +289,14 @@ public class FinalBoss : Enemy
         {
             hasSpawnedAll = false;
             currentZombies = 0;
-            shieldGO.SetActive(true);
+            
             currentPhase = Phases.PHASE_3;
         }
     }
     public void DeathAZombie()
     {
-        zombiesAlive--;
-        if(zombiesAlive <= 0)
+        zombiesAlive++;
+        if(zombiesAlive >= maxZombies)
         {
             GetComponent<HealthBoss>().SetShield(false);
             zombiesAlive = 0;
@@ -341,7 +341,6 @@ public class FinalBoss : Enemy
         {
             foreach(RaycastHit2D h in hit)
             {
-                Debug.Log(h.collider.name);
                 if (h.collider.CompareTag("ObjectInteractive"))
                 {
                     return true;
@@ -362,15 +361,24 @@ public class FinalBoss : Enemy
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ObjectInteractive"))
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<HealthPlayer>().Damage(1);
+        }
+        if (collision.gameObject.CompareTag("ObjectInteractive") && currentPhase == Phases.PHASE_3)
         {
             lifeShield--;
-            if(lifeShield <= 0)
+            if (lifeShield <= 0)
             {
                 lifeShield = 0;
                 shieldGO.SetActive(false);
                 healthBoss.SetShield(false);
-            }         
+            }
         }
+    }
+    
+    protected override void OnCollEnter(Collision2D col)
+    {
+        
     }
 }
