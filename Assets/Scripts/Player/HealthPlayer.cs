@@ -14,12 +14,14 @@ public class HealthPlayer : Health
 
     [SerializeField] TPlayerManager tpPlayer;
     [SerializeField] PlayerMovement player;
+    int currentLayer;
 
     private void Start()
     {
         life = GameManager.singletone.GetLifePlayer();
         maxLife = GameManager.singletone.GetMaxLifePlayer();
         GameManager.singletone.UpdateHUDLife();
+        currentLayer = gameObject.layer;
     }
 
     private void Update()
@@ -45,8 +47,6 @@ public class HealthPlayer : Health
         StartCoroutine(Damage());
     }
 
-
-
     public void SetLife(int _life , int _maxLife)
     {
         life = _life;
@@ -55,7 +55,6 @@ public class HealthPlayer : Health
 
     IEnumerator DeadAnimation()
     {
-        int currentLayer = gameObject.layer;
         gameObject.layer = 1;
 
         animStepWave.SetTrigger("DoWave");
@@ -65,6 +64,7 @@ public class HealthPlayer : Health
         imageTransition.DOFade(1, transitionDuration);
 
         yield return new WaitForSeconds(betweenTimeTransition);
+
         if(SceneManager.GetActiveScene().name == "BossFight")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -72,7 +72,6 @@ public class HealthPlayer : Health
         }
         else
         {
-
             tpPlayer.TeleportToCheckpoint();
         }
 

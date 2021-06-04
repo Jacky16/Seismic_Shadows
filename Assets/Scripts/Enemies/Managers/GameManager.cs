@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timeToCharge;
     float count = 0;
     bool isSpendingEnergy;
-
+    bool canSpeedEnergy;
 
     float lifePlayerSaved = 3;
     float maxLifePlayerSaved = 3;
     private void Awake()
     {
-
         //True: Se desactiva en todas las escenas excepto en la 1r
         //False: Se activa en todas las escenas
         EnableOnFirstScene(true);
@@ -37,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void SpendingEneryManger()
     {
+        if (!canSpeedEnergy) return;
         if (isSpendingEnergy && energyBar > 0)
         {
             energyBar -= speedSpendingEnergy * Time.deltaTime;
@@ -127,6 +127,10 @@ public class GameManager : MonoBehaviour
     {
         return isSpendingEnergy;
     }
+    public void SetSpendEnergy(bool _b)
+    {
+        canSpeedEnergy = _b;
+    }
 
     #region Getters
         public float GetLifePlayer()
@@ -141,5 +145,6 @@ public class GameManager : MonoBehaviour
         {
             return energyBar;
         }
+
     #endregion
 }
