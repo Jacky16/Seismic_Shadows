@@ -55,7 +55,7 @@ public class HealthPlayer : Health
 
     IEnumerator DeadAnimation()
     {
-        gameObject.layer = 1;
+        //gameObject.layer = 1;
 
         animStepWave.SetTrigger("DoWave");
 
@@ -83,7 +83,7 @@ public class HealthPlayer : Health
 
         imageTransition.DOFade(0, transitionDuration);
 
-        gameObject.layer = currentLayer;
+        //gameObject.layer = currentLayer;
 
     }
     IEnumerator Damage()
